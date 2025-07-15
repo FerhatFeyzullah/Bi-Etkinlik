@@ -1,0 +1,13 @@
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.deps.json
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.pdb
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.csproj.AssemblyReference.cache
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.AssemblyInfoInputs.cache
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.AssemblyInfo.cs
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.sourcelink.json
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\refint\SmartEventPlanningSystem.Domain.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.pdb
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\ref\SmartEventPlanningSystem.Domain.dll

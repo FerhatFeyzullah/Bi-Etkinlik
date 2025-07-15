@@ -8,6 +8,7 @@ namespace SmartEventPlanningSystem.Domain.Entities
 {
     public class AppUserCategory
     {
+        public int AppUserCategoryId { get; set; }
         public int AppUserId { get; set; }
         public AppUser AppUser { get; set; }
 

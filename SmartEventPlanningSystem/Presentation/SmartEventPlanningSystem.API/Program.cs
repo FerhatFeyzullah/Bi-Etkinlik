@@ -1,9 +1,33 @@
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+using SmartEventPlanningSystem.Domain.Entities;
+using SmartEventPlanningSystem.Persistence.DbContext;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
+//Identity DB
+builder.Services.AddDbContext<SEP_DbContext>(options =>
+{
+    options.UseNpgsql(builder.Configuration.GetConnectionString("Default"));
+});
+
+// Identity servisleri (SignInManager ile birlikte)
+builder.Services.AddIdentity<AppUser, AppRole>(options =>
+{
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 6;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequireLowercase = false;
+    options.SignIn.RequireConfirmedAccount = false;
+})
+.AddEntityFrameworkStores<SEP_DbContext>()
+.AddDefaultTokenProviders();
+
+
 
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -23,3 +47,6 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+
+var provider = builder.Services.BuildServiceProvider();
