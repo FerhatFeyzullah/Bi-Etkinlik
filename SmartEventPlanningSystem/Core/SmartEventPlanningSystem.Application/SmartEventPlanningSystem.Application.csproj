@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\UserFeatures\Queries\" />
+    <Folder Include="DTOs\AppUserCategoryDto\" />
   </ItemGroup>
 
 </Project>

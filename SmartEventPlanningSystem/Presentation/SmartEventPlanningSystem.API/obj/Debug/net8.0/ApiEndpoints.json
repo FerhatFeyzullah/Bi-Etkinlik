@@ -28,7 +28,7 @@
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.AuthsController",
     "Method": "Logout",
-    "RelativePath": "api/Auths/Logout",
+    "RelativePath": "api/Auths/LogoutFromSystem",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -36,9 +36,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.AuthsController",
     "Method": "RegisterTheSystem",
-    "RelativePath": "api/Users/RegisterTheSystem",
+    "RelativePath": "api/Auths/RegisterTheSystem",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -46,6 +46,86 @@
       {
         "Name": "request",
         "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RegisterTheSystem.RegisterTheSystemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.CategoriesController",
+    "Method": "CreateCategory",
+    "RelativePath": "api/Categories/CreateCategory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.CategoryFeatures.Commands.CreateCategory.CreateCategoryRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.CategoriesController",
+    "Method": "GetAllCategory",
+    "RelativePath": "api/Categories/GetAllCategory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.CategoryFeatures.Queries.GetAllCategory.GetAllCategoryRequest",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.CategoriesController",
+    "Method": "RemoveCategory",
+    "RelativePath": "api/Categories/RemoveCategory",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CategoryId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "GetMyProfile",
+    "RelativePath": "api/Users/GetMyProfile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "UpdateProfile",
+    "RelativePath": "api/Users/UpdateProfile",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile.UpdateProfileRequest",
         "IsRequired": true
       }
     ],

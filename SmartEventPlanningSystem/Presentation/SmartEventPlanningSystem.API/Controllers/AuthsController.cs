@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.LoginTheSystem;
+using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RegisterTheSystem;
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
@@ -11,6 +12,12 @@ namespace SmartEventPlanningSystem.API.Controllers
     [ApiController]
     public class AuthsController(IMediator mediator) : ControllerBase
     {
+        [HttpPost("RegisterTheSystem")]
+        public async Task<IActionResult> RegisterTheSystem([FromBody] RegisterTheSystemRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
         [HttpPost("LoginTheSystem")]
         public async Task<IActionResult> LoginTheSystem([FromBody] LoginTheSystemRequest request)
         {

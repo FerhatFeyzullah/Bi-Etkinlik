@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -30,9 +31,16 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
             Table.Remove(entity);
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task Update(T entity)
         {
-             Table.Update(entity);
+            Table.Update(entity);
+            await Task.CompletedTask;
+        }
+
+        public async Task DeleteRangeAsync(List<T> entities)
+        {
+            Table.RemoveRange(entities);
+            await Task.CompletedTask;
         }
     }
 }
