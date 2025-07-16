@@ -11,10 +11,7 @@ namespace SmartEventPlanningSystem.Domain.Entities
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Password { get; set; }
-        public string ConfirmPassword { get; set; }
         public string City { get; set; }
-        public string AreasOfInterest { get; set; }
         public DateOnly BirthDate { get; set; }
         public string Gender { get; set; }
         public string? ProfilePhotoId { get; set; }

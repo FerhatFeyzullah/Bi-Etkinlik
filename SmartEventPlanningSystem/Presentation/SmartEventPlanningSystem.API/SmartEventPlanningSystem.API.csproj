@@ -15,10 +15,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\SmartEventPlanningSystem.Infrastructure\SmartEventPlanningSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\..\Infrastructure\SmartEventPlanningSystem.Persistence\SmartEventPlanningSystem.Persistence.csproj" />
   </ItemGroup>

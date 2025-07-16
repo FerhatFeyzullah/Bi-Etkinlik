@@ -1,1 +1,54 @@
-[]
+[
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.AuthsController",
+    "Method": "GetCurrentUser",
+    "RelativePath": "api/Auths/CheckMe",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.AuthsController",
+    "Method": "LoginTheSystem",
+    "RelativePath": "api/Auths/LoginTheSystem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.LoginTheSystem.LoginTheSystemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.AuthsController",
+    "Method": "Logout",
+    "RelativePath": "api/Auths/Logout",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "RegisterTheSystem",
+    "RelativePath": "api/Users/RegisterTheSystem",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RegisterTheSystem.RegisterTheSystemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

@@ -165,10 +165,6 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("integer");
 
-                    b.Property<string>("AreasOfInterest")
-                        .IsRequired()
-                        .HasColumnType("text");
-
                     b.Property<DateOnly>("BirthDate")
                         .HasColumnType("date");
 
@@ -178,10 +174,6 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
-                        .HasColumnType("text");
-
-                    b.Property<string>("ConfirmPassword")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("Email")
@@ -216,10 +208,6 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<string>("NormalizedUserName")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
-
-                    b.Property<string>("Password")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");
