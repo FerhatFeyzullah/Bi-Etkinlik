@@ -15,7 +15,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.LoginT
         public async Task<LoginTheSystemResponse> Handle(LoginTheSystemRequest request, CancellationToken cancellationToken)
         {
             var loginDto = mapper.Map<UserLoginDto>(request);
-            var response = await userService.LoginAsync(loginDto);
+            var response = await userService.LoginAsync(loginDto,cancellationToken);
             return mapper.Map<LoginTheSystemResponse>(response);
         }
     }

@@ -101,6 +101,54 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "ChangeForgotPassword",
+    "RelativePath": "api/Users/ChangeForgotPassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.ChangeForgotPassword.ChangeForgotPasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "ChangePassword",
+    "RelativePath": "api/Users/ChangePassword",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ChangePassword.ChangePasswordRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "ConfirmEmail",
+    "RelativePath": "api/Users/ConfirmEmail",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ConfirmEmail.ConfirmEmailRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
     "Method": "GetMyProfile",
     "RelativePath": "api/Users/GetMyProfile",
     "HttpMethod": "GET",
@@ -117,6 +165,70 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "GetUserInfo",
+    "RelativePath": "api/Users/GetUserInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "RemoveAccount",
+    "RelativePath": "api/Users/RemoveAccount/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "RemoveProfilePhoto",
+    "RelativePath": "api/Users/RemoveProfilePhoto/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "SendResetCode",
+    "RelativePath": "api/Users/SendResetCode",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.SendResetCode.SendResetCodeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
     "Method": "UpdateProfile",
     "RelativePath": "api/Users/UpdateProfile",
     "HttpMethod": "PUT",
@@ -126,6 +238,43 @@
       {
         "Name": "request",
         "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile.UpdateProfileRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "UploadProfilePhoto",
+    "RelativePath": "api/Users/UploadProfilePhoto",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Image",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "VerifyResetCode",
+    "RelativePath": "api/Users/VerifyResetCode",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.VerifyResetCode.VerifyResetCodeRequest",
         "IsRequired": true
       }
     ],

@@ -9,12 +9,14 @@ using SmartEventPlanningSystem.Persistence.Configurations;
 using SmartEventPlanningSystem.Persistence.DbContext;
 using SmartEventPlanningSystem.Persistence.ServiceExtensions;
 using SmartEventPlanningSystem.Application.ServiceExtensions;
+using SmartEventPlanningSystem.Infrastructure.ServiceExtensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
 //Service Extensions
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddApplicationServices();
+builder.Services.AddInfrastructureServices();
 
 
 
@@ -105,6 +107,7 @@ if (app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
+app.UseStaticFiles();
 
 app.MapControllers();
 

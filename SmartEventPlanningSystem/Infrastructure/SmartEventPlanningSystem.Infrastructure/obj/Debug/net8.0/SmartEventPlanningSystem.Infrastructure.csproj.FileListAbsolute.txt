@@ -10,3 +10,4 @@ C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEve
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Infrastructure\obj\Debug\net8.0\refint\SmartEventPlanningSystem.Infrastructure.dll
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Infrastructure\obj\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.pdb
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Infrastructure\obj\Debug\net8.0\ref\SmartEventPlanningSystem.Infrastructure.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Infrastructure\obj\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.csproj.AssemblyReference.cache

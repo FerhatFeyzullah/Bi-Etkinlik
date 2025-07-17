@@ -9,9 +9,11 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Infrastructure\SmartEventPlanningSystem.Infrastructure\SmartEventPlanningSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\SmartEventPlanningSystem.Domain\SmartEventPlanningSystem.Domain.csproj" />
   </ItemGroup>
 

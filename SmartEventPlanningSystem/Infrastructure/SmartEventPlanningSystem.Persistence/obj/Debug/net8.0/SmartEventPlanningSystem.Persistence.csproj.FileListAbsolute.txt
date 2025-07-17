@@ -18,3 +18,5 @@ C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEve
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.pdb
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.genruntimeconfig.cache
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\ref\SmartEventPlanningSystem.Persistence.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.pdb

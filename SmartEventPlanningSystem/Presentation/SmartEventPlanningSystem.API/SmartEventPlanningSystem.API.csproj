@@ -19,4 +19,8 @@
     <ProjectReference Include="..\..\Infrastructure\SmartEventPlanningSystem.Persistence\SmartEventPlanningSystem.Persistence.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

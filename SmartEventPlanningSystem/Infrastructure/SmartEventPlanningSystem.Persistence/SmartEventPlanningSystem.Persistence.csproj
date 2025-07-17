@@ -19,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\SmartEventPlanningSystem.Application\SmartEventPlanningSystem.Application.csproj" />
     <ProjectReference Include="..\..\Core\SmartEventPlanningSystem.Domain\SmartEventPlanningSystem.Domain.csproj" />
+    <ProjectReference Include="..\SmartEventPlanningSystem.Infrastructure\SmartEventPlanningSystem.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

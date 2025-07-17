@@ -14,3 +14,5 @@ C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEve
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\refint\SmartEventPlanningSystem.Application.dll
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.pdb
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\ref\SmartEventPlanningSystem.Application.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.pdb

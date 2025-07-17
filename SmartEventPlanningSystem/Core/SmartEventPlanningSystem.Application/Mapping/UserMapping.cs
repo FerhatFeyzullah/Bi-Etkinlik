@@ -5,7 +5,10 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.LoginTheSystem;
+using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RemoveProfilePhoto;
+using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetMyProfile;
+using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetUserInfo;
 using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Domain.Entities;
 
@@ -21,6 +24,11 @@ namespace SmartEventPlanningSystem.Application.Mapping
 
             CreateMap<AppUser, ResultUserDto>().ReverseMap();
             CreateMap<AppUser, UpdateProfileDto>().ReverseMap();
+            CreateMap<AppUser, GetUserInfoResponse>().ReverseMap();
+
+            CreateMap<AppUser, UploadProfilePhotoResponse>().ReverseMap();
+            CreateMap<AppUser, RemoveProfilePhotoResponse>().ReverseMap();
+
         }
     }
 }

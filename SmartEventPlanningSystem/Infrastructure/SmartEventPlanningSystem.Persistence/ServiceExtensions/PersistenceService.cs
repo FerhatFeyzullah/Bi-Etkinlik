@@ -21,10 +21,7 @@ namespace SmartEventPlanningSystem.Persistence.ServiceExtensions
     {
         public static void AddPersistenceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            //services.AddHttpContextAccessor();
-            //services.AddScoped<SignInManager<AppUser>>();
-            //services.AddScoped<UserManager<AppUser>>();
-            //services.AddScoped<RoleManager<AppRole>>();
+            services.AddMemoryCache();
 
             services.AddScoped<IJwtService, JwtService>();
             services.Configure<JwtTokenOptions>(configuration.GetSection("TokenOptions"));
@@ -36,6 +33,7 @@ namespace SmartEventPlanningSystem.Persistence.ServiceExtensions
             services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IForgotPasswordService, ForgotPasswordService>();
         }
     }
 }

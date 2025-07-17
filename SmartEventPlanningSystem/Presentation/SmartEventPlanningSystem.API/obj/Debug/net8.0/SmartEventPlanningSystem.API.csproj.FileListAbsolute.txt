@@ -137,3 +137,9 @@ C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEve
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.pdb
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.genruntimeconfig.cache
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\ref\SmartEventPlanningSystem.API.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\BouncyCastle.Cryptography.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\MailKit.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\MimeKit.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\SmartEventPlanningSystem.API.staticwebassets.runtime.json
