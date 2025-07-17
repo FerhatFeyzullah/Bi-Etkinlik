@@ -100,6 +100,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "CreateEvent",
+    "RelativePath": "api/Events/CreateEvent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.CreateEvent.CreateEventRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
     "Method": "ChangeForgotPassword",
     "RelativePath": "api/Users/ChangeForgotPassword",

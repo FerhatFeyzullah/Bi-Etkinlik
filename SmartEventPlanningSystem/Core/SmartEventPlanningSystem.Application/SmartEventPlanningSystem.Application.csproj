@@ -18,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\AppUserCategoryDto\" />
+    <Folder Include="CQRS\EventFeatures\Commands\RemoveEvent\" />
+    <Folder Include="CQRS\EventFeatures\Commands\UpdateEvent\" />
   </ItemGroup>
 
 </Project>

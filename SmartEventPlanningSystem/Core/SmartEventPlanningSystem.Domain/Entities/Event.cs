@@ -24,6 +24,9 @@ namespace SmartEventPlanningSystem.Domain.Entities
         [Column(TypeName = "decimal(9,6)")]
         public decimal Longitude { get; set; }
 
+        public int AppUserId { get; set; }
+        public AppUser AppUser { get; set; }
+
         public List<EventCategory> EventCategories { get; set; }
 
 

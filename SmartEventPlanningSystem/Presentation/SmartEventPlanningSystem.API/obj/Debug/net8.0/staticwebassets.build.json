@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "sSSnZA5v2mkWdicJignMAllDAzG13dOngikfRRB/ge0=",
+  "Hash": "p3LGkxubrARiZFiWNy9C/BM5GBHXRuXJlRjomyX2AcA=",
   "Source": "SmartEventPlanningSystem.API",
   "BasePath": "_content/SmartEventPlanningSystem.API",
   "Mode": "Default",
@@ -15,111 +15,6 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [
-    {
-      "Identity": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\77ab14c2-6230-4ffc-bc14-a4e97713ddf0.JPG",
-      "SourceId": "SmartEventPlanningSystem.API",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
-      "BasePath": "_content/SmartEventPlanningSystem.API",
-      "RelativePath": "upload/77ab14c2-6230-4ffc-bc14-a4e97713ddf0#[.{fingerprint}]?.JPG",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "lj6xmk8s18",
-      "Integrity": "nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\upload\\77ab14c2-6230-4ffc-bc14-a4e97713ddf0.JPG"
-    }
-  ],
-  "Endpoints": [
-    {
-      "Route": "upload/77ab14c2-6230-4ffc-bc14-a4e97713ddf0.JPG",
-      "AssetFile": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\77ab14c2-6230-4ffc-bc14-a4e97713ddf0.JPG",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "636468"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 08:40:01 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw="
-        }
-      ]
-    },
-    {
-      "Route": "upload/77ab14c2-6230-4ffc-bc14-a4e97713ddf0.lj6xmk8s18.JPG",
-      "AssetFile": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\77ab14c2-6230-4ffc-bc14-a4e97713ddf0.JPG",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "636468"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Thu, 17 Jul 2025 08:40:01 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "lj6xmk8s18"
-        },
-        {
-          "Name": "label",
-          "Value": "upload/77ab14c2-6230-4ffc-bc14-a4e97713ddf0.JPG"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw="
-        }
-      ]
-    }
-  ]
+  "Assets": [],
+  "Endpoints": []
 }

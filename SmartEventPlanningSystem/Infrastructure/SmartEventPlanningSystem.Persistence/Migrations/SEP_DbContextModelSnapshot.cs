@@ -294,6 +294,9 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EventId"));
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("integer");
+
                     b.Property<DateOnly>("Date")
                         .HasColumnType("date");
 
@@ -323,6 +326,8 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
 
                     b.HasKey("EventId");
 
+                    b.HasIndex("AppUserId");
+
                     b.ToTable("Events");
                 });
 
@@ -333,9 +338,6 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                         .HasColumnType("integer");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("EventCategoryId"));
-
-                    b.Property<int>("AppUserId")
-                        .HasColumnType("integer");
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("integer");
@@ -473,6 +475,17 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Navigation("Category");
                 });
 
+            modelBuilder.Entity("SmartEventPlanningSystem.Domain.Entities.Event", b =>
+                {
+                    b.HasOne("SmartEventPlanningSystem.Domain.Entities.AppUser", "AppUser")
+                        .WithMany("MyEvents")
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUser");
+                });
+
             modelBuilder.Entity("SmartEventPlanningSystem.Domain.Entities.EventCategory", b =>
                 {
                     b.HasOne("SmartEventPlanningSystem.Domain.Entities.Category", "Category")
@@ -525,6 +538,8 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
             modelBuilder.Entity("SmartEventPlanningSystem.Domain.Entities.AppUser", b =>
                 {
                     b.Navigation("AppUserCategories");
+
+                    b.Navigation("MyEvents");
                 });
 
             modelBuilder.Entity("SmartEventPlanningSystem.Domain.Entities.Category", b =>

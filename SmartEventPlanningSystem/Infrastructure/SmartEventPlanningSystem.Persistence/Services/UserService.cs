@@ -6,10 +6,15 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Hosting;
+using Org.BouncyCastle.Asn1.Ocsp;
 using SmartEventPlanningSystem.Application.CQRS.AppUserCategoryFeatures.Commands.CreateAppUserCategory;
+using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
+using SmartEventPlanningSystem.Application.DTOs.CategoryDtos;
 using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
@@ -18,7 +23,7 @@ using SmartEventPlanningSystem.Persistence.DbContext;
 
 namespace SmartEventPlanningSystem.Persistence.Services
 {
-    public class UserService(UserManager<AppUser> userManager,IJwtService jwtService, IMapper mapper,IMediator mediator,IUnitOfWork unitOfWork) : IUserService
+    public class UserService(UserManager<AppUser> userManager,IJwtService jwtService, IMapper mapper,IMediator mediator,IUnitOfWork unitOfWork, IWebHostEnvironment _environment) : IUserService
     {
 
         public async Task<string> ChangePassword(int id,string oldPass, string newPass, string confPass, CancellationToken ct)
@@ -95,46 +100,66 @@ namespace SmartEventPlanningSystem.Persistence.Services
             };
         }
 
-        public async Task<IdentityResult> RegisterAsync(UserRegisterDto userRegisterDto,List<int>interest, CancellationToken c_token)
-        {            
+        public async Task<IdentityResult> RegisterAsync(UserRegisterDto userRegisterDto, List<int> interest, CancellationToken c_token)
+        {
             c_token.ThrowIfCancellationRequested();
+            await unitOfWork.BeginTransactionAsync();
+            try
+            {
+                var userNameExist = await userManager.FindByNameAsync(userRegisterDto.UserName);
+                if (userNameExist != null)
+                {
+                    return IdentityResult.Failed(new IdentityError
+                    {
+                        Description = "Bu Kullanıcı İsmi Zaten Kullanılıyor."
+                    });
+                }
+                var userEmailExist = await userManager.FindByEmailAsync(userRegisterDto.Email);
+                if (userEmailExist != null)
+                {
+                    return IdentityResult.Failed(new IdentityError
+                    {
+                        Description = "Bu Email Adresi Zaten Kullanılıyor."
+                    });
+                }
 
-            var userNameExist = await userManager.FindByNameAsync(userRegisterDto.UserName);
-            if (userNameExist!=null)
-            { 
-            return IdentityResult.Failed(new IdentityError
-            {
-                Description = "Bu Kullanıcı İsmi Zaten Kullanılıyor."
-            });
+                var user = mapper.Map<AppUser>(userRegisterDto);
+
+                var createResult = await userManager.CreateAsync(user, userRegisterDto.Password);
+                if (createResult.Succeeded)
+                {
+                    await userManager.AddToRoleAsync(user, "User");
+
+                    foreach (var area in interest)
+                    {
+                        var appUserCategory = new AppUserCategory
+                        {
+                            AppUser = user,
+                            CategoryId = area
+                        };
+                        await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory);
+                    }
+                    await unitOfWork.CommitAsync();
+                    return createResult;
+                }
+                else 
+                {
+                    return IdentityResult.Failed(new IdentityError
+                    {
+                        Description = "Kullanıcı Oluşturulamadı."
+                    });
+                }             
+
             }
-            var userEmailExist = await userManager.FindByEmailAsync(userRegisterDto.Email);
-            if (userEmailExist != null)
+            catch(Exception ex)
             {
+                await unitOfWork.RollbackAsync();
                 return IdentityResult.Failed(new IdentityError
                 {
-                    Description = "Bu Email Adresi Zaten Kullanılıyor."
+                    Description = "Kayit sırasında hata oluştu:" + ex.Message
                 });
             }
-
-            var user = mapper.Map<AppUser>(userRegisterDto);
-
-           var createResult =  await userManager.CreateAsync(user, userRegisterDto.Password);
-            if (createResult.Succeeded)
-            { 
-                await userManager.AddToRoleAsync(user, "User");
-                var lastUser = await userManager.FindByNameAsync(userRegisterDto.UserName);
- 
-                await mediator.Publish(new CreateAppUserCategoryNotification
-                {
-                    AreasOfInterest = interest,
-                    AppUserId = lastUser.Id,
-
-                });
-                return createResult;
-            }
-            return createResult;
-
-        }
+        }       
 
         public async Task<IdentityResult> RemoveAccountAsync(int id, CancellationToken ct)
         {
@@ -215,8 +240,23 @@ namespace SmartEventPlanningSystem.Persistence.Services
             ct.ThrowIfCancellationRequested();
 
             var user = await userManager.FindByIdAsync(id.ToString());
-            if (user == null)
-                throw new KeyNotFoundException("User not found");
+            if (user == null) 
+            {
+            throw new KeyNotFoundException("User not found");
+            }
+                
+            var oldFileName = user.ProfilePhotoId;
+
+            if (!string.IsNullOrEmpty(oldFileName))
+            {
+                var uploadFolder = Path.Combine(_environment.WebRootPath, "upload");
+                var oldFilePath = Path.Combine(uploadFolder, oldFileName);
+
+                if (File.Exists(oldFilePath))
+                {
+                    File.Delete(oldFilePath);
+                }
+            }
 
             user.ProfilePhotoId = null;
 
@@ -224,6 +264,63 @@ namespace SmartEventPlanningSystem.Persistence.Services
             await unitOfWork.CommitAsync();
 
             return user;
+        }
+
+        public async Task<UpdateProfileResponse> UpdateProfile(UpdateProfileDto updateProfileDto, List<int> Categories, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            await unitOfWork.BeginTransactionAsync();
+            try
+            {
+                var user = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(updateProfileDto.AppUserId);
+                mapper.Map(updateProfileDto, user); // mevcut entity'ye map
+                await unitOfWork.WriteRepository<AppUser>().Update(user);
+
+                var oldCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(x => x.AppUserId == user.Id);
+
+                await unitOfWork.WriteRepository<AppUserCategory>().DeleteRangeAsync(oldCategories);
+
+                foreach (var area in Categories)
+                {
+                    var appUserCategory = new AppUserCategory
+                    {
+                        AppUser = user,
+                        CategoryId = area
+                    };
+                    await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory);
+                }
+
+                await unitOfWork.CommitAsync();
+
+                //Guncelleme Sonrasi Yeni Veri Islemleri
+
+                var response = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(user.Id);
+                var appUserCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(
+                x => x.AppUserId == user.Id,
+                x => x.Category
+                );
+                var categories = appUserCategories.Select(x => x.Category).ToList();
+
+                return new UpdateProfileResponse
+                {
+                    User = mapper.Map<ResultUserDto>(response),
+                    HisCategory = mapper.Map<List<ResultCategoryDto>>(categories)
+                };
+            }
+            catch (Exception ex)
+            {
+                await unitOfWork.RollbackAsync();
+
+                Console.WriteLine("Profil güncelleme sırasında hata oluştu:");
+                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.StackTrace);
+
+                return new UpdateProfileResponse
+                {
+                    User = null,
+                    HisCategory = new()
+                };
+            }
         }
     }
 }

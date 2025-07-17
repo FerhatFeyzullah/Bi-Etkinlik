@@ -17,7 +17,7 @@ namespace SmartEventPlanningSystem.Domain.Entities
         public string? ProfilePhotoId { get; set; }
         public int Score { get; set; }
 
-
+        public List<Event> MyEvents { get; set; }
         public List<AppUserCategory> AppUserCategories { get; set; }
     }
 }

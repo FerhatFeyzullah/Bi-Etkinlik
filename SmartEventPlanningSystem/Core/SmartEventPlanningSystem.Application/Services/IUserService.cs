@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
+using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
 using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Domain.Entities;
@@ -20,6 +21,7 @@ namespace SmartEventPlanningSystem.Application.Services
         Task<IdentityResult> ConfirmEmailAsync(string email, CancellationToken ct);
         Task<AppUser> UploadProfilePhoto(int id,string ppid, CancellationToken ct);
         Task<AppUser> RemoveProfilePhoto(int id, CancellationToken ct);
+        Task<UpdateProfileResponse> UpdateProfile(UpdateProfileDto updateProfileDto, List<int> Categories, CancellationToken ct);
 
     }
 }

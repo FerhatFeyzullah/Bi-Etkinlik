@@ -34,6 +34,7 @@ namespace SmartEventPlanningSystem.Persistence.ServiceExtensions
 
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IForgotPasswordService, ForgotPasswordService>();
+            services.AddScoped<IEventService, EventService>();
         }
     }
 }
