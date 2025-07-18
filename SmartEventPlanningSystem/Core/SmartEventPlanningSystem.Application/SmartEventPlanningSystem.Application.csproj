@@ -18,8 +18,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CQRS\EventFeatures\Commands\RemoveEvent\" />
-    <Folder Include="CQRS\EventFeatures\Commands\UpdateEvent\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDate\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredCategory\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredCity\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCity\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCategory\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredCityAndCategory\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCityAndCategory\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_UnFiltered\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventsI_Created\GetEventsICreatedAwaiting\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventsI_Created\GetEventsICreatedStatusTrue\" />
+    <Folder Include="CQRS\EventFeatures\Queries\EventsI_Created\GetEventsICreatedStatusFalse\" />
+    <Folder Include="CQRS\EventFeatures\Queries\GetEventsRecommendedToMe\" />
   </ItemGroup>
 
 </Project>

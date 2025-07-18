@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
-using SmartEventPlanningSystem.Application.CQRS.AppUserCategoryFeatures.Commands.CreateAppUserCategory;
 using SmartEventPlanningSystem.Application.Services;
 
 namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RegisterTheSystem

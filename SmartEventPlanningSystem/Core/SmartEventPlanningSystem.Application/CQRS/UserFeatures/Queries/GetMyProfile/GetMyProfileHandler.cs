@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SmartEventPlanningSystem.Application.DTOs.CategoryDtos;
 using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
@@ -16,17 +17,16 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetMyPr
     {
         public async Task<GetMyProfileResponse> Handle(GetMyProfileRequest request, CancellationToken cancellationToken)
         {
-            var user = await unitOfWork.ReadRepository<AppUser>().GetByFiltered(x => x.Id == request.AppUserId);
-            var appUserCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(
-                x => x.AppUserId == request.AppUserId,
-                x=>x.Category
-                );
-            var categories = appUserCategories.Select(x => x.Category).ToList();
+            var user = await unitOfWork.ReadRepository<AppUser>().GetByFiltered(
+                x => x.Id == request.AppUserId,
+                q => q.Include(x => x.AppUserCategories).
+                ThenInclude(e => e.Category));
+
+            var mappedUser = mapper.Map<UserProfileDto>(user);
 
             return new GetMyProfileResponse
             {
-                User = mapper.Map<ResultUserDto>(user),
-                HisCategory = mapper.Map<List<ResultCategoryDto>>(categories)
+                MyProfile = mappedUser
             };
         }
     }

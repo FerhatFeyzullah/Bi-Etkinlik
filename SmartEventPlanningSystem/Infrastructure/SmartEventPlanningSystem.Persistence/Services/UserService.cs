@@ -8,10 +8,10 @@ using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.Extensions.Hosting;
 using Org.BouncyCastle.Asn1.Ocsp;
-using SmartEventPlanningSystem.Application.CQRS.AppUserCategoryFeatures.Commands.CreateAppUserCategory;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
 using SmartEventPlanningSystem.Application.DTOs.CategoryDtos;
@@ -294,17 +294,16 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 //Guncelleme Sonrasi Yeni Veri Islemleri
 
-                var response = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(user.Id);
-                var appUserCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(
-                x => x.AppUserId == user.Id,
-                x => x.Category
-                );
-                var categories = appUserCategories.Select(x => x.Category).ToList();
+                var updatedUser = await unitOfWork.ReadRepository<AppUser>().GetByFiltered(
+                    x => x.Id == user.Id,
+                    x => x.Include(u => u.AppUserCategories).ThenInclude(uc => uc.Category)
+ 
+                    );
+                var mappedUser = mapper.Map<UserProfileDto>(updatedUser);
 
                 return new UpdateProfileResponse
                 {
-                    User = mapper.Map<ResultUserDto>(response),
-                    HisCategory = mapper.Map<List<ResultCategoryDto>>(categories)
+                    UpdatedProfile = mappedUser,
                 };
             }
             catch (Exception ex)
@@ -317,8 +316,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 return new UpdateProfileResponse
                 {
-                    User = null,
-                    HisCategory = new()
+                    UpdatedProfile = null,
                 };
             }
         }

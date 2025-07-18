@@ -24,10 +24,11 @@ namespace SmartEventPlanningSystem.Application.Mapping
 
             CreateMap<AppUser, ResultUserDto>().ReverseMap();
             CreateMap<AppUser, UpdateProfileDto>().ReverseMap();
-            CreateMap<AppUser, GetUserInfoResponse>().ReverseMap();
+            CreateMap<AppUser, GetMyProfileResponse>().ReverseMap();
 
             CreateMap<AppUser, UploadProfilePhotoResponse>().ReverseMap();
             CreateMap<AppUser, RemoveProfilePhotoResponse>().ReverseMap();
+            CreateMap<AppUser, UserProfileDto>().ReverseMap();
 
         }
     }

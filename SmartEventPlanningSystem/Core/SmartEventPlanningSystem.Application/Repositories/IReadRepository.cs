@@ -11,11 +11,13 @@ namespace SmartEventPlanningSystem.Application.Repositories
     {
         Task<T> GetByIdAsync(int id);
         Task<List<T>> GetAllAsync();
-        Task<T> GetByFiltered(Expression<Func<T,bool>>kosul);
-        Task<T> GetByFiltered(Expression<Func<T,bool>>kosul, params Expression<Func<T, object>>[] includes);
-        Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> kosul);
-        Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> kosul, params Expression<Func<T, object>>[] includes);       
-        Task<int> FilteredCountAsync(Expression<Func<T, bool>> kosul);
+        Task<T> GetByFiltered(Expression<Func<T,bool>> filter);
+        Task<T> GetByFiltered(Expression<Func<T,bool>> filter, params Expression<Func<T, object>>[] includes);
+        Task<T> GetByFiltered(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null);
+        Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter);
+        Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter, params Expression<Func<T, object>>[] includes);
+        Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter,Func<IQueryable<T>, IQueryable<T>> include = null);
+        Task<int> FilteredCountAsync(Expression<Func<T, bool>> filter);
         Task<int> CountAsync();
 
     }

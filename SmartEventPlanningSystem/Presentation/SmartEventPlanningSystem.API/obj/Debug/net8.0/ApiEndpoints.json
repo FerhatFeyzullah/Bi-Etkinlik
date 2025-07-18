@@ -116,6 +116,86 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "GetEventsI_CreatedUnFiltered",
+    "RelativePath": "api/Events/GetEventsI_CreatedUnFiltered",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "RemoveEvent",
+    "RelativePath": "api/Events/RemoveEvent/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "SetEventPermissionFalse",
+    "RelativePath": "api/Events/SetEventPermissionFalse/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "SetEventPermissionTrue",
+    "RelativePath": "api/Events/SetEventPermissionTrue/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "UpdateEvent",
+    "RelativePath": "api/Events/UpdateEvent",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.UpdateEvent.UpdateEventRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
     "Method": "ChangeForgotPassword",
     "RelativePath": "api/Users/ChangeForgotPassword",

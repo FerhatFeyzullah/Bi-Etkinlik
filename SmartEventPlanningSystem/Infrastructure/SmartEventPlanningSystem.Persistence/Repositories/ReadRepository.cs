@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
@@ -24,9 +25,9 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
             return await Table.CountAsync();
         }
 
-        public async Task<int> FilteredCountAsync(System.Linq.Expressions.Expression<Func<T, bool>> kosul)
+        public async Task<int> FilteredCountAsync(System.Linq.Expressions.Expression<Func<T, bool>> filter)
         {
-            return await Table.Where(kosul).CountAsync();
+            return await Table.Where(filter).CountAsync();
         }
 
         public async Task<List<T>> GetAllAsync()
@@ -34,14 +35,22 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
             return await Table.ToListAsync();
         }
 
-        public async Task<T> GetByFiltered(System.Linq.Expressions.Expression<Func<T, bool>> kosul)
+        public async Task<T> GetByIdAsync(int id)
         {
-            return await Table.Where(kosul).FirstOrDefaultAsync();
+            return await Table.FindAsync(id);
         }
 
-        public Task<T> GetByFiltered(System.Linq.Expressions.Expression<Func<T, bool>> kosul, params System.Linq.Expressions.Expression<Func<T, object>>[] includes)
+
+
+
+        public async Task<T> GetByFiltered(System.Linq.Expressions.Expression<Func<T, bool>> filter)
         {
-            IQueryable<T> query = Table.Where(kosul);
+            return await Table.Where(filter).FirstOrDefaultAsync();
+        }
+
+        public Task<T> GetByFiltered(System.Linq.Expressions.Expression<Func<T, bool>> filter, params System.Linq.Expressions.Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = Table.Where(filter);
             foreach (var include in includes)
             {
                 query = query.Include(include);
@@ -50,14 +59,27 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
             return query.FirstOrDefaultAsync();
         }
 
-        public async Task<List<T>> GetByFilteredList(System.Linq.Expressions.Expression<Func<T, bool>> kosul)
+        public Task<T> GetByFiltered(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null)
         {
-            return await Table.Where(kosul).ToListAsync();
+            IQueryable<T> query = Table.Where(filter);
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            return query.FirstOrDefaultAsync();
         }
 
-        public Task<List<T>> GetByFilteredList(System.Linq.Expressions.Expression<Func<T, bool>> kosul, params System.Linq.Expressions.Expression<Func<T, object>>[] includes)
+
+
+        public async Task<List<T>> GetByFilteredList(System.Linq.Expressions.Expression<Func<T, bool>> filter)
         {
-            IQueryable<T> query = Table.Where(kosul);
+            return await Table.Where(filter).ToListAsync();
+        }
+
+        public Task<List<T>> GetByFilteredList(System.Linq.Expressions.Expression<Func<T, bool>> filter, params System.Linq.Expressions.Expression<Func<T, object>>[] includes)
+        {
+            IQueryable<T> query = Table.Where(filter);
             foreach (var include in includes)
             {
                 query = query.Include(include);
@@ -65,10 +87,18 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
 
             return query.ToListAsync();
         }
-
-        public async  Task<T> GetByIdAsync(int id)
+      
+        public Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null)
         {
-            return await Table.FindAsync(id);
+            IQueryable<T> query = Table.Where(filter);
+            if (include != null)
+            {
+                query = include(query);
+            }
+
+            return query.ToListAsync();
         }
+
+        
     }
 }

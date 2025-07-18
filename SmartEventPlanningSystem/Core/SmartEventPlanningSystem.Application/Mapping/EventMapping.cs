@@ -13,7 +13,9 @@ namespace SmartEventPlanningSystem.Application.Mapping
     {
         public EventMapping()
         {
-            //CreateMap<Event, CreateEventDto>().ReverseMap();
+            CreateMap<Event, CreateEventDto>().ReverseMap();
+            CreateMap<Event, UpdateEventDto>().ReverseMap();
+            CreateMap<Event, EventsI_CreatedDto>().ReverseMap();
         }
     }
 }

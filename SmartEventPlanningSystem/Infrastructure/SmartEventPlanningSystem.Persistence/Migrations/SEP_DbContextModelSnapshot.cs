@@ -297,19 +297,12 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("integer");
 
-                    b.Property<DateOnly>("Date")
-                        .HasColumnType("date");
-
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<TimeOnly>("EndTime")
-                        .HasColumnType("time without time zone");
-
-                    b.Property<string>("EventDuration")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<decimal>("Latitude")
                         .HasColumnType("decimal(9,6)");
@@ -321,8 +314,11 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<TimeOnly>("StartTime")
-                        .HasColumnType("time without time zone");
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool?>("Status")
+                        .HasColumnType("boolean");
 
                     b.HasKey("EventId");
 

@@ -10,7 +10,6 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.Update
 {
     public class UpdateProfileResponse
     {
-        public ResultUserDto User { get; set; }
-        public List<ResultCategoryDto> HisCategory { get; set; }
+        public UserProfileDto UpdatedProfile { get; set; }
     }
 }

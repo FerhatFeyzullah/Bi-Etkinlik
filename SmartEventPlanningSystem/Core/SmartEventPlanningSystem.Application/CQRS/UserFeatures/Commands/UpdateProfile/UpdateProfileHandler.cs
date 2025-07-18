@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
-using SmartEventPlanningSystem.Application.CQRS.AppUserCategoryFeatures.Commands.CreateAppUserCategory;
 using SmartEventPlanningSystem.Application.DTOs.CategoryDtos;
 using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.Services;
