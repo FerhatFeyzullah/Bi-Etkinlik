@@ -297,6 +297,10 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<int>("AppUserId")
                         .HasColumnType("integer");
 
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<string>("Description")
                         .IsRequired()
                         .HasColumnType("text");

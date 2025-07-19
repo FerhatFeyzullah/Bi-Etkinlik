@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCityAndCategory\**" />
+    <EmbeddedResource Remove="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCityAndCategory\**" />
+    <None Remove="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCityAndCategory\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
@@ -15,21 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Infrastructure\SmartEventPlanningSystem.Infrastructure\SmartEventPlanningSystem.Infrastructure.csproj" />
     <ProjectReference Include="..\SmartEventPlanningSystem.Domain\SmartEventPlanningSystem.Domain.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDate\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredCategory\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredCity\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCity\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCategory\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredCityAndCategory\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_FilteredDateAndCityAndCategory\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventDiscovery\GetE_UnFiltered\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventsI_Created\GetEventsICreatedAwaiting\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventsI_Created\GetEventsICreatedStatusTrue\" />
-    <Folder Include="CQRS\EventFeatures\Queries\EventsI_Created\GetEventsICreatedStatusFalse\" />
-    <Folder Include="CQRS\EventFeatures\Queries\GetEventsRecommendedToMe\" />
   </ItemGroup>
 
 </Project>

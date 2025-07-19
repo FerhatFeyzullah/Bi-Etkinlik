@@ -137,7 +137,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                             AppUser = user,
                             CategoryId = area
                         };
-                        await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory);
+                        await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory,c_token);
                     }
                     await unitOfWork.CommitAsync();
                     return createResult;
@@ -272,11 +272,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
             await unitOfWork.BeginTransactionAsync();
             try
             {
-                var user = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(updateProfileDto.AppUserId);
+                var user = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(updateProfileDto.AppUserId, ct);
                 mapper.Map(updateProfileDto, user); // mevcut entity'ye map
                 await unitOfWork.WriteRepository<AppUser>().Update(user);
 
-                var oldCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(x => x.AppUserId == user.Id);
+                var oldCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(x => x.AppUserId == user.Id,ct);
 
                 await unitOfWork.WriteRepository<AppUserCategory>().DeleteRangeAsync(oldCategories);
 
@@ -287,7 +287,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                         AppUser = user,
                         CategoryId = area
                     };
-                    await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory);
+                    await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory,ct);
                 }
 
                 await unitOfWork.CommitAsync();
@@ -296,7 +296,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 var updatedUser = await unitOfWork.ReadRepository<AppUser>().GetByFiltered(
                     x => x.Id == user.Id,
-                    x => x.Include(u => u.AppUserCategories).ThenInclude(uc => uc.Category)
+                    x => x.Include(u => u.AppUserCategories).ThenInclude(uc => uc.Category),ct
  
                     );
                 var mappedUser = mapper.Map<UserProfileDto>(updatedUser);

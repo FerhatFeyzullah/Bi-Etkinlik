@@ -821,11 +821,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
+      "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
       "projectName": "SmartEventPlanningSystem.Domain",
-      "projectPath": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
+      "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
       "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\obj\\",
+      "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

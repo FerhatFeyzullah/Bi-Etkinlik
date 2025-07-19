@@ -23,6 +23,7 @@ namespace SmartEventPlanningSystem.Application.Mapping
             CreateMap<UserLoginResponseDto, LoginTheSystemResponse>().ReverseMap();
 
             CreateMap<AppUser, ResultUserDto>().ReverseMap();
+            CreateMap<AppUser, ResultUserForEvent>().ReverseMap();
             CreateMap<AppUser, UpdateProfileDto>().ReverseMap();
             CreateMap<AppUser, GetMyProfileResponse>().ReverseMap();
 

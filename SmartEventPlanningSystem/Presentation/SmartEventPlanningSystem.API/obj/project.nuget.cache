@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xEnBx0SQJzU=",
+  "dgSpecHash": "p5iubpHIwSU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\SmartEventPlanningSystem.API.csproj",
+  "projectFilePath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\SmartEventPlanningSystem.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Dell\\.nuget\\packages\\automapper\\14.0.0\\automapper.14.0.0.nupkg.sha512",
     "C:\\Users\\Dell\\.nuget\\packages\\bouncycastle.cryptography\\2.5.1\\bouncycastle.cryptography.2.5.1.nupkg.sha512",

@@ -8,10 +8,10 @@ namespace SmartEventPlanningSystem.Application.Repositories
 {
     public interface IWriteRepository<T> where T : class
     {
-        Task AddAsync(T entity);
-        Task Update(T entity);
-        Task DeleteAsync(int id);
-        Task DeleteRangeAsync(List<T> entities);
-
+        Task AddAsync(T entity, CancellationToken ct = default);
+        Task Update(T entity, CancellationToken ct = default);
+        Task DeleteAsync(int id, CancellationToken ct = default);
+        Task DeleteRangeAsync(List<T> entities, CancellationToken ct = default);
     }
+
 }

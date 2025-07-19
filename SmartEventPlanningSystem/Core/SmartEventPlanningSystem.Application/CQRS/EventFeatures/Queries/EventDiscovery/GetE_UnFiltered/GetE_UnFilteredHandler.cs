@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MediatR;
+using SmartEventPlanningSystem.Application.Services;
+
+namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_UnFiltered
+{
+    public class GetE_UnFilteredHandler(IEventService eventService) : IRequestHandler<GetE_UnFilteredRequest, GetE_UnFilteredResponse>
+    {
+        public async Task<GetE_UnFilteredResponse> Handle(GetE_UnFilteredRequest request, CancellationToken cancellationToken)
+        {
+            return await eventService.GetE_UnFiltered(cancellationToken);
+        }
+    }
+}

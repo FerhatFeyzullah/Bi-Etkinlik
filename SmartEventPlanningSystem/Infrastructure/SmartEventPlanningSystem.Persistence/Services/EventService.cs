@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,7 +8,19 @@ using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using Org.BouncyCastle.Asn1.Ocsp;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.UpdateEvent;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_Category;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_City;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_CityCategory;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_Date;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCategory;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCity;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCityCategory;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_UnFiltered;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedAwaiting;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusFalse;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusTrue;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedUnFiltered;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsRecommendedToMe;
 using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
@@ -51,7 +64,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 await unitOfWork.WriteRepository<Event>().Update(eventToUpdate);
                 var oldCategories = await unitOfWork.ReadRepository<EventCategory>().GetByFilteredList(
-                    x => x.EventId == eventToUpdate.EventId);
+                    x => x.EventId == eventToUpdate.EventId,ct);
 
                 await unitOfWork.WriteRepository<EventCategory>().DeleteRangeAsync(oldCategories);
 
@@ -102,7 +115,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task SetEventPermissionTrue(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id);
+            var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
 
             eventToEdit.Status = true;
             await unitOfWork.CommitAsync();
@@ -111,11 +124,14 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task SetEventPermissionFalse(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id);
+            var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
 
             eventToEdit.Status = false;
             await unitOfWork.CommitAsync();
         }
+
+
+        // EventI_Created Queries
 
         public async Task<GetEventsICreatedUnFilteredResponse> GetEventsI_CreatedUnFiltered(int id, CancellationToken ct)
         {
@@ -123,13 +139,230 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id,
                 q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category)
+                     .ThenInclude(e => e.Category), ct
             );
             var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
             return new GetEventsICreatedUnFilteredResponse
             {
                 Events = mappedEvents
             };
+        }
+
+        public async Task<GetEventsICreatedAwaitingResponse> GetEventsI_CreatedAwaiting(int id, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+                x => x.AppUserId == id &&
+                x.Status == null,
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+            );
+            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
+            return new GetEventsICreatedAwaitingResponse
+            {
+                Events = mappedEvents
+            };
+        }
+
+        public async Task<GetEventsICreatedStatusTrueResponse> GetEventsI_CreatedStatusTrue(int id, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+                x => x.AppUserId == id &&
+                x.Status == true,
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+            );
+            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
+            return new GetEventsICreatedStatusTrueResponse
+            {
+                Events = mappedEvents
+            };
+        }
+
+        public async Task<GetEventsICreatedStatusFalseResponse> GetEventsI_CreatedStatusFalse(int id, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+                x => x.AppUserId == id &&
+                x.Status ==false,
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+            );
+            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
+            return new GetEventsICreatedStatusFalseResponse
+            {
+                Events = mappedEvents
+            };
+        }
+
+        // Event Discovery Queries
+
+        public async Task<GetE_UnFilteredResponse> GetE_UnFiltered(CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+                x => x.Status == true,
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+            return new GetE_UnFilteredResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        public async Task<GetE_F_CategoryResponse> GetE_F_Category(List<int> categories, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            x => 
+                x.Status == true &&
+                x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+            return new GetE_F_CategoryResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        public async Task<GetE_F_CityResponse> GetE_F_City(List<string> cities, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            x => 
+                x.Status == true &&
+               cities.Contains(x.City),
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+            return new GetE_F_CityResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        public async Task<GetE_F_CityCategoryResponse> GetE_F_CityCategory( List<string> cities, List<int> categories, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            x =>
+                x.Status == true &&
+                x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)) &&
+                cities.Contains(x.City),
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+            return new GetE_F_CityCategoryResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        public async Task<GetE_F_DateResponse> GetE_F_Date(DateOnly Start, DateOnly End, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            x =>
+                x.Status == true &&
+                DateOnly.FromDateTime(x.StartDate) >= Start &&
+                DateOnly.FromDateTime(x.EndDate) <= End,
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+            return new GetE_F_DateResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        public async Task<GetE_F_DateCategoryResponse> GetE_F_DateCategory(DateOnly Start, DateOnly End, List<int> categories, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            x =>
+                x.Status == true &&
+                DateOnly.FromDateTime(x.StartDate) >= Start &&
+                DateOnly.FromDateTime(x.EndDate) <= End &&
+                x.EventCategories.Any(ec=>categories.Contains(ec.CategoryId)),
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+            return new GetE_F_DateCategoryResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        public async Task<GetE_F_DateCityResponse> GetE_F_DateCity(DateOnly Start, DateOnly End, List<string> cities, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            x =>
+                x.Status == true &&
+                DateOnly.FromDateTime(x.StartDate) >= Start &&
+                DateOnly.FromDateTime(x.EndDate) <= End &&
+                cities.Contains(x.City),
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+            return new GetE_F_DateCityResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        public async Task<GetE_F_DateCityCategoryResponse> GetE_F_DateCityCategory(DateOnly Start, DateOnly End, List<string> cities, List<int> categories, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            x =>
+                x.Status == true &&
+                DateOnly.FromDateTime(x.StartDate) >= Start &&
+                DateOnly.FromDateTime(x.EndDate) <= End &&
+                cities.Contains(x.City) &&
+                x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category),ct
+                );
+            return new GetE_F_DateCityCategoryResponse
+            {
+                Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+        }
+
+        //Recommended
+
+        public async Task<GetEventsRecommendedToMeResponse> GetEventsRecommendedToMe(int id, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+
+            var userCategory = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(
+                x => x.AppUserId == id,
+                ct: ct
+            );
+
+            var area = userCategory.Select(x => x.CategoryId).ToList();
+
+            var userCity = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(id, ct);
+
+            var city = userCity.City;
+            var values = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+                x =>
+                    x.Status == true &&
+                    x.EventCategories.Any(ec => area.Contains(ec.CategoryId)) &&
+                    x.City == city,
+                q => q.Include(x => x.EventCategories)
+                     .ThenInclude(e => e.Category), ct
+                );
+
+            return new GetEventsRecommendedToMeResponse
+            { 
+             Events = mapper.Map<List<EventsDiscoveryDto>>(values)
+            };
+
         }
     }
 }

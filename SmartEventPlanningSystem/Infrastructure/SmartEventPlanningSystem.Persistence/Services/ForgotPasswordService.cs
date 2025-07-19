@@ -50,6 +50,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
         public async Task<bool> VerifyResetCode(string email, string verifyCode, CancellationToken ct)
         {
+            ct.ThrowIfCancellationRequested();
             if (_cache.TryGetValue(email, out string? cachedCode))
             {
                 if (cachedCode == verifyCode)

@@ -16,3 +16,21 @@ C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEve
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\ref\SmartEventPlanningSystem.Application.dll
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.dll
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.pdb
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Application.deps.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Application.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Application.pdb
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.pdb
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.pdb
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.csproj.AssemblyReference.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.AssemblyInfoInputs.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.AssemblyInfo.cs
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.csproj.CoreCompileInputs.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.sourcelink.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEve.E84C2AC9.Up2Date
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\refint\SmartEventPlanningSystem.Application.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\SmartEventPlanningSystem.Application.pdb
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Application\obj\Debug\net8.0\ref\SmartEventPlanningSystem.Application.dll

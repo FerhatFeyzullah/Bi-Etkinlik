@@ -20,85 +20,75 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
             _context = context;
         }
 
-        public async Task<int> CountAsync()
+        public async Task<int> CountAsync(CancellationToken ct = default)
         {
-            return await Table.CountAsync();
+            return await Table.CountAsync(ct);
         }
 
-        public async Task<int> FilteredCountAsync(System.Linq.Expressions.Expression<Func<T, bool>> filter)
+        public async Task<int> FilteredCountAsync(Expression<Func<T, bool>> filter, CancellationToken ct = default)
         {
-            return await Table.Where(filter).CountAsync();
+            return await Table.Where(filter).CountAsync(ct);
         }
 
-        public async Task<List<T>> GetAllAsync()
+        public async Task<List<T>> GetAllAsync(CancellationToken ct = default)
         {
-            return await Table.ToListAsync();
+            return await Table.ToListAsync(ct);
         }
 
-        public async Task<T> GetByIdAsync(int id)
+        public async Task<T> GetByIdAsync(int id, CancellationToken ct = default)
         {
-            return await Table.FindAsync(id);
+            return await Table.FindAsync(new object[] { id }, ct);
         }
 
-
-
-
-        public async Task<T> GetByFiltered(System.Linq.Expressions.Expression<Func<T, bool>> filter)
+        public async Task<T> GetByFiltered(Expression<Func<T, bool>> filter, CancellationToken ct = default)
         {
-            return await Table.Where(filter).FirstOrDefaultAsync();
+            return await Table.Where(filter).FirstOrDefaultAsync(ct);
         }
 
-        public Task<T> GetByFiltered(System.Linq.Expressions.Expression<Func<T, bool>> filter, params System.Linq.Expressions.Expression<Func<T, object>>[] includes)
+        public async Task<T> GetByFiltered(Expression<Func<T, bool>> filter, CancellationToken ct = default, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = Table.Where(filter);
             foreach (var include in includes)
             {
                 query = query.Include(include);
             }
-
-            return query.FirstOrDefaultAsync();
+            return await query.FirstOrDefaultAsync(ct);
         }
 
-        public Task<T> GetByFiltered(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null)
+        public async Task<T> GetByFiltered(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null, CancellationToken ct = default)
         {
             IQueryable<T> query = Table.Where(filter);
             if (include != null)
             {
                 query = include(query);
             }
-
-            return query.FirstOrDefaultAsync();
+            return await query.FirstOrDefaultAsync(ct);
         }
 
-
-
-        public async Task<List<T>> GetByFilteredList(System.Linq.Expressions.Expression<Func<T, bool>> filter)
+        public async Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter, CancellationToken ct = default)
         {
-            return await Table.Where(filter).ToListAsync();
+            return await Table.Where(filter).ToListAsync(ct);
         }
 
-        public Task<List<T>> GetByFilteredList(System.Linq.Expressions.Expression<Func<T, bool>> filter, params System.Linq.Expressions.Expression<Func<T, object>>[] includes)
+        public async Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter, CancellationToken ct = default, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query = Table.Where(filter);
             foreach (var include in includes)
             {
                 query = query.Include(include);
             }
-
-            return query.ToListAsync();
+            return await query.ToListAsync(ct);
         }
-      
-        public Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null)
+
+        public async Task<List<T>> GetByFilteredList(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null, CancellationToken ct = default)
         {
             IQueryable<T> query = Table.Where(filter);
             if (include != null)
             {
                 query = include(query);
             }
-
-            return query.ToListAsync();
+            return await query.ToListAsync(ct);
         }
-
-        
     }
+
 }

@@ -12,6 +12,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetUser
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Email { get; set; }
+        public string City { get; set; }
         public string? ProfilePhotoId { get; set; }
     }
 }

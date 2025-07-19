@@ -16,6 +16,7 @@ namespace SmartEventPlanningSystem.Application.Mapping
             CreateMap<Event, CreateEventDto>().ReverseMap();
             CreateMap<Event, UpdateEventDto>().ReverseMap();
             CreateMap<Event, EventsI_CreatedDto>().ReverseMap();
+            CreateMap<Event, EventsDiscoveryDto>().ReverseMap();
         }
     }
 }

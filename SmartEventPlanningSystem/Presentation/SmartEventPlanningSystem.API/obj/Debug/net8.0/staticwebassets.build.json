@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "p3LGkxubrARiZFiWNy9C/BM5GBHXRuXJlRjomyX2AcA=",
+  "Hash": "qMoyYqms6O9kOrglOJN2YA3EUT/Uac2iwj8JciJkX1A=",
   "Source": "SmartEventPlanningSystem.API",
   "BasePath": "_content/SmartEventPlanningSystem.API",
   "Mode": "Default",
@@ -10,7 +10,7 @@
     {
       "Name": "SmartEventPlanningSystem.API\\wwwroot",
       "Source": "SmartEventPlanningSystem.API",
-      "ContentRoot": "C:\\Users\\Dell\\Desktop\\Full Stack Projects\\Smart Event Planning Platform\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
+      "ContentRoot": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
       "BasePath": "_content/SmartEventPlanningSystem.API",
       "Pattern": "**"
     }
