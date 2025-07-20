@@ -100,6 +100,59 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
+    "Method": "DeleteEventRegister",
+    "RelativePath": "api/EventRegisters/DeleteEventRegister/{userId}/{eventId}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "eventId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
+    "Method": "GetEventsI_Joined",
+    "RelativePath": "api/EventRegisters/GetEventsI_Joined",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
+    "Method": "RegisterEvent",
+    "RelativePath": "api/EventRegisters/RegisterEvent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RegisterEvent.RegisterEventRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
     "Method": "CreateEvent",
     "RelativePath": "api/Events/CreateEvent",
@@ -124,6 +177,11 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "Categories",
         "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
@@ -140,6 +198,11 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "Cities",
         "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
         "IsRequired": false
@@ -155,6 +218,11 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
       {
         "Name": "Cities",
         "Type": "System.Collections.Generic.List\u00601[[System.String, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
@@ -177,6 +245,11 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "Start",
         "Type": "System.DateOnly",
         "IsRequired": false
@@ -197,6 +270,11 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
       {
         "Name": "Start",
         "Type": "System.DateOnly",
@@ -224,6 +302,11 @@
     "Order": 0,
     "Parameters": [
       {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
         "Name": "Start",
         "Type": "System.DateOnly",
         "IsRequired": false
@@ -249,6 +332,11 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
       {
         "Name": "Start",
         "Type": "System.DateOnly",
@@ -281,8 +369,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_UnFiltered.GetE_UnFilteredRequest",
+        "Name": "AppUserId",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

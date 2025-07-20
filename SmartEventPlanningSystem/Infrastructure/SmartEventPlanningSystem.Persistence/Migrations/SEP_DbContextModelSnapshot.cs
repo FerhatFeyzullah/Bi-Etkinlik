@@ -324,6 +324,9 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<bool?>("Status")
                         .HasColumnType("boolean");
 
+                    b.Property<TimeSpan>("TimeInBetween")
+                        .HasColumnType("interval");
+
                     b.HasKey("EventId");
 
                     b.HasIndex("AppUserId");

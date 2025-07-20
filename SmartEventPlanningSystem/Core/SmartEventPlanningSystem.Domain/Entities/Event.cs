@@ -16,6 +16,8 @@ namespace SmartEventPlanningSystem.Domain.Entities
         public DateTime EndDate { get; set; }
         public bool? Status { get; set; }
         public string City { get; set; }
+        public TimeSpan TimeInBetween { get; set; }
+
 
         //Location
         [Column(TypeName = "decimal(9,6)")]

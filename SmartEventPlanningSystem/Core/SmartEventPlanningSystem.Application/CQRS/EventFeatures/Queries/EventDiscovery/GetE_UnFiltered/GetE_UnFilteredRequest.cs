@@ -9,5 +9,6 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventD
 {
     public class GetE_UnFilteredRequest : IRequest<GetE_UnFilteredResponse>
     {
+        public int AppUserId { get; set; }
     }
 }

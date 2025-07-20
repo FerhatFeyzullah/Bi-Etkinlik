@@ -35,14 +35,20 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
         public Task Update(T entity, CancellationToken ct = default)
         {
             Table.Update(entity);
-            return Task.CompletedTask; 
+            return Task.CompletedTask;
         }
 
         public Task DeleteRangeAsync(List<T> entities, CancellationToken ct = default)
         {
             Table.RemoveRange(entities);
-            return Task.CompletedTask; 
+            return Task.CompletedTask;
         }
+
+        public void DeleteEntity(T entity)
+        {
+            Table.Remove(entity);
+        }
+
     }
 
 }

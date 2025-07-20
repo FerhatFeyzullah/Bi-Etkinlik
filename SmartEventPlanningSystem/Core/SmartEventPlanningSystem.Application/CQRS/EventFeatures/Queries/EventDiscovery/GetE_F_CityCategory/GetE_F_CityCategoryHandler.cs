@@ -12,7 +12,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventD
     {
         public async Task<GetE_F_CityCategoryResponse> Handle(GetE_F_CityCategoryRequest request, CancellationToken cancellationToken)
         {
-            return await eventService.GetE_F_CityCategory(request.Cities,request.Categories, cancellationToken);
+            return await eventService.GetE_F_CityCategory(request.AppUserId, request.Cities,request.Categories, cancellationToken);
         }
     }
 }

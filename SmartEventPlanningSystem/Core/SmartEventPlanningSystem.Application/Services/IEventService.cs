@@ -17,6 +17,7 @@ using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Cr
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusTrue;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedUnFiltered;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsRecommendedToMe;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetEventsI_Joined;
 using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 
 namespace SmartEventPlanningSystem.Application.Services
@@ -37,18 +38,19 @@ namespace SmartEventPlanningSystem.Application.Services
 
         //Event Discovery Queries
 
-        Task<GetE_UnFilteredResponse> GetE_UnFiltered(CancellationToken ct);
-        Task<GetE_F_CategoryResponse> GetE_F_Category(List<int> categories, CancellationToken ct);
-        Task<GetE_F_CityResponse> GetE_F_City(List<string> cities,CancellationToken ct);
-        Task<GetE_F_CityCategoryResponse> GetE_F_CityCategory(List<string> cities, List<int> categories, CancellationToken ct);
-        Task<GetE_F_DateResponse> GetE_F_Date(DateOnly Start,DateOnly End,CancellationToken ct);
-        Task<GetE_F_DateCategoryResponse> GetE_F_DateCategory(DateOnly Start, DateOnly End, List<int> categories, CancellationToken ct);
-        Task<GetE_F_DateCityResponse> GetE_F_DateCity(DateOnly Start, DateOnly End, List<string> cities, CancellationToken ct);
-        Task<GetE_F_DateCityCategoryResponse> GetE_F_DateCityCategory(DateOnly Start, DateOnly End, List<string> cities, List<int> categories, CancellationToken ct);
+        Task<GetE_UnFilteredResponse> GetE_UnFiltered(int id, CancellationToken ct);
+        Task<GetE_F_CategoryResponse> GetE_F_Category(int id, List<int> categories, CancellationToken ct);
+        Task<GetE_F_CityResponse> GetE_F_City(int id, List<string> cities,CancellationToken ct);
+        Task<GetE_F_CityCategoryResponse> GetE_F_CityCategory(int id, List<string> cities, List<int> categories, CancellationToken ct);
+        Task<GetE_F_DateResponse> GetE_F_Date(int id, DateOnly Start,DateOnly End,CancellationToken ct);
+        Task<GetE_F_DateCategoryResponse> GetE_F_DateCategory(int id, DateOnly Start, DateOnly End, List<int> categories, CancellationToken ct);
+        Task<GetE_F_DateCityResponse> GetE_F_DateCity(int id, DateOnly Start, DateOnly End, List<string> cities, CancellationToken ct);
+        Task<GetE_F_DateCityCategoryResponse> GetE_F_DateCityCategory(int id, DateOnly Start, DateOnly End, List<string> cities, List<int> categories, CancellationToken ct);
 
         //Recommended
 
         Task<GetEventsRecommendedToMeResponse> GetEventsRecommendedToMe(int id, CancellationToken ct);
+
 
     }
 }

@@ -146,7 +146,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 {
                     return IdentityResult.Failed(new IdentityError
                     {
-                        Description = "Kullanıcı Oluşturulamadı."
+                        Description = "Kullanıcı Oluşturulamadı."+createResult
                     });
                 }             
 

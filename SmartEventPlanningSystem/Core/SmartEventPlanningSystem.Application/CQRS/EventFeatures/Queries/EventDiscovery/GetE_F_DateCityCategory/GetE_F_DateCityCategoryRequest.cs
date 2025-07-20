@@ -9,6 +9,8 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventD
 {
     public class GetE_F_DateCityCategoryRequest:IRequest<GetE_F_DateCityCategoryResponse>
     {
+        public int AppUserId { get; set; }
+
         public DateOnly Start { get; set; }
         public DateOnly End { get; set; }
         public List<string> Cities { get; set; }
