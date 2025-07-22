@@ -21,7 +21,6 @@ using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Cr
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusTrue;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedUnFiltered;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsRecommendedToMe;
-using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetEventsI_Joined;
 using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
@@ -234,6 +233,13 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
                 .ToList();
+
+            //foreach (var ev in filteredEvents) 
+            //{
+                
+            //}
+
+            //var countOfJoiner = filteredEvents;
 
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);

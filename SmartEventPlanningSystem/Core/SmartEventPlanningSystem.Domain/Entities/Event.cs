@@ -30,6 +30,7 @@ namespace SmartEventPlanningSystem.Domain.Entities
         public AppUser AppUser { get; set; }
 
         public List<EventCategory> EventCategories { get; set; }
+        //public List<Message> Messages { get; set; }
 
 
     }

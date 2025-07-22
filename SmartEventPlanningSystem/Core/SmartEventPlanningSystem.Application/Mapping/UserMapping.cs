@@ -30,6 +30,7 @@ namespace SmartEventPlanningSystem.Application.Mapping
             CreateMap<AppUser, UploadProfilePhotoResponse>().ReverseMap();
             CreateMap<AppUser, RemoveProfilePhotoResponse>().ReverseMap();
             CreateMap<AppUser, UserProfileDto>().ReverseMap();
+            CreateMap<AppUser, UserForMessageDto>().ReverseMap();
 
         }
     }

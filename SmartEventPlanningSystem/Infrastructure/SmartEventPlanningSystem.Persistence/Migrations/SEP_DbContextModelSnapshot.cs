@@ -388,6 +388,9 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("MessageId"));
 
+                    b.Property<int>("AppUserId")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("text");
@@ -395,13 +398,12 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<int>("EventId")
                         .HasColumnType("integer");
 
-                    b.Property<int>("SenderId")
-                        .HasColumnType("integer");
-
                     b.Property<DateTime>("SendingTime")
                         .HasColumnType("timestamp with time zone");
 
                     b.HasKey("MessageId");
+
+                    b.HasIndex("AppUserId");
 
                     b.HasIndex("EventId");
 
@@ -529,11 +531,19 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
 
             modelBuilder.Entity("SmartEventPlanningSystem.Domain.Entities.Message", b =>
                 {
+                    b.HasOne("SmartEventPlanningSystem.Domain.Entities.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("SmartEventPlanningSystem.Domain.Entities.Event", "Event")
                         .WithMany()
                         .HasForeignKey("EventId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("AppUser");
 
                     b.Navigation("Event");
                 });
