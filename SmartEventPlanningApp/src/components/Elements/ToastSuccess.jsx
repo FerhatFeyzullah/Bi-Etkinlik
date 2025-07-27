@@ -1,7 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { Toast } from "primereact/toast";
 import { useDispatch } from "react-redux";
-import { SetLoginMistakeAlert } from "../../redux/slices/authSlice";
+import {
+  SetLoginMistakeAlert,
+  SetRegisterSuccessAlert,
+} from "../../redux/slices/authSlice";
 
 function ToastMistake({ detail, visible, closer }) {
   const dispatch = useDispatch();
@@ -10,8 +13,8 @@ function ToastMistake({ detail, visible, closer }) {
   useEffect(() => {
     if (visible) {
       toast.current.show({
-        severity: "error",
-        summary: "Hata",
+        severity: "success",
+        summary: "Başarılı",
         detail,
         life: 5000,
       });

@@ -5,7 +5,7 @@ export const schema = yup.object().shape({
 
   lastName: yup.string().required("Soyisim Giriniz."),
 
-  userName: yup.string().required("TC Kimlik Numarası Zorunlu"),
+  userName: yup.string().required("Kullanıcı Adı Zorunlu"),
 
   email: yup
     .string()

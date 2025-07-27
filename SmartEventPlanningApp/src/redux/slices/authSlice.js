@@ -9,6 +9,7 @@ const initialState = {
   registerSuccessAlert: false,
   registerMistakeAlert: false,
   registerResponse: "",
+  registerStatus: false,
   token: {},
 };
 
@@ -16,7 +17,7 @@ export const LoginTheSystem = createAsyncThunk("login", async (data) => {
   const response = await axios.post("Auths/LoginTheSystem", data, {});
   return response.data;
 });
-export const RegisterTheSystem = createAsyncThunk("regıster", async (data) => {
+export const RegisterTheSystem = createAsyncThunk("register", async (data) => {
   const response = await axios.post("Auths/RegisterTheSystem", data, {});
   return response.data;
 });
@@ -47,6 +48,9 @@ export const authSlice = createSlice({
     },
     SetRegisterSuccessAlert: (state) => {
       state.registerSuccessAlert = false;
+    },
+    SetRegisterStatusFalse: (state) => {
+      state.registerStatus = false;
     },
   },
   extraReducers: (builder) => {
@@ -81,9 +85,10 @@ export const authSlice = createSlice({
         if (action.payload.success) {
           state.registerResponse = action.payload.message;
           state.registerSuccessAlert = true;
+          state.registerStatus = true;
         } else {
-          state.errorMessage = action.payload.message;
-          state.loginMistakeAlert = true;
+          state.registerResponse = action.payload.message;
+          state.registerMistakeAlert = true;
         }
       })
       .addCase(RegisterTheSystem.rejected, (state) => {
@@ -112,5 +117,6 @@ export const {
   SetLoginMistakeAlert,
   SetRegisterMistakeAlert,
   SetRegisterSuccessAlert,
+  SetRegisterStatusFalse,
 } = authSlice.actions;
 export default authSlice.reducer;

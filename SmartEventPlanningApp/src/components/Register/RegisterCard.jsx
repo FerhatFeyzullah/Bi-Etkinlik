@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Button from "@mui/material/Button";
 import { Autocomplete, TextField } from "@mui/material";
-
 import { schema } from "../../schemas/RegisterSchema";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -13,13 +12,19 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import dayjs from "dayjs";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import "../../css/Register/RegisterCard.css";
-import { cities, categories } from "../../data/MyData";
-//import { Autocomplete } from "@mui/lab";
+import { cities } from "../../data/MyData";
+import { GetAllCategory } from "../../redux/slices/categorySlice";
+import {
+  RegisterTheSystem,
+  SetRegisterStatusFalse,
+} from "../../redux/slices/authSlice";
 
 function RegisterCard() {
   const dispatch = useDispatch();
+  const { allCategory } = useSelector((store) => store.category);
+  const { registerResponseStatus } = useSelector((store) => store.auth);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -29,7 +34,7 @@ function RegisterCard() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [city, setCity] = useState("");
   const [birthDate, setBirthDate] = useState(null);
-  const [gender, setGender] = useState(null);
+  const [gender, setGender] = useState("");
   const [areas, setAreas] = useState([]);
   const [errors, setErrors] = useState({});
 
@@ -46,6 +51,28 @@ function RegisterCard() {
         : [...prev, eventId]
     );
   };
+  const FormClear = () => {
+    setFirstName("");
+    setLastName("");
+    setUserName("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+    setCity("");
+    setBirthDate(null);
+    setGender("");
+    setAreas([]);
+  };
+
+  useEffect(() => {
+    dispatch(GetAllCategory());
+  }, []);
+  useEffect(() => {
+    if (registerResponseStatus) {
+      FormClear();
+      dispatch(SetRegisterStatusFalse());
+    }
+  }, [registerResponseStatus]);
 
   const submit = async () => {
     try {
@@ -79,7 +106,8 @@ function RegisterCard() {
         },
         AreasOfInterest: areas,
       };
-      console.log(data);
+
+      dispatch(RegisterTheSystem(data));
     } catch (error) {
       const errObj = {};
       error.inner.forEach((e) => {
@@ -91,145 +119,147 @@ function RegisterCard() {
 
   return (
     <div className="flex-column">
-      <div className="register-app-header">Bi Etkinlik</div>
-      <div className="register-input">
-        <TextField
-          error={Boolean(errors.firstName)}
-          variant="filled"
-          size="small"
-          label="İsim"
-          helperText={errors.firstName}
-          value={firstName}
-          onChange={(e) => setFirstName(e.target.value)}
-          sx={{ width: "300px" }}
-        />
-      </div>
-      <div className="register-input">
-        <TextField
-          error={Boolean(errors.lastName)}
-          variant="filled"
-          size="small"
-          label="Soyisim"
-          helperText={errors.lastName}
-          value={lastName}
-          onChange={(e) => setLastName(e.target.value)}
-          sx={{ width: "300px" }}
-        />
-      </div>
-      <div className="register-input">
-        <TextField
-          error={Boolean(errors.userName)}
-          variant="filled"
-          size="small"
-          label="Kullanıcı Adı"
-          helperText={errors.userName}
-          value={userName}
-          onChange={(e) => setUserName(e.target.value)}
-          sx={{ width: "300px" }}
-        />
-      </div>
-      <div className="register-input">
-        <TextField
-          error={Boolean(errors.email)}
-          variant="filled"
-          size="small"
-          label="E-posta"
-          helperText={errors.email}
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          sx={{ width: "300px" }}
-        />
-      </div>
-      <div className="register-input">
-        <TextField
-          error={Boolean(errors.password)}
-          variant="filled"
-          size="small"
-          label="Şifre"
-          helperText={errors.password}
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          sx={{ width: "300px" }}
-        />
-      </div>
-      <div className="register-input">
-        <TextField
-          error={Boolean(errors.confirmPassword)}
-          variant="filled"
-          size="small"
-          label="Şifre Tekrarı"
-          helperText={errors.confirmPassword}
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-          sx={{ width: "300px" }}
-        />
-      </div>
-      <div className="register-input">
-        <Autocomplete
-          options={cities}
-          getOptionLabel={(option) => option}
-          value={city}
-          onChange={(event, newValue) => setCity(newValue)}
-          renderInput={(params) => (
-            <TextField
-              {...params}
-              label="Şehir"
-              variant="filled"
-              size="small"
-              sx={{ width: "300px" }}
-              error={Boolean(errors.city)}
-              helperText={errors.city}
-            />
-          )}
-          disablePortal
-          fullWidth
-        />
-      </div>
-      <div className="register-date-gender" style={{ marginBottom: "7px" }}>
-        <div style={{ marginBottom: "7px" }}>
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={["DatePicker"]}>
-              <DatePicker
-                label="Doğum Tarihi"
-                value={birthDate}
-                onChange={(e) => setBirthDate(e)}
+      <div className="register-inputs-container">
+        <div className="register-input">
+          <TextField
+            error={Boolean(errors.firstName)}
+            variant="outlined"
+            size="small"
+            label="İsim"
+            helperText={errors.firstName}
+            value={firstName}
+            onChange={(e) => setFirstName(e.target.value)}
+            sx={{ width: "300px" }}
+          />
+        </div>
+        <div className="register-input">
+          <TextField
+            error={Boolean(errors.lastName)}
+            variant="outlined"
+            size="small"
+            label="Soyisim"
+            helperText={errors.lastName}
+            value={lastName}
+            onChange={(e) => setLastName(e.target.value)}
+            sx={{ width: "300px" }}
+          />
+        </div>
+        <div className="register-input">
+          <TextField
+            error={Boolean(errors.userName)}
+            variant="outlined"
+            size="small"
+            label="Kullanıcı Adı"
+            helperText={errors.userName}
+            value={userName}
+            onChange={(e) => setUserName(e.target.value)}
+            sx={{ width: "300px" }}
+          />
+        </div>
+        <div className="register-input">
+          <TextField
+            error={Boolean(errors.email)}
+            variant="outlined"
+            size="small"
+            label="E-posta"
+            helperText={errors.email}
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            sx={{ width: "300px" }}
+          />
+        </div>
+        <div className="register-input">
+          <TextField
+            error={Boolean(errors.password)}
+            variant="outlined"
+            size="small"
+            label="Şifre"
+            helperText={errors.password}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            sx={{ width: "300px" }}
+          />
+        </div>
+        <div className="register-input">
+          <TextField
+            error={Boolean(errors.confirmPassword)}
+            variant="outlined"
+            size="small"
+            label="Şifre Tekrarı"
+            helperText={errors.confirmPassword}
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            sx={{ width: "300px" }}
+          />
+        </div>
+        <div className="register-input">
+          <Autocomplete
+            options={cities}
+            getOptionLabel={(option) => option}
+            value={city}
+            onChange={(event, newValue) => setCity(newValue)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="Şehir"
+                variant="outlined"
+                size="small"
                 sx={{ width: "300px" }}
-                slotProps={{
-                  textField: {
-                    error: !!errors.birthDate,
-                    helperText: errors.birthDate || "",
-                    variant: "filled",
-                    fullWidth: true,
-                    size: "small",
-                  },
-                }}
+                error={Boolean(errors.city)}
+                helperText={errors.city}
               />
-            </DemoContainer>
-          </LocalizationProvider>
-        </div>
-        <div>
-          <FormControl error={!!errors.gender}>
-            <FormLabel>Cinsiyet</FormLabel>
-            <RadioGroup value={gender} onChange={(e) => handleChange(e)} row>
-              <FormControlLabel
-                value={"Erkek"}
-                control={<Radio />}
-                label="Erkek"
-              />
-              <FormControlLabel
-                value={"Kadın"}
-                control={<Radio />}
-                label="Kadın"
-              />
-            </RadioGroup>
-            {errors.gender && (
-              <p style={{ color: "rgba(153, 20, 20, 1)", fontSize: "14px" }}>
-                {errors.gender}
-              </p>
             )}
-          </FormControl>
+            disablePortal
+            fullWidth
+          />
+        </div>
+        <div className="register-date-gender" style={{ marginBottom: "7px" }}>
+          <div style={{ marginBottom: "7px" }}>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={["DatePicker"]}>
+                <DatePicker
+                  label="Doğum Tarihi"
+                  value={birthDate}
+                  onChange={(e) => setBirthDate(e)}
+                  sx={{ width: "300px" }}
+                  slotProps={{
+                    textField: {
+                      error: !!errors.birthDate,
+                      helperText: errors.birthDate || "",
+                      variant: "outlined",
+                      fullWidth: true,
+                      size: "small",
+                    },
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
+          </div>
+          <div>
+            <FormControl error={!!errors.gender}>
+              <FormLabel>Cinsiyet</FormLabel>
+              <RadioGroup value={gender} onChange={(e) => handleChange(e)} row>
+                <FormControlLabel
+                  value={"Erkek"}
+                  control={<Radio />}
+                  label="Erkek"
+                />
+                <FormControlLabel
+                  value={"Kadın"}
+                  control={<Radio />}
+                  label="Kadın"
+                />
+              </RadioGroup>
+              {errors.gender && (
+                <p style={{ color: "rgba(153, 20, 20, 1)", fontSize: "14px" }}>
+                  {errors.gender}
+                </p>
+              )}
+            </FormControl>
+          </div>
         </div>
       </div>
+
       <br />
       <div className="register-category-title">İlgi Alanları</div>
       {errors.areas && (
@@ -237,30 +267,34 @@ function RegisterCard() {
       )}
 
       <div className="register-areas-container">
-        {categories.map((event) => {
-          const isSelected = areas.includes(event.id);
+        {allCategory &&
+          allCategory.map((c) => {
+            const isSelected = areas.includes(c.categoryId);
 
-          return (
-            <div
-              className="register-category-card"
-              key={event.id}
-              onClick={() => toggleEvent(event.id)}
-              style={{
-                border: isSelected ? "3px solid #419b17ff" : "1px solid #ccc",
-                backgroundColor: "#f9f9f9",
-                transition: "all 0.2s ease-in-out",
-              }}
-            >
-              {event.name}
-            </div>
-          );
-        })}
+            return (
+              <div
+                className="register-category-card"
+                key={c.categoryId}
+                onClick={() => toggleEvent(c.categoryId)}
+                style={{
+                  border: isSelected ? "3px solid #55af2bff" : "1px solid #ccc",
+                  boxShadow: isSelected
+                    ? "0px 0px 10px 3px rgba(70, 189, 59, 1)"
+                    : "0px 0px 10px 3px rgba(100, 146, 187, 1)",
+                  backgroundColor: "white",
+                  transition: "all 0.2s ease-in-out",
+                }}
+              >
+                {c.categoryName}
+              </div>
+            );
+          })}
       </div>
       <div>
         <Button
           variant="contained"
           fullWidth
-          sx={{ width: "300px" }}
+          sx={{ width: "300px", marginTop: "20px" }}
           onClick={submit}
         >
           Kaydol
