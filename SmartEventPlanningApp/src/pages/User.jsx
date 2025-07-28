@@ -1,23 +1,41 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import "../css/User/User.css";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import DiscoveryPanel from "../components/User/DiscoveryPanel";
-import RecommendedPanel from "../components/User/RecommendedPanel";
-import CreateEventPanel from "../components/User/CreateEventPanel";
-import MessagesPanel from "../components/User/MessagesPanel";
-import NotificationPanel from "../components/User/NotificationPanel";
-import ProfilePanel from "../components/User/ProfilePanel";
+import DiscoveryPanel from "../components/User/Panels/DiscoveryPanel";
+import RecommendedPanel from "../components/User/Panels/RecommendedPanel";
+import CreateEventPanel from "../components/User/Panels/CreateEventPanel";
+import MessagesPanel from "../components/User/Panels/MessagesPanel";
+import NotificationPanel from "../components/User/Panels/NotificationPanel";
+import ProfilePanel from "../components/User/Panels/ProfilePanel";
+import DiscoveryFilterPanel from "../components/User/Panels/DiscoveryFilterPanel";
+import { useDispatch } from "react-redux";
+import { GetUserInfo } from "../redux/slices/accountSlice";
+import { useParams } from "react-router-dom";
+import DiscoveryMapPanel from "../components/User/Panels/DiscoveryMapPanel";
 
 function User() {
+  const dispatch = useDispatch();
+  var { userId } = useParams();
+
   const [selectedTab, setSelectedTab] = useState(0);
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
   };
 
+  const FirstOp = (id) => {
+    dispatch(GetUserInfo(id));
+  };
+
+  useEffect(() => {
+    FirstOp(userId);
+  }, []);
+
   return (
-    <div className="flex-row">
-      <div>
+    <div className="user-container">
+      <div className="user-tab-panel">
+        <div className="user-app-title">Bi Etkinlik</div>
         <Tabs
           value={selectedTab}
           onChange={handleChange}
@@ -25,44 +43,86 @@ function User() {
           indicatorColor="primary"
           orientation="vertical"
           sx={{
-            borderRight: "2px solid black", // net ve siyah
-            minWidth: 150,
+            minWidth: 300,
           }}
         >
           <Tab
             label="Ana Sayfa"
-            sx={{ textTransform: "none", alignItems: "flex-start" }}
+            sx={{
+              textTransform: "none",
+              alignItems: "flex-start",
+              fontWeight: "bold",
+              fontSize: "15px",
+            }}
           />
           <Tab
             label="Önerilenler"
-            sx={{ textTransform: "none", alignItems: "flex-start" }}
+            sx={{
+              textTransform: "none",
+              alignItems: "flex-start",
+              fontWeight: "bold",
+              fontSize: "15px",
+            }}
           />
           <Tab
             label="Oluştur"
-            sx={{ textTransform: "none", alignItems: "flex-start" }}
+            sx={{
+              textTransform: "none",
+              alignItems: "flex-start",
+              fontWeight: "bold",
+              fontSize: "15px",
+            }}
           />
           <Tab
             label="Mesajlar"
-            sx={{ textTransform: "none", alignItems: "flex-start" }}
+            sx={{
+              textTransform: "none",
+              alignItems: "flex-start",
+              fontWeight: "bold",
+              fontSize: "15px",
+            }}
           />
           <Tab
             label="Bildirimler"
-            sx={{ textTransform: "none", alignItems: "flex-start" }}
+            sx={{
+              textTransform: "none",
+              alignItems: "flex-start",
+              fontWeight: "bold",
+              fontSize: "15px",
+            }}
           />
           <Tab
             label="Profil"
-            sx={{ textTransform: "none", alignItems: "flex-start" }}
+            sx={{
+              textTransform: "none",
+              alignItems: "flex-start",
+              fontWeight: "bold",
+              fontSize: "15px",
+            }}
           />
         </Tabs>
       </div>
-      <div style={{ marginLeft: "30px" }}>
-        {selectedTab === 0 && <DiscoveryPanel />}
-        {selectedTab === 1 && <RecommendedPanel />}
-        {selectedTab === 2 && <CreateEventPanel />}
-        {selectedTab === 3 && <MessagesPanel />}
-        {selectedTab === 4 && <NotificationPanel />}
-        {selectedTab === 5 && <ProfilePanel />}
-      </div>
+
+      {selectedTab === 0 && (
+        <div
+          className="flex-row-justify-start"
+          style={{ width: "100%", height: "100%" }}
+        >
+          <DiscoveryPanel />
+          <div
+            className="flex-column"
+            style={{ height: "100vh", width: "100%" }}
+          >
+            <DiscoveryFilterPanel />
+            <DiscoveryMapPanel />
+          </div>
+        </div>
+      )}
+      {selectedTab === 1 && <RecommendedPanel />}
+      {selectedTab === 2 && <CreateEventPanel />}
+      {selectedTab === 3 && <MessagesPanel />}
+      {selectedTab === 4 && <NotificationPanel />}
+      {selectedTab === 5 && <ProfilePanel />}
     </div>
   );
 }

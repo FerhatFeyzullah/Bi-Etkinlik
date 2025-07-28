@@ -14,7 +14,8 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.Upload
     {
         public async Task<UploadProfilePhotoResponse> Handle(UploadProfilePhotoRequest request, CancellationToken cancellationToken)
         {
-            var ppId = await fileStorageService.UploadImage(request.Image);
+            string path = "users";
+            var ppId = await fileStorageService.UploadImage(request.Image, path);
             var response = await userService.UploadProfilePhoto(request.AppUserId,ppId, cancellationToken);
             return mapper.Map<UploadProfilePhotoResponse>(response);
         }

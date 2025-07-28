@@ -257,19 +257,83 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/CreateEventRequest"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateEventRequest"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/CreateEventRequest"
+                "type": "object",
+                "properties": {
+                  "EventDto.Name": {
+                    "type": "string"
+                  },
+                  "EventDto.Description": {
+                    "type": "string"
+                  },
+                  "EventDto.StartDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "EventDto.EndDate": {
+                    "type": "string",
+                    "format": "date-time"
+                  },
+                  "EventDto.City": {
+                    "type": "string"
+                  },
+                  "EventDto.Latitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "EventDto.Longitude": {
+                    "type": "number",
+                    "format": "double"
+                  },
+                  "EventDto.AppUserId": {
+                    "type": "integer",
+                    "format": "int32"
+                  },
+                  "EventImage": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "EventCategories": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "EventDto.Name": {
+                  "style": "form"
+                },
+                "EventDto.Description": {
+                  "style": "form"
+                },
+                "EventDto.StartDate": {
+                  "style": "form"
+                },
+                "EventDto.EndDate": {
+                  "style": "form"
+                },
+                "EventDto.City": {
+                  "style": "form"
+                },
+                "EventDto.Latitude": {
+                  "style": "form"
+                },
+                "EventDto.Longitude": {
+                  "style": "form"
+                },
+                "EventDto.AppUserId": {
+                  "style": "form"
+                },
+                "EventImage": {
+                  "style": "form"
+                },
+                "EventCategories": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -305,6 +369,28 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Events/EventImage/{photoPath}": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "photoPath",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -912,6 +998,28 @@
         }
       }
     },
+    "/api/Users/ProfileImage/{photoPath}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "photoPath",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Users/UpdateProfile": {
       "put": {
         "tags": [
@@ -1246,61 +1354,6 @@
         },
         "additionalProperties": false
       },
-      "CreateEventDto": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "nullable": true
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "startDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "endDate": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "city": {
-            "type": "string",
-            "nullable": true
-          },
-          "latitude": {
-            "type": "number",
-            "format": "double"
-          },
-          "longitude": {
-            "type": "number",
-            "format": "double"
-          },
-          "appUserId": {
-            "type": "integer",
-            "format": "int32"
-          }
-        },
-        "additionalProperties": false
-      },
-      "CreateEventRequest": {
-        "type": "object",
-        "properties": {
-          "eventDto": {
-            "$ref": "#/components/schemas/CreateEventDto"
-          },
-          "eventCategories": {
-            "type": "array",
-            "items": {
-              "type": "integer",
-              "format": "int32"
-            },
-            "nullable": true
-          }
-        },
-        "additionalProperties": false
-      },
       "CreateMessageDto": {
         "type": "object",
         "properties": {
@@ -1411,6 +1464,10 @@
             "format": "date-time"
           },
           "city": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventImageId": {
             "type": "string",
             "nullable": true
           },

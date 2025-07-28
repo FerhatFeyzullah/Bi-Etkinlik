@@ -16,7 +16,7 @@ namespace SmartEventPlanningSystem.Application.DTOs.EventDtos
         public DateTime EndDate { get; set; }
         public bool Status { get; set; }
         public string City { get; set; }
-
+        public string EventImageId { get; set; }
 
         //Location
         public decimal Latitude { get; set; }

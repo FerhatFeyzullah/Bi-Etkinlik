@@ -1,0 +1,49 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\60efd55b-751b-43da-80f8-2d2754031727.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\60efd55b-751b-43da-80f8-2d2754031727.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG",
+      "PackagePath": "staticwebassets\\upload\\users\\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG",
+      "PackagePath": "staticwebassets\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SmartEventPlanningSystem.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SmartEventPlanningSystem.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.SmartEventPlanningSystem.API.props",
+      "PackagePath": "build\\SmartEventPlanningSystem.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.SmartEventPlanningSystem.API.props",
+      "PackagePath": "buildMultiTargeting\\SmartEventPlanningSystem.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.SmartEventPlanningSystem.API.props",
+      "PackagePath": "buildTransitive\\SmartEventPlanningSystem.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

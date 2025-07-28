@@ -1,0 +1,13 @@
+.discovery-container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+  border-right: 2px solid black;
+}
+.discovery-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}

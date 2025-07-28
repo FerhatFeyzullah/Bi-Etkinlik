@@ -24,7 +24,7 @@ namespace SmartEventPlanningSystem.Application.Services
 {
     public interface IEventService
     {
-        Task CreateEvent(CreateEventDto createEventDto,List<int> Catgeories,CancellationToken ct);
+        Task CreateEvent(CreateEventDto createEventDto,List<int> Catgeories, string filePath, CancellationToken ct);
         Task<UpdateEventResponse> UpdateEvent(UpdateEventDto updateEventDto, List<int> Catgeories, int id, CancellationToken ct);
         Task RemoveEvent(int id, CancellationToken ct);
         Task SetEventPermissionTrue(int id,CancellationToken ct);

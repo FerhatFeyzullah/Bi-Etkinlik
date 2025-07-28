@@ -18,7 +18,7 @@ namespace SmartEventPlanningSystem.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController(IMediator mediator) : ControllerBase
+    public class UsersController(IMediator mediator, IWebHostEnvironment _environment) : ControllerBase
     {
         [HttpGet("GetMyProfile")]
         public async Task<IActionResult> GetMyProfile([FromQuery] GetMyProfileRequest request) 
@@ -30,6 +30,40 @@ namespace SmartEventPlanningSystem.API.Controllers
         public async Task<IActionResult> GetUserInfo([FromQuery] GetUserInfoRequest request)
         {
             return Ok(await mediator.Send(request));
+        }
+
+        [HttpGet("ProfileImage/{*photoPath}")]
+        public IActionResult GetProfileImage(string photoPath)
+        {
+            if (string.IsNullOrWhiteSpace(photoPath) || photoPath.Contains(".."))
+                return BadRequest("Geçersiz dosya adı.");
+
+            var filePath = Path.Combine(_environment.WebRootPath, photoPath);
+
+            if (!System.IO.File.Exists(filePath))
+                return NotFound();
+
+            var stream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            var contentType = GetContentType(filePath);
+
+            Response.Headers["Cache-Control"] = "no-cache, no-store, must-revalidate";
+            Response.Headers["Pragma"] = "no-cache";
+            Response.Headers["Expires"] = "0";
+
+            return new FileStreamResult(stream, contentType);
+        }
+
+        private string GetContentType(string path)
+        {
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return ext switch
+            {
+                ".jpg" => "image/jpeg",
+                ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                ".gif" => "image/gif",
+                _ => "application/octet-stream"
+            };
         }
 
         [HttpPut("UpdateProfile")]

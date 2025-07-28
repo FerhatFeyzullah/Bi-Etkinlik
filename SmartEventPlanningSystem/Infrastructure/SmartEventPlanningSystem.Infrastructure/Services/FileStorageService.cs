@@ -18,9 +18,10 @@ namespace SmartEventPlanningSystem.Infrastructure.Services
             _environment = environment;
         }
 
-        public async Task<string> UploadImage(IFormFile image)
+        public async Task<string> UploadImage(IFormFile image, string folderName)
         {
-            var uploadFolder = Path.Combine(_environment.WebRootPath, "upload");
+           
+            var uploadFolder = Path.Combine(_environment.WebRootPath, "upload", folderName);
 
             if (!Directory.Exists(uploadFolder))
             {
@@ -32,7 +33,11 @@ namespace SmartEventPlanningSystem.Infrastructure.Services
 
             using var stream = new FileStream(filePath, FileMode.Create);
             await image.CopyToAsync(stream);
-            return fileName;
+
+            var relativePath = Path.Combine("upload", folderName, fileName).Replace("\\", "/");
+            return relativePath;
+
+            //return fileName;
         }
     }
 }

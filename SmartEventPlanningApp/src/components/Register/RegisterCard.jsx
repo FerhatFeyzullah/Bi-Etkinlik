@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Button from "@mui/material/Button";
+import { Button, InputAdornment, IconButton } from "@mui/material";
 import { Autocomplete, TextField } from "@mui/material";
 import { schema } from "../../schemas/RegisterSchema";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -20,6 +20,8 @@ import {
   RegisterTheSystem,
   SetRegisterStatusFalse,
 } from "../../redux/slices/authSlice";
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
 function RegisterCard() {
   const dispatch = useDispatch();
@@ -37,6 +39,7 @@ function RegisterCard() {
   const [gender, setGender] = useState("");
   const [areas, setAreas] = useState([]);
   const [errors, setErrors] = useState({});
+  const [show, setShow] = useState(false);
 
   const handleChange = (event) => {
     setGender(event.target.value);
@@ -178,6 +181,16 @@ function RegisterCard() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             sx={{ width: "300px" }}
+            type={show ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => setShow(!show)} edge="end">
+                    {show ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
         <div className="register-input">
@@ -190,6 +203,16 @@ function RegisterCard() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             sx={{ width: "300px" }}
+            type={show ? "text" : "password"}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={() => setShow(!show)} edge="end">
+                    {show ? <VisibilityOff /> : <Visibility />}
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
         </div>
         <div className="register-input">

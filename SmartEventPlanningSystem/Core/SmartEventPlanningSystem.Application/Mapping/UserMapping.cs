@@ -32,6 +32,8 @@ namespace SmartEventPlanningSystem.Application.Mapping
             CreateMap<AppUser, UserProfileDto>().ReverseMap();
             CreateMap<AppUser, UserForMessageDto>().ReverseMap();
 
+            CreateMap<AppUser, GetUserInfoResponse>().ReverseMap();
+
         }
     }
 }

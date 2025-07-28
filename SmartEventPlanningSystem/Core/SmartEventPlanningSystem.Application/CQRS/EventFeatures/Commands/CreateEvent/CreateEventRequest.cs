@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.CreateEvent
@@ -12,6 +13,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.Creat
     public class CreateEventRequest:IRequest<bool>
     {     
         public CreateEventDto EventDto { get; set; }
+        public IFormFile EventImage { get; set; }
         public List<int> EventCategories { get; set; }
     }
 }

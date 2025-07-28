@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qMoyYqms6O9kOrglOJN2YA3EUT/Uac2iwj8JciJkX1A=",
+  "Hash": "8kN55dGt6oLAT+OgiYkfYDAMw9HGylMYvmprGCGu5hY=",
   "Source": "SmartEventPlanningSystem.API",
   "BasePath": "_content/SmartEventPlanningSystem.API",
   "Mode": "Default",
@@ -15,6 +15,626 @@
       "Pattern": "**"
     }
   ],
-  "Assets": [],
-  "Endpoints": []
+  "Assets": [
+    {
+      "Identity": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg",
+      "SourceId": "SmartEventPlanningSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
+      "BasePath": "_content/SmartEventPlanningSystem.API",
+      "RelativePath": "upload/events/208437e0-bd9b-4f04-aac7-87fd96b37de0#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g7cc1ffyeh",
+      "Integrity": "NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg"
+    },
+    {
+      "Identity": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg",
+      "SourceId": "SmartEventPlanningSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
+      "BasePath": "_content/SmartEventPlanningSystem.API",
+      "RelativePath": "upload/events/4fdd376e-b582-4e34-b777-36b5b5653197#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "krx67ztfof",
+      "Integrity": "kKxkDo2szMDwkRID2HA7CaCauTfRtSC8SNafYupjGdw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg"
+    },
+    {
+      "Identity": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\60efd55b-751b-43da-80f8-2d2754031727.jpg",
+      "SourceId": "SmartEventPlanningSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
+      "BasePath": "_content/SmartEventPlanningSystem.API",
+      "RelativePath": "upload/events/60efd55b-751b-43da-80f8-2d2754031727#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "g7cc1ffyeh",
+      "Integrity": "NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\events\\60efd55b-751b-43da-80f8-2d2754031727.jpg"
+    },
+    {
+      "Identity": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg",
+      "SourceId": "SmartEventPlanningSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
+      "BasePath": "_content/SmartEventPlanningSystem.API",
+      "RelativePath": "upload/events/6802437e-a4fe-4e4d-9e1f-934d0e234047#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "yijn6a9011",
+      "Integrity": "moCB+93oI8xCwYDDFuATamY0qbs8sSgt7RDnR1ab9L8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg"
+    },
+    {
+      "Identity": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG",
+      "SourceId": "SmartEventPlanningSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
+      "BasePath": "_content/SmartEventPlanningSystem.API",
+      "RelativePath": "upload/users/38efdfbf-dd3d-43be-8396-0960601ea2ce#[.{fingerprint}]?.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lj6xmk8s18",
+      "Integrity": "nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\users\\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG"
+    },
+    {
+      "Identity": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG",
+      "SourceId": "SmartEventPlanningSystem.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\",
+      "BasePath": "_content/SmartEventPlanningSystem.API",
+      "RelativePath": "upload/users/8b30f0eb-6b3e-43ac-848a-4810d3fefac8#[.{fingerprint}]?.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "lj6xmk8s18",
+      "Integrity": "nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG"
+    }
+  ],
+  "Endpoints": [
+    {
+      "Route": "upload/events/208437e0-bd9b-4f04-aac7-87fd96b37de0.g7cc1ffyeh.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "773980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 15:40:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g7cc1ffyeh"
+        },
+        {
+          "Name": "label",
+          "Value": "upload/events/208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg="
+        }
+      ]
+    },
+    {
+      "Route": "upload/events/208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "773980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 15:40:29 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg="
+        }
+      ]
+    },
+    {
+      "Route": "upload/events/4fdd376e-b582-4e34-b777-36b5b5653197.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1000540"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kKxkDo2szMDwkRID2HA7CaCauTfRtSC8SNafYupjGdw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 13:51:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-kKxkDo2szMDwkRID2HA7CaCauTfRtSC8SNafYupjGdw="
+        }
+      ]
+    },
+    {
+      "Route": "upload/events/4fdd376e-b582-4e34-b777-36b5b5653197.krx67ztfof.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1000540"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"kKxkDo2szMDwkRID2HA7CaCauTfRtSC8SNafYupjGdw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 13:51:50 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "krx67ztfof"
+        },
+        {
+          "Name": "label",
+          "Value": "upload/events/4fdd376e-b582-4e34-b777-36b5b5653197.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-kKxkDo2szMDwkRID2HA7CaCauTfRtSC8SNafYupjGdw="
+        }
+      ]
+    },
+    {
+      "Route": "upload/events/60efd55b-751b-43da-80f8-2d2754031727.g7cc1ffyeh.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\60efd55b-751b-43da-80f8-2d2754031727.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "773980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 15:41:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "g7cc1ffyeh"
+        },
+        {
+          "Name": "label",
+          "Value": "upload/events/60efd55b-751b-43da-80f8-2d2754031727.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg="
+        }
+      ]
+    },
+    {
+      "Route": "upload/events/60efd55b-751b-43da-80f8-2d2754031727.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\60efd55b-751b-43da-80f8-2d2754031727.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "773980"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 15:41:27 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-NIp1VX5XVha+jv2m78Ac6nWrJ/GCtcXhqB+++AQeFEg="
+        }
+      ]
+    },
+    {
+      "Route": "upload/events/6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2881253"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"moCB+93oI8xCwYDDFuATamY0qbs8sSgt7RDnR1ab9L8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 12:32:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-moCB+93oI8xCwYDDFuATamY0qbs8sSgt7RDnR1ab9L8="
+        }
+      ]
+    },
+    {
+      "Route": "upload/events/6802437e-a4fe-4e4d-9e1f-934d0e234047.yijn6a9011.jpg",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "2881253"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"moCB+93oI8xCwYDDFuATamY0qbs8sSgt7RDnR1ab9L8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 12:32:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "yijn6a9011"
+        },
+        {
+          "Name": "label",
+          "Value": "upload/events/6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-moCB+93oI8xCwYDDFuATamY0qbs8sSgt7RDnR1ab9L8="
+        }
+      ]
+    },
+    {
+      "Route": "upload/users/38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "636468"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 10:53:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw="
+        }
+      ]
+    },
+    {
+      "Route": "upload/users/38efdfbf-dd3d-43be-8396-0960601ea2ce.lj6xmk8s18.JPG",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "636468"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 10:53:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lj6xmk8s18"
+        },
+        {
+          "Name": "label",
+          "Value": "upload/users/38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw="
+        }
+      ]
+    },
+    {
+      "Route": "upload/users/8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "636468"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 10:45:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw="
+        }
+      ]
+    },
+    {
+      "Route": "upload/users/8b30f0eb-6b3e-43ac-848a-4810d3fefac8.lj6xmk8s18.JPG",
+      "AssetFile": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "636468"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 28 Jul 2025 10:45:24 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "lj6xmk8s18"
+        },
+        {
+          "Name": "label",
+          "Value": "upload/users/8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-nzq3Z4LQEkuNa2W+3jWmesCzJFQAvfKZHh+JjBxcokw="
+        }
+      ]
+    }
+  ]
 }

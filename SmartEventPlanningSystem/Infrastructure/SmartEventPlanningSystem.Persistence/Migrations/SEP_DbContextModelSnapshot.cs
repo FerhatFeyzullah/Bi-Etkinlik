@@ -308,6 +308,10 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<DateTime>("EndDate")
                         .HasColumnType("timestamp with time zone");
 
+                    b.Property<string>("EventImageId")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<decimal>("Latitude")
                         .HasColumnType("decimal(9,6)");
 

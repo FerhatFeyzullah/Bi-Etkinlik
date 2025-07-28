@@ -17,12 +17,13 @@ namespace SmartEventPlanningSystem.Application.DTOs.EventDtos
         public DateTime EndDate { get; set; }
         public string City { get; set; }
         public bool Registered { get; set; }
+        public string EventImageId { get; set; }
 
         //Location
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
 
-        public ResultUserForEvent User { get; set; }
+        public ResultUserForEvent AppUser { get; set; }
         public List<ResultEventCategoryDto> EventCategories { get; set; }
     }
 }

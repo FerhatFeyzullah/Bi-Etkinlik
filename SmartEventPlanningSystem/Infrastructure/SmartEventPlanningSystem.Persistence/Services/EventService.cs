@@ -31,16 +31,17 @@ namespace SmartEventPlanningSystem.Persistence.Services
 {
     public class EventService(IUnitOfWork unitOfWork,IMapper mapper) : IEventService
     {
-        public async Task CreateEvent(CreateEventDto createEventDto,List<int> Categories, CancellationToken ct)
+        public async Task CreateEvent(CreateEventDto createEventDto,List<int> Categories,string filePath, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
 
                 var newEvent = mapper.Map<Event>(createEventDto);
                 newEvent.Status = null;
+                newEvent.EventImageId = filePath;
 
-                newEvent.TimeInBetween = newEvent.StartDate - DateTime.Now;
+            newEvent.TimeInBetween = newEvent.StartDate - DateTime.Now;
 
-            await unitOfWork.WriteRepository<Event>().AddAsync(newEvent);
+            await unitOfWork.WriteRepository<Event>().AddAsync(newEvent,ct);
 
                 foreach (var categoryId in Categories)
                 {
@@ -49,7 +50,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                         Event = newEvent, 
                         CategoryId = categoryId
                     };
-                    await unitOfWork.WriteRepository<EventCategory>().AddAsync(eventCategory);
+                    await unitOfWork.WriteRepository<EventCategory>().AddAsync(eventCategory,ct);
                 }
 
         }
@@ -225,7 +226,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.Status == true,
-                q => q.Include(x => x.EventCategories)
+                q => q.Include(x=>x.AppUser)
+                .Include(x => x.EventCategories)
                       .ThenInclude(e => e.Category),
                 ct
             );
@@ -233,13 +235,9 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
                 .ToList();
+           
 
-            //foreach (var ev in filteredEvents) 
-            //{
-                
-            //}
 
-            //var countOfJoiner = filteredEvents;
 
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);

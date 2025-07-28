@@ -16,6 +16,7 @@ namespace SmartEventPlanningSystem.Domain.Entities
         public DateTime EndDate { get; set; }
         public bool? Status { get; set; }
         public string City { get; set; }
+        public string EventImageId { get; set; }
         public TimeSpan TimeInBetween { get; set; }
 
 

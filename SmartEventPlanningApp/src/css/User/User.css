@@ -1,0 +1,16 @@
+.user-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.user-app-title {
+  text-align: center;
+  margin: 30px 0px;
+  font-size: 27px;
+  font-weight: 700;
+}
+.user-tab-panel {
+  height: 100vh;
+  border-right: 2px solid black;
+}
