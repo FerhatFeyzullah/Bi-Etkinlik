@@ -26,7 +26,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 function RegisterCard() {
   const dispatch = useDispatch();
   const { allCategory } = useSelector((store) => store.category);
-  const { registerResponseStatus } = useSelector((store) => store.auth);
+  const { registerStatus } = useSelector((store) => store.auth);
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -39,7 +39,8 @@ function RegisterCard() {
   const [gender, setGender] = useState("");
   const [areas, setAreas] = useState([]);
   const [errors, setErrors] = useState({});
-  const [show, setShow] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  const [showConfPass, setShowConfPass] = useState(false);
 
   const handleChange = (event) => {
     setGender(event.target.value);
@@ -71,11 +72,11 @@ function RegisterCard() {
     dispatch(GetAllCategory());
   }, []);
   useEffect(() => {
-    if (registerResponseStatus) {
+    if (registerStatus) {
       FormClear();
       dispatch(SetRegisterStatusFalse());
     }
-  }, [registerResponseStatus]);
+  }, [registerStatus]);
 
   const submit = async () => {
     try {
@@ -181,12 +182,12 @@ function RegisterCard() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             sx={{ width: "300px" }}
-            type={show ? "text" : "password"}
+            type={showPass ? "text" : "password"}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => setShow(!show)} edge="end">
-                    {show ? <VisibilityOff /> : <Visibility />}
+                  <IconButton onClick={() => setShowPass(!showPass)} edge="end">
+                    {showPass ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               ),
@@ -203,12 +204,15 @@ function RegisterCard() {
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
             sx={{ width: "300px" }}
-            type={show ? "text" : "password"}
+            type={showConfPass ? "text" : "password"}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
-                  <IconButton onClick={() => setShow(!show)} edge="end">
-                    {show ? <VisibilityOff /> : <Visibility />}
+                  <IconButton
+                    onClick={() => setShowConfPass(!showConfPass)}
+                    edge="end"
+                  >
+                    {showConfPass ? <VisibilityOff /> : <Visibility />}
                   </IconButton>
                 </InputAdornment>
               ),

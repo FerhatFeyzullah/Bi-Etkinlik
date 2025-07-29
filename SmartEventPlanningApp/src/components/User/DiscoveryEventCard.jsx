@@ -1,19 +1,24 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import "../../css/User/DiscoveryEventCard.css";
 import { Avatar, Button, IconButton } from "@mui/material";
 import BiEtkinlik from "../../assets/eventImage/BiEtkinlik.png";
-import {
-  Accordion,
-  AccordionSummary,
-  AccordionDetails,
-  Typography,
-} from "@mui/material";
+import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Tooltip from "@mui/material/Tooltip";
+import {
+  SetDiscoveryLatitude,
+  SetDiscoveryLongitude,
+} from "../../redux/slices/mapSlice";
 
 function DiscoveryEventCard() {
-  const { discoveryEvents } = useSelector((store) => store.discovery);
+  const dispatch = useDispatch();
+  const { discoveryEvents, boxReviewIsChecked } = useSelector(
+    (store) => store.discovery
+  );
+  const { discoveryLatitude, discoveryLongitude } = useSelector(
+    (store) => store.map
+  );
   const [imgError, setImgError] = useState(false);
 
   const formatDateTime = (dateTime) => {
@@ -27,10 +32,23 @@ function DiscoveryEventCard() {
     });
   };
 
+  const ReviewTheLocation = (lat, lng) => {
+    dispatch(SetDiscoveryLatitude(lat));
+    dispatch(SetDiscoveryLongitude(lng));
+    console.log(lat, lng);
+  };
+
   return (
     <>
       {discoveryEvents.events?.map((e) => (
-        <div className="discovery-e-c-main" key={e.eventId}>
+        <div
+          className={
+            !boxReviewIsChecked
+              ? "discovery-e-c-main-with-card"
+              : "discovery-e-c-main-without-card"
+          }
+          key={e.eventId}
+        >
           <div className="discovery-e-c-user-info">
             <div>
               <IconButton>
@@ -89,13 +107,28 @@ function DiscoveryEventCard() {
               </Button>
             </div>
             <div className="discovery-e-c-register">
-              <Button variant="outlined" sx={{ textTransform: "none" }}>
+              <Button
+                variant={
+                  e.latitude == discoveryLatitude &&
+                  e.longitude == discoveryLongitude
+                    ? "contained"
+                    : "outlined"
+                }
+                sx={{ textTransform: "none" }}
+                onClick={() => ReviewTheLocation(e.latitude, e.longitude)}
+              >
                 Konumu Gör
               </Button>
             </div>
           </div>
           <div className="discovery-e-c-description-container">
-            <Accordion sx={{ width: "100%", boxShadow: "none" }}>
+            <Accordion
+              sx={{
+                width: "100%",
+                boxShadow: "none",
+                backgroundColor: !boxReviewIsChecked ? "whitesmoke" : "white",
+              }}
+            >
               <AccordionSummary
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls={`panel-content-${e.id}`}
@@ -130,6 +163,7 @@ function DiscoveryEventCard() {
           </div>
         </div>
       ))}
+      <hr />
     </>
   );
 }

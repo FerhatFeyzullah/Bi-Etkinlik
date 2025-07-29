@@ -22,7 +22,6 @@ export const categorySlice = createSlice({
       .addCase(GetAllCategory.fulfilled, (state, action) => {
         state.allCategory = action.payload;
         console.log("Basarili (Get All Category).");
-        console.log(state.allCategory);
       })
       .addCase(GetAllCategory.rejected, () => {
         console.log("Sunucu Tarafında Bir Hata Oluştu (Get All Category).");

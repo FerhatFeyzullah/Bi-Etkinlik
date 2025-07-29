@@ -258,9 +258,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
             x => 
                 x.Status == true &&
                 x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
-                );
+                 q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
@@ -283,9 +285,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
             x => 
                 x.Status == true &&
                cities.Contains(x.City),
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
-                );
+                q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
@@ -309,9 +313,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x.Status == true &&
                 x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)) &&
                 cities.Contains(x.City),
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
-                );
+                q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
@@ -335,9 +341,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x.Status == true &&
                 DateOnly.FromDateTime(x.StartDate) >= Start &&
                 DateOnly.FromDateTime(x.EndDate) <= End,
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
-                );
+                q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
@@ -362,9 +370,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 DateOnly.FromDateTime(x.StartDate) >= Start &&
                 DateOnly.FromDateTime(x.EndDate) <= End &&
                 x.EventCategories.Any(ec=>categories.Contains(ec.CategoryId)),
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
-                );
+                 q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
@@ -389,9 +399,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 DateOnly.FromDateTime(x.StartDate) >= Start &&
                 DateOnly.FromDateTime(x.EndDate) <= End &&
                 cities.Contains(x.City),
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
-                );
+                 q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
@@ -417,9 +429,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 DateOnly.FromDateTime(x.EndDate) <= End &&
                 cities.Contains(x.City) &&
                 x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category),ct
-                );
+                 q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
@@ -456,9 +470,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     x.Status == true &&
                     x.EventCategories.Any(ec => area.Contains(ec.CategoryId)) &&
                     x.City == city,
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
-                );
+                 q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category),
+                ct
+            );
 
             var filteredEvents = allEvents
                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))

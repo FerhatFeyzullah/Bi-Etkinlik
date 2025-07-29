@@ -3,6 +3,7 @@ import authReducer from "./slices/authSlice";
 import categoryReducer from "./slices/categorySlice";
 import discoveryReducer from "./slices/discoverySlice";
 import accountReducer from "./slices/accountSlice";
+import mapReducer from "./slices/mapSlice";
 
 export const store = configureStore({
   reducer: {
@@ -10,5 +11,6 @@ export const store = configureStore({
     category: categoryReducer,
     discovery: discoveryReducer,
     account: accountReducer,
+    map: mapReducer,
   },
 });

@@ -1,9 +1,18 @@
-.discovery-e-c-main {
+.discovery-e-c-main-with-card {
   width: 500px;
   height: auto;
   border: 1px solid grey;
   margin: 15px;
   border-radius: 10px;
+  background-color: whitesmoke;
+}
+.discovery-e-c-main-without-card {
+  width: 500px;
+  height: auto;
+  margin: 15px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid gray;
+  background-color: white;
 }
 .discovery-e-c-user-info {
   display: flex;

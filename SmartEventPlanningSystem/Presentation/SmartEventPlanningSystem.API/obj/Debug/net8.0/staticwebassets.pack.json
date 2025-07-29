@@ -1,12 +1,28 @@
 {
   "Files": [
     {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\0998e29b-0334-4024-a797-d90e08d76018.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\0998e29b-0334-4024-a797-d90e08d76018.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\1b6482f1-274d-431d-91f7-f575862cf97a.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\1b6482f1-274d-431d-91f7-f575862cf97a.jpg"
+    },
+    {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg",
       "PackagePath": "staticwebassets\\upload\\events\\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg"
     },
     {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\45cdf062-4056-49dd-9594-d08ca9319c5b.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\45cdf062-4056-49dd-9594-d08ca9319c5b.jpg"
+    },
+    {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg",
       "PackagePath": "staticwebassets\\upload\\events\\4fdd376e-b582-4e34-b777-36b5b5653197.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\5250649e-c294-4fcc-ae99-82d1a5458b9b.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\5250649e-c294-4fcc-ae99-82d1a5458b9b.jpg"
     },
     {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\60efd55b-751b-43da-80f8-2d2754031727.jpg",
@@ -15,6 +31,22 @@
     {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg",
       "PackagePath": "staticwebassets\\upload\\events\\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\75474e22-0de3-473a-8187-fb1bbfba816b.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\75474e22-0de3-473a-8187-fb1bbfba816b.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\9757087b-9b35-4ef8-82d3-3738d7143e38.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\9757087b-9b35-4ef8-82d3-3738d7143e38.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\a1ebe2b2-ace3-4ad6-9d63-4b7193766599.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\a1ebe2b2-ace3-4ad6-9d63-4b7193766599.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\be237468-dd17-44c8-9033-cc092a6414b7.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\be237468-dd17-44c8-9033-cc092a6414b7.jpg"
     },
     {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG",

@@ -2,17 +2,17 @@ import React, { useEffect, useState } from "react";
 import "../css/User/User.css";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
-import DiscoveryPanel from "../components/User/Panels/DiscoveryPanel";
+import DiscoveryPanel from "../components/User/Panels/Discovery/DiscoveryPanel";
 import RecommendedPanel from "../components/User/Panels/RecommendedPanel";
-import CreateEventPanel from "../components/User/Panels/CreateEventPanel";
+import CreateEventPanel from "../components/User/Panels/CreateEvent/CreateEventPanel";
 import MessagesPanel from "../components/User/Panels/MessagesPanel";
 import NotificationPanel from "../components/User/Panels/NotificationPanel";
 import ProfilePanel from "../components/User/Panels/ProfilePanel";
-import DiscoveryFilterPanel from "../components/User/Panels/DiscoveryFilterPanel";
+import DiscoveryFilterPanel from "../components/User/Panels/Discovery/DiscoveryFilterPanel";
 import { useDispatch } from "react-redux";
 import { GetUserInfo } from "../redux/slices/accountSlice";
 import { useParams } from "react-router-dom";
-import DiscoveryMapPanel from "../components/User/Panels/DiscoveryMapPanel";
+import DiscoveryMapPanel from "../components/User/Panels/Discovery/DiscoveryMapPanel";
 
 function User() {
   const dispatch = useDispatch();
