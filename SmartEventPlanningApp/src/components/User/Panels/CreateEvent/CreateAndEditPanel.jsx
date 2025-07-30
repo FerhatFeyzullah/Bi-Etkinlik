@@ -1,7 +1,7 @@
 import React from "react";
 
-function CreateEventPanel() {
+function CreateAndEditPanel() {
   return <div>CreateEventPanel</div>;
 }
 
-export default CreateEventPanel;
+export default CreateAndEditPanel;

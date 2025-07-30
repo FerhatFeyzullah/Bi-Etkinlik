@@ -11,12 +11,19 @@ import {
   GetE_F_DateCityCategory,
   GetE_UnFiltered,
 } from "../../../../redux/slices/discoverySlice";
-import DiscoveryEventCard from "../../DiscoveryEventCard";
+import DiscoveryEventCard from "./DiscoveryEventCard";
+import ReviewEventCardSkeleton from "../../../Skeletons/ReviewEventCardSkeleton";
 
 function DiscoveryPanel() {
   const dispatch = useDispatch();
-  const { dateFilterMode, startDate, endDate, cities, categories } =
-    useSelector((store) => store.discovery);
+  const {
+    dateFilterMode,
+    startDate,
+    endDate,
+    cities,
+    categories,
+    discoverySkeletonLoading,
+  } = useSelector((store) => store.discovery);
 
   const AppUser = JSON.parse(localStorage.getItem("AppUser"));
   const UserId = localStorage.getItem("UserId");
@@ -109,8 +116,12 @@ function DiscoveryPanel() {
   }, [AppUser.id, dateFilterMode, startDate, endDate, cities, categories]);
 
   return (
-    <div className="discovery-container">
-      <DiscoveryEventCard />
+    <div className="discovery-container flex-column-justify-start">
+      {discoverySkeletonLoading ? (
+        <ReviewEventCardSkeleton />
+      ) : (
+        <DiscoveryEventCard />
+      )}
     </div>
   );
 }

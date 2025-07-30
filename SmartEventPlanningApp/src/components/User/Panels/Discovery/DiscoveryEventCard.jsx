@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../../css/User/DiscoveryEventCard.css";
+import "../../../../css/User/DiscoveryEventCard.css";
 import { Avatar, Button, IconButton } from "@mui/material";
-import BiEtkinlik from "../../assets/eventImage/BiEtkinlik.png";
+import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Tooltip from "@mui/material/Tooltip";
 import {
   SetDiscoveryLatitude,
   SetDiscoveryLongitude,
-} from "../../redux/slices/mapSlice";
+} from "../../../../redux/slices/mapSlice";
 
 function DiscoveryEventCard() {
   const dispatch = useDispatch();

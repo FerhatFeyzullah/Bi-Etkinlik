@@ -3,16 +3,16 @@ import "../css/User/User.css";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import DiscoveryPanel from "../components/User/Panels/Discovery/DiscoveryPanel";
-import RecommendedPanel from "../components/User/Panels/RecommendedPanel";
-import CreateEventPanel from "../components/User/Panels/CreateEvent/CreateEventPanel";
+import RecommendedPanel from "../components/User/Panels/Recommended/RecommendedPanel";
+import CreateAndEditPanel from "../components/User/Panels/CreateEvent/CreateAndEditPanel";
 import MessagesPanel from "../components/User/Panels/MessagesPanel";
 import NotificationPanel from "../components/User/Panels/NotificationPanel";
 import ProfilePanel from "../components/User/Panels/ProfilePanel";
 import DiscoveryFilterPanel from "../components/User/Panels/Discovery/DiscoveryFilterPanel";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { GetUserInfo } from "../redux/slices/accountSlice";
 import { useParams } from "react-router-dom";
-import DiscoveryMapPanel from "../components/User/Panels/Discovery/DiscoveryMapPanel";
+import ReviewMapPanel from "../components/User/Panels/ReviewMapPanel";
 
 function User() {
   const dispatch = useDispatch();
@@ -47,7 +47,7 @@ function User() {
           }}
         >
           <Tab
-            label="Ana Sayfa"
+            label="Keşfet"
             sx={{
               textTransform: "none",
               alignItems: "flex-start",
@@ -65,7 +65,7 @@ function User() {
             }}
           />
           <Tab
-            label="Oluştur"
+            label="Oluştur / Düzenle"
             sx={{
               textTransform: "none",
               alignItems: "flex-start",
@@ -114,12 +114,25 @@ function User() {
             style={{ height: "100vh", width: "100%" }}
           >
             <DiscoveryFilterPanel />
-            <DiscoveryMapPanel />
+            <ReviewMapPanel />
           </div>
         </div>
       )}
-      {selectedTab === 1 && <RecommendedPanel />}
-      {selectedTab === 2 && <CreateEventPanel />}
+      {selectedTab === 1 && (
+        <div
+          className="flex-row-justify-start"
+          style={{ width: "100%", height: "100%" }}
+        >
+          <RecommendedPanel />
+          <div
+            className="flex-column-justify-end"
+            style={{ height: "100vh", width: "100%" }}
+          >
+            <ReviewMapPanel />
+          </div>
+        </div>
+      )}
+      {selectedTab === 2 && <CreateAndEditPanel />}
       {selectedTab === 3 && <MessagesPanel />}
       {selectedTab === 4 && <NotificationPanel />}
       {selectedTab === 5 && <ProfilePanel />}

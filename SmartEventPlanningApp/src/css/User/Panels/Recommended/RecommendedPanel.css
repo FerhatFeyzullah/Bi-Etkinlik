@@ -1,0 +1,8 @@
+.recommended-container {
+  width: 100%;
+  height: 100vh;
+  overflow: auto;
+}
+.recommended-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}

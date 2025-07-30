@@ -19,11 +19,12 @@ using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 using SmartEventPlanningSystem.Domain.Entities;
+using SmartEventPlanningSystem.Infrastructure.Interfaces;
 using SmartEventPlanningSystem.Persistence.DbContext;
 
 namespace SmartEventPlanningSystem.Persistence.Services
 {
-    public class UserService(UserManager<AppUser> userManager,IJwtService jwtService, IMapper mapper,IMediator mediator,IUnitOfWork unitOfWork, IWebHostEnvironment _environment) : IUserService
+    public class UserService(UserManager<AppUser> userManager,IJwtService jwtService, IMapper mapper,IMediator mediator,IUnitOfWork unitOfWork,IFileStorageService fileStorageService, IWebHostEnvironment _environment) : IUserService
     {
 
         public async Task<string> ChangePassword(int id,string oldPass, string newPass, string confPass, CancellationToken ct)
@@ -167,10 +168,12 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var user = await userManager.FindByIdAsync(id.ToString());
             if (user != null)
             {
+                var photoPath = user.ProfilePhotoId;
                 var result = await userManager.DeleteAsync(user);
 
                 if (result.Succeeded)
                 {
+                    await fileStorageService.DeleteImage(photoPath);
                     return IdentityResult.Success;
                 }
                 else
@@ -245,18 +248,9 @@ namespace SmartEventPlanningSystem.Persistence.Services
             throw new KeyNotFoundException("User not found");
             }
                 
-            var oldFileName = user.ProfilePhotoId;
+            var oldFilePath = user.ProfilePhotoId;
 
-            if (!string.IsNullOrEmpty(oldFileName))
-            {
-                var uploadFolder = Path.Combine(_environment.WebRootPath, "upload");
-                var oldFilePath = Path.Combine(uploadFolder, oldFileName);
-
-                if (File.Exists(oldFilePath))
-                {
-                    File.Delete(oldFilePath);
-                }
-            }
+            await fileStorageService.DeleteImage(oldFilePath);
 
             user.ProfilePhotoId = null;
 

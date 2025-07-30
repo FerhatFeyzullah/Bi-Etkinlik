@@ -14,23 +14,31 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.Creat
     {
         public async Task<bool> Handle(CreateEventRequest request, CancellationToken cancellationToken)
         {
-            
+
             await unitOfWork.BeginTransactionAsync();
+            string filePath = null;
             try
             {
                 string path = "events";
-                var filePath = await fileStorageService.UploadImage(request.EventImage, path);
-                await eventService.CreateEvent(request.EventDto, request.EventCategories,filePath, cancellationToken);
+                filePath = await fileStorageService.UploadImage(request.EventImage, path);
+
+                await eventService.CreateEvent(request.EventDto, request.EventCategories, filePath, cancellationToken);
+
                 await unitOfWork.CommitAsync();
                 return true;
             }
-
             catch (Exception ex)
             {
                 await unitOfWork.RollbackAsync();
+
+                // hata olduysa yüklenen resmi sil
+                if (!string.IsNullOrWhiteSpace(filePath))
+                {
+                    await fileStorageService.DeleteImage(filePath);
+                }
+
                 Console.WriteLine($"hata var reis: {ex.Message}");
                 return false;
-
             }
 
         }

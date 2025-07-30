@@ -106,12 +106,26 @@ namespace SmartEventPlanningSystem.Persistence.Services
             
         } 
 
-        public async Task RemoveEvent(int id, CancellationToken ct)
+        public async Task<string> RemoveEvent(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
+            await unitOfWork.BeginTransactionAsync();
+            try { 
 
-            await unitOfWork.WriteRepository<Event>().DeleteAsync(id);
-            await unitOfWork.CommitAsync();
+                var value = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
+                var photoPath = value.EventImageId; 
+
+                await unitOfWork.WriteRepository<Event>().DeleteAsync(id,ct);
+                await unitOfWork.CommitAsync();
+                return photoPath;
+            }
+            catch (Exception ex)
+            {
+                await unitOfWork.RollbackAsync();
+                Console.WriteLine($"Event silinirken hata: {ex.Message}");
+                return null;
+            }
+
         }
 
         public async Task SetEventPermissionTrue(int id, CancellationToken ct)

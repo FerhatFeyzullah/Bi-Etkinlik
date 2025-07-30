@@ -3,6 +3,7 @@ import axios from "../../api/axios";
 
 const initialState = {
   allCategory: [],
+  cetegoryFilterSkeletonLoaing: false,
 };
 
 export const GetAllCategory = createAsyncThunk("allCategory", async () => {
@@ -16,15 +17,15 @@ export const categorySlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(GetAllCategory.pending, () => {
-        console.log("Get All Category Bekleniyor.");
+      .addCase(GetAllCategory.pending, (state) => {
+        state.cetegoryFilterSkeletonLoaing = true;
       })
       .addCase(GetAllCategory.fulfilled, (state, action) => {
         state.allCategory = action.payload;
-        console.log("Basarili (Get All Category).");
+        state.cetegoryFilterSkeletonLoaing = false;
       })
-      .addCase(GetAllCategory.rejected, () => {
-        console.log("Sunucu Tarafında Bir Hata Oluştu (Get All Category).");
+      .addCase(GetAllCategory.rejected, (state) => {
+        state.cetegoryFilterSkeletonLoaing = false;
       });
   },
 });

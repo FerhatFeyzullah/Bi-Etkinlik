@@ -12,8 +12,8 @@ import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import axios from "axios";
 import { useSelector } from "react-redux";
-import "../../../../css/User/Panels/DiscoveryMapPanel.css";
-import RecenterMap from "../../../../hooks/RecenterMap";
+import "../../../css/User/Panels/ReviewMapPanel.css";
+import RecenterMap from "../../../hooks/RecenterMap";
 
 // Leaflet ikonları ayarlanıyor
 delete L.Icon.Default.prototype._getIconUrl;
@@ -38,7 +38,7 @@ const MAPTILER_KEY = "JKyaJvr3yalg5h65ESlT";
 const ORS_KEY =
   "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImE0YmYxMmU1YjE3OTRkZDdhZjE1YmM5ZWZmZjM4YjVjIiwiaCI6Im11cm11cjY0In0=";
 
-function DiscoveryMapPanel() {
+function ReviewMapPanel() {
   const { discoveryLatitude, discoveryLongitude } = useSelector(
     (store) => store.map
   );
@@ -113,13 +113,17 @@ function DiscoveryMapPanel() {
 
   if (!isCoordsValid)
     return (
-      <p style={{ color: "red", height: "50%" }}>
-        📍 Konumunu Görmek İstediğininiz Etkinliği Seçin.
-      </p>
+      <>
+        <div className="review-map-title">Etkinlik Konumu</div>
+        <div style={{ color: "red", height: "50%" }}>
+          📍 Konumunu Görmek İstediğininiz Etkinliği Seçin.
+        </div>
+      </>
     );
-
   return (
-    <div className="discovery-map-container">
+    <div className="review-map-container">
+      <div className="review-map-title">Etkinlik Konumu</div>
+      <hr />
       <MapContainer
         center={[discoveryLatitude, discoveryLongitude]}
         zoom={13}
@@ -156,7 +160,7 @@ function DiscoveryMapPanel() {
       </MapContainer>
 
       {/* Mesafe & Süre */}
-      <div className="d-map-disctance-duration">
+      <div className="r-map-disctance-duration">
         {distance && duration ? (
           <>
             🚗 <strong>Mesafe:</strong> {distance} km – <strong>Süre:</strong>{" "}
@@ -170,4 +174,4 @@ function DiscoveryMapPanel() {
   );
 }
 
-export default DiscoveryMapPanel;
+export default ReviewMapPanel;

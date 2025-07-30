@@ -21,12 +21,15 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import CategoryFilterSkeleton from "../../../Skeletons/CategoryFilterSkeleton";
 
 function DiscoveryFilterPanel() {
   const dispatch = useDispatch();
 
   const [boxReviewChecked, setBoxReviewChecked] = useState(true);
-  const { allCategory } = useSelector((store) => store.category);
+  const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
+    (store) => store.category
+  );
   const { dateFilterMode } = useSelector((store) => store.discovery);
 
   const [selectedCities, setSelectedCities] = useState([]);
@@ -135,40 +138,44 @@ function DiscoveryFilterPanel() {
           />
         </div>
         <div className="discovery-filter-lists">
-          <Autocomplete
-            options={allCategory}
-            multiple
-            getOptionLabel={(option) => option.categoryName}
-            value={allCategory.filter((cat) =>
-              selectedCategories.includes(cat.categoryId)
-            )}
-            onChange={(event, newValue) =>
-              setSelectedCategories(newValue.map((item) => item.categoryId))
-            }
-            renderInput={(params) => (
-              <TextField
-                {...params}
-                label="Kategori"
-                variant="outlined"
-                size="medium"
-                sx={{ width: "100%", marginTop: "5px" }}
-              />
-            )}
-            disablePortal
-            fullWidth
-            slotProps={{
-              paper: {
-                sx: {
-                  maxHeight: 300,
-                  overflow: "hidden",
-                  "& ul": {
+          {cetegoryFilterSkeletonLoaing ? (
+            <CategoryFilterSkeleton />
+          ) : (
+            <Autocomplete
+              options={allCategory}
+              multiple
+              getOptionLabel={(option) => option.categoryName}
+              value={allCategory.filter((cat) =>
+                selectedCategories.includes(cat.categoryId)
+              )}
+              onChange={(event, newValue) =>
+                setSelectedCategories(newValue.map((item) => item.categoryId))
+              }
+              renderInput={(params) => (
+                <TextField
+                  {...params}
+                  label="Kategori"
+                  variant="outlined"
+                  size="medium"
+                  sx={{ width: "100%", marginTop: "5px" }}
+                />
+              )}
+              disablePortal
+              fullWidth
+              slotProps={{
+                paper: {
+                  sx: {
                     maxHeight: 300,
-                    overflowY: "auto",
+                    overflow: "hidden",
+                    "& ul": {
+                      maxHeight: 300,
+                      overflowY: "auto",
+                    },
                   },
                 },
-              },
-            }}
-          />
+              }}
+            />
+          )}
         </div>
         <div className="discovery-filter-lists">
           <LocalizationProvider dateAdapter={AdapterDayjs}>

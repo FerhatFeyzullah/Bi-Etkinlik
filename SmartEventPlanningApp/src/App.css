@@ -23,3 +23,16 @@
   align-items: center;
   justify-content: space-around;
 }
+
+.flex-column-justify-start {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.flex-column-justify-end {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
