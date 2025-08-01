@@ -151,3 +151,4 @@ C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningS
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.pdb
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.genruntimeconfig.cache
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\ref\SmartEventPlanningSystem.API.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\Newtonsoft.Json.dll

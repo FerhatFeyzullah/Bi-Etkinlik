@@ -22,7 +22,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.Creat
                 string path = "events";
                 filePath = await fileStorageService.UploadImage(request.EventImage, path);
 
-                await eventService.CreateEvent(request.EventDto, request.EventCategories, filePath, cancellationToken);
+                await eventService.CreateEvent(request.GetParsedDto(), request.GetParsedCategories(), filePath, cancellationToken);
 
                 await unitOfWork.CommitAsync();
                 return true;

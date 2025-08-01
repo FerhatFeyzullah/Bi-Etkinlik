@@ -32,7 +32,7 @@ function Register() {
   return (
     <div className="register-container">
       <div>
-        <div className="register-app-header">Etkinlik</div>
+        <div className="register-app-header">Bi Etkinlik</div>
         <div className="register-description">
           Zamanını Değerlendir, Bi Etkinlik Seç.
         </div>

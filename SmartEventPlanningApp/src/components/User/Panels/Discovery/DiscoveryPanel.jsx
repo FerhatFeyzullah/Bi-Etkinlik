@@ -113,7 +113,7 @@ function DiscoveryPanel() {
     } else {
       UnFiltreted(id);
     }
-  }, [AppUser.id, dateFilterMode, startDate, endDate, cities, categories]);
+  }, [UserId, dateFilterMode, startDate, endDate, cities, categories]);
 
   return (
     <div className="discovery-container flex-column-justify-start">

@@ -13,6 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { GetUserInfo } from "../redux/slices/accountSlice";
 import { useParams } from "react-router-dom";
 import ReviewMapPanel from "../components/User/Panels/ReviewMapPanel";
+import CreateEventMapPanel from "../components/User/Panels/CreateEvent/CreateEventMapPanel";
+import EditableEventsPanel from "../components/User/Panels/CreateEvent/EditableEventsPanel";
+import { blue } from "@mui/material/colors";
+import { GetAllCategory } from "../redux/slices/categorySlice";
 
 function User() {
   const dispatch = useDispatch();
@@ -26,6 +30,7 @@ function User() {
 
   const FirstOp = (id) => {
     dispatch(GetUserInfo(id));
+    dispatch(GetAllCategory());
   };
 
   useEffect(() => {
@@ -125,14 +130,22 @@ function User() {
         >
           <RecommendedPanel />
           <div
-            className="flex-column-justify-end"
+            className="flex-column"
             style={{ height: "100vh", width: "100%" }}
           >
             <ReviewMapPanel />
           </div>
         </div>
       )}
-      {selectedTab === 2 && <CreateAndEditPanel />}
+      {selectedTab === 2 && (
+        <div className="flex-column" style={{ width: "100%" }}>
+          <div className="flex-row" style={{ width: "100%" }}>
+            <CreateAndEditPanel />
+          </div>
+
+          <EditableEventsPanel />
+        </div>
+      )}
       {selectedTab === 3 && <MessagesPanel />}
       {selectedTab === 4 && <NotificationPanel />}
       {selectedTab === 5 && <ProfilePanel />}

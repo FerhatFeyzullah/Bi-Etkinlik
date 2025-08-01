@@ -84,10 +84,6 @@ function DiscoveryFilterPanel() {
     dispatch(ChangeBoxReviewIsChecked(boxReviewChecked));
   };
 
-  useEffect(() => {
-    dispatch(GetAllCategory());
-  }, []);
-
   return (
     <div className="discovery-filter-container">
       <div className="discovery-filter-checkbox">

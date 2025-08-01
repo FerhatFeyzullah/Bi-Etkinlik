@@ -23,7 +23,7 @@ function Login() {
   return (
     <div className="login-container">
       <div>
-        <div className="app-header">Etkinlik</div>
+        <div className="app-header">Bi Etkinlik</div>
 
         <div className="login-card-container">
           <LoginCard />

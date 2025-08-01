@@ -1,7 +1,516 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import "../../../../css/User/Panels/CreateEventPanel/CreateAndEditPanel.css";
+import CreateEventMapPanel from "../CreateEvent/CreateEventMapPanel";
+import { schema } from "../../../../schemas/CreateEventSchema";
+import { updateSchema } from "../../../../schemas/UpdateEventSchema";
+import { styled } from "@mui/material/styles";
+import Button from "@mui/material/Button";
+import CloudUploadIcon from "@mui/icons-material/CloudUpload";
+import { IconButton, TextField, Autocomplete } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import { cities } from "../../../../data/MyData";
+import { useDispatch, useSelector } from "react-redux";
+import CategoryFilterSkeleton from "../../../Skeletons/CategoryFilterSkeleton";
+import {
+  CreateEvent,
+  SetCreateAndEditM_AlertFalse,
+  SetCreateAndEditS_AlertFalse,
+  SetGaveUpUpdating,
+  SetIsUpdateMode,
+  SetLatitude,
+  SetLongitude,
+  UpdateEvent,
+} from "../../../../redux/slices/eventSlice";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import ToastSuccess from "../../../Elements/ToastSuccess";
+import ToastMistake from "../../../Elements/ToastMistake";
+import ToastWarning from "../../../Elements/ToastWarning";
+import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
+
+const VisuallyHiddenInput = styled("input")({
+  clip: "rect(0 0 0 0)",
+  clipPath: "inset(50%)",
+  height: 1,
+  overflow: "hidden",
+  position: "absolute",
+  bottom: 0,
+  left: 0,
+  whiteSpace: "nowrap",
+  width: 1,
+});
 
 function CreateAndEditPanel() {
-  return <div>CreateEventPanel</div>;
+  const dispatch = useDispatch();
+  const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
+    (store) => store.category
+  );
+  const {
+    createAndEditS_Alert,
+    createAndEditM_Alert,
+    createAndEditResponse,
+    updateEventProp,
+    isUpdateMode,
+  } = useSelector((store) => store.event);
+
+  useEffect(() => {
+    if (isUpdateMode) {
+      setEventName(updateEventProp.name);
+      setDescription(updateEventProp.description);
+      setSelectedCity(updateEventProp.city);
+      setSelectedCategories(
+        updateEventProp.eventCategories.map((e) => e.category.categoryId)
+      );
+      setStartDate(new Date(updateEventProp.startDate));
+      setEndDate(new Date(updateEventProp.endDate));
+
+      setEventId(updateEventProp.eventId);
+      setUpdatingImageId(updateEventProp.eventImageId);
+      setUpdating(true);
+      dispatch(SetIsUpdateMode(false));
+    }
+  }, [isUpdateMode]);
+
+  const { latitude, longitude } = useSelector((store) => store.event);
+
+  const [previewUrl, setPreviewUrl] = useState(null);
+
+  const UserId = localStorage.getItem("UserId");
+  const [image, setImage] = useState(null);
+  const [eventName, setEventName] = useState("");
+  const [eventId, setEventId] = useState("");
+  const [description, setDescription] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCategories, setSelectedCategories] = useState([]);
+  const [startDate, setStartDate] = useState(null);
+  const [endDate, setEndDate] = useState(null);
+  const [updating, setUpdating] = useState(false);
+  const [updatingImageId, setUpdatingImageId] = useState("");
+  const [errors, setErrors] = useState({});
+  const [imgError, setImgError] = useState(false);
+
+  const handleFileChange = (e) => {
+    const selectedFile = e.target.files[0];
+
+    if (selectedFile) {
+      // Sadece resim dosyalarını kabul et
+      if (!selectedFile.type.startsWith("image/")) {
+        alert("Sadece resim dosyası yükleyebilirsin.");
+        return;
+      }
+
+      // Dosyayı state'e ata
+      setImage(selectedFile);
+
+      // Dosyanın önizlemesi için FileReader kullan
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setPreviewUrl(reader.result); // Base64 URL'i state'e yaz
+      };
+      reader.readAsDataURL(selectedFile); // Dosyayı oku
+    }
+  };
+  const handleRemoveImage = () => {
+    setImage(null);
+    setPreviewUrl(null);
+  };
+
+  const ClearAll = () => {
+    setEventName("");
+    setDescription("");
+    setSelectedCity("");
+    setSelectedCategories([]);
+    setStartDate(null);
+    setEndDate(null);
+    setImage(null);
+    setPreviewUrl(null);
+    setUpdating(false);
+    dispatch(SetGaveUpUpdating(1));
+  };
+  useEffect(() => {
+    if (createAndEditS_Alert) {
+      ClearAll();
+    }
+  }, [createAndEditS_Alert]);
+
+  const CreateAndEditToastMistakeClose = () => {
+    dispatch(SetCreateAndEditM_AlertFalse());
+  };
+  const CreateAndEditToastSuccessClose = () => {
+    dispatch(SetCreateAndEditS_AlertFalse());
+  };
+
+  const Create = async () => {
+    try {
+      await schema.validate(
+        {
+          eventName,
+          description,
+          selectedCity,
+          selectedCategories,
+          startDate,
+          endDate,
+          image,
+          latitude,
+        },
+        { abortEarly: false }
+      );
+      setErrors({});
+
+      const data = new FormData();
+      const dto = {
+        Name: eventName,
+        Description: description,
+        StartDate: startDate,
+        EndDate: endDate,
+        City: selectedCity,
+        Latitude: Number(latitude.toFixed(6)),
+        Longitude: Number(longitude.toFixed(6)),
+        AppUserId: UserId,
+      };
+      data.append("EventDto", JSON.stringify(dto));
+      data.append("EventImage", image);
+      data.append("EventCategories", JSON.stringify(selectedCategories));
+
+      console.log(dto);
+      await dispatch(CreateEvent(data));
+    } catch (error) {
+      const errObj = {};
+      error.inner.forEach((e) => {
+        errObj[e.path] = e.message;
+      });
+      setErrors(errObj);
+    }
+  };
+  const Update = async () => {
+    try {
+      await updateSchema.validate(
+        {
+          eventName,
+          description,
+          selectedCity,
+          selectedCategories,
+          startDate,
+          endDate,
+          latitude,
+        },
+        { abortEarly: false }
+      );
+      setErrors({});
+
+      const data = {
+        EventDto: {
+          EventId: eventId,
+          Name: eventName,
+          Description: description,
+          StartDate: startDate,
+          EndDate: endDate,
+          City: selectedCity,
+          Latitude: Number(latitude.toFixed(6)),
+          Longitude: Number(longitude.toFixed(6)),
+        },
+        AppUserId: UserId,
+        EventCategories: selectedCategories,
+      };
+
+      console.log(data);
+      await dispatch(UpdateEvent(data));
+    } catch (error) {
+      const errObj = {};
+      error.inner.forEach((e) => {
+        errObj[e.path] = e.message;
+      });
+      setErrors(errObj);
+    }
+  };
+
+  return (
+    <>
+      <ToastSuccess
+        visible={createAndEditS_Alert}
+        detail={createAndEditResponse}
+        closer={CreateAndEditToastSuccessClose}
+      />
+      <ToastMistake
+        visible={createAndEditM_Alert}
+        detail={createAndEditResponse}
+        closer={CreateAndEditToastMistakeClose}
+      />
+
+      <div className="create-edit-panel-container flex-row-justify-space-around">
+        <div className="create-edit-form-main flex-row-justify-space-around">
+          <div className="flex-column">
+            <div className="create-edit-form-img flex-column">
+              {updating ? (
+                <img
+                  src={
+                    !imgError && updatingImageId != ""
+                      ? `https://localhost:7126/api/Users/ProfileImage/${updatingImageId}`
+                      : BiEtkinlik
+                  }
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    borderRadius: "12px",
+                  }}
+                  onError={() => setImgError(true)}
+                  alt="Resim"
+                />
+              ) : !image ? (
+                <div>
+                  <Button
+                    component="label"
+                    role={undefined}
+                    variant="contained"
+                    tabIndex={-1}
+                    startIcon={<CloudUploadIcon />}
+                    sx={{ textTransform: "none" }}
+                  >
+                    Resim Yükle
+                    <VisuallyHiddenInput
+                      type="file"
+                      onChange={handleFileChange}
+                      multiple
+                    />
+                  </Button>
+                  <p>{errors.image}</p>
+                </div>
+              ) : (
+                <div
+                  style={{
+                    position: "relative",
+                    width: "100%",
+                    height: "100%",
+                  }}
+                >
+                  <img
+                    src={previewUrl}
+                    alt="Önizleme"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "contain",
+                    }}
+                  />
+                  <IconButton
+                    onClick={handleRemoveImage}
+                    sx={{
+                      position: "absolute",
+                      top: 5,
+                      right: 5,
+                      backgroundColor: "rgba(0,0,0,0.6)",
+                      color: "white",
+                      padding: "5px",
+                      borderRadius: "50%",
+                      zIndex: 1,
+                    }}
+                  >
+                    <EditIcon />
+                  </IconButton>
+                </div>
+              )}
+            </div>
+            <TextField
+              error={Boolean(errors.description)}
+              helperText={errors.description}
+              label="Etkinlik Açıklaması"
+              multiline
+              rows={7}
+              sx={{ width: "300px" }}
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+
+          <div className="flex-column">
+            <div className="create-edit-form-inputs">
+              <TextField
+                label="Etkinlik İsmi"
+                value={eventName}
+                onChange={(e) => setEventName(e.target.value)}
+                error={Boolean(errors.eventName)}
+                helperText={errors.eventName}
+              />
+            </div>
+            <div className="create-edit-form-inputs">
+              <Autocomplete
+                options={cities}
+                getOptionLabel={(option) => option}
+                value={selectedCity}
+                onChange={(event, newValue) => setSelectedCity(newValue)}
+                renderInput={(params) => (
+                  <TextField
+                    {...params}
+                    label="Şehir"
+                    variant="outlined"
+                    size="medium"
+                    sx={{ width: "225px" }}
+                    error={Boolean(errors.selectedCity)}
+                    helperText={errors.selectedCity}
+                  />
+                )}
+                disablePortal
+                fullWidth
+                slotProps={{
+                  paper: {
+                    sx: {
+                      maxHeight: 300,
+                      overflow: "hidden",
+                      "& ul": {
+                        maxHeight: 300,
+                        overflowY: "auto",
+                      },
+                    },
+                  },
+                }}
+              />
+            </div>
+            <div className="create-edit-form-inputs">
+              {cetegoryFilterSkeletonLoaing ? (
+                <CategoryFilterSkeleton />
+              ) : (
+                <Autocomplete
+                  options={allCategory}
+                  multiple
+                  limitTags={1}
+                  getOptionLabel={(option) => option.categoryName}
+                  value={allCategory.filter((cat) =>
+                    selectedCategories.includes(cat.categoryId)
+                  )}
+                  onChange={(event, newValue) =>
+                    setSelectedCategories(
+                      newValue.map((item) => item.categoryId)
+                    )
+                  }
+                  renderInput={(params) => (
+                    <TextField
+                      {...params}
+                      label="Kategori"
+                      variant="outlined"
+                      size="medium"
+                      sx={{ width: "225px" }}
+                      error={Boolean(errors.selectedCategories)}
+                      helperText={errors.selectedCategories}
+                    />
+                  )}
+                  disablePortal
+                  fullWidth
+                  sx={{
+                    "& .MuiAutocomplete-inputRoot": {
+                      maxHeight: "60px", // 👈 Yükseklik sabitlendi
+                      overflow: "hidden", // 👈 Taşanı gizle
+                    },
+                    "& .MuiAutocomplete-tag": {
+                      maxWidth: "100%",
+                      margin: "2px",
+                    },
+                  }}
+                  slotProps={{
+                    paper: {
+                      sx: {
+                        maxHeight: 220,
+                        overflow: "hidden",
+                        "& ul": {
+                          maxHeight: 220,
+                          overflowY: "auto",
+                        },
+                      },
+                    },
+                  }}
+                />
+              )}
+            </div>
+            <div className="create-edit-form-inputs">
+              <div>
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                  customInput={
+                    <TextField
+                      label="Başlangıç Tarihi"
+                      fullWidth
+                      sx={{ marginBottom: "10px" }}
+                      error={Boolean(errors.startDate)}
+                      helperText={errors.startDate}
+                    />
+                  }
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  dateFormat="dd.MM.yyyy HH:mm"
+                />
+              </div>
+              <div>
+                <DatePicker
+                  selected={endDate}
+                  onChange={(date) => setEndDate(date)}
+                  customInput={
+                    <TextField
+                      label="Bitiş Tarihi"
+                      fullWidth
+                      error={Boolean(errors.endDate)}
+                      helperText={errors.endDate}
+                    />
+                  }
+                  showTimeSelect
+                  timeFormat="HH:mm"
+                  timeIntervals={15}
+                  dateFormat="dd.MM.yyyy HH:mm"
+                />
+              </div>
+            </div>
+            <div className="create-edit-form-inputs">
+              {updating ? (
+                <>
+                  <div>
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      color="warning"
+                      sx={{
+                        width: "225px",
+                        textTransform: "none",
+                        marginBottom: "10px",
+                      }}
+                      onClick={Update}
+                    >
+                      Güncelle
+                    </Button>
+                  </div>
+                  <div>
+                    <Button
+                      variant="contained"
+                      fullWidth
+                      color="inherit"
+                      sx={{ width: "225px", textTransform: "none" }}
+                      onClick={ClearAll}
+                    >
+                      Vazgeç
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <Button
+                  variant="contained"
+                  fullWidth
+                  color="success"
+                  sx={{ width: "225px", textTransform: "none" }}
+                  onClick={Create}
+                >
+                  Kaydet
+                </Button>
+              )}
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <CreateEventMapPanel />
+        </div>
+      </div>
+    </>
+  );
 }
 
 export default CreateAndEditPanel;

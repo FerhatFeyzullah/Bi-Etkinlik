@@ -1,0 +1,26 @@
+.editable-panel-container {
+  height: 320px;
+  border-radius: 10px;
+  border: 2px solid black;
+  width: 85%;
+  margin-top: 30px;
+  display: flex;
+  overflow-x: auto;
+}
+.editable-panel-container {
+  overflow-x: scroll; /* scroll çıksın */
+  scrollbar-width: auto; /* Firefox'ta görünür */
+}
+
+.editable-panel-container::-webkit-scrollbar {
+  display: block; /* Chrome ve diğerlerinde görünür */
+  height: 8px; /* scroll bar yüksekliği */
+}
+
+.editable-panel-container::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5); /* kaydırıcı rengi */
+  border-radius: 4px;
+}
+.editable-panel-title {
+  text-align: center;
+}

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using SmartEventPlanningSystem.Application.DTOs.EventCategoryDtos;
+using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 
 namespace SmartEventPlanningSystem.Application.DTOs.EventDtos
 {
@@ -14,13 +15,14 @@ namespace SmartEventPlanningSystem.Application.DTOs.EventDtos
         public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public bool Status { get; set; }
+        public bool? Status { get; set; }
         public string City { get; set; }
         public string EventImageId { get; set; }
 
         //Location
         public decimal Latitude { get; set; }
         public decimal Longitude { get; set; }
+        public ResultUserForEvent AppUser { get; set; }
         public List<ResultEventCategoryDto> EventCategories { get; set; }
     }
 }

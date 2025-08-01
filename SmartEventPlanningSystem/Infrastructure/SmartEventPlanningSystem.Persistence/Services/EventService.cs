@@ -63,6 +63,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             {
                 var eventToUpdate = await unitOfWork.ReadRepository<Event>().GetByIdAsync(updateEventDto.EventId);
                 mapper.Map(updateEventDto,eventToUpdate);
+                eventToUpdate.Status = null;
+
 
                 await unitOfWork.WriteRepository<Event>().Update(eventToUpdate);
                 var oldCategories = await unitOfWork.ReadRepository<EventCategory>().GetByFilteredList(
@@ -152,12 +154,14 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task<GetEventsICreatedUnFilteredResponse> GetEventsI_CreatedUnFiltered(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id,
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
+                q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category).OrderByDescending(x=>x.EventId),
+                ct
             );
-            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
+            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(allEvents);
             return new GetEventsICreatedUnFilteredResponse
             {
                 Events = mappedEvents
@@ -167,13 +171,15 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task<GetEventsICreatedAwaitingResponse> GetEventsI_CreatedAwaiting(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id &&
                 x.Status == null,
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
+                q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
+                ct
             );
-            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
+            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(allEvents);
             return new GetEventsICreatedAwaitingResponse
             {
                 Events = mappedEvents
@@ -183,13 +189,15 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task<GetEventsICreatedStatusTrueResponse> GetEventsI_CreatedStatusTrue(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id &&
                 x.Status == true,
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
+                q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
+                ct
             );
-            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
+            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(allEvents);
             return new GetEventsICreatedStatusTrueResponse
             {
                 Events = mappedEvents
@@ -199,13 +207,15 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task<GetEventsICreatedStatusFalseResponse> GetEventsI_CreatedStatusFalse(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            var user = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
+            var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id &&
                 x.Status ==false,
-                q => q.Include(x => x.EventCategories)
-                     .ThenInclude(e => e.Category), ct
+                q => q.Include(x => x.AppUser)
+                .Include(x => x.EventCategories)
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
+                ct
             );
-            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(user);
+            var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(allEvents);
             return new GetEventsICreatedStatusFalseResponse
             {
                 Events = mappedEvents
@@ -242,7 +252,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x => x.Status == true,
                 q => q.Include(x=>x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -274,7 +284,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
                  q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -301,7 +311,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                cities.Contains(x.City),
                 q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -329,7 +339,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 cities.Contains(x.City),
                 q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -357,7 +367,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 DateOnly.FromDateTime(x.EndDate) <= End,
                 q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -386,7 +396,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x.EventCategories.Any(ec=>categories.Contains(ec.CategoryId)),
                  q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -415,7 +425,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 cities.Contains(x.City),
                  q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -445,7 +455,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
                  q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
@@ -486,7 +496,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     x.City == city,
                  q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 

@@ -11,7 +11,9 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.Updat
     public class UpdateEventRequest:IRequest<UpdateEventResponse>
     {
         public UpdateEventDto EventDto { get; set; }
+
         public int AppUserId { get; set; }
+
         public List<int> EventCategories { get; set; }
     }
 }

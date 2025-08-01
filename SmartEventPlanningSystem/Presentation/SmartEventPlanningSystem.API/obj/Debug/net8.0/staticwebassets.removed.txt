@@ -1,8 +1,0 @@
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\1b6482f1-274d-431d-91f7-f575862cf97a.jpg
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\208437e0-bd9b-4f04-aac7-87fd96b37de0.jpg
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\45cdf062-4056-49dd-9594-d08ca9319c5b.jpg
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\5250649e-c294-4fcc-ae99-82d1a5458b9b.jpg
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\75474e22-0de3-473a-8187-fb1bbfba816b.jpg
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\9757087b-9b35-4ef8-82d3-3738d7143e38.jpg
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\a1ebe2b2-ace3-4ad6-9d63-4b7193766599.jpg
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\be237468-dd17-44c8-9033-cc092a6414b7.jpg

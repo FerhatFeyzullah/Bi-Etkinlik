@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   MapContainer,
   TileLayer,
@@ -12,6 +12,9 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import { Button, InputAdornment, TextField } from "@mui/material";
+import "../../../../css/User/Panels/CreateEventPanel/CreateEventMapPanel.css";
+import { useDispatch, useSelector } from "react-redux";
+import { SetLatitude, SetLongitude } from "../../../../redux/slices/eventSlice";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -21,9 +24,35 @@ L.Icon.Default.mergeOptions({
 });
 
 function DiscoveryMapPanel() {
+  const dispatch = useDispatch();
+
+  const {
+    createAndEditS_Alert,
+    updateEventProp,
+    isUpdateMode,
+    gaveUpUpdating,
+  } = useSelector((store) => store.event);
+
+  useEffect(() => {
+    if (isUpdateMode) {
+      setLat(updateEventProp.latitude);
+      setLng(updateEventProp.longitude);
+    }
+  }, [isUpdateMode]);
+
   const [lat, setLat] = useState(null);
   const [lng, setLng] = useState(null);
   const [query, setQuery] = useState("");
+
+  useEffect(() => {
+    dispatch(SetLatitude(lat));
+    dispatch(SetLongitude(lng));
+  }, [lat, lng]);
+
+  useEffect(() => {
+    setLat(null);
+    setLng(null);
+  }, [createAndEditS_Alert, gaveUpUpdating]);
 
   const MAPTILER_API_KEY = "JKyaJvr3yalg5h65ESlT"; // 👈 buraya kendi key’ini koy
 
@@ -73,7 +102,7 @@ function DiscoveryMapPanel() {
   };
 
   return (
-    <div style={{ width: "100%" }}>
+    <div className="create-event-map-panel">
       <div style={{ width: "100%" }}>
         <TextField
           value={query}
@@ -96,10 +125,10 @@ function DiscoveryMapPanel() {
       <MapContainer
         center={[40.939087, 30.516985]}
         zoom={13}
-        style={{ height: "400px", width: "100%" }}
+        style={{ height: "444px", width: "100%" }}
       >
         <TileLayer
-          url={`https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=${MAPTILER_API_KEY}`}
+          url={`https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.png?key=${MAPTILER_API_KEY}`}
           attribution='<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> &copy; OpenStreetMap contributors'
         />
         <MapMover lat={lat} lng={lng} />

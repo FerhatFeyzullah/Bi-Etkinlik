@@ -1,0 +1,37 @@
+.editable-event-card {
+  width: 350px;
+  height: 250px;
+  margin: 0px 10px;
+  margin-top: 30px;
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 2px grey;
+  background-color: white;
+  position: relative;
+}
+.editable-event-card-name {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 4px;
+  padding: 5px 10px;
+}
+
+.editable-event-status-null {
+  font-family: Arial, Helvetica, sans-serif;
+  color: grey;
+  font-weight: bolder;
+}
+.editable-event-status-true {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(9, 112, 9);
+  font-weight: bolder;
+}
+.editable-event-status-false {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(122, 3, 3);
+  font-weight: bolder;
+}

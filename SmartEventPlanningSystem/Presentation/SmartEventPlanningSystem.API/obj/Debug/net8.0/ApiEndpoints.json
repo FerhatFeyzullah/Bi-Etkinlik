@@ -161,43 +161,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "EventDto.Name",
+        "Name": "EventDto",
         "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "EventDto.Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "EventDto.StartDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "EventDto.EndDate",
-        "Type": "System.DateTime",
-        "IsRequired": false
-      },
-      {
-        "Name": "EventDto.City",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "EventDto.Latitude",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "EventDto.Longitude",
-        "Type": "System.Decimal",
-        "IsRequired": false
-      },
-      {
-        "Name": "EventDto.AppUserId",
-        "Type": "System.Int32",
         "IsRequired": false
       },
       {
@@ -207,7 +172,7 @@
       },
       {
         "Name": "EventCategories",
-        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

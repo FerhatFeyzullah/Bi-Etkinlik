@@ -261,71 +261,20 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "EventDto.Name": {
+                  "EventDto": {
                     "type": "string"
-                  },
-                  "EventDto.Description": {
-                    "type": "string"
-                  },
-                  "EventDto.StartDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "EventDto.EndDate": {
-                    "type": "string",
-                    "format": "date-time"
-                  },
-                  "EventDto.City": {
-                    "type": "string"
-                  },
-                  "EventDto.Latitude": {
-                    "type": "number",
-                    "format": "double"
-                  },
-                  "EventDto.Longitude": {
-                    "type": "number",
-                    "format": "double"
-                  },
-                  "EventDto.AppUserId": {
-                    "type": "integer",
-                    "format": "int32"
                   },
                   "EventImage": {
                     "type": "string",
                     "format": "binary"
                   },
                   "EventCategories": {
-                    "type": "array",
-                    "items": {
-                      "type": "integer",
-                      "format": "int32"
-                    }
+                    "type": "string"
                   }
                 }
               },
               "encoding": {
-                "EventDto.Name": {
-                  "style": "form"
-                },
-                "EventDto.Description": {
-                  "style": "form"
-                },
-                "EventDto.StartDate": {
-                  "style": "form"
-                },
-                "EventDto.EndDate": {
-                  "style": "form"
-                },
-                "EventDto.City": {
-                  "style": "form"
-                },
-                "EventDto.Latitude": {
-                  "style": "form"
-                },
-                "EventDto.Longitude": {
-                  "style": "form"
-                },
-                "EventDto.AppUserId": {
+                "EventDto": {
                   "style": "form"
                 },
                 "EventImage": {
@@ -1464,10 +1413,6 @@
             "format": "date-time"
           },
           "city": {
-            "type": "string",
-            "nullable": true
-          },
-          "eventImageId": {
             "type": "string",
             "nullable": true
           },
