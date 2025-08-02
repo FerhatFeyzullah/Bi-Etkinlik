@@ -13,6 +13,8 @@ const initialState = {
   isUpdateMode: false,
   updateEventProp: {},
   gaveUpUpdating: 0,
+  isEventPreview: false,
+  previewedEvent: {},
 };
 
 export const CreateEvent = createAsyncThunk("createEvent", async (data) => {
@@ -104,6 +106,12 @@ export const eventSlice = createSlice({
     },
     SetGaveUpUpdating: (state, action) => {
       state.gaveUpUpdating = action.payload;
+    },
+    SetIsEventPreview: (state, action) => {
+      state.isEventPreview = action.payload;
+    },
+    SetPreviewedEvent: (state, action) => {
+      state.previewedEvent = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -216,5 +224,7 @@ export const {
   SetIsUpdateMode,
   SetUpdateEventProp,
   SetGaveUpUpdating,
+  SetIsEventPreview,
+  SetPreviewedEvent,
 } = eventSlice.actions;
 export default eventSlice.reducer;

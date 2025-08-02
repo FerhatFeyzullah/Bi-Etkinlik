@@ -58,12 +58,15 @@ export const authSlice = createSlice({
       //LoginPost
       .addCase(LoginTheSystem.pending, (state) => {
         state.loginLoading = true;
+        state.errorMessage = "";
+        state.loginMistakeAlert = false;
       })
       .addCase(LoginTheSystem.fulfilled, (state, action) => {
         state.loginLoading = false;
 
-        if (action.payload.success) {
+        if (action.payload) {
           state.errorMessage = "";
+          state.loginMistakeAlert = false;
         } else {
           state.errorMessage = action.payload.message;
           state.loginMistakeAlert = true;

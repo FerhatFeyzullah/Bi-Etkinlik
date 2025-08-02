@@ -258,7 +258,7 @@ function CreateAndEditPanel() {
                   alt="Resim"
                 />
               ) : !image ? (
-                <div>
+                <div className="flex-column">
                   <Button
                     component="label"
                     role={undefined}
@@ -274,7 +274,7 @@ function CreateAndEditPanel() {
                       multiple
                     />
                   </Button>
-                  <p>{errors.image}</p>
+                  <p style={{ color: "red" }}>{errors.image}</p>
                 </div>
               ) : (
                 <div

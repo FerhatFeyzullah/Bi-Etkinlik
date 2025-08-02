@@ -3,6 +3,7 @@ import "../../../../css/User/Panels/CreateEventPanel/EditableEventsPanel.css";
 import EditableEventCard from "./EditableEventCard";
 import { useDispatch, useSelector } from "react-redux";
 import { GetEventsI_CreatedUnFiltreted } from "../../../../redux/slices/eventSlice";
+import EventReviewDialog from "./EventReviewDialog";
 
 function EditableEventsPanel({ children }) {
   const dispatch = useDispatch();
@@ -17,6 +18,7 @@ function EditableEventsPanel({ children }) {
   return (
     <div className="editable-panel-container flex-row-justify-start">
       <EditableEventCard />
+      <EventReviewDialog />
     </div>
   );
 }

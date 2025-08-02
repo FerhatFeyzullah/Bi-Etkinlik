@@ -51,7 +51,7 @@ function DiscoveryEventCard() {
         >
           <div className="discovery-e-c-user-info">
             <div>
-              <IconButton>
+              <IconButton disabled>
                 <Avatar
                   sx={{ width: 60, height: 60 }}
                   src={

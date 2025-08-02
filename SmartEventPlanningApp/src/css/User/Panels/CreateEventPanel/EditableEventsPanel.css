@@ -1,11 +1,13 @@
 .editable-panel-container {
   height: 320px;
-  border-radius: 10px;
-  border: 2px solid black;
   width: 85%;
   margin-top: 30px;
   display: flex;
   overflow-x: auto;
+  border-left: 2px solid grey;
+  border-right: 2px solid grey;
+  box-shadow: 0 -5px 6px 0px rgba(0, 0, 0, 0.2),
+    /* üst shadow */ 0 4px 6px -4px rgba(0, 0, 0, 0.2); /* alt shadow */
 }
 .editable-panel-container {
   overflow-x: scroll; /* scroll çıksın */
