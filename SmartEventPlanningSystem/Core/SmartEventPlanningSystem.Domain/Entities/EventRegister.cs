@@ -13,5 +13,6 @@ namespace SmartEventPlanningSystem.Domain.Entities
         public AppUser AppUser { get; set; }
         public int EventId { get; set; }
         public Event Event { get; set; }
+        public bool IsScored { get; set; } = false;
     }
 }

@@ -235,7 +235,12 @@ namespace SmartEventPlanningSystem.Persistence.Services
             await unitOfWork.WriteRepository<AppUser>().Update(user);
             await unitOfWork.CommitAsync();
 
-            return user;
+            var newUSer = await unitOfWork.ReadRepository<AppUser>().GetByFiltered(
+                x => x.Id == user.Id,
+                x => x.Include(u => u.AppUserCategories).ThenInclude(uc => uc.Category), ct
+            );
+
+            return newUSer;
         }
 
         public async Task<AppUser> RemoveProfilePhoto(int id, CancellationToken ct)

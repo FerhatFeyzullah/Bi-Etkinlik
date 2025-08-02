@@ -6,5 +6,8 @@ wwwroot\upload\events\6802437e-a4fe-4e4d-9e1f-934d0e234047.jpg
 wwwroot\upload\events\8e70b789-5a9e-4a98-8924-cae22b17979f.jpg
 wwwroot\upload\events\b86bd20c-756b-4582-9297-6a00ca44d33c.jpg
 wwwroot\upload\events\fb703377-8f5b-4799-9c5e-a577763d821a.jpg
+wwwroot\upload\users\0adc00de-b924-4203-9b71-6aa0bb60d876.jpg
+wwwroot\upload\users\377ea7ff-6b56-42a8-8d4e-294f5ae3e6f6.png
 wwwroot\upload\users\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG
+wwwroot\upload\users\4cfd50ce-c488-4b1e-8997-a668a415f5c0.jpg
 wwwroot\upload\users\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG

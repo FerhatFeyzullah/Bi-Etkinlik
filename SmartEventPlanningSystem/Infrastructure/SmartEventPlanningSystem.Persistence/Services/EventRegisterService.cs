@@ -5,8 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetEventsI_Joined;
-using SmartEventPlanningSystem.Application.DTOs.EventDtos;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyPastEvents;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 using SmartEventPlanningSystem.Domain.Entities;
@@ -42,22 +43,62 @@ namespace SmartEventPlanningSystem.Persistence.Services
             await unitOfWork.CommitAsync();
         }
 
-        public async Task<GetEventsI_JoinedResponse> GetEventsI_Joined(int id, CancellationToken ct)
+        public async Task<List<GetMyPastEventsResponse>> GetMyPastEvents (int id, CancellationToken ct)
         {
+            var now = DateTime.UtcNow;
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
-                x =>
-                x.AppUserId == id,
-                q => q.Include(x => x.Event), ct);
 
-            var events = value.Select(x => x.Event).ToList();
+                    x => x.AppUserId == id &&
+                    x.Event.EndDate < now ,
+                   
+                    q => q
+                    .Include(x => x.Event)
+                    .ThenInclude(e => e.AppUser)
+                    .Include(x => x.Event)
+                    .ThenInclude(e => e.EventCategories)
+                    .ThenInclude(ec => ec.Category),
+                    ct);
 
-            return new GetEventsI_JoinedResponse
-            {
-                Events = mapper.Map<List<EventsI_JoinedDto>>(events)
-            };
+
+            return mapper.Map<List<GetMyPastEventsResponse>>(value);
 
         }
 
-       
+        public async Task<List<GetMyCurrentEventsResponse>> GetMyCurrentEvents(int id, CancellationToken ct)
+        {
+            var now = DateTime.UtcNow;
+            var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
+
+                    x => x.AppUserId == id &&
+                    x.Event.StartDate > now && x.Event.EndDate < now,
+
+                    q => q
+                    .Include(x => x.Event)
+                    .ThenInclude(e => e.AppUser)
+                    .Include(x => x.Event)
+                    .ThenInclude(e => e.EventCategories)
+                    .ThenInclude(ec => ec.Category),
+                    ct);
+
+            return mapper.Map<List<GetMyCurrentEventsResponse>>(value);
+        }
+
+        public async Task<List<GetMyFutureEventsResponse>> GetMyFutureEvents(int id, CancellationToken ct)
+        {
+            var now = DateTime.UtcNow;
+            var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
+
+                    x => x.AppUserId == id &&
+                    x.Event.StartDate > now,
+
+                    q => q
+                    .Include(x => x.Event)
+                    .ThenInclude(e => e.AppUser)
+                    .Include(x => x.Event)
+                    .ThenInclude(e => e.EventCategories)
+                    .ThenInclude(ec => ec.Category),
+                    ct);
+            return  mapper.Map<List<GetMyFutureEventsResponse>>(value);
+        }
     }
 }

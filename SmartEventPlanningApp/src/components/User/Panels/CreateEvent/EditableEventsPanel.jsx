@@ -4,10 +4,14 @@ import EditableEventCard from "./EditableEventCard";
 import { useDispatch, useSelector } from "react-redux";
 import { GetEventsI_CreatedUnFiltreted } from "../../../../redux/slices/eventSlice";
 import EventReviewDialog from "./EventReviewDialog";
+import EditableEventCardSkeleton from "../../../Skeletons/EditableEventCardSkeleton";
+import Tooltip from "@mui/material/Tooltip";
 
 function EditableEventsPanel({ children }) {
   const dispatch = useDispatch();
-  const { createAndEditS_Alert } = useSelector((store) => store.event);
+  const { createAndEditS_Alert, editableEventSkeleton } = useSelector(
+    (store) => store.event
+  );
 
   const UserId = localStorage.getItem("UserId");
   useEffect(() => {
@@ -16,10 +20,28 @@ function EditableEventsPanel({ children }) {
   }, [UserId, createAndEditS_Alert]);
 
   return (
-    <div className="editable-panel-container flex-row-justify-start">
-      <EditableEventCard />
+    <>
+      <div style={{ textAlign: "center" }}>
+        <Tooltip
+          title="Bu panelde yalnızca henüz başlamamış etkinlikleri görüntüleyebilir, düzenleyebilir veya silebilirsiniz."
+          placement="right"
+        >
+          <h2>Etkinliklerim</h2>
+        </Tooltip>
+      </div>
+
+      <div className="editable-panel-container">
+        <div className="flex-row-justify-start">
+          {editableEventSkeleton ? (
+            <EditableEventCardSkeleton />
+          ) : (
+            <EditableEventCard />
+          )}
+        </div>
+      </div>
+
       <EventReviewDialog />
-    </div>
+    </>
   );
 }
 

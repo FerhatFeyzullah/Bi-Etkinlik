@@ -209,6 +209,9 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
 
+                    b.Property<int>("NumberOfRaters")
+                        .HasColumnType("integer");
+
                     b.Property<string>("PasswordHash")
                         .HasColumnType("text");
 
@@ -221,8 +224,8 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
                     b.Property<string>("ProfilePhotoId")
                         .HasColumnType("text");
 
-                    b.Property<int>("Score")
-                        .HasColumnType("integer");
+                    b.Property<decimal>("Score")
+                        .HasColumnType("numeric");
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("text");
@@ -374,6 +377,9 @@ namespace SmartEventPlanningSystem.Persistence.Migrations
 
                     b.Property<int>("EventId")
                         .HasColumnType("integer");
+
+                    b.Property<bool>("IsScored")
+                        .HasColumnType("boolean");
 
                     b.HasKey("EventRegisterId");
 

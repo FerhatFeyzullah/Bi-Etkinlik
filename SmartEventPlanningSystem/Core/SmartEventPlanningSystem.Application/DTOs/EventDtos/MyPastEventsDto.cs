@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using SmartEventPlanningSystem.Application.DTOs.EventCategoryDtos;
+using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 
 namespace SmartEventPlanningSystem.Application.DTOs.EventDtos
 {
-    public class EventsI_JoinedDto
+    public class MyPastEventsDto
     {
         public int EventId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public string City { get; set; }
+        public string EventImageId { get; set; }
+
+        public ResultUserForEvent AppUser { get; set; }
+        public List<ResultEventCategoryDto> EventCategories { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Infrastructure.Interfaces;
 
@@ -17,7 +18,10 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.Upload
             string path = "users";
             var ppId = await fileStorageService.UploadImage(request.Image, path);
             var response = await userService.UploadProfilePhoto(request.AppUserId,ppId, cancellationToken);
-            return mapper.Map<UploadProfilePhotoResponse>(response);
+            return new UploadProfilePhotoResponse
+            {
+                MyProfile = mapper.Map<UserProfileDto>(response)
+            };
         }
     }
 }

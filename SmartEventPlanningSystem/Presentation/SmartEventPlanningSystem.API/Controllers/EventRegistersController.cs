@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.DeleteEventRegister;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RegisterEvent;
-using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetEventsI_Joined;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyPastEvents;
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
@@ -24,8 +26,20 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(await mediator.Send(new DeleteEventRegisterRequest { AppUserId = userId,EventId = eventId}));
         }
 
-        [HttpGet("GetEventsI_Joined")]
-        public async Task<IActionResult> GetEventsI_Joined([FromQuery] GetEventsI_JoinedRequest request)
+        [HttpGet("GetMyPastEvents")]
+        public async Task<IActionResult> GetEventsI_Joined([FromQuery] GetMyPastEventsRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
+        [HttpGet("GetMyFutureEvents")]
+        public async Task<IActionResult> GetMyFutureEvents([FromQuery] GetMyFutureEventsRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
+        [HttpGet("GetMyCurrentEvents")]
+        public async Task<IActionResult> GetMyCurrentEvents([FromQuery] GetMyCurrentEventsRequest request)
         {
             return Ok(await mediator.Send(request));
         }

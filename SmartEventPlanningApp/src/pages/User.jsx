@@ -7,7 +7,7 @@ import RecommendedPanel from "../components/User/Panels/Recommended/RecommendedP
 import CreateAndEditPanel from "../components/User/Panels/CreateEvent/CreateAndEditPanel";
 import MessagesPanel from "../components/User/Panels/MessagesPanel";
 import NotificationPanel from "../components/User/Panels/NotificationPanel";
-import ProfilePanel from "../components/User/Panels/ProfilePanel";
+import ProfilePanel from "../components/User/Panels/Profile/ProfilePanel";
 import DiscoveryFilterPanel from "../components/User/Panels/Discovery/DiscoveryFilterPanel";
 import { useDispatch, useSelector } from "react-redux";
 import { GetUserInfo } from "../redux/slices/accountSlice";
@@ -17,6 +17,12 @@ import CreateEventMapPanel from "../components/User/Panels/CreateEvent/CreateEve
 import EditableEventsPanel from "../components/User/Panels/CreateEvent/EditableEventsPanel";
 import { blue } from "@mui/material/colors";
 import { GetAllCategory } from "../redux/slices/categorySlice";
+import TravelExploreIcon from "@mui/icons-material/TravelExplore";
+import ThumbUpIcon from "@mui/icons-material/ThumbUp";
+import EditNoteIcon from "@mui/icons-material/EditNote";
+import Forum from "@mui/icons-material/Forum";
+import NotificationsIcon from "@mui/icons-material/Notifications";
+import PersonIcon from "@mui/icons-material/Person";
 
 function User() {
   const dispatch = useDispatch();
@@ -53,56 +59,86 @@ function User() {
         >
           <Tab
             label="Keşfet"
+            icon={<TravelExploreIcon />}
+            iconPosition="start"
             sx={{
               textTransform: "none",
-              alignItems: "flex-start",
+              alignItems: "center", // Yine de center yapıp
+              justifyContent: "flex-start",
               fontWeight: "bold",
               fontSize: "15px",
+              paddingY: "15px", // Yani top ve bottom padding'i azalt
+              minHeight: "unset",
             }}
           />
           <Tab
             label="Önerilenler"
+            icon={<ThumbUpIcon />}
+            iconPosition="start"
             sx={{
               textTransform: "none",
-              alignItems: "flex-start",
+              alignItems: "center", // Yine de center yapıp
+              justifyContent: "flex-start",
               fontWeight: "bold",
               fontSize: "15px",
+              paddingY: "15px", // Yani top ve bottom padding'i azalt
+              minHeight: "unset",
             }}
           />
           <Tab
             label="Oluştur / Düzenle"
+            icon={<EditNoteIcon />}
+            iconPosition="start"
             sx={{
               textTransform: "none",
-              alignItems: "flex-start",
+              alignItems: "center", // Yine de center yapıp
+              justifyContent: "flex-start",
               fontWeight: "bold",
               fontSize: "15px",
+              paddingY: "15px", // Yani top ve bottom padding'i azalt
+              minHeight: "unset",
             }}
           />
           <Tab
             label="Mesajlar"
+            icon={<Forum />}
+            iconPosition="start"
             sx={{
               textTransform: "none",
-              alignItems: "flex-start",
+              alignItems: "center", // Yine de center yapıp
+              justifyContent: "flex-start",
               fontWeight: "bold",
               fontSize: "15px",
+              paddingY: "15px", // Yani top ve bottom padding'i azalt
+              minHeight: "unset",
             }}
           />
           <Tab
             label="Bildirimler"
+            icon={<NotificationsIcon />}
+            iconPosition="start"
             sx={{
               textTransform: "none",
-              alignItems: "flex-start",
+              alignItems: "center", // Yine de center yapıp
+              justifyContent: "flex-start",
               fontWeight: "bold",
               fontSize: "15px",
+              paddingY: "15px", // Yani top ve bottom padding'i azalt
+              minHeight: "unset",
             }}
           />
           <Tab
             label="Profil"
+            icon={<PersonIcon />}
+            iconPosition="start"
             sx={{
               textTransform: "none",
-              alignItems: "flex-start",
+              alignItems: "center", // Yine de center yapıp
+              justifyContent: "flex-start",
               fontWeight: "bold",
               fontSize: "15px",
+              paddingY: "15px", // Yani top ve bottom padding'i azalt
+              minHeight: "unset",
             }}
           />
         </Tabs>
@@ -148,7 +184,11 @@ function User() {
       )}
       {selectedTab === 3 && <MessagesPanel />}
       {selectedTab === 4 && <NotificationPanel />}
-      {selectedTab === 5 && <ProfilePanel />}
+      {selectedTab === 5 && (
+        <div className="flex-row" style={{ width: "100%" }}>
+          <ProfilePanel />
+        </div>
+      )}
     </div>
   );
 }

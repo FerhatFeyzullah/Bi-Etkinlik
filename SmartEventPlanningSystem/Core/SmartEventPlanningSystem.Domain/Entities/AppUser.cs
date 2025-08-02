@@ -15,7 +15,8 @@ namespace SmartEventPlanningSystem.Domain.Entities
         public DateOnly BirthDate { get; set; }
         public string Gender { get; set; }
         public string? ProfilePhotoId { get; set; }
-        public int Score { get; set; }
+        public decimal Score { get; set; }
+        public int NumberOfRaters { get; set; }
 
         public List<Event> MyEvents { get; set; }
         public List<AppUserCategory> AppUserCategories { get; set; }

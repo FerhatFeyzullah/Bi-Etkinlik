@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetEventsI_Joined
+namespace SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents
 {
-    public class GetEventsI_JoinedRequest:IRequest<GetEventsI_JoinedResponse>
+    public class GetMyCurrentEventsRequest:IRequest<List<GetMyCurrentEventsResponse>>
     {
         public int AppUserId { get; set; }
     }

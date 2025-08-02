@@ -61,7 +61,7 @@ function EditableEventCard() {
                     <VisibilityIcon fontSize="medium" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Etkinliği Sil">
+                <Tooltip title="Dikkat: Etkinlik silindikten sonra geri alınamaz!">
                   <IconButton
                     sx={{ marginRight: "20px" }}
                     onClick={() => dispatch(RemoveEvent(e.eventId))}
@@ -69,7 +69,7 @@ function EditableEventCard() {
                     <DeleteIcon fontSize="medium" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Etkinliği Güncelle">
+                <Tooltip title="Bu etkinliği güncellediğinizde sistem tarafından tekrar incelenecektir.">
                   <IconButton
                     sx={{ marginRight: "30px" }}
                     onClick={() => UpdateModeOpen(e)}

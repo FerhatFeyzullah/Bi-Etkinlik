@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Skeleton from "@mui/material/Skeleton";
-import "../../css/User/Panels/ReviewEventCardSkeleton.css";
+import "../../css/Skeletons/ReviewEventCardSkeleton.css";
 
 function ReviewEventCardSkeleton() {
   var skeletonArray = [1, 2];

@@ -154,8 +154,10 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task<GetEventsICreatedUnFilteredResponse> GetEventsI_CreatedUnFiltered(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
+            var now = DateTime.UtcNow;
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
-                x => x.AppUserId == id,
+                x => x.AppUserId == id &&
+                x.StartDate>now,
                 q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
                       .ThenInclude(e => e.Category).OrderByDescending(x=>x.EventId),

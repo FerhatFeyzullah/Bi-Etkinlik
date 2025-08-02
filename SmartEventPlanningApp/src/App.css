@@ -23,6 +23,12 @@
   align-items: center;
   justify-content: space-around;
 }
+.flex-row-justify-space-between {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
 
 .flex-column-justify-start {
   display: flex;

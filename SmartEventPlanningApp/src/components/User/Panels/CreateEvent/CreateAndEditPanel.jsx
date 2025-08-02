@@ -21,12 +21,19 @@ import {
   SetLongitude,
   UpdateEvent,
 } from "../../../../redux/slices/eventSlice";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import ToastSuccess from "../../../Elements/ToastSuccess";
 import ToastMistake from "../../../Elements/ToastMistake";
 import ToastWarning from "../../../Elements/ToastWarning";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
+import dayjs from "dayjs";
+import "dayjs/locale/tr";
+import { Box } from "@mui/material";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
+
+dayjs.locale("tr");
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -61,8 +68,8 @@ function CreateAndEditPanel() {
       setSelectedCategories(
         updateEventProp.eventCategories.map((e) => e.category.categoryId)
       );
-      setStartDate(new Date(updateEventProp.startDate));
-      setEndDate(new Date(updateEventProp.endDate));
+      setStartDate(dayjs(updateEventProp.startDate));
+      setEndDate(dayjs(updateEventProp.endDate));
 
       setEventId(updateEventProp.eventId);
       setUpdatingImageId(updateEventProp.eventImageId);
@@ -82,8 +89,8 @@ function CreateAndEditPanel() {
   const [description, setDescription] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
-  const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [startDate, setStartDate] = useState(dayjs(null));
+  const [endDate, setEndDate] = useState(dayjs(null));
   const [updating, setUpdating] = useState(false);
   const [updatingImageId, setUpdatingImageId] = useState("");
   const [errors, setErrors] = useState({});
@@ -422,43 +429,46 @@ function CreateAndEditPanel() {
               )}
             </div>
             <div className="create-edit-form-inputs">
-              <div>
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                  customInput={
-                    <TextField
-                      label="Başlangıç Tarihi"
-                      fullWidth
-                      sx={{ marginBottom: "10px" }}
-                      error={Boolean(errors.startDate)}
-                      helperText={errors.startDate}
-                    />
-                  }
-                  showTimeSelect
-                  timeFormat="HH:mm"
-                  timeIntervals={15}
-                  dateFormat="dd.MM.yyyy HH:mm"
-                />
-              </div>
-              <div>
-                <DatePicker
-                  selected={endDate}
-                  onChange={(date) => setEndDate(date)}
-                  customInput={
-                    <TextField
-                      label="Bitiş Tarihi"
-                      fullWidth
-                      error={Boolean(errors.endDate)}
-                      helperText={errors.endDate}
-                    />
-                  }
-                  showTimeSelect
-                  timeFormat="HH:mm"
-                  timeIntervals={15}
-                  dateFormat="dd.MM.yyyy HH:mm"
-                />
-              </div>
+              <LocalizationProvider
+                dateAdapter={AdapterDayjs}
+                adapterLocale="tr"
+              >
+                <Box sx={{ width: "225px" }}>
+                  <DateTimePicker
+                    label="Başlangıç Tarihi"
+                    value={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        error: Boolean(errors?.startDate),
+                        helperText: errors?.startDate,
+                      },
+                    }}
+                  />
+                </Box>
+              </LocalizationProvider>
+            </div>
+            <div className="create-edit-form-inputs">
+              <LocalizationProvider
+                dateAdapter={AdapterDayjs}
+                adapterLocale="tr"
+              >
+                <Box sx={{ width: "225px" }}>
+                  <DateTimePicker
+                    label="Bitiş Tarihi"
+                    value={endDate}
+                    onChange={(date) => setEndDate(date)}
+                    slotProps={{
+                      textField: {
+                        fullWidth: true,
+                        error: Boolean(errors?.endDate),
+                        helperText: errors?.endDate,
+                      },
+                    }}
+                  />
+                </Box>
+              </LocalizationProvider>
             </div>
             <div className="create-edit-form-inputs">
               {updating ? (
