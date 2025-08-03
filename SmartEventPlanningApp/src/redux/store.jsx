@@ -6,6 +6,7 @@ import accountReducer from "./slices/accountSlice";
 import mapReducer from "./slices/mapSlice";
 import recommendedReducer from "./slices/recommendedSlice";
 import eventReducer from "./slices/eventSlice";
+import eventRegisterReducer from "./slices/eventRegisterSlice";
 
 export const store = configureStore({
   reducer: {
@@ -16,5 +17,6 @@ export const store = configureStore({
     map: mapReducer,
     recommended: recommendedReducer,
     event: eventReducer,
+    eventRegister: eventRegisterReducer,
   },
 });

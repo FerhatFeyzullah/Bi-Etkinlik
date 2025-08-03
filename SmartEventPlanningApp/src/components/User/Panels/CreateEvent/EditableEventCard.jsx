@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../../../../css/User/Panels/CreateEventPanel/EditableEventCard.css";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
 import { useDispatch, useSelector } from "react-redux";

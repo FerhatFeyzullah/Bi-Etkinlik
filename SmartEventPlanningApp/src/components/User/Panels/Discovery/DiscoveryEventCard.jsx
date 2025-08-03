@@ -10,16 +10,19 @@ import {
   SetDiscoveryLatitude,
   SetDiscoveryLongitude,
 } from "../../../../redux/slices/mapSlice";
+import { RegisterEvent } from "../../../../redux/slices/eventRegisterSlice";
+import { MarkEventAsRegistered } from "../../../../redux/slices/discoverySlice";
 
-function DiscoveryEventCard() {
+function DiscoveryEventCard({ event }) {
   const dispatch = useDispatch();
-  const { discoveryEvents, boxReviewIsChecked } = useSelector(
-    (store) => store.discovery
-  );
+  const { boxReviewIsChecked } = useSelector((store) => store.discovery);
+
   const { discoveryLatitude, discoveryLongitude } = useSelector(
     (store) => store.map
   );
   const [imgError, setImgError] = useState(false);
+
+  const UserId = localStorage.getItem("UserId");
 
   const formatDateTime = (dateTime) => {
     const date = new Date(dateTime);
@@ -35,134 +38,153 @@ function DiscoveryEventCard() {
   const ReviewTheLocation = (lat, lng) => {
     dispatch(SetDiscoveryLatitude(lat));
     dispatch(SetDiscoveryLongitude(lng));
-    console.log(lat, lng);
+  };
+
+  const Register = async (usId, evId) => {
+    const data = {
+      AppUserId: Number(usId),
+      EventId: evId,
+    };
+    var result = await dispatch(RegisterEvent(data)).unwrap();
+    if (result) {
+      dispatch(MarkEventAsRegistered(event.eventId));
+    }
   };
 
   return (
     <>
-      {discoveryEvents.events?.map((e) => (
-        <div
-          className={
-            !boxReviewIsChecked
-              ? "discovery-e-c-main-with-card"
-              : "discovery-e-c-main-without-card"
-          }
-          key={e.eventId}
-        >
-          <div className="discovery-e-c-user-info">
-            <div>
-              <IconButton disabled>
-                <Avatar
-                  sx={{ width: 60, height: 60 }}
-                  src={
-                    !imgError && e.appUser?.profilePhotoId
-                      ? `https://localhost:7126/api/Users/ProfileImage/${e.appUser.profilePhotoId}`
-                      : undefined
-                  }
-                  onError={() => setImgError(true)}
-                >
-                  {!e.appUser?.profilePhotoId &&
-                    e.appUser.firstName?.[0].toUpperCase()}
-                </Avatar>
-              </IconButton>
-            </div>
-            <div>
-              {e.appUser.firstName} {e.appUser.lastName} {"("}
-            </div>
-            <Tooltip title="Topluluk Puanı" placement="right">
-              <div>
-                {e.appUser.score}
-                {")"}
-              </div>
-            </Tooltip>
-          </div>
-          <div className="flex-row">
-            <div className="discovery-e-c-image">
-              <img
+      <div
+        className={
+          !boxReviewIsChecked
+            ? "discovery-e-c-main-with-card"
+            : "discovery-e-c-main-without-card"
+        }
+      >
+        <div className="discovery-e-c-user-info">
+          <div>
+            <IconButton disabled>
+              <Avatar
+                sx={{ width: 60, height: 60 }}
                 src={
-                  !imgError && e.eventImageId
-                    ? `https://localhost:7126/api/Users/ProfileImage/${e.eventImageId}`
-                    : BiEtkinlik
+                  !imgError && event.appUser?.profilePhotoId
+                    ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
+                    : undefined
                 }
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  objectFit: "cover",
-                  borderRadius: "12px",
-                }}
                 onError={() => setImgError(true)}
-                alt="Resim"
-              />
-            </div>
+              >
+                {!event.appUser?.profilePhotoId &&
+                  event.appUser.firstName?.[0].toUpperCase()}
+              </Avatar>
+            </IconButton>
           </div>
-          <div className="flex-row-justify-start">
-            <div className="discovery-e-c-register">
+          <div>
+            {event.appUser.firstName} {event.appUser.lastName} {"("}
+          </div>
+          <Tooltip title="Topluluk Puanı" placement="right">
+            <div>
+              {event.appUser.score}
+              {")"}
+            </div>
+          </Tooltip>
+        </div>
+        <div className="flex-row">
+          <div className="discovery-e-c-image">
+            <img
+              src={
+                !imgError && event.eventImageId
+                  ? `https://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+                  : BiEtkinlik
+              }
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                borderRadius: "12px",
+              }}
+              onError={() => setImgError(true)}
+              alt="Resim"
+            />
+          </div>
+        </div>
+        <div className="flex-row-justify-start">
+          <div className="discovery-e-c-register">
+            {!event.registered ? (
               <Button
                 variant="outlined"
                 color="success"
                 sx={{ textTransform: "none" }}
-                disabled={e.registered}
+                onClick={() => Register(UserId, event.eventId)}
               >
-                {!e.registered ? "Kaydol" : "Kayıt Yapıldı"}
+                Kaydol
               </Button>
-            </div>
-            <div className="discovery-e-c-register">
+            ) : (
               <Button
-                variant={
-                  e.latitude == discoveryLatitude &&
-                  e.longitude == discoveryLongitude
-                    ? "contained"
-                    : "outlined"
-                }
+                variant="outlined"
+                color="success"
                 sx={{ textTransform: "none" }}
-                onClick={() => ReviewTheLocation(e.latitude, e.longitude)}
+                disabled
               >
-                Konumu Gör
+                Kayıt Yapıldı
               </Button>
-            </div>
+            )}
           </div>
-          <div className="discovery-e-c-description-container">
-            <Accordion
-              sx={{
-                width: "100%",
-                boxShadow: "none",
-                backgroundColor: !boxReviewIsChecked ? "whitesmoke" : "white",
-              }}
+          <div className="discovery-e-c-register">
+            <Button
+              variant={
+                event.latitude == discoveryLatitude &&
+                event.longitude == discoveryLongitude
+                  ? "contained"
+                  : "outlined"
+              }
+              sx={{ textTransform: "none" }}
+              onClick={() => ReviewTheLocation(event.latitude, event.longitude)}
             >
-              <AccordionSummary
-                expandIcon={<ExpandMoreIcon />}
-                aria-controls={`panel-content-${e.id}`}
-                id={`panel-header-${e.id}`}
-                sx={{ padding: 0 }}
-              >
-                <div className="flex-row-justify-start">
-                  <div className="discovery-e-c-name">{e.name} - </div>
-                  {e.eventCategories.map((c) => (
-                    <div
-                      className="discovery-e-c-category"
-                      key={c.category.categoryId}
-                    >
-                      {c.category.categoryName}
-                    </div>
-                  ))}
-                </div>
-              </AccordionSummary>
-              <AccordionDetails sx={{ padding: "8px 0" }}>
-                <div>
-                  {e.description}
-                  <div style={{ marginTop: "5px" }}>Şehir: {e.city}</div>
-                  <div style={{ marginTop: "5px" }}>
-                    Başlangıç: {formatDateTime(e.startDate)}
-                  </div>
-                  <div style={{ marginTop: "5px" }}>
-                    Bitiş: {formatDateTime(e.endDate)}
-                  </div>
-                </div>
-              </AccordionDetails>
-            </Accordion>
+              Konumu Gör
+            </Button>
           </div>
         </div>
-      ))}
+        <div className="discovery-e-c-description-container">
+          <Accordion
+            sx={{
+              width: "100%",
+              boxShadow: "none",
+              backgroundColor: !boxReviewIsChecked ? "whitesmoke" : "white",
+            }}
+          >
+            <AccordionSummary
+              expandIcon={<ExpandMoreIcon />}
+              aria-controls={`panel-content-${event.id}`}
+              id={`panel-header-${event.id}`}
+              sx={{ padding: 0 }}
+            >
+              <div className="flex-row-justify-start">
+                <div className="discovery-e-c-name">{event.name} - </div>
+                {event.eventCategories.map((c) => (
+                  <div
+                    className="discovery-e-c-category"
+                    key={c.category.categoryId}
+                  >
+                    {c.category.categoryName}
+                  </div>
+                ))}
+              </div>
+            </AccordionSummary>
+            <AccordionDetails sx={{ padding: "8px 0" }}>
+              <div>
+                {event.description}
+                <div style={{ marginTop: "5px" }}>Şehir: {event.city}</div>
+                <div style={{ marginTop: "5px" }}>
+                  Başlangıç: {formatDateTime(event.startDate)}
+                </div>
+                <div style={{ marginTop: "5px" }}>
+                  Bitiş: {formatDateTime(event.endDate)}
+                </div>
+              </div>
+            </AccordionDetails>
+          </Accordion>
+        </div>
+      </div>
+
       <hr />
     </>
   );

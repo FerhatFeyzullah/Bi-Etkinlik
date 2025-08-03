@@ -3,10 +3,10 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   SetIsEventPreview,
   SetPreviewedEvent,
-} from "../../../../redux/slices/eventSlice";
-import "../../../../css/User/DiscoveryEventCard.css";
+} from "../../../redux/slices/eventSlice";
+import "../../../css/User/DiscoveryEventCard.css";
 import { Avatar, Button, IconButton } from "@mui/material";
-import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
+import BiEtkinlik from "../../../assets/eventImage/BiEtkinlik.png";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import Tooltip from "@mui/material/Tooltip";
@@ -54,7 +54,6 @@ function EventReviewDialog() {
         keepMounted
         onClose={CloseDialog}
       >
-        <DialogTitle sx={{ textAlign: "center" }}>{"Etkinliğim"}</DialogTitle>
         <DialogContent sx={{ width: "600px" }} className="flex-row">
           <>
             <div className="review-e-c-main-without-card">

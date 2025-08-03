@@ -12,8 +12,13 @@ namespace SmartEventPlanningSystem.Domain.Entities
         public int EventId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+
+
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime StartDate { get; set; }
+        [Column(TypeName = "timestamp without time zone")]
         public DateTime EndDate { get; set; }
+
         public bool? Status { get; set; }
         public string City { get; set; }
         public string EventImageId { get; set; }

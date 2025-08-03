@@ -3,7 +3,7 @@ import "../../../../css/User/Panels/CreateEventPanel/EditableEventsPanel.css";
 import EditableEventCard from "./EditableEventCard";
 import { useDispatch, useSelector } from "react-redux";
 import { GetEventsI_CreatedUnFiltreted } from "../../../../redux/slices/eventSlice";
-import EventReviewDialog from "./EventReviewDialog";
+import EventReviewDialog from "../EventReviewDialog";
 import EditableEventCardSkeleton from "../../../Skeletons/EditableEventCardSkeleton";
 import Tooltip from "@mui/material/Tooltip";
 
@@ -16,7 +16,6 @@ function EditableEventsPanel({ children }) {
   const UserId = localStorage.getItem("UserId");
   useEffect(() => {
     dispatch(GetEventsI_CreatedUnFiltreted(UserId));
-    console.log(UserId);
   }, [UserId, createAndEditS_Alert]);
 
   return (

@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\upload\\events\\b86bd20c-756b-4582-9297-6a00ca44d33c.jpg"
     },
     {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\e02f74ef-7814-44f7-ac39-f02410894457.png",
+      "PackagePath": "staticwebassets\\upload\\events\\e02f74ef-7814-44f7-ac39-f02410894457.png"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\e37bd4fb-ab02-4d0b-8e6a-d80588df7a9f.jpg",
+      "PackagePath": "staticwebassets\\upload\\events\\e37bd4fb-ab02-4d0b-8e6a-d80588df7a9f.jpg"
+    },
+    {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\events\\fb703377-8f5b-4799-9c5e-a577763d821a.jpg",
       "PackagePath": "staticwebassets\\upload\\events\\fb703377-8f5b-4799-9c5e-a577763d821a.jpg"
     },
@@ -47,6 +55,14 @@
     {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\4cfd50ce-c488-4b1e-8997-a668a415f5c0.jpg",
       "PackagePath": "staticwebassets\\upload\\users\\4cfd50ce-c488-4b1e-8997-a668a415f5c0.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\5fdd8db3-8014-4064-9c17-f24e3166eda4.jpg",
+      "PackagePath": "staticwebassets\\upload\\users\\5fdd8db3-8014-4064-9c17-f24e3166eda4.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\6e4272bc-c732-46f3-83a8-42566facf819.png",
+      "PackagePath": "staticwebassets\\upload\\users\\6e4272bc-c732-46f3-83a8-42566facf819.png"
     },
     {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG",

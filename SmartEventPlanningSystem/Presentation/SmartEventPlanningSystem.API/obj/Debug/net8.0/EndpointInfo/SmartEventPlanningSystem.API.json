@@ -228,7 +228,51 @@
         }
       }
     },
-    "/api/EventRegisters/GetEventsI_Joined": {
+    "/api/EventRegisters/GetMyPastEvents": {
+      "get": {
+        "tags": [
+          "EventRegisters"
+        ],
+        "parameters": [
+          {
+            "name": "AppUserId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EventRegisters/GetMyFutureEvents": {
+      "get": {
+        "tags": [
+          "EventRegisters"
+        ],
+        "parameters": [
+          {
+            "name": "AppUserId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/EventRegisters/GetMyCurrentEvents": {
       "get": {
         "tags": [
           "EventRegisters"

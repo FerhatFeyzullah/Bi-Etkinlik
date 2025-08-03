@@ -45,7 +45,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
         public async Task<List<GetMyPastEventsResponse>> GetMyPastEvents (int id, CancellationToken ct)
         {
-            var now = DateTime.UtcNow;
+            var now = DateTime.Now;
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
@@ -66,11 +66,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
         public async Task<List<GetMyCurrentEventsResponse>> GetMyCurrentEvents(int id, CancellationToken ct)
         {
-            var now = DateTime.UtcNow;
+            var now = DateTime.Now;
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
-                    x.Event.StartDate > now && x.Event.EndDate < now,
+                    x.Event.StartDate < now && x.Event.EndDate > now,
 
                     q => q
                     .Include(x => x.Event)
@@ -85,7 +85,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
         public async Task<List<GetMyFutureEventsResponse>> GetMyFutureEvents(int id, CancellationToken ct)
         {
-            var now = DateTime.UtcNow;
+            var now = DateTime.Now;
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&

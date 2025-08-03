@@ -13,6 +13,8 @@ import {
 } from "../../../../redux/slices/discoverySlice";
 import DiscoveryEventCard from "./DiscoveryEventCard";
 import ReviewEventCardSkeleton from "../../../Skeletons/ReviewEventCardSkeleton";
+import ToastMistake from "../../../Elements/ToastMistake";
+import { SetEventRegisterMistakeAlert } from "../../../../redux/slices/eventRegisterSlice";
 
 function DiscoveryPanel() {
   const dispatch = useDispatch();
@@ -23,7 +25,12 @@ function DiscoveryPanel() {
     cities,
     categories,
     discoverySkeletonLoading,
+    discoveryEvents,
   } = useSelector((store) => store.discovery);
+
+  const { eventRegisterMistakeAlert, eventRegisterResponse } = useSelector(
+    (store) => store.eventRegister
+  );
 
   const AppUser = JSON.parse(localStorage.getItem("AppUser"));
   const UserId = localStorage.getItem("UserId");
@@ -115,14 +122,29 @@ function DiscoveryPanel() {
     }
   }, [UserId, dateFilterMode, startDate, endDate, cities, categories]);
 
+  const CloseEventRegisterMistakeToast = () => {
+    dispatch(SetEventRegisterMistakeAlert(false));
+  };
+
   return (
-    <div className="discovery-container flex-column-justify-start">
-      {discoverySkeletonLoading ? (
-        <ReviewEventCardSkeleton />
-      ) : (
-        <DiscoveryEventCard />
-      )}
-    </div>
+    <>
+      <div className="discovery-container flex-column-justify-start">
+        {discoverySkeletonLoading ? (
+          <ReviewEventCardSkeleton />
+        ) : (
+          discoveryEvents &&
+          discoveryEvents?.events?.map((e) => (
+            <DiscoveryEventCard event={e} key={e.eventId} />
+          ))
+        )}
+      </div>
+
+      <ToastMistake
+        visible={eventRegisterMistakeAlert}
+        detail={eventRegisterResponse}
+        closer={CloseEventRegisterMistakeToast}
+      />
+    </>
   );
 }
 

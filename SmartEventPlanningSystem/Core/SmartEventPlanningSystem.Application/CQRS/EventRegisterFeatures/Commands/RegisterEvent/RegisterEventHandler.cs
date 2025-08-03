@@ -8,12 +8,23 @@ using SmartEventPlanningSystem.Application.Services;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RegisterEvent
 {
-    public class RegisterEventHandler(IEventRegisterService eventRegisterService) : IRequestHandler<RegisterEventRequest, Unit>
+    public class RegisterEventHandler(IEventRegisterService eventRegisterService) : IRequestHandler<RegisterEventRequest, bool>
     {
-        public async Task<Unit> Handle(RegisterEventRequest request, CancellationToken cancellationToken)
+        public async Task<bool> Handle(RegisterEventRequest request, CancellationToken cancellationToken)
         {
-            await eventRegisterService.RegisterEvent(request.EventId, request.AppUserId, cancellationToken);
-            return Unit.Value;  
+            try
+            {
+                await eventRegisterService.RegisterEvent(request.EventId, request.AppUserId, cancellationToken);
+                return true;
+            }
+            catch { 
+                return false;
+
+            }
+
+
+
+
         }
     }
 }

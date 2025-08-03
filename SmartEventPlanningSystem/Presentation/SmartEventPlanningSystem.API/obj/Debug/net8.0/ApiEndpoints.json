@@ -122,8 +122,40 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
+    "Method": "GetMyCurrentEvents",
+    "RelativePath": "api/EventRegisters/GetMyCurrentEvents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
+    "Method": "GetMyFutureEvents",
+    "RelativePath": "api/EventRegisters/GetMyFutureEvents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
     "Method": "GetEventsI_Joined",
-    "RelativePath": "api/EventRegisters/GetEventsI_Joined",
+    "RelativePath": "api/EventRegisters/GetMyPastEvents",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -22,7 +22,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task SendMessage(CreateMessageDto createMessageDto, CancellationToken ct)
         {
             var message = mapper.Map<Message>(createMessageDto);
-            message.SendingTime = DateTime.UtcNow;
+            message.SendingTime = DateTime.Now;
 
             await unitOfWork.WriteRepository<Message>().AddAsync(message, ct);
             await unitOfWork.CommitAsync();

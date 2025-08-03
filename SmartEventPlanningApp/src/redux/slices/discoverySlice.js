@@ -121,6 +121,15 @@ export const discoverySlice = createSlice({
   name: "discovery",
   initialState,
   reducers: {
+    MarkEventAsRegistered: (state, action) => {
+      const eventId = action.payload;
+      const event = state.discoveryEvents.events.find(
+        (e) => e.eventId === eventId
+      );
+      if (event) {
+        event.registered = true;
+      }
+    },
     ChangeBoxReviewIsChecked: (state, action) => {
       state.boxReviewIsChecked = action.payload;
     },
@@ -153,7 +162,7 @@ export const discoverySlice = createSlice({
         state.discoveryEvents = action.payload;
       })
       .addCase(GetE_UnFiltered.rejected, (state) => {
-        state.discoverySkeletonLoading = false;
+        state.discoverySkeletonLoading = true;
         console.log("UnFiltreted Basarisiz");
       })
 
@@ -257,5 +266,6 @@ export const {
   SetCities,
   SetCategories,
   SetDateFilterMode,
+  MarkEventAsRegistered,
 } = discoverySlice.actions;
 export default discoverySlice.reducer;

@@ -35,7 +35,7 @@ function MyProfileInfo() {
           <div style={{ width: "200px" }}>
             {myProfile.myProfile?.firstName} {myProfile.myProfile?.lastName}
           </div>
-          <div style={{ marginTop: "10px" }}>
+          <div style={{ marginTop: "10px", width: "200px" }}>
             {myProfile.myProfile?.userName}
           </div>
         </div>

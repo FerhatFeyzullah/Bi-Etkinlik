@@ -154,7 +154,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task<GetEventsICreatedUnFilteredResponse> GetEventsI_CreatedUnFiltered(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-            var now = DateTime.UtcNow;
+            var now = DateTime.Now;
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id &&
                 x.StartDate>now,
@@ -261,12 +261,16 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var filteredEvents = allEvents
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
                 .ToList();
-           
+
+            var filteredFromCreated = filteredEvents
+                .Where(x => x.AppUserId != id)
+                .ToList();
 
 
 
 
-            var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
+
+            var result = mapper.Map<List<EventsDiscoveryDto>>(filteredFromCreated);
             result = await MarkRegisteredEventsAsync(result, id, ct);          
 
             return new GetE_UnFilteredResponse

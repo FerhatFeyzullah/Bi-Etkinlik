@@ -166,7 +166,6 @@ export const eventSlice = createSlice({
       })
       .addCase(GetEventsI_CreatedUnFiltreted.fulfilled, (state, action) => {
         state.editableEvents = action.payload;
-        console.log(state.editableEvents);
         state.editableEventSkeleton = false;
       })
       .addCase(GetEventsI_CreatedUnFiltreted.rejected, (state) => {
