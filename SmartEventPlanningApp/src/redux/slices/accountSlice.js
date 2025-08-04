@@ -3,6 +3,9 @@ import axios from "../../api/axios";
 
 const initialState = {
   myProfile: {},
+  accountSliceResponse: "",
+  ppUploadMistake: false,
+  ppRemoveMistake: false,
 };
 
 export const GetUserInfo = createAsyncThunk("getUserInfo", async (id) => {
@@ -22,10 +25,29 @@ export const GetMyProfile = createAsyncThunk("getMyProfile", async (id) => {
   return response.data;
 });
 
+export const UploadPP = createAsyncThunk("uploadPP", async (data) => {
+  var response = await axios.put("Users/UploadProfilePhoto", data);
+  return response.data;
+});
+export const RemovePP = createAsyncThunk("removePP", async (id) => {
+  var response = await axios.put("Users/RemoveProfilePhoto/" + id);
+  return response.data;
+});
+
 export const accountSlice = createSlice({
   name: "discovery",
   initialState,
-  reducers: {},
+  reducers: {
+    SetPPUploadMistake: (state, action) => {
+      state.ppUploadMistake = action.payload;
+    },
+    SetPPRemoveMistake: (state, action) => {
+      state.ppRemoveMistake = action.payload;
+    },
+    SetAccountSliceResponse: (state) => {
+      state.accountSliceResponse = "";
+    },
+  },
   extraReducers: (builder) => {
     builder
 
@@ -44,9 +66,33 @@ export const accountSlice = createSlice({
       })
       .addCase(GetMyProfile.rejected, () => {
         console.log("GetMyProfile Basarisiz");
+      })
+
+      //UploadPP
+      .addCase(UploadPP.fulfilled, (state, action) => {
+        state.myProfile = action.payload;
+      })
+      .addCase(UploadPP.rejected, (state) => {
+        state.accountSliceResponse =
+          "Profil fotoğrafı yüklenirken beklenmeyen bir hata oluştu.";
+        state.ppUploadMistake = true;
+      })
+
+      //RemovePP
+      .addCase(RemovePP.fulfilled, (state, action) => {
+        state.myProfile = action.payload;
+      })
+      .addCase(RemovePP.rejected, (state) => {
+        state.accountSliceResponse =
+          "Profil fotoğrafı silinirken beklenmeyen bir hata oluştu.";
+        state.ppRemoveMistake = true;
       });
   },
 });
 
-//export const {} = accountSlice.actions;
+export const {
+  SetPPUploadMistake,
+  SetPPRemoveMistake,
+  SetAccountSliceResponse,
+} = accountSlice.actions;
 export default accountSlice.reducer;

@@ -19,8 +19,14 @@ namespace SmartEventPlanningSystem.Infrastructure.Services
         }
 
         public async Task DeleteImage(string imagePath)
-        {          
-                var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imagePath);
+        {
+
+            if (string.IsNullOrEmpty(imagePath))
+            {
+                // Dosya yolu boşsa işlem yapma, direkt çık
+                return;
+            }
+            var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imagePath);
 
                 if (File.Exists(fullPath))
                 {

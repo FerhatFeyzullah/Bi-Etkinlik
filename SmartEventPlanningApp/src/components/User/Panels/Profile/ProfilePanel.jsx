@@ -2,7 +2,12 @@ import React, { useEffect, useState } from "react";
 import "../../../../css/User/Panels/Profile/ProfilePanel.css";
 import { useDispatch, useSelector } from "react-redux";
 
-import { GetMyProfile } from "../../../../redux/slices/accountSlice";
+import {
+  GetMyProfile,
+  SetAccountSliceResponse,
+  SetPPRemoveMistake,
+  SetPPUploadMistake,
+} from "../../../../redux/slices/accountSlice";
 import MyProfileInfo from "./MyProfileInfo";
 import MyActivities from "./MyActivities";
 import DeleteEventDialog from "./DeleteEventDialog";
@@ -17,9 +22,17 @@ function ProfilePanel() {
   const { eventRatedMistakeAlert, eventRegisterResponse } = useSelector(
     (store) => store.eventRegister
   );
+  const { accountSliceResponse, ppUploadMistake, ppRemoveMistake } =
+    useSelector((store) => store.account);
 
   const CloseEventRatedMistakeToast = () => {
     dispatch(SetEventRatedMistakeAlert(false));
+  };
+  const CloseUploadPPMistakeToast = () => {
+    dispatch(SetPPUploadMistake(false));
+  };
+  const CloseRemovePPMistakeToast = () => {
+    dispatch(SetPPRemoveMistake(false));
   };
 
   const UserId = localStorage.getItem("UserId");
@@ -46,6 +59,16 @@ function ProfilePanel() {
         visible={eventRatedMistakeAlert}
         detail={eventRegisterResponse}
         closer={CloseEventRatedMistakeToast}
+      />
+      <ToastMistake
+        visible={ppUploadMistake}
+        detail={accountSliceResponse}
+        closer={CloseUploadPPMistakeToast}
+      />
+      <ToastMistake
+        visible={ppRemoveMistake}
+        detail={accountSliceResponse}
+        closer={CloseRemovePPMistakeToast}
       />
     </>
   );

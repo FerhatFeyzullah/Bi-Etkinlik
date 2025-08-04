@@ -180,6 +180,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\events\fb703377-8f5b-4799-9c5e-a577763d821a.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\079ec91f-9292-4aae-8e92-badc476edd97.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SmartEventPlanningSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SmartEventPlanningSystem.API</BasePath>
+      <RelativePath>upload/users/079ec91f-9292-4aae-8e92-badc476edd97.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>cwwzstl9dm</Fingerprint>
+      <Integrity>TFFNHQowBXJJeajHyiKej0++VOABLDRZfWsUvwBR/vI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\079ec91f-9292-4aae-8e92-badc476edd97.png'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\0adc00de-b924-4203-9b71-6aa0bb60d876.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>SmartEventPlanningSystem.API</SourceId>
@@ -197,6 +215,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\0adc00de-b924-4203-9b71-6aa0bb60d876.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\15195258-7e7f-495a-a729-f1965d41fabf.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SmartEventPlanningSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SmartEventPlanningSystem.API</BasePath>
+      <RelativePath>upload/users/15195258-7e7f-495a-a729-f1965d41fabf.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>cwwzstl9dm</Fingerprint>
+      <Integrity>TFFNHQowBXJJeajHyiKej0++VOABLDRZfWsUvwBR/vI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\15195258-7e7f-495a-a729-f1965d41fabf.png'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\377ea7ff-6b56-42a8-8d4e-294f5ae3e6f6.png'))">
       <SourceType>Package</SourceType>
@@ -270,6 +306,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\5fdd8db3-8014-4064-9c17-f24e3166eda4.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\6739bcea-40fb-425c-94a7-9b52b0f02b98.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SmartEventPlanningSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SmartEventPlanningSystem.API</BasePath>
+      <RelativePath>upload/users/6739bcea-40fb-425c-94a7-9b52b0f02b98.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>cwwzstl9dm</Fingerprint>
+      <Integrity>TFFNHQowBXJJeajHyiKej0++VOABLDRZfWsUvwBR/vI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\6739bcea-40fb-425c-94a7-9b52b0f02b98.png'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\6e4272bc-c732-46f3-83a8-42566facf819.png'))">
       <SourceType>Package</SourceType>
       <SourceId>SmartEventPlanningSystem.API</SourceId>
@@ -288,6 +342,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\6e4272bc-c732-46f3-83a8-42566facf819.png'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\82b27f3c-c5eb-46c9-986e-4c8653d68c12.jpeg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SmartEventPlanningSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SmartEventPlanningSystem.API</BasePath>
+      <RelativePath>upload/users/82b27f3c-c5eb-46c9-986e-4c8653d68c12.jpeg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>1moz7ng23h</Fingerprint>
+      <Integrity>WQq26a1hk6QujJv0YPz2R8WZjIyWBdpiCVBLc1897tM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\82b27f3c-c5eb-46c9-986e-4c8653d68c12.jpeg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG'))">
       <SourceType>Package</SourceType>
       <SourceId>SmartEventPlanningSystem.API</SourceId>
@@ -305,6 +377,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\cb4bc199-6795-46e5-9ffc-dbac4a84b231.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>SmartEventPlanningSystem.API</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/SmartEventPlanningSystem.API</BasePath>
+      <RelativePath>upload/users/cb4bc199-6795-46e5-9ffc-dbac4a84b231.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>cwwzstl9dm</Fingerprint>
+      <Integrity>TFFNHQowBXJJeajHyiKej0++VOABLDRZfWsUvwBR/vI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\upload\users\cb4bc199-6795-46e5-9ffc-dbac4a84b231.png'))</OriginalItemSpec>
     </StaticWebAsset>
   </ItemGroup>
 </Project>

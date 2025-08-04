@@ -16,7 +16,7 @@ function ToastMistake({ detail, visible, closer }) {
         severity: "success",
         summary: "Başarılı",
         detail,
-        life: 5000,
+        life: 3000,
       });
     }
   }, [visible, detail]);

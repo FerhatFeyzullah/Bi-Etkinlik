@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using MediatR;
+using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 
@@ -15,7 +16,10 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.Remove
         public async Task<RemoveProfilePhotoResponse> Handle(RemoveProfilePhotoRequest request, CancellationToken cancellationToken)
         {
             var response = await userService.RemoveProfilePhoto(request.AppUserId,cancellationToken);
-            return mapper.Map<RemoveProfilePhotoResponse>(response);
+            return new RemoveProfilePhotoResponse
+            {
+                MyProfile = mapper.Map<UserProfileDto>(response)
+            };
         }
     }
 }

@@ -41,8 +41,16 @@
       "PackagePath": "staticwebassets\\upload\\events\\fb703377-8f5b-4799-9c5e-a577763d821a.jpg"
     },
     {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\079ec91f-9292-4aae-8e92-badc476edd97.png",
+      "PackagePath": "staticwebassets\\upload\\users\\079ec91f-9292-4aae-8e92-badc476edd97.png"
+    },
+    {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\0adc00de-b924-4203-9b71-6aa0bb60d876.jpg",
       "PackagePath": "staticwebassets\\upload\\users\\0adc00de-b924-4203-9b71-6aa0bb60d876.jpg"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\15195258-7e7f-495a-a729-f1965d41fabf.png",
+      "PackagePath": "staticwebassets\\upload\\users\\15195258-7e7f-495a-a729-f1965d41fabf.png"
     },
     {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\377ea7ff-6b56-42a8-8d4e-294f5ae3e6f6.png",
@@ -61,12 +69,24 @@
       "PackagePath": "staticwebassets\\upload\\users\\5fdd8db3-8014-4064-9c17-f24e3166eda4.jpg"
     },
     {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\6739bcea-40fb-425c-94a7-9b52b0f02b98.png",
+      "PackagePath": "staticwebassets\\upload\\users\\6739bcea-40fb-425c-94a7-9b52b0f02b98.png"
+    },
+    {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\6e4272bc-c732-46f3-83a8-42566facf819.png",
       "PackagePath": "staticwebassets\\upload\\users\\6e4272bc-c732-46f3-83a8-42566facf819.png"
     },
     {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\82b27f3c-c5eb-46c9-986e-4c8653d68c12.jpeg",
+      "PackagePath": "staticwebassets\\upload\\users\\82b27f3c-c5eb-46c9-986e-4c8653d68c12.jpeg"
+    },
+    {
       "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG",
       "PackagePath": "staticwebassets\\upload\\users\\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG"
+    },
+    {
+      "Id": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\wwwroot\\upload\\users\\cb4bc199-6795-46e5-9ffc-dbac4a84b231.png",
+      "PackagePath": "staticwebassets\\upload\\users\\cb4bc199-6795-46e5-9ffc-dbac4a84b231.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.SmartEventPlanningSystem.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",

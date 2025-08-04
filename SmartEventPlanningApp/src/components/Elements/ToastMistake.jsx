@@ -13,7 +13,7 @@ function ToastMistake({ detail, visible, closer }) {
         severity: "error",
         summary: "Hata",
         detail,
-        life: 5000,
+        life: 3000,
       });
     }
   }, [visible, detail]);
