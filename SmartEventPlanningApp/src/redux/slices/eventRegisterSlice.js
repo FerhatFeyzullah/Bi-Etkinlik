@@ -9,10 +9,18 @@ const initialState = {
   eventRegistirationDeleted: false,
   isEventDeleteDialog: false,
   deletedEvent: {},
+  isEventScoreRatedDialog: false,
+  ratedEvent: null,
+  eventRatedMistakeAlert: false,
 };
 
 export const RegisterEvent = createAsyncThunk("registerEvent", async (data) => {
   var response = await axios.post("EventRegisters/RegisterEvent", data);
+  return response.data;
+});
+
+export const RateEvent = createAsyncThunk("rateTheEvent", async (data) => {
+  var response = await axios.put("EventRegisters/RateTheEvent", data);
   return response.data;
 });
 
@@ -74,6 +82,26 @@ export const eventRegisterSlice = createSlice({
     SetDeletedEvent: (state, action) => {
       state.deletedEvent = action.payload;
     },
+    SetIsEventRateDialog: (state, action) => {
+      state.isEventScoreRatedDialog = action.payload;
+    },
+    SetRatedEvent: (state, action) => {
+      state.ratedEvent = action.payload;
+    },
+    SetEventRatedMistakeAlert: (state, action) => {
+      state.eventRatedMistakeAlert = action.payload;
+    },
+
+    MarkEventIsRated: (state, action) => {
+      const eRegisterId = action.payload;
+      const registiration = state.myRegisteredEvents.find(
+        (e) => e.eventRegisterId == eRegisterId
+      );
+
+      if (registiration) {
+        registiration.isScored = true;
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -90,6 +118,20 @@ export const eventRegisterSlice = createSlice({
         state.eventRegisterResponse =
           "Sunucuya Ulaşılamadı. Lütfen Daha Sonra Tekrar Deneyiniz.";
         state.eventRegisterMistakeAlert = true;
+      })
+
+      //RateEvent
+      .addCase(RateEvent.fulfilled, (state, action) => {
+        if (!action.payload) {
+          state.eventRegisterResponse =
+            "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+          state.eventRatedMistakeAlert = true;
+        }
+      })
+      .addCase(RateEvent.rejected, (state) => {
+        state.eventRegisterResponse =
+          "Sunucuya Ulaşılamadı. Lütfen Daha Sonra Tekrar Deneyiniz.";
+        state.eventRatedMistakeAlert = true;
       })
 
       //DeleteRegistiration
@@ -144,5 +186,9 @@ export const {
   SetIsEventDialog,
   SetDeletedEvent,
   SetEventRegisterationDeleted,
+  SetIsEventRateDialog,
+  SetRatedEvent,
+  MarkEventIsRated,
+  SetEventRatedMistakeAlert,
 } = eventRegisterSlice.actions;
 export default eventRegisterSlice.reducer;

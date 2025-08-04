@@ -40,10 +40,10 @@ function DiscoveryEventCard({ event }) {
     dispatch(SetDiscoveryLongitude(lng));
   };
 
-  const Register = async (usId, evId) => {
+  const Register = async () => {
     const data = {
-      AppUserId: Number(usId),
-      EventId: evId,
+      AppUserId: Number(UserId),
+      EventId: event.eventId,
     };
     var result = await dispatch(RegisterEvent(data)).unwrap();
     if (result) {
@@ -113,7 +113,7 @@ function DiscoveryEventCard({ event }) {
                 variant="outlined"
                 color="success"
                 sx={{ textTransform: "none" }}
-                onClick={() => Register(UserId, event.eventId)}
+                onClick={Register}
               >
                 Kaydol
               </Button>

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.DeleteEventRegister;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RateTheEvent;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RegisterEvent;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents;
@@ -24,6 +25,12 @@ namespace SmartEventPlanningSystem.API.Controllers
         public async Task<IActionResult> DeleteEventRegister([FromRoute] int userId,int eventId)
         {
             return Ok(await mediator.Send(new DeleteEventRegisterRequest { AppUserId = userId,EventId = eventId}));
+        }
+
+        [HttpPut("RateTheEvent")]
+        public async Task<IActionResult> RateTheEvent([FromBody] RateTheEventRequest request)
+        {
+            return Ok(await mediator.Send(request));
         }
 
         [HttpGet("GetMyPastEvents")]

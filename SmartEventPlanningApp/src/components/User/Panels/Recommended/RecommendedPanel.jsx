@@ -21,9 +21,11 @@ function RecommendedPanel() {
     <div className="recommended-container flex-column-justify-start">
       <ReviewEventCardSkeleton />
     </div>
-  ) : recommendedEvents.length > 0 ? (
+  ) : recommendedEvents?.events?.length > 0 ? (
     <div className="recommended-container flex-column-justify-start">
-      <RecommendedEventCard />
+      {recommendedEvents.events.map((e) => (
+        <RecommendedEventCard event={e} key={e.eventId} />
+      ))}
     </div>
   ) : (
     <div className="recommended-container-empty-text flex-column">

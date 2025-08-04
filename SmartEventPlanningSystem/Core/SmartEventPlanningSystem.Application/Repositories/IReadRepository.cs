@@ -11,7 +11,8 @@ namespace SmartEventPlanningSystem.Application.Repositories
     {
         Task<T> GetByIdAsync(int id, CancellationToken ct = default);
         Task<List<T>> GetAllAsync(CancellationToken ct = default);
-
+        Task<List<T>> GetAllAsync( Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null,CancellationToken ct = default);
+                  
         Task<T> GetByFiltered(Expression<Func<T, bool>> filter, CancellationToken ct = default);
         Task<T> GetByFiltered(Expression<Func<T, bool>> filter, CancellationToken ct = default, params Expression<Func<T, object>>[] includes);
         Task<T> GetByFiltered(Expression<Func<T, bool>> filter, Func<IQueryable<T>, IQueryable<T>> include = null, CancellationToken ct = default);

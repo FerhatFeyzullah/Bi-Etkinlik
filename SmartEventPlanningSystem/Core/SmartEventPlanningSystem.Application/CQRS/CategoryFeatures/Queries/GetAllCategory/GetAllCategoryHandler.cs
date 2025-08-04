@@ -14,7 +14,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.CategoryFeatures.Queries.Get
     {
         public async Task<List<GetAllCategoryResponse>> Handle(GetAllCategoryRequest request, CancellationToken cancellationToken)
         {
-            var values = await unitOfWork.ReadRepository<Category>().GetAllAsync();
+            var values = await unitOfWork.ReadRepository<Category>().GetAllAsync(q=>q.OrderBy(x=>x.CategoryName),cancellationToken);
             return mapper.Map<List<GetAllCategoryResponse>>(values);
         }
     }

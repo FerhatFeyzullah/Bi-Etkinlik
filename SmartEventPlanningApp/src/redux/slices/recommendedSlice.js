@@ -21,7 +21,17 @@ export const GetEventsRecommendedToMe = createAsyncThunk(
 export const recommendedSlice = createSlice({
   name: "recommended",
   initialState,
-  reducers: {},
+  reducers: {
+    MarkRecommendedEventAsRegistered: (state, action) => {
+      const eventId = action.payload;
+      const event = state.recommendedEvents.events.find(
+        (e) => e.eventId === eventId
+      );
+      if (event) {
+        event.registered = true;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(GetEventsRecommendedToMe.pending, (state) => {
@@ -37,5 +47,5 @@ export const recommendedSlice = createSlice({
   },
 });
 
-//export const {} = recommendedSlice.actions;
+export const { MarkRecommendedEventAsRegistered } = recommendedSlice.actions;
 export default recommendedSlice.reducer;

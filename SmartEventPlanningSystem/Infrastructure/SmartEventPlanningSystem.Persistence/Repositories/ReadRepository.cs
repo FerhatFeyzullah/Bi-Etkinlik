@@ -32,7 +32,17 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
 
         public async Task<List<T>> GetAllAsync(CancellationToken ct = default)
         {
-            return await Table.ToListAsync(ct);
+            return await Table.ToListAsync();
+        }
+
+        public async Task<List<T>> GetAllAsync(Func<IQueryable<T>, IOrderedQueryable<T>>? orderBy = null, CancellationToken ct = default)
+        {
+            IQueryable<T> query = Table;
+
+            if (orderBy != null)
+                query = orderBy(query);
+
+            return await query.ToListAsync(ct);
         }
 
         public async Task<T> GetByIdAsync(int id, CancellationToken ct = default)
@@ -89,6 +99,8 @@ namespace SmartEventPlanningSystem.Persistence.Repositories
             }
             return await query.ToListAsync(ct);
         }
+
+        
     }
 
 }

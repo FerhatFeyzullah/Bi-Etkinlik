@@ -16,7 +16,7 @@ namespace SmartEventPlanningSystem.Application.DTOs.UserDtos
         public DateOnly BirthDate { get; set; }
         public string Gender { get; set; }
         public string? ProfilePhotoId { get; set; }
-        public int Score { get; set; }
+        public decimal Score { get; set; }
         public bool EmailConfirmed { get; set; }
 
         public List<ResultAppUserCategoryDto> AppUserCategories { get; set; }

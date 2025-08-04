@@ -7,9 +7,20 @@ import MyProfileInfo from "./MyProfileInfo";
 import MyActivities from "./MyActivities";
 import DeleteEventDialog from "./DeleteEventDialog";
 import EventReviewDialog from "../EventReviewDialog";
+import ReviewMapDialog from "../ReviewMapDialog";
+import RateEventDialog from "./RateEventDialog";
+import ToastMistake from "../../../Elements/ToastMistake";
+import { SetEventRatedMistakeAlert } from "../../../../redux/slices/eventRegisterSlice";
 
 function ProfilePanel() {
   const dispatch = useDispatch();
+  const { eventRatedMistakeAlert, eventRegisterResponse } = useSelector(
+    (store) => store.eventRegister
+  );
+
+  const CloseEventRatedMistakeToast = () => {
+    dispatch(SetEventRatedMistakeAlert(false));
+  };
 
   const UserId = localStorage.getItem("UserId");
 
@@ -29,6 +40,13 @@ function ProfilePanel() {
       </div>
       <DeleteEventDialog />
       <EventReviewDialog />
+      <RateEventDialog />
+      <ReviewMapDialog />
+      <ToastMistake
+        visible={eventRatedMistakeAlert}
+        detail={eventRegisterResponse}
+        closer={CloseEventRatedMistakeToast}
+      />
     </>
   );
 }

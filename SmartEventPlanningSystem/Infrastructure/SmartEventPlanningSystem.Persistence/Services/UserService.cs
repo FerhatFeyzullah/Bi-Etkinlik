@@ -230,6 +230,9 @@ namespace SmartEventPlanningSystem.Persistence.Services
             if (user == null)
                 throw new KeyNotFoundException("User not found");
 
+            var oldPpId = user.ProfilePhotoId;
+            await fileStorageService.DeleteImage(oldPpId);
+
             user.ProfilePhotoId = ppid;
 
             await unitOfWork.WriteRepository<AppUser>().Update(user);

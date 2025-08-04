@@ -61,10 +61,16 @@ namespace SmartEventPlanningSystem.API.Controllers
         }
 
         [HttpPost("LogoutFromSystem")]
-        public async Task<IActionResult> Logout()
+        public IActionResult Logout()
         {
-            Response.Cookies.Delete("MyAuthCookie");
-            return Ok("Çıkış İşlemi Başarılı.");
+            Response.Cookies.Delete("MyAuthCookie", new CookieOptions
+            {
+                HttpOnly = true,
+                SameSite = SameSiteMode.None,
+                Secure = true,
+            });
+
+            return Ok("Çıkış işlemi başarılı.");
         }
     }
 }

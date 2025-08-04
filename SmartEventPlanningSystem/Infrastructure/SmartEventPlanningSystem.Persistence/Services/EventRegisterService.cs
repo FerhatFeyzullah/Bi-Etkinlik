@@ -43,6 +43,68 @@ namespace SmartEventPlanningSystem.Persistence.Services
             await unitOfWork.CommitAsync();
         }
 
+        public async Task<bool> RateTheEvent(int eventRegisterId, decimal score, CancellationToken ct)
+        {
+            ct.ThrowIfCancellationRequested();
+
+            try
+            {
+                var eventRegister = await unitOfWork.ReadRepository<EventRegister>().GetByFiltered
+                    (x=>x.EventRegisterId == eventRegisterId,
+                    q => q.Include(x => x.Event)
+                        .ThenInclude(e => e.AppUser) , ct);              
+
+                if (eventRegister == null)
+                {
+                    Console.WriteLine("eventRegister null.");
+                    return false;
+                }
+
+                if (eventRegister.Event == null)
+                {
+                    Console.WriteLine("eventRegister.Event null.");
+                    return false;
+                }
+
+                if (eventRegister.Event.AppUser == null)
+                {
+                    Console.WriteLine("eventRegister.Event.AppUser null.");
+                    return false;
+                }
+
+                if (eventRegister.IsScored)
+                {
+                    Console.WriteLine("Etkinlik daha önce puanlanmış.");
+                    return false;
+                }
+
+                if (score < 0 || score > 10)
+                {
+                    Console.WriteLine($"Geçersiz puan: {score}");
+                    return false;
+                }
+
+                var eventCreator = eventRegister.Event.AppUser;
+
+                eventCreator.Score =
+                    ((eventCreator.Score * eventCreator.NumberOfRaters) + score) / (eventCreator.NumberOfRaters + 1);
+                eventCreator.NumberOfRaters++;
+
+                eventRegister.IsScored = true;
+
+                await unitOfWork.CommitAsync();
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"HATA VARRRRRRRRRR: {ex.Message}");
+                await unitOfWork.RollbackAsync();
+                return false;
+            }
+
+        }
+
+
         public async Task<List<GetMyPastEventsResponse>> GetMyPastEvents (int id, CancellationToken ct)
         {
             var now = DateTime.Now;
@@ -100,5 +162,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     ct);
             return  mapper.Map<List<GetMyFutureEventsResponse>>(value);
         }
+
+       
     }
 }

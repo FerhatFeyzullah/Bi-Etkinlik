@@ -3,6 +3,8 @@
   height: 100%;
   flex-wrap: wrap;
   overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 .my-activities-card-phase::-webkit-scrollbar {
   display: none; /* Chrome/Safari */

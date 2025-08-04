@@ -4,6 +4,7 @@ import axios from "../../api/axios";
 const initialState = {
   discoveryLatitude: "",
   discoveryLongitude: "",
+  isMapReviewed: false,
 };
 
 export const mapSlice = createSlice({
@@ -16,9 +17,13 @@ export const mapSlice = createSlice({
     SetDiscoveryLongitude: (state, action) => {
       state.discoveryLongitude = action.payload;
     },
+    SetIsMapReviewed: (state, action) => {
+      state.isMapReviewed = action.payload;
+    },
   },
   extraReducers: (builder) => {},
 });
 
-export const { SetDiscoveryLatitude, SetDiscoveryLongitude } = mapSlice.actions;
+export const { SetDiscoveryLatitude, SetDiscoveryLongitude, SetIsMapReviewed } =
+  mapSlice.actions;
 export default mapSlice.reducer;

@@ -41,17 +41,22 @@ function DeleteEventDialog() {
         onClose={CloseDialog}
       >
         <DialogTitle sx={{ textAlign: "center" }}>
-          {"Etkinlik Kaydı Silme"}
+          Katılımı Sonlandır
         </DialogTitle>
-        <DialogContent sx={{ width: "600px" }} className="flex-row">
-          <></>
+        <DialogContent sx={{ width: "500px" }} className="flex-row">
+          <>
+            <div>
+              Katılımını iptal etmek üzeresin. Gerçekten etkinlikten ayrılmak
+              istiyor musun?
+            </div>
+          </>
         </DialogContent>
         <DialogActions>
           <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
-            Vazgeç
+            Hayır
           </Button>
           <Button sx={{ textTransform: "none" }} onClick={DeleteEvent}>
-            Kaydımı Sil
+            Evet
           </Button>
         </DialogActions>
       </Dialog>

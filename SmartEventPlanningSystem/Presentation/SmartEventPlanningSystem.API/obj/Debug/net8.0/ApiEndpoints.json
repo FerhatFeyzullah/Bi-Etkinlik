@@ -170,6 +170,22 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
+    "Method": "RateTheEvent",
+    "RelativePath": "api/EventRegisters/RateTheEvent",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RateTheEvent.RateTheEventRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
     "Method": "RegisterEvent",
     "RelativePath": "api/EventRegisters/RegisterEvent",
     "HttpMethod": "POST",

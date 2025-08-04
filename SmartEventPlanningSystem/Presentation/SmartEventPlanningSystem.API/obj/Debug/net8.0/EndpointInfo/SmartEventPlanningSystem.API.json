@@ -228,6 +228,37 @@
         }
       }
     },
+    "/api/EventRegisters/RateTheEvent": {
+      "put": {
+        "tags": [
+          "EventRegisters"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateTheEventRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateTheEventRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RateTheEventRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/EventRegisters/GetMyPastEvents": {
       "get": {
         "tags": [
@@ -1392,6 +1423,20 @@
         },
         "additionalProperties": false
       },
+      "RateTheEventRequest": {
+        "type": "object",
+        "properties": {
+          "eventRegisterId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "score": {
+            "type": "number",
+            "format": "double"
+          }
+        },
+        "additionalProperties": false
+      },
       "RegisterEventRequest": {
         "type": "object",
         "properties": {
@@ -1504,10 +1549,6 @@
             "nullable": true
           },
           "lastName": {
-            "type": "string",
-            "nullable": true
-          },
-          "userName": {
             "type": "string",
             "nullable": true
           },

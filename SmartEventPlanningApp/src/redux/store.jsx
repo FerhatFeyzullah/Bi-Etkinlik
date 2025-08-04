@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, combineReducers } from "@reduxjs/toolkit";
 import authReducer from "./slices/authSlice";
 import categoryReducer from "./slices/categorySlice";
 import discoveryReducer from "./slices/discoverySlice";
@@ -8,15 +8,27 @@ import recommendedReducer from "./slices/recommendedSlice";
 import eventReducer from "./slices/eventSlice";
 import eventRegisterReducer from "./slices/eventRegisterSlice";
 
-export const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    category: categoryReducer,
-    discovery: discoveryReducer,
-    account: accountReducer,
-    map: mapReducer,
-    recommended: recommendedReducer,
-    event: eventReducer,
-    eventRegister: eventRegisterReducer,
-  },
+const appReducer = combineReducers({
+  auth: authReducer,
+  category: categoryReducer,
+  discovery: discoveryReducer,
+  account: accountReducer,
+  map: mapReducer,
+  recommended: recommendedReducer,
+  event: eventReducer,
+  eventRegister: eventRegisterReducer,
 });
+
+const rootReducer = (state, action) => {
+  if (action.type === "auth/logout") {
+    state = undefined;
+  }
+
+  return appReducer(state, action);
+};
+
+const store = configureStore({
+  reducer: rootReducer,
+});
+
+export default store;

@@ -30,7 +30,7 @@ export const ReadToken = createAsyncThunk("readToken", async () => {
 });
 
 export const LogoutFromSystem = createAsyncThunk("logout", async (data) => {
-  await axios.post("Auths/Logout", data);
+  await axios.post("Auths/LogoutFromSystem", data);
 });
 
 export const authSlice = createSlice({

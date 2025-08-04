@@ -11,11 +11,18 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import {
   SetDeletedEvent,
   SetIsEventDialog,
+  SetIsEventRateDialog,
+  SetRatedEvent,
 } from "../../../../redux/slices/eventRegisterSlice";
 import {
   SetIsEventPreview,
   SetPreviewedEvent,
 } from "../../../../redux/slices/eventSlice";
+import {
+  SetDiscoveryLatitude,
+  SetDiscoveryLongitude,
+  SetIsMapReviewed,
+} from "../../../../redux/slices/mapSlice";
 
 function MyRegisteredEventCard({ events, tabNumber }) {
   const dispatch = useDispatch();
@@ -35,6 +42,17 @@ function MyRegisteredEventCard({ events, tabNumber }) {
   const PreviewEvent = (a) => {
     dispatch(SetIsEventPreview(true));
     dispatch(SetPreviewedEvent(a));
+  };
+
+  const ReviewLocation = (lat, lng) => {
+    dispatch(SetDiscoveryLatitude(lat));
+    dispatch(SetDiscoveryLongitude(lng));
+    dispatch(SetIsMapReviewed(true));
+  };
+
+  const RateEvent = (eRegisterId) => {
+    dispatch(SetRatedEvent(eRegisterId));
+    dispatch(SetIsEventRateDialog(true));
   };
 
   return (
@@ -75,23 +93,31 @@ function MyRegisteredEventCard({ events, tabNumber }) {
         </Tooltip>
         {tabNumber != 2 && (
           <Tooltip title="Etkinliğin yerini göster">
-            <IconButton>
+            <IconButton
+              onClick={() =>
+                ReviewLocation(events.event.latitude, events.event.longitude)
+              }
+            >
               <LocationOnIcon sx={{ fontSize: "30px" }} />
             </IconButton>
           </Tooltip>
         )}
-        {tabNumber == 2 && (
-          <Tooltip title="Deneyimini değerlendir">
-            <IconButton>
-              <GradeIcon
-                sx={{
-                  fontSize: "30px",
-                  color: events.isScored ? "yellow" : "",
-                }}
-              />
-            </IconButton>
-          </Tooltip>
-        )}
+        {tabNumber === 2 &&
+          (events.isScored ? (
+            <Tooltip title="Bu Etkinlik Değerlendirildi.">
+              <span>
+                <IconButton disabled>
+                  <GradeIcon sx={{ fontSize: "30px", color: "gray" }} />
+                </IconButton>
+              </span>
+            </Tooltip>
+          ) : (
+            <Tooltip title="Deneyimini Değerlendir">
+              <IconButton onClick={() => RateEvent(events.eventRegisterId)}>
+                <GradeIcon sx={{ fontSize: "30px", color: "gold" }} />
+              </IconButton>
+            </Tooltip>
+          ))}
       </div>
     </div>
   );

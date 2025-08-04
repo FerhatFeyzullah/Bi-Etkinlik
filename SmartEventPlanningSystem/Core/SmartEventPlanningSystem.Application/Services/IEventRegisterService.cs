@@ -13,6 +13,7 @@ namespace SmartEventPlanningSystem.Application.Services
     {
         Task RegisterEvent(int eventId, int userId, CancellationToken ct);
         Task DeleteEventRegister(int eventId, int userId, CancellationToken ct);
+        Task<bool> RateTheEvent(int eventRegisterId, decimal score, CancellationToken ct);
         Task<List<GetMyPastEventsResponse>> GetMyPastEvents(int id, CancellationToken ct);
         Task<List<GetMyCurrentEventsResponse>> GetMyCurrentEvents(int id, CancellationToken ct);
         Task<List<GetMyFutureEventsResponse>> GetMyFutureEvents(int id, CancellationToken ct);
