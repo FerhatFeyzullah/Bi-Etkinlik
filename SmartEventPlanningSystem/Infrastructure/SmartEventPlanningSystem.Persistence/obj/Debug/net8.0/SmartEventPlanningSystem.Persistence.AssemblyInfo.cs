@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartEventPlanningSystem.Persistence")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ed6a583dcc4e77544209fb675c85f99defadb05c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+40128d350da657b06a48dcb34b743b9af8af16ea")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartEventPlanningSystem.Persistence")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartEventPlanningSystem.Persistence")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

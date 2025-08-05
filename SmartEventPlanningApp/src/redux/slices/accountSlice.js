@@ -3,9 +3,15 @@ import axios from "../../api/axios";
 
 const initialState = {
   myProfile: {},
+  isPhotoReviewedDialog: false,
+  reviewedPhoto: "",
   accountSliceResponse: "",
   ppUploadMistake: false,
   ppRemoveMistake: false,
+  updateProfileDrawer: false,
+  updatedProfile: {},
+  updateProfileLoading: false,
+  updateProfileMistake: false,
 };
 
 export const GetUserInfo = createAsyncThunk("getUserInfo", async (id) => {
@@ -34,6 +40,11 @@ export const RemovePP = createAsyncThunk("removePP", async (id) => {
   return response.data;
 });
 
+export const UpdateProfile = createAsyncThunk("updateProfile", async (data) => {
+  var response = await axios.put("Users/UpdateProfile", data);
+  return response.data;
+});
+
 export const accountSlice = createSlice({
   name: "discovery",
   initialState,
@@ -46,6 +57,21 @@ export const accountSlice = createSlice({
     },
     SetAccountSliceResponse: (state) => {
       state.accountSliceResponse = "";
+    },
+    SetIsPhotoReviewedDialog: (state, action) => {
+      state.isPhotoReviewedDialog = action.payload;
+    },
+    SetReviewedPhoto: (state, action) => {
+      state.reviewedPhoto = action.payload;
+    },
+    SetUpdateProfileDrawer: (state, action) => {
+      state.updateProfileDrawer = action.payload;
+    },
+    SetUpdatedProfile: (state, action) => {
+      state.updatedProfile = action.payload;
+    },
+    SetUpdateProfileMistake: (state, action) => {
+      state.updateProfileMistake = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -86,6 +112,23 @@ export const accountSlice = createSlice({
         state.accountSliceResponse =
           "Profil fotoğrafı silinirken beklenmeyen bir hata oluştu.";
         state.ppRemoveMistake = true;
+      })
+
+      //UpdateProfile
+      .addCase(UpdateProfile.pending, (state) => {
+        state.updateProfileLoading = true;
+      })
+      .addCase(UpdateProfile.fulfilled, (state, action) => {
+        state.myProfile = action.payload;
+        state.updateProfileDrawer = false;
+        state.updateProfileLoading = false;
+      })
+      .addCase(UpdateProfile.rejected, (state) => {
+        state.updateProfileLoading = false;
+        state.updateProfileDrawer = false;
+        state.accountSliceResponse =
+          "Profil bilgileri güncellenirken beklenmeyen bir hata oluştu.";
+        state.updateProfileMistake = true;
       });
   },
 });
@@ -94,5 +137,10 @@ export const {
   SetPPUploadMistake,
   SetPPRemoveMistake,
   SetAccountSliceResponse,
+  SetIsPhotoReviewedDialog,
+  SetReviewedPhoto,
+  SetUpdateProfileDrawer,
+  SetUpdatedProfile,
+  SetUpdateProfileMistake,
 } = accountSlice.actions;
 export default accountSlice.reducer;

@@ -7,6 +7,7 @@ import {
   SetAccountSliceResponse,
   SetPPRemoveMistake,
   SetPPUploadMistake,
+  SetUpdateProfileMistake,
 } from "../../../../redux/slices/accountSlice";
 import MyProfileInfo from "./MyProfileInfo";
 import MyActivities from "./MyActivities";
@@ -16,14 +17,22 @@ import ReviewMapDialog from "../ReviewMapDialog";
 import RateEventDialog from "./RateEventDialog";
 import ToastMistake from "../../../Elements/ToastMistake";
 import { SetEventRatedMistakeAlert } from "../../../../redux/slices/eventRegisterSlice";
+import PhotoReviewDialog from "../PhotoReviewDialog";
+import UpdateProfileDrawer from "./UpdateProfileDrawer";
+import Loading from "../../../Elements/Loading";
 
 function ProfilePanel() {
   const dispatch = useDispatch();
   const { eventRatedMistakeAlert, eventRegisterResponse } = useSelector(
     (store) => store.eventRegister
   );
-  const { accountSliceResponse, ppUploadMistake, ppRemoveMistake } =
-    useSelector((store) => store.account);
+  const {
+    accountSliceResponse,
+    ppUploadMistake,
+    ppRemoveMistake,
+    updateProfileMistake,
+    updateProfileLoading,
+  } = useSelector((store) => store.account);
 
   const CloseEventRatedMistakeToast = () => {
     dispatch(SetEventRatedMistakeAlert(false));
@@ -33,6 +42,9 @@ function ProfilePanel() {
   };
   const CloseRemovePPMistakeToast = () => {
     dispatch(SetPPRemoveMistake(false));
+  };
+  const CloseUpdateProfileMistake = () => {
+    dispatch(SetUpdateProfileMistake(false));
   };
 
   const UserId = localStorage.getItem("UserId");
@@ -55,21 +67,38 @@ function ProfilePanel() {
       <EventReviewDialog />
       <RateEventDialog />
       <ReviewMapDialog />
+      <PhotoReviewDialog />
+      <UpdateProfileDrawer />
+
+      {/* EventRate */}
+
       <ToastMistake
         visible={eventRatedMistakeAlert}
         detail={eventRegisterResponse}
         closer={CloseEventRatedMistakeToast}
       />
+      {/* PP Upload */}
+
       <ToastMistake
         visible={ppUploadMistake}
         detail={accountSliceResponse}
         closer={CloseUploadPPMistakeToast}
       />
+
+      {/* PP Remove */}
       <ToastMistake
         visible={ppRemoveMistake}
         detail={accountSliceResponse}
         closer={CloseRemovePPMistakeToast}
       />
+
+      {/* UpdateProfile */}
+      <ToastMistake
+        visible={updateProfileMistake}
+        detail={accountSliceResponse}
+        closer={CloseUpdateProfileMistake}
+      />
+      <Loading status={updateProfileLoading} />
     </>
   );
 }

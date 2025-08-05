@@ -306,11 +306,10 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     x => x.Include(u => u.AppUserCategories).ThenInclude(uc => uc.Category),ct
  
                     );
-                var mappedUser = mapper.Map<UserProfileDto>(updatedUser);
 
                 return new UpdateProfileResponse
                 {
-                    UpdatedProfile = mappedUser,
+                    MyProfile = mapper.Map<UserProfileDto>(updatedUser),
                 };
             }
             catch (Exception ex)
@@ -323,7 +322,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 return new UpdateProfileResponse
                 {
-                    UpdatedProfile = null,
+                    MyProfile = null,
                 };
             }
         }

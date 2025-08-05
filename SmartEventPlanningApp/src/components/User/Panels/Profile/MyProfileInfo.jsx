@@ -3,7 +3,14 @@ import { useSelector, useDispatch } from "react-redux";
 import { Avatar, Button, IconButton } from "@mui/material";
 import "../../../../css/User/Panels/Profile/MyProfileInfo.css";
 import SettingsIcon from "@mui/icons-material/Settings";
-import { RemovePP, UploadPP } from "../../../../redux/slices/accountSlice";
+import {
+  RemovePP,
+  SetUpdateProfileDrawer,
+  SetIsPhotoReviewedDialog,
+  SetReviewedPhoto,
+  SetUpdatedProfile,
+  UploadPP,
+} from "../../../../redux/slices/accountSlice";
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
@@ -40,6 +47,16 @@ function MyProfileInfo() {
     dispatch(RemovePP(UserId));
   };
 
+  const ReviewPhoto = () => {
+    dispatch(SetReviewedPhoto(myProfile.myProfile.profilePhotoId));
+    dispatch(SetIsPhotoReviewedDialog(true));
+  };
+
+  const EditProfile = () => {
+    dispatch(SetUpdatedProfile(myProfile.myProfile));
+    dispatch(SetUpdateProfileDrawer(true));
+  };
+
   return (
     <div className="flex-row-justify-space-around">
       <div className="flex-column">
@@ -47,8 +64,8 @@ function MyProfileInfo() {
           <IconButton>
             <Avatar
               sx={{
-                width: 120,
-                height: 120,
+                width: 150,
+                height: 150,
                 cursor: "pointer",
                 backgroundColor: "grey",
               }}
@@ -57,6 +74,7 @@ function MyProfileInfo() {
                   ? `https://localhost:7126/api/Users/ProfileImage/${myProfile.myProfile.profilePhotoId}`
                   : undefined
               }
+              onClick={ReviewPhoto}
               onError={() => setImgError(true)}
             >
               {!myProfile.myProfile?.profilePhotoId &&
@@ -64,7 +82,6 @@ function MyProfileInfo() {
             </Avatar>
           </IconButton>
 
-          {/* SOL ALTTA: Fotoğrafı değiştir butonu */}
           <div style={{ position: "absolute", bottom: "5px", right: "5px" }}>
             <input
               type="file"
@@ -90,7 +107,6 @@ function MyProfileInfo() {
             </label>
           </div>
 
-          {/* SOL ÜSTTE: Sil/Çarpı butonu */}
           {!isPPNull && (
             <div style={{ position: "absolute", top: "5px", right: "5px" }}>
               <IconButton
@@ -125,6 +141,7 @@ function MyProfileInfo() {
             variant="contained"
             color="inherit"
             sx={{ marginRight: "20px", textTransform: "none" }}
+            onClick={EditProfile}
           >
             Profili Düzenle
           </Button>

@@ -30,7 +30,12 @@ function Login() {
         </div>
 
         <div className="login-button">
-          <Button sx={{ textTransform: "none" }}>Şifreni mi unuttun ?</Button>
+          <Button
+            sx={{ textTransform: "none" }}
+            onClick={() => navigate("/sifremiunuttum")}
+          >
+            Şifreni mi unuttun ?
+          </Button>
         </div>
         <div className="login-button">
           Hesabın yok mu ?

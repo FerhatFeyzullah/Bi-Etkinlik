@@ -7,6 +7,7 @@ import mapReducer from "./slices/mapSlice";
 import recommendedReducer from "./slices/recommendedSlice";
 import eventReducer from "./slices/eventSlice";
 import eventRegisterReducer from "./slices/eventRegisterSlice";
+import forgotPasswordReducer from "./slices/forgotPasswordSlice";
 
 const appReducer = combineReducers({
   auth: authReducer,
@@ -17,6 +18,7 @@ const appReducer = combineReducers({
   recommended: recommendedReducer,
   event: eventReducer,
   eventRegister: eventRegisterReducer,
+  forgotPassword: forgotPasswordReducer,
 });
 
 const rootReducer = (state, action) => {

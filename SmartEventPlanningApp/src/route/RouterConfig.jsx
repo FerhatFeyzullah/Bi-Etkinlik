@@ -4,6 +4,7 @@ import Login from "../pages/Login";
 import User from "../pages/User";
 import Admin from "../pages/Admin";
 import Register from "../pages/Register";
+import ForgotPassword from "../pages/ForgotPassword";
 
 function RouterConfig() {
   return (
@@ -16,6 +17,8 @@ function RouterConfig() {
         <Route path="/kullanici/:userId" element={<User />} />
 
         <Route path="/admin/:userId" element={<Admin />} />
+
+        <Route path="/sifremiunuttum" element={<ForgotPassword />} />
       </Routes>
     </div>
   );

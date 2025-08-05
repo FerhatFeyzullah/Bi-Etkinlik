@@ -8,15 +8,8 @@ wwwroot\upload\events\b86bd20c-756b-4582-9297-6a00ca44d33c.jpg
 wwwroot\upload\events\e02f74ef-7814-44f7-ac39-f02410894457.png
 wwwroot\upload\events\e37bd4fb-ab02-4d0b-8e6a-d80588df7a9f.jpg
 wwwroot\upload\events\fb703377-8f5b-4799-9c5e-a577763d821a.jpg
-wwwroot\upload\users\079ec91f-9292-4aae-8e92-badc476edd97.png
-wwwroot\upload\users\0adc00de-b924-4203-9b71-6aa0bb60d876.jpg
-wwwroot\upload\users\15195258-7e7f-495a-a729-f1965d41fabf.png
-wwwroot\upload\users\377ea7ff-6b56-42a8-8d4e-294f5ae3e6f6.png
-wwwroot\upload\users\38efdfbf-dd3d-43be-8396-0960601ea2ce.JPG
 wwwroot\upload\users\4cfd50ce-c488-4b1e-8997-a668a415f5c0.jpg
-wwwroot\upload\users\5fdd8db3-8014-4064-9c17-f24e3166eda4.jpg
-wwwroot\upload\users\6739bcea-40fb-425c-94a7-9b52b0f02b98.png
 wwwroot\upload\users\6e4272bc-c732-46f3-83a8-42566facf819.png
-wwwroot\upload\users\82b27f3c-c5eb-46c9-986e-4c8653d68c12.jpeg
 wwwroot\upload\users\8b30f0eb-6b3e-43ac-848a-4810d3fefac8.JPG
-wwwroot\upload\users\cb4bc199-6795-46e5-9ffc-dbac4a84b231.png
+wwwroot\upload\users\e8fde745-789a-419d-aa8a-a23fa755cec4.jpg
+wwwroot\upload\users\f101a42f-2b4c-4e0c-9fd2-bae1dc55d7b1.jpeg

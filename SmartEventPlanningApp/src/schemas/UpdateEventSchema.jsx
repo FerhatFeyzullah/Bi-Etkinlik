@@ -29,5 +29,6 @@ export const updateSchema = yup.object().shape({
   selectedCategories: yup
     .array()
     .of(yup.string())
-    .min(1, "İlgi Alanı Seçmedin."),
+    .min(1, "Kategori Seçmedin.")
+    .max(5, "En Fazla 5 Tane Kategori Seçebilirsin!"),
 });
