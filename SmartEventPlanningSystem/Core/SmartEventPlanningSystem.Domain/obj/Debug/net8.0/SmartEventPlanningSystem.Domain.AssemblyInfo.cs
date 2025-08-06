@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartEventPlanningSystem.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ec8b7870d4c31910beb1c8ac07bff23183264b77")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+fcf07ee64ae405bf4b0151213bca2896f2e4c35c")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartEventPlanningSystem.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartEventPlanningSystem.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

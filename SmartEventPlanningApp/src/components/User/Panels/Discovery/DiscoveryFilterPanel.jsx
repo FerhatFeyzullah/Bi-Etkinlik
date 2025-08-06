@@ -3,7 +3,6 @@ import "../../../../css/User/Panels/DiscoveryFilterPanel.css";
 import { useDispatch, useSelector } from "react-redux";
 import Switch from "@mui/material/Switch";
 import {
-  ChangeBoxReviewIsChecked,
   SetCategories,
   SetCities,
   SetDateFilterMode,
@@ -11,11 +10,8 @@ import {
   SetStartDate,
 } from "../../../../redux/slices/discoverySlice";
 import Button from "@mui/material/Button";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import { Autocomplete, TextField } from "@mui/material";
 import { cities } from "../../../../data/MyData";
-import { GetAllCategory } from "../../../../redux/slices/categorySlice";
 import dayjs from "dayjs";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -26,7 +22,6 @@ import CategoryFilterSkeleton from "../../../Skeletons/CategoryFilterSkeleton";
 function DiscoveryFilterPanel() {
   const dispatch = useDispatch();
 
-  const [boxReviewChecked, setBoxReviewChecked] = useState(true);
   const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
     (store) => store.category
   );
@@ -79,27 +74,8 @@ function DiscoveryFilterPanel() {
     dispatch(SetDateFilterMode(false));
   };
 
-  const handleChange = (event) => {
-    setBoxReviewChecked(event.target.checked);
-    dispatch(ChangeBoxReviewIsChecked(boxReviewChecked));
-  };
-
   return (
     <div className="discovery-filter-container">
-      <div className="discovery-filter-checkbox">
-        <FormGroup>
-          <FormControlLabel
-            control={
-              <Switch
-                checked={boxReviewChecked}
-                onChange={handleChange}
-                sx={{ marginLeft: "20px" }}
-              />
-            }
-            label="Kart Görünümü"
-          />
-        </FormGroup>
-      </div>
       <div className="flex-row-justify-space-around discovery-filter-lists-main">
         <div className="discovery-filter-lists">
           <Autocomplete

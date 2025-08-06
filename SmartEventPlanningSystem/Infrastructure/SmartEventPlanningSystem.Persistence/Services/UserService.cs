@@ -126,6 +126,14 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 var user = mapper.Map<AppUser>(userRegisterDto);
 
+                user.Settings = new UserSetting
+                {
+                    Theme = "light",
+                    ViewMode = "classic",
+                    EmailNotification = false,
+                    Language = "tr",
+                };
+
                 var createResult = await userManager.CreateAsync(user, userRegisterDto.Password);
                 if (createResult.Succeeded)
                 {
@@ -139,7 +147,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
                             CategoryId = area
                         };
                         await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory,c_token);
-                    }
+                    }                   
+
                     await unitOfWork.CommitAsync();
                     return createResult;
                 }

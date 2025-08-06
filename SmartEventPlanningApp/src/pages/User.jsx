@@ -10,7 +10,7 @@ import NotificationPanel from "../components/User/Panels/NotificationPanel";
 import ProfilePanel from "../components/User/Panels/Profile/ProfilePanel";
 import DiscoveryFilterPanel from "../components/User/Panels/Discovery/DiscoveryFilterPanel";
 import { useDispatch, useSelector } from "react-redux";
-import { GetUserInfo } from "../redux/slices/accountSlice";
+import { GetUserSetting } from "../redux/slices/userSettingSlice";
 import { useNavigate, useParams } from "react-router-dom";
 import ReviewMapPanel from "../components/User/Panels/ReviewMapPanel";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -42,7 +42,7 @@ function User() {
   };
 
   const FirstOp = (id) => {
-    dispatch(GetUserInfo(id));
+    dispatch(GetUserSetting(id));
     dispatch(GetAllCategory());
   };
 
@@ -57,13 +57,12 @@ function User() {
 
   const SignOut = async () => {
     try {
-      await dispatch(LogoutFromSystem()).unwrap(); // Hata varsa yakalar
+      await dispatch(LogoutFromSystem()).unwrap();
       localStorage.clear();
       dispatch({ type: "auth/logout" });
       navigate("/girisyap");
     } catch (error) {
       console.error("Çıkış başarısız:", error);
-      // istersen kullanıcıya toast veya alert göster
     }
   };
 

@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using MediatR;
 
-namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetUserInfo
+namespace SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Queries.GetUserSetting
 {
-    public class GetUserInfoRequest:IRequest<GetUserInfoResponse>
+    public class GetUserSettingRequest:IRequest<GetUserSettingResponse>
     {
         public int AppUserId { get; set; }
     }

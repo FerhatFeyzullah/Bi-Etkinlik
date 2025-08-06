@@ -692,22 +692,6 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
-    "Method": "GetUserInfo",
-    "RelativePath": "api/Users/GetUserInfo",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "AppUserId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
     "Method": "GetProfileImage",
     "RelativePath": "api/Users/ProfileImage/{photoPath}",
     "HttpMethod": "GET",
@@ -818,6 +802,86 @@
       {
         "Name": "request",
         "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.VerifyResetCode.VerifyResetCodeRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UserSettingsController",
+    "Method": "GetUserSetting",
+    "RelativePath": "api/UserSettings/GetUserSetting",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UserSettingsController",
+    "Method": "UpdateEmailNotificationSetting",
+    "RelativePath": "api/UserSettings/UpdateEmailNotificationSetting",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Commands.UpdateEmailNotification.UpdateEmailNotificationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UserSettingsController",
+    "Method": "UpdateLanguageSetting",
+    "RelativePath": "api/UserSettings/UpdateLanguageSetting",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Commands.UpdateLanguageSetting.UpdateLanguageSettingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UserSettingsController",
+    "Method": "UpdateThemeSetting",
+    "RelativePath": "api/UserSettings/UpdateThemeSetting",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Commands.UpdateThemeSetting.UpdateThemeSettingRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UserSettingsController",
+    "Method": "UpdateViewModeSetting",
+    "RelativePath": "api/UserSettings/UpdateViewModeSetting",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Commands.UpdateViewModeSetting.UpdateViewModeSettingRequest",
         "IsRequired": true
       }
     ],

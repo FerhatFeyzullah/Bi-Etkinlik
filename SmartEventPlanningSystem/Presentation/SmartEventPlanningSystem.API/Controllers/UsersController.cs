@@ -6,13 +6,12 @@ using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ConfirmEma
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.ChangeForgotPassword;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.SendResetCode;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.VerifyResetCode;
-using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RegisterTheSystem;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RemoveAccount;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RemoveProfilePhoto;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetMyProfile;
-using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetUserInfo;
+using SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Queries.GetUserSetting;
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
@@ -25,12 +24,7 @@ namespace SmartEventPlanningSystem.API.Controllers
         {
             return Ok(await mediator.Send(request));       
         }
-
-        [HttpGet("GetUserInfo")]
-        public async Task<IActionResult> GetUserInfo([FromQuery] GetUserInfoRequest request)
-        {
-            return Ok(await mediator.Send(request));
-        }
+      
 
         [HttpGet("ProfileImage/{*photoPath}")]
         public IActionResult GetProfileImage(string photoPath)

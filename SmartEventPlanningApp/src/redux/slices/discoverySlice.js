@@ -6,7 +6,6 @@ const initialState = {
   discoveryEvents: [],
   recommendedEvents: [],
   discoverySkeletonLoading: false,
-  boxReviewIsChecked: false,
   dateFilterMode: false,
   startDate: null,
   endDate: null,
@@ -129,9 +128,6 @@ export const discoverySlice = createSlice({
       if (event) {
         event.registered = true;
       }
-    },
-    ChangeBoxReviewIsChecked: (state, action) => {
-      state.boxReviewIsChecked = action.payload;
     },
     SetStartDate: (state, action) => {
       state.startDate = action.payload;
@@ -260,7 +256,6 @@ export const discoverySlice = createSlice({
 });
 
 export const {
-  ChangeBoxReviewIsChecked,
   SetStartDate,
   SetEndDate,
   SetCities,

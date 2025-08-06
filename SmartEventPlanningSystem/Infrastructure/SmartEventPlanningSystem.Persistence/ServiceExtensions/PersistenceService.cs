@@ -37,6 +37,7 @@ namespace SmartEventPlanningSystem.Persistence.ServiceExtensions
             services.AddScoped<IEventService, EventService>();
             services.AddScoped<IEventRegisterService, EventRegisterService>();
             services.AddScoped<IMessageService, MessageService>();
+            services.AddScoped<IUserSettingService, UserSettingService>();
         }
     }
 }

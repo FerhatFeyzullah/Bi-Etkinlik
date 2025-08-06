@@ -14,14 +14,6 @@ const initialState = {
   updateProfileMistake: false,
 };
 
-export const GetUserInfo = createAsyncThunk("getUserInfo", async (id) => {
-  var response = await axios.get("Users/GetUserInfo", {
-    params: {
-      AppUserId: id,
-    },
-  });
-  return response.data;
-});
 export const GetMyProfile = createAsyncThunk("getMyProfile", async (id) => {
   var response = await axios.get("Users/GetMyProfile", {
     params: {
@@ -76,14 +68,6 @@ export const accountSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-
-      //GetUserInfo
-      .addCase(GetUserInfo.fulfilled, (state, action) => {
-        localStorage.setItem("AppUser", JSON.stringify(action.payload));
-      })
-      .addCase(GetUserInfo.rejected, () => {
-        console.log("GetUserInfo Basarisiz");
-      })
 
       //GetMyProfile
 

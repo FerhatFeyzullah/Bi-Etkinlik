@@ -15,7 +15,7 @@ import { MarkRecommendedEventAsRegistered } from "../../../../redux/slices/recom
 
 function RecommendedEventCard({ event }) {
   const dispatch = useDispatch();
-  const { boxReviewIsChecked } = useSelector((store) => store.discovery);
+  const { viewMode } = useSelector((store) => store.userSetting);
   const { discoveryLatitude, discoveryLongitude } = useSelector(
     (store) => store.map
   );
@@ -54,7 +54,7 @@ function RecommendedEventCard({ event }) {
     <>
       <div
         className={
-          !boxReviewIsChecked
+          viewMode === "card"
             ? "recommended-e-c-main-with-card"
             : "recommended-e-c-main-without-card"
         }
@@ -147,7 +147,7 @@ function RecommendedEventCard({ event }) {
             sx={{
               width: "100%",
               boxShadow: "none",
-              backgroundColor: !boxReviewIsChecked ? "whitesmoke" : "white",
+              backgroundColor: viewMode === "card" ? "whitesmoke" : "white",
             }}
           >
             <AccordionSummary

@@ -15,7 +15,7 @@ import { MarkEventAsRegistered } from "../../../../redux/slices/discoverySlice";
 
 function DiscoveryEventCard({ event }) {
   const dispatch = useDispatch();
-  const { boxReviewIsChecked } = useSelector((store) => store.discovery);
+  const { viewMode } = useSelector((store) => store.userSetting);
 
   const { discoveryLatitude, discoveryLongitude } = useSelector(
     (store) => store.map
@@ -55,7 +55,7 @@ function DiscoveryEventCard({ event }) {
     <>
       <div
         className={
-          !boxReviewIsChecked
+          viewMode === "card"
             ? "discovery-e-c-main-with-card"
             : "discovery-e-c-main-without-card"
         }
@@ -148,7 +148,7 @@ function DiscoveryEventCard({ event }) {
             sx={{
               width: "100%",
               boxShadow: "none",
-              backgroundColor: !boxReviewIsChecked ? "whitesmoke" : "white",
+              backgroundColor: viewMode === "card" ? "whitesmoke" : "white",
             }}
           >
             <AccordionSummary
