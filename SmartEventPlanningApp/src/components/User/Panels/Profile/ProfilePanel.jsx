@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 
 import {
   GetMyProfile,
-  SetAccountSliceResponse,
   SetPPRemoveMistake,
   SetPPUploadMistake,
   SetUpdateProfileMistake,
@@ -16,16 +15,30 @@ import EventReviewDialog from "../EventReviewDialog";
 import ReviewMapDialog from "../ReviewMapDialog";
 import RateEventDialog from "./RateEventDialog";
 import ToastMistake from "../../../Elements/ToastMistake";
+import ToastSuccess from "../../../Elements/ToastSuccess";
 import { SetEventRatedMistakeAlert } from "../../../../redux/slices/eventRegisterSlice";
 import PhotoReviewDialog from "../PhotoReviewDialog";
 import UpdateProfileDrawer from "./UpdateProfileDrawer";
 import Loading from "../../../Elements/Loading";
+import UserSettingDrawer from "./UserSettingDrawer";
+import ChangePasswordDrawer from "./ChangePasswordDrawer";
+import {
+  SetChangePassMistake,
+  SetChangePassSuccess,
+} from "../../../../redux/slices/userSettingSlice";
 
 function ProfilePanel() {
   const dispatch = useDispatch();
   const { eventRatedMistakeAlert, eventRegisterResponse } = useSelector(
     (store) => store.eventRegister
   );
+  const {
+    changePassResponse,
+    changePassSuccess,
+    changePassMistake,
+    changePassLoading,
+  } = useSelector((store) => store.userSetting);
+
   const {
     accountSliceResponse,
     ppUploadMistake,
@@ -45,6 +58,12 @@ function ProfilePanel() {
   };
   const CloseUpdateProfileMistake = () => {
     dispatch(SetUpdateProfileMistake(false));
+  };
+  const CloseChangePasswordMistake = () => {
+    dispatch(SetChangePassMistake(false));
+  };
+  const CloseChangePasswordSuccess = () => {
+    dispatch(SetChangePassSuccess(false));
   };
 
   const UserId = localStorage.getItem("UserId");
@@ -69,6 +88,8 @@ function ProfilePanel() {
       <ReviewMapDialog />
       <PhotoReviewDialog />
       <UpdateProfileDrawer />
+      <UserSettingDrawer />
+      <ChangePasswordDrawer />
 
       {/* EventRate */}
 
@@ -99,6 +120,21 @@ function ProfilePanel() {
         closer={CloseUpdateProfileMistake}
       />
       <Loading status={updateProfileLoading} />
+
+      {/* ChangePassword */}
+      <ToastMistake
+        visible={changePassMistake}
+        detail={changePassResponse}
+        closer={CloseChangePasswordMistake}
+      />
+      <ToastSuccess
+        visible={changePassSuccess}
+        detail={changePassResponse}
+        closer={CloseChangePasswordSuccess}
+      />
+
+      {/* ChangePassword */}
+      <Loading status={changePassLoading} />
     </>
   );
 }

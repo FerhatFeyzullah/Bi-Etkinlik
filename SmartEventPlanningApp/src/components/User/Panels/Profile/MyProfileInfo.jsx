@@ -14,6 +14,7 @@ import {
 import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
+import { SetUserSettingDrawer } from "../../../../redux/slices/userSettingSlice";
 
 function MyProfileInfo() {
   const dispatch = useDispatch();
@@ -55,6 +56,10 @@ function MyProfileInfo() {
   const EditProfile = () => {
     dispatch(SetUpdatedProfile(myProfile.myProfile));
     dispatch(SetUpdateProfileDrawer(true));
+  };
+
+  const ChangeUserSetting = () => {
+    dispatch(SetUserSettingDrawer(true));
   };
 
   return (
@@ -154,7 +159,7 @@ function MyProfileInfo() {
           </Button>
         </div>
         <div>
-          <IconButton>
+          <IconButton onClick={ChangeUserSetting}>
             <SettingsIcon fontSize="large" />
           </IconButton>
         </div>
