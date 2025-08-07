@@ -1,0 +1,18 @@
+{
+  "city": "City",
+  "category": "Category",
+  "fromDate": "From Date",
+  "toDate": "To Date",
+  "eventDescription": "Event Description",
+  "eventName": "Event Name",
+  "searchAdressOrLocation": "Search for an address or location...",
+  "name": "Name",
+  "surname": "Surname",
+  "birthDate": "BirthDate",
+  "gender": "Gender",
+  "male": "Male",
+  "female": "Female",
+  "oldPassword": "Old Password",
+  "newPassword": "New Password",
+  "newPasswordRepeat": "New Password Repeat "
+}

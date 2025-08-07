@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../api/axios";
+import i18n from "../../i18n";
 
 const savedSettings = JSON.parse(localStorage.getItem("UserSetting")) || {};
 
@@ -13,7 +14,7 @@ const initialState = {
 
   theme: savedSettings.theme || "light",
   viewMode: savedSettings.viewMode || "card",
-  emailNotification: false,
+  emailNotification: savedSettings.emailNotification || false,
   language: savedSettings.language || "tr",
 };
 
@@ -118,6 +119,7 @@ export const userSettingSlice = createSlice({
         localStorage.setItem("UserSetting", JSON.stringify(userSetting));
         state.theme = userSetting.theme;
         state.language = userSetting.language;
+        i18n.changeLanguage(userSetting.language);
         state.viewMode = userSetting.viewMode;
         state.emailConfirmation = userSetting.emailConfirmation;
       })

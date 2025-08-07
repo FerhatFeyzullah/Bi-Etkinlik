@@ -15,6 +15,7 @@ import { Button, InputAdornment, TextField } from "@mui/material";
 import "../../../../css/User/Panels/CreateEventPanel/CreateEventMapPanel.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SetLatitude, SetLongitude } from "../../../../redux/slices/eventSlice";
+import { useTranslation } from "react-i18next";
 
 delete L.Icon.Default.prototype._getIconUrl;
 L.Icon.Default.mergeOptions({
@@ -24,6 +25,10 @@ L.Icon.Default.mergeOptions({
 });
 
 function DiscoveryMapPanel() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tText } = useTranslation("text");
+  const { t: tInput } = useTranslation("input");
+
   const dispatch = useDispatch();
 
   const {
@@ -107,14 +112,14 @@ function DiscoveryMapPanel() {
         <TextField
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          label="Adres veya yer ara..."
+          label={tInput("searchAdressOrLocation")}
           variant="filled"
           fullWidth
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
                 <Button onClick={handleSearch} variant="outlined" size="large">
-                  Ara
+                  {tButton("searchLocation")}
                 </Button>
               </InputAdornment>
             ),

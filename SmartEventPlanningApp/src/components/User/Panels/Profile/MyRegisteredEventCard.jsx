@@ -23,8 +23,10 @@ import {
   SetDiscoveryLongitude,
   SetIsMapReviewed,
 } from "../../../../redux/slices/mapSlice";
+import { useTranslation } from "react-i18next";
 
 function MyRegisteredEventCard({ events, tabNumber }) {
+  const { t: tTooltip } = useTranslation("tooltip");
   const dispatch = useDispatch();
   const [imgError, setImgError] = useState(false);
 
@@ -75,7 +77,7 @@ function MyRegisteredEventCard({ events, tabNumber }) {
       <div className="my-registered-event-card-name">{events.event.name}</div>
       <div className="flex-row" style={{ gap: "30px" }}>
         {tabNumber == 0 && (
-          <Tooltip title="Kaydımı iptal et">
+          <Tooltip title={tTooltip("deleteMyRegistration")}>
             <IconButton
               onClick={() => DeleteEventDialog(UserId, events.event.eventId)}
             >
@@ -86,13 +88,13 @@ function MyRegisteredEventCard({ events, tabNumber }) {
           </Tooltip>
         )}
 
-        <Tooltip title="Etkinliği Önizle">
+        <Tooltip title={tTooltip("previewEvent")}>
           <IconButton onClick={() => PreviewEvent(events.event)}>
             <VisibilityIcon sx={{ fontSize: "30px" }} />
           </IconButton>
         </Tooltip>
         {tabNumber != 2 && (
-          <Tooltip title="Etkinliğin yerini göster">
+          <Tooltip title={tTooltip("viewLocation")}>
             <IconButton
               onClick={() =>
                 ReviewLocation(events.event.latitude, events.event.longitude)
@@ -104,7 +106,7 @@ function MyRegisteredEventCard({ events, tabNumber }) {
         )}
         {tabNumber === 2 &&
           (events.isScored ? (
-            <Tooltip title="Bu Etkinlik Değerlendirildi.">
+            <Tooltip title={tTooltip("ratedEvent")}>
               <span>
                 <IconButton disabled>
                   <GradeIcon sx={{ fontSize: "30px", color: "gray" }} />
@@ -112,7 +114,7 @@ function MyRegisteredEventCard({ events, tabNumber }) {
               </span>
             </Tooltip>
           ) : (
-            <Tooltip title="Deneyimini Değerlendir">
+            <Tooltip title={tTooltip("rateYourExperience")}>
               <IconButton onClick={() => RateEvent(events.eventRegisterId)}>
                 <GradeIcon sx={{ fontSize: "30px", color: "gold" }} />
               </IconButton>

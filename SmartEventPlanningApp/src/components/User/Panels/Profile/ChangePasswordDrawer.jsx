@@ -10,8 +10,13 @@ import { Button, InputAdornment, IconButton } from "@mui/material";
 import { schema } from "../../../../schemas/ChangePasswordSchema";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { useTranslation } from "react-i18next";
 
 function ChangePasswordDrawer() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tText } = useTranslation("text");
+  const { t: tInput } = useTranslation("input");
+
   const dispatch = useDispatch();
   const { changePasswordDrawer, changePassSuccess } = useSelector(
     (store) => store.userSetting
@@ -90,10 +95,10 @@ function ChangePasswordDrawer() {
         }}
       >
         <div className="flex-column-justify-start">
-          <h3>Şifre Değişikliği</h3>
+          <h3>{tText("passwordChange")}</h3>
 
           <TextField
-            label="Eski Şifre"
+            label={tInput("oldPassword")}
             error={Boolean(errors.confirmPass)}
             helperText={errors.confirmPass}
             sx={{ margin: "10px 0px" }}
@@ -102,7 +107,7 @@ function ChangePasswordDrawer() {
           />
 
           <TextField
-            label="Yeni Şifre"
+            label={tInput("newPassword")}
             error={Boolean(errors.confirmPass)}
             helperText={errors.confirmPass}
             sx={{ margin: "10px 0px", width: "225px" }}
@@ -121,7 +126,7 @@ function ChangePasswordDrawer() {
           />
 
           <TextField
-            label="Yeni Şifre Tekrarı"
+            label={tInput("newPasswordRepeat")}
             error={Boolean(errors.confirmPass)}
             helperText={errors.confirmPass}
             sx={{ margin: "10px 0px", width: "225px" }}
@@ -148,7 +153,7 @@ function ChangePasswordDrawer() {
             sx={{ textTransform: "none", width: "150px", margin: "20px 0px" }}
             onClick={Change}
           >
-            Değiştir
+            {tButton("change")}
           </Button>
         </div>
       </Drawer>

@@ -17,14 +17,11 @@ import {
   SetCreateAndEditS_AlertFalse,
   SetGaveUpUpdating,
   SetIsUpdateMode,
-  SetLatitude,
-  SetLongitude,
   UpdateEvent,
 } from "../../../../redux/slices/eventSlice";
 import "react-datepicker/dist/react-datepicker.css";
 import ToastSuccess from "../../../Elements/ToastSuccess";
 import ToastMistake from "../../../Elements/ToastMistake";
-import ToastWarning from "../../../Elements/ToastWarning";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
@@ -32,8 +29,8 @@ import { Box } from "@mui/material";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
-
 dayjs.locale("tr");
+import { useTranslation } from "react-i18next";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -48,6 +45,9 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 function CreateAndEditPanel() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tInput } = useTranslation("input");
+
   const dispatch = useDispatch();
   const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
     (store) => store.category
@@ -274,7 +274,7 @@ function CreateAndEditPanel() {
                     startIcon={<CloudUploadIcon />}
                     sx={{ textTransform: "none" }}
                   >
-                    Resim Yükle
+                    {tButton("uploadImage")}
                     <VisuallyHiddenInput
                       type="file"
                       onChange={handleFileChange}
@@ -321,7 +321,7 @@ function CreateAndEditPanel() {
             <TextField
               error={Boolean(errors.description)}
               helperText={errors.description}
-              label="Etkinlik Açıklaması"
+              label={tInput("eventDescription")}
               multiline
               rows={7}
               sx={{ width: "300px" }}
@@ -333,7 +333,7 @@ function CreateAndEditPanel() {
           <div className="flex-column">
             <div className="create-edit-form-inputs">
               <TextField
-                label="Etkinlik İsmi"
+                label={tInput("eventName")}
                 value={eventName}
                 onChange={(e) => setEventName(e.target.value)}
                 error={Boolean(errors.eventName)}
@@ -349,7 +349,7 @@ function CreateAndEditPanel() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Şehir"
+                    label={tInput("city")}
                     variant="outlined"
                     size="medium"
                     sx={{ width: "225px" }}
@@ -393,7 +393,7 @@ function CreateAndEditPanel() {
                   renderInput={(params) => (
                     <TextField
                       {...params}
-                      label="Kategori"
+                      label={tInput("category")}
                       variant="outlined"
                       size="medium"
                       sx={{ width: "225px" }}
@@ -435,7 +435,7 @@ function CreateAndEditPanel() {
               >
                 <Box sx={{ width: "225px" }}>
                   <DateTimePicker
-                    label="Başlangıç Tarihi"
+                    label={tInput("fromDate")}
                     value={startDate}
                     onChange={(date) => setStartDate(date)}
                     slotProps={{
@@ -456,7 +456,7 @@ function CreateAndEditPanel() {
               >
                 <Box sx={{ width: "225px" }}>
                   <DateTimePicker
-                    label="Bitiş Tarihi"
+                    label={tInput("toDate")}
                     value={endDate}
                     onChange={(date) => setEndDate(date)}
                     slotProps={{
@@ -485,7 +485,7 @@ function CreateAndEditPanel() {
                       }}
                       onClick={Update}
                     >
-                      Güncelle
+                      {tButton("update")}
                     </Button>
                   </div>
                   <div>
@@ -496,7 +496,7 @@ function CreateAndEditPanel() {
                       sx={{ width: "225px", textTransform: "none" }}
                       onClick={ClearAll}
                     >
-                      Vazgeç
+                      {tButton("cancel")}
                     </Button>
                   </div>
                 </>
@@ -508,7 +508,7 @@ function CreateAndEditPanel() {
                   sx={{ width: "225px", textTransform: "none" }}
                   onClick={Create}
                 >
-                  Kaydet
+                  {tButton("create")}
                 </Button>
               )}
             </div>

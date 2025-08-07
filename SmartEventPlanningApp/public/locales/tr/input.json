@@ -1,0 +1,18 @@
+{
+  "city": "Şehir",
+  "category": "Kategori",
+  "fromDate": "Şu Tarihten",
+  "toDate": "Şu Tarihe",
+  "eventDescription": "Etkinlik Açıklaması",
+  "eventName": "Etkinlik İsmi",
+  "searchAdressOrLocation": "Bir Adres veya konum ara...",
+  "name": "İsim",
+  "surname": "Soyisim",
+  "birthDate": "Doğum Tarihi",
+  "gender": "Cinsiyet",
+  "male": "Erkek",
+  "female": "Kadın",
+  "oldPassword": "Eski Şifre",
+  "newPassword": "Yeni Şifre",
+  "newPasswordRepeat": "Yeni Şifre Tekrarı"
+}

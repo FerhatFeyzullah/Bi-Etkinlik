@@ -1,0 +1,14 @@
+{
+  "myEvents": "On this panel, you can only view, edit, or delete events that have not yet started.",
+  "previewEvent": "Preview the event.",
+  "deleteEvent": "Warning: Once an event is deleted, it cannot be recovered!",
+  "updateEvent": "When you update this event, it will be reviewed again by the system.",
+  "eventStatusTrue": "The event has been approved. It can now be viewed by other users and accept participants.",
+  "eventStatusFalse": "The event has been rejected. It was not published because it did not comply with content policies.",
+  "eventStatusNull": "The event is currently under review. It will be approved or rejected shortly.",
+  "communityScore": "Community score",
+  "deleteMyRegistration": "Delete my registration",
+  "viewLocation": "View the location of the event",
+  "rateYourExperience": "Rate your experience",
+  "ratedEvent": "This event has been evaluated."
+}

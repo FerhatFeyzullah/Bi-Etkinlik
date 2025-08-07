@@ -12,8 +12,13 @@ import {
 } from "../../../../redux/slices/mapSlice";
 import { RegisterEvent } from "../../../../redux/slices/eventRegisterSlice";
 import { MarkRecommendedEventAsRegistered } from "../../../../redux/slices/recommendedSlice";
+import { useTranslation } from "react-i18next";
 
 function RecommendedEventCard({ event }) {
+  const { t: tButton } = useTranslation("button");
+  const { t: tTooltip } = useTranslation("tooltip");
+  const { t: tText } = useTranslation("text");
+
   const dispatch = useDispatch();
   const { viewMode } = useSelector((store) => store.userSetting);
   const { discoveryLatitude, discoveryLongitude } = useSelector(
@@ -79,7 +84,7 @@ function RecommendedEventCard({ event }) {
           <div>
             {event.appUser.firstName} {event.appUser.lastName} {"("}
           </div>
-          <Tooltip title="Topluluk Puanı" placement="right">
+          <Tooltip title={tTooltip("communityScore")} placement="right">
             <div>
               {event.appUser.score}
               {")"}
@@ -114,7 +119,7 @@ function RecommendedEventCard({ event }) {
                 sx={{ textTransform: "none" }}
                 onClick={RecommendedRegister}
               >
-                Kaydol
+                {tButton("registerEvent")}
               </Button>
             ) : (
               <Button
@@ -123,7 +128,7 @@ function RecommendedEventCard({ event }) {
                 sx={{ textTransform: "none" }}
                 disabled
               >
-                Kayıt Yapıldı
+                {tButton("registered")}
               </Button>
             )}
           </div>
@@ -138,7 +143,7 @@ function RecommendedEventCard({ event }) {
               sx={{ textTransform: "none" }}
               onClick={() => ReviewTheLocation(event.latitude, event.longitude)}
             >
-              Konumu Gör
+              {tButton("viewLocation")}
             </Button>
           </div>
         </div>
@@ -171,12 +176,14 @@ function RecommendedEventCard({ event }) {
             <AccordionDetails sx={{ padding: "8px 0" }}>
               <div>
                 {event.description}
-                <div style={{ marginTop: "5px" }}>Şehir: {event.city}</div>
                 <div style={{ marginTop: "5px" }}>
-                  Başlangıç: {formatDateTime(event.startDate)}
+                  {tText("city")}: {event.city}
                 </div>
                 <div style={{ marginTop: "5px" }}>
-                  Bitiş: {formatDateTime(event.endDate)}
+                  {tText("startDate")}: {formatDateTime(event.startDate)}
+                </div>
+                <div style={{ marginTop: "5px" }}>
+                  {tText("endDate")}: {formatDateTime(event.endDate)}
                 </div>
               </div>
             </AccordionDetails>

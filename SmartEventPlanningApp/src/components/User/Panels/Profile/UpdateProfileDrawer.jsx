@@ -21,10 +21,15 @@ import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import CategoryFilterSkeleton from "../../../Skeletons/CategoryFilterSkeleton";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import { useTranslation } from "react-i18next";
 
 dayjs.locale("tr");
 
 function UpdateProfileDrawer() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tText } = useTranslation("text");
+  const { t: tInput } = useTranslation("input");
+
   const dispatch = useDispatch();
   const { updateProfileDrawer, updatedProfile } = useSelector(
     (store) => store.account
@@ -122,10 +127,10 @@ function UpdateProfileDrawer() {
         }}
       >
         <div className="update-profile-drawer-container flex-column-justify-start">
-          <h3>Profil Bilgileri</h3>
+          <h3>{tText("profileInfo")}</h3>
           <div className="update-profile-drawer-inputs">
             <TextField
-              label="İsim"
+              label={tInput("name")}
               sx={{ width: "250px" }}
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
@@ -135,7 +140,7 @@ function UpdateProfileDrawer() {
           </div>
           <div className="update-profile-drawer-inputs">
             <TextField
-              label="Soyisim"
+              label={tInput("surname")}
               sx={{ width: "250px" }}
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
@@ -152,7 +157,7 @@ function UpdateProfileDrawer() {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Şehir"
+                  label={tInput("city")}
                   variant="outlined"
                   size="medium"
                   sx={{ width: "250px" }}
@@ -194,7 +199,7 @@ function UpdateProfileDrawer() {
                 renderInput={(params) => (
                   <TextField
                     {...params}
-                    label="Kategori"
+                    label={tInput("category")}
                     variant="outlined"
                     size="medium"
                     sx={{ width: "250px" }}
@@ -233,7 +238,7 @@ function UpdateProfileDrawer() {
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="tr">
               <Box sx={{ width: "250px" }}>
                 <DatePicker
-                  label="Doğum Tarihi"
+                  label={tInput("birthDate")}
                   value={birthDate}
                   onChange={(date) => setBirthDate(date)}
                   slotProps={{
@@ -249,17 +254,17 @@ function UpdateProfileDrawer() {
           </div>
           <div className="update-profile-drawer-inputs">
             <FormControl error={!!errors.gender}>
-              <FormLabel>Cinsiyet</FormLabel>
+              <FormLabel>{tInput("gender")}</FormLabel>
               <RadioGroup value={gender} onChange={(e) => genderChange(e)} row>
                 <FormControlLabel
                   value={"Erkek"}
                   control={<Radio />}
-                  label="Erkek"
+                  label={tInput("male")}
                 />
                 <FormControlLabel
                   value={"Kadın"}
                   control={<Radio />}
-                  label="Kadın"
+                  label={tInput("female")}
                 />
               </RadioGroup>
               {errors.gender && (
@@ -271,7 +276,7 @@ function UpdateProfileDrawer() {
           </div>
           <div className="update-profile-drawer-inputs">
             <Button variant="contained" color="success" onClick={Update}>
-              Güncelle
+              {tButton("update")}
             </Button>
           </div>
         </div>

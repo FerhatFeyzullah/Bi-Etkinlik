@@ -15,7 +15,6 @@ import { useNavigate, useParams } from "react-router-dom";
 import ReviewMapPanel from "../components/User/Panels/ReviewMapPanel";
 import LogoutIcon from "@mui/icons-material/Logout";
 import EditableEventsPanel from "../components/User/Panels/CreateEvent/EditableEventsPanel";
-import { blue } from "@mui/material/colors";
 import { GetAllCategory } from "../redux/slices/categorySlice";
 import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
@@ -29,8 +28,11 @@ import {
 } from "../redux/slices/mapSlice";
 import { Button } from "@mui/material";
 import { LogoutFromSystem } from "../redux/slices/authSlice";
+import { useTranslation } from "react-i18next";
 
 function User() {
+  const { t: tUser } = useTranslation("user");
+  const { t: tButton } = useTranslation("button");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   var { userId } = useParams();
@@ -85,7 +87,7 @@ function User() {
             }}
           >
             <Tab
-              label="Keşfet"
+              label={tButton("discoveryTab")}
               icon={<TravelExploreIcon />}
               iconPosition="start"
               sx={{
@@ -99,7 +101,7 @@ function User() {
               }}
             />
             <Tab
-              label="Önerilenler"
+              label={tButton("recommendedTab")}
               icon={<ThumbUpIcon />}
               iconPosition="start"
               sx={{
@@ -113,7 +115,7 @@ function User() {
               }}
             />
             <Tab
-              label="Oluştur / Düzenle"
+              label={tButton("createTab")}
               icon={<EditNoteIcon />}
               iconPosition="start"
               sx={{
@@ -127,7 +129,7 @@ function User() {
               }}
             />
             <Tab
-              label="Mesajlar"
+              label={tButton("messageTab")}
               icon={<Forum />}
               iconPosition="start"
               sx={{
@@ -141,7 +143,7 @@ function User() {
               }}
             />
             <Tab
-              label="Bildirimler"
+              label={tButton("notificationTab")}
               icon={<NotificationsIcon />}
               iconPosition="start"
               sx={{
@@ -155,7 +157,7 @@ function User() {
               }}
             />
             <Tab
-              label="Profil"
+              label={tButton("profileTab")}
               icon={<PersonIcon />}
               iconPosition="start"
               sx={{
@@ -178,7 +180,7 @@ function User() {
               sx={{ width: "250px" }}
               onClick={SignOut}
             >
-              Çıkış Yap
+              {tButton("signOut")}
             </Button>
           </div>
         </div>

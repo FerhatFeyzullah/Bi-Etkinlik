@@ -12,12 +12,16 @@ import {
   RateEvent,
   SetIsEventRateDialog,
 } from "../../../../redux/slices/eventRegisterSlice";
+import { useTranslation } from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function RateEventDialog() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tText } = useTranslation("text");
+
   const dispatch = useDispatch();
   const { isEventScoreRatedDialog, ratedEvent } = useSelector(
     (store) => store.eventRegister
@@ -51,7 +55,7 @@ function RateEventDialog() {
         onClose={CloseDialog}
       >
         <DialogTitle sx={{ textAlign: "center" }}>
-          Deneyimi Değerlendir
+          {tText("rateYourExperience")}
         </DialogTitle>
         <DialogContent sx={{ width: "500px" }} className="flex-row">
           <>
@@ -67,7 +71,7 @@ function RateEventDialog() {
             <strong
               style={{
                 display: "inline-block",
-                width: "3ch", // veya "2.5ch" gibi
+                width: "3ch",
                 textAlign: "center",
                 fontSize: "17px",
               }}
@@ -78,10 +82,10 @@ function RateEventDialog() {
         </DialogContent>
         <DialogActions>
           <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
-            Hayır
+            {tButton("cancel")}
           </Button>
           <Button sx={{ textTransform: "none" }} onClick={Rate}>
-            Evet
+            {tButton("rate")}
           </Button>
         </DialogActions>
       </Dialog>

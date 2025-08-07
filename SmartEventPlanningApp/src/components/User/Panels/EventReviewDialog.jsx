@@ -13,14 +13,18 @@ import Tooltip from "@mui/material/Tooltip";
 import Dialog from "@mui/material/Dialog";
 import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
-import DialogTitle from "@mui/material/DialogTitle";
 import Slide from "@mui/material/Slide";
+import { useTranslation } from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function EventReviewDialog() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tTooltip } = useTranslation("tooltip");
+  const { t: tText } = useTranslation("text");
+
   const dispatch = useDispatch();
   const [imgError, setImgError] = useState(false);
 
@@ -78,7 +82,7 @@ function EventReviewDialog() {
                   {previewedEvent.appUser?.firstName}{" "}
                   {previewedEvent.appUser?.lastName} {"("}
                 </div>
-                <Tooltip title="Topluluk Puanı" placement="right">
+                <Tooltip title={tTooltip("communityScore")} placement="right">
                   <div>
                     {previewedEvent.appUser?.score}
                     {")"}
@@ -136,13 +140,15 @@ function EventReviewDialog() {
                     <div>
                       {previewedEvent.description}
                       <div style={{ marginTop: "5px" }}>
-                        Şehir: {previewedEvent.city}
+                        {tText("city")}: {previewedEvent.city}
                       </div>
                       <div style={{ marginTop: "5px" }}>
-                        Başlangıç: {formatDateTime(previewedEvent.startDate)}
+                        {tText("startDate")}:{" "}
+                        {formatDateTime(previewedEvent.startDate)}
                       </div>
                       <div style={{ marginTop: "5px" }}>
-                        Bitiş: {formatDateTime(previewedEvent.endDate)}
+                        {tText("endDate")}:{" "}
+                        {formatDateTime(previewedEvent.endDate)}
                       </div>
                     </div>
                   </AccordionDetails>
@@ -153,7 +159,7 @@ function EventReviewDialog() {
         </DialogContent>
         <DialogActions>
           <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
-            Önizlemeyi Kapat
+            {tButton("turnOffPreview")}
           </Button>
         </DialogActions>
       </Dialog>

@@ -9,8 +9,11 @@ import {
   GetMyPastEvents,
   SetEventRegisterationDeleted,
 } from "../../../../redux/slices/eventRegisterSlice";
+import { useTranslation } from "react-i18next";
 
 function MyActivities() {
+  const { t: tButton } = useTranslation("button");
+
   const dispatch = useDispatch();
   const { myRegisteredEvents, eventRegistirationDeleted } = useSelector(
     (store) => store.eventRegister
@@ -58,7 +61,7 @@ function MyActivities() {
             }}
           >
             <Tab
-              label="Hazırlanıyorum"
+              label={tButton("upcomingEvents")}
               sx={{
                 flex: 1,
                 minWidth: 0,
@@ -68,7 +71,7 @@ function MyActivities() {
               }}
             />
             <Tab
-              label="Katılıyorum"
+              label={tButton("ongoingEvents")}
               sx={{
                 flex: 1,
                 minWidth: 0,
@@ -78,7 +81,7 @@ function MyActivities() {
               }}
             />
             <Tab
-              label="Katıldım"
+              label={tButton("completedEvents")}
               sx={{
                 flex: 1,
                 minWidth: 0,

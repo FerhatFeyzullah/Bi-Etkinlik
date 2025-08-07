@@ -11,12 +11,15 @@ import {
   DeleteEventRegister,
   SetIsEventDialog,
 } from "../../../../redux/slices/eventRegisterSlice";
+import { useTranslation } from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function DeleteEventDialog() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tText } = useTranslation("text");
   const dispatch = useDispatch();
   const { isEventDeleteDialog, deletedEvent } = useSelector(
     (store) => store.eventRegister
@@ -41,22 +44,19 @@ function DeleteEventDialog() {
         onClose={CloseDialog}
       >
         <DialogTitle sx={{ textAlign: "center" }}>
-          Katılımı Sonlandır
+          {tText("deleteMyRegistration")}
         </DialogTitle>
         <DialogContent sx={{ width: "500px" }} className="flex-row">
           <>
-            <div>
-              Katılımını iptal etmek üzeresin. Gerçekten etkinlikten ayrılmak
-              istiyor musun?
-            </div>
+            <div>{tText("deleteMyRegistrationInfo")}</div>
           </>
         </DialogContent>
         <DialogActions>
           <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
-            Hayır
+            {tButton("no")}
           </Button>
           <Button sx={{ textTransform: "none" }} onClick={DeleteEvent}>
-            Evet
+            {tButton("yes")}
           </Button>
         </DialogActions>
       </Dialog>

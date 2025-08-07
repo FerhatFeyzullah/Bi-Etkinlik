@@ -6,8 +6,12 @@ import { GetEventsI_CreatedUnFiltreted } from "../../../../redux/slices/eventSli
 import EventReviewDialog from "../EventReviewDialog";
 import EditableEventCardSkeleton from "../../../Skeletons/EditableEventCardSkeleton";
 import Tooltip from "@mui/material/Tooltip";
+import { useTranslation } from "react-i18next";
 
 function EditableEventsPanel({ children }) {
+  const { t: tTooltip } = useTranslation("tooltip");
+  const { t: tText } = useTranslation("text");
+
   const dispatch = useDispatch();
   const { createAndEditS_Alert, editableEventSkeleton } = useSelector(
     (store) => store.event
@@ -21,11 +25,8 @@ function EditableEventsPanel({ children }) {
   return (
     <>
       <div style={{ textAlign: "center" }}>
-        <Tooltip
-          title="Bu panelde yalnızca henüz başlamamış etkinlikleri görüntüleyebilir, düzenleyebilir veya silebilirsiniz."
-          placement="right"
-        >
-          <h2>Etkinliklerim</h2>
+        <Tooltip title={tTooltip("myEvents")} placement="right">
+          <h2>{tText("myEvents")}</h2>
         </Tooltip>
       </div>
 

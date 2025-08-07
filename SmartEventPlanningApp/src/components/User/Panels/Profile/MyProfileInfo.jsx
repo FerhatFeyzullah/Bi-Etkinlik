@@ -15,8 +15,12 @@ import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import { SetUserSettingDrawer } from "../../../../redux/slices/userSettingSlice";
+import { useTranslation } from "react-i18next";
 
 function MyProfileInfo() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tText } = useTranslation("text");
+
   const dispatch = useDispatch();
 
   const { myProfile } = useSelector((store) => store.account);
@@ -129,7 +133,7 @@ function MyProfileInfo() {
         </div>
 
         <div style={{ paddingTop: "10px" }}>
-          Topluluk Puanı: {myProfile.myProfile?.score}
+          {tText("communityScore")} {myProfile.myProfile?.score}
         </div>
       </div>
       <div className="flex-row" style={{ marginBottom: "50px" }}>
@@ -148,14 +152,14 @@ function MyProfileInfo() {
             sx={{ marginRight: "20px", textTransform: "none" }}
             onClick={EditProfile}
           >
-            Profili Düzenle
+            {tButton("editProfile")}
           </Button>
           <Button
             variant="contained"
             color="inherit"
             sx={{ marginRight: "20px", textTransform: "none" }}
           >
-            Arşiv
+            {tButton("archive")}
           </Button>
         </div>
         <div>

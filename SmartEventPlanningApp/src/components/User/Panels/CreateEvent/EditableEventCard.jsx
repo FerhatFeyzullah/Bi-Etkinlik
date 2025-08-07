@@ -14,8 +14,12 @@ import {
   SetPreviewedEvent,
   SetUpdateEventProp,
 } from "../../../../redux/slices/eventSlice";
+import { useTranslation } from "react-i18next";
 
 function EditableEventCard() {
+  const { t: tTooltip } = useTranslation("tooltip");
+  const { t: tText } = useTranslation("text");
+
   const dispatch = useDispatch();
   const [imgError, setImgError] = useState(false);
   const { editableEvents } = useSelector((store) => store.event);
@@ -53,7 +57,7 @@ function EditableEventCard() {
               />
               <div className="editable-event-card-name">{e.name}</div>
               <div className="flex-row-justify-start">
-                <Tooltip title="Etkinliği Önizle">
+                <Tooltip title={tTooltip("previewEvent")}>
                   <IconButton
                     sx={{ margin: "0 20px" }}
                     onClick={() => PreviewEvent(e)}
@@ -61,7 +65,7 @@ function EditableEventCard() {
                     <VisibilityIcon fontSize="medium" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Dikkat: Etkinlik silindikten sonra geri alınamaz!">
+                <Tooltip title={tTooltip("deleteEvent")}>
                   <IconButton
                     sx={{ marginRight: "20px" }}
                     onClick={() => dispatch(RemoveEvent(e.eventId))}
@@ -69,7 +73,7 @@ function EditableEventCard() {
                     <DeleteIcon fontSize="medium" />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title="Bu etkinliği güncellediğinizde sistem tarafından tekrar incelenecektir.">
+                <Tooltip title={tTooltip("updateEvent")}>
                   <IconButton
                     sx={{ marginRight: "30px" }}
                     onClick={() => UpdateModeOpen(e)}
@@ -89,18 +93,18 @@ function EditableEventCard() {
                   <Tooltip
                     title={
                       e.status == null
-                        ? "Etkinlik inceleme aşamasında. Kısa süre içinde onaylanacak ya da reddedilecek."
+                        ? tTooltip("eventStatusNull")
                         : e.status
-                        ? "Etkinlik onaylandı. Artık diğer kullanıcılar tarafından görüntülenebilir ve katılım alabilir."
-                        : "Etkinlik reddedildi. İçerik politikalarına uymadığı için yayınlanmadı."
+                        ? tTooltip("eventStatusTrue")
+                        : tTooltip("eventStatusFalse")
                     }
                   >
                     <div>
                       {e.status == null
-                        ? "Bekliyor"
+                        ? tText("waiting")
                         : e.status
-                        ? "Onaylandı"
-                        : "Reddedildi"}
+                        ? tText("approved")
+                        : tText("rejected")}
                     </div>
                   </Tooltip>
                 </div>

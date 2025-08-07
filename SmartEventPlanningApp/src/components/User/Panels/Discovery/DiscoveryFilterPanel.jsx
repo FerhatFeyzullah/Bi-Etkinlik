@@ -18,8 +18,11 @@ import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import CategoryFilterSkeleton from "../../../Skeletons/CategoryFilterSkeleton";
+import { useTranslation } from "react-i18next";
 
 function DiscoveryFilterPanel() {
+  const { t: tButton } = useTranslation("button");
+  const { t: tInput } = useTranslation("input");
   const dispatch = useDispatch();
 
   const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
@@ -87,7 +90,7 @@ function DiscoveryFilterPanel() {
             renderInput={(params) => (
               <TextField
                 {...params}
-                label="Şehir"
+                label={tInput("city")}
                 variant="outlined"
                 size="medium"
                 sx={{ width: "100%", marginTop: "5px" }}
@@ -126,7 +129,7 @@ function DiscoveryFilterPanel() {
               renderInput={(params) => (
                 <TextField
                   {...params}
-                  label="Kategori"
+                  label={tInput("category")}
                   variant="outlined"
                   size="medium"
                   sx={{ width: "100%", marginTop: "5px" }}
@@ -154,7 +157,7 @@ function DiscoveryFilterPanel() {
             <DemoContainer components={["DatePicker"]}>
               <div className="flex-column" style={{ width: "100%" }}>
                 <DatePicker
-                  label="Şu tarihten"
+                  label={tInput("fromDate")}
                   sx={{
                     width: "100%",
                     marginBottom: "10px",
@@ -163,7 +166,7 @@ function DiscoveryFilterPanel() {
                   onChange={(e) => setStartDate(e)}
                 />
                 <DatePicker
-                  label="Şu tarihe"
+                  label={tInput("toDate")}
                   sx={{ width: "100%" }}
                   value={endDate}
                   onChange={(e) => setEndDate(e)}
@@ -178,7 +181,7 @@ function DiscoveryFilterPanel() {
                 onClick={SetDate}
                 sx={{ textTransform: "none", width: "150px" }}
               >
-                Filtre Açık
+                {tButton("filterOn")}
               </Button>
             </div>
             <div style={{ margin: "10px" }}>
@@ -187,7 +190,7 @@ function DiscoveryFilterPanel() {
                 onClick={ClearDateFilter}
                 sx={{ textTransform: "none", width: "150px" }}
               >
-                Filtre Kapalı
+                {tButton("filterOff")}
               </Button>
             </div>
           </div>
@@ -201,7 +204,7 @@ function DiscoveryFilterPanel() {
             onClick={ClearAllFilters}
             color="warning"
           >
-            Tüm Filtreyi Kaldır
+            {tButton("removeAllFilters")}
           </Button>
         </div>
       </div>

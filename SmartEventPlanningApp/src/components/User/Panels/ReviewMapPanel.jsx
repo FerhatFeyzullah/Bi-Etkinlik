@@ -14,6 +14,7 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import "../../../css/User/Panels/ReviewMapPanel.css";
 import RecenterMap from "../../../hooks/RecenterMap";
+import { useTranslation } from "react-i18next";
 
 // Leaflet ikonları ayarlanıyor
 delete L.Icon.Default.prototype._getIconUrl;
@@ -39,6 +40,8 @@ const ORS_KEY =
   "eyJvcmciOiI1YjNjZTM1OTc4NTExMTAwMDFjZjYyNDgiLCJpZCI6ImE0YmYxMmU1YjE3OTRkZDdhZjE1YmM5ZWZmZjM4YjVjIiwiaCI6Im11cm11cjY0In0=";
 
 function ReviewMapPanel() {
+  const { t: tText } = useTranslation("text");
+
   const { discoveryLatitude, discoveryLongitude } = useSelector(
     (store) => store.map
   );
@@ -52,9 +55,9 @@ function ReviewMapPanel() {
     const saat = Math.floor(minutes / 60);
     const dakika = Math.round(minutes % 60);
 
-    if (saat === 0) return `${dakika} dakika`;
-    if (dakika === 0) return `${saat} saat`;
-    return `${saat} saat ${dakika} dakika`;
+    if (saat === 0) return `${dakika} ${tText("minutes")}`;
+    if (dakika === 0) return `${saat} ${tText("hour")}`;
+    return `${saat} ${tText("hour")} ${dakika} ${tText("minutes")}`;
   };
 
   const isCoordsValid =
@@ -114,15 +117,15 @@ function ReviewMapPanel() {
   if (!isCoordsValid)
     return (
       <>
-        <div className="review-map-title">Etkinlik Konumu</div>
+        <div className="review-map-title">{tText("eventLocation")}</div>
         <div style={{ color: "red", height: "50%" }}>
-          📍 Konumunu Görmek İstediğininiz Etkinliği Seçin.
+          📍 {tText("eventLocationSelectWarning")}
         </div>
       </>
     );
   return (
     <div className="review-map-container">
-      <div className="review-map-title">Etkinlik Konumu</div>
+      <div className="review-map-title">{tText("eventLocation")}</div>
       <hr />
       <MapContainer
         center={[discoveryLatitude, discoveryLongitude]}
@@ -163,11 +166,11 @@ function ReviewMapPanel() {
       <div className="r-map-disctance-duration">
         {distance && duration ? (
           <>
-            🚗 <strong>Mesafe:</strong> {distance} km – <strong>Süre:</strong>{" "}
-            {formatDuration(duration)}
+            🚗 <strong>{tText("distance")}:</strong> {distance} km –{" "}
+            <strong>{tText("duration")}:</strong> {formatDuration(duration)}
           </>
         ) : !userLocation ? (
-          <>🔘 Lütfen haritaya tıklayarak kendi konumunuzu seçin.</>
+          <>🔘 {tText("eventSelectYourLocation")}</>
         ) : null}
       </div>
     </div>

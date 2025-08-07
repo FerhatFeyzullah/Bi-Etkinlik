@@ -11,12 +11,15 @@ import {
   SetDiscoveryLongitude,
   SetIsMapReviewed,
 } from "../../../redux/slices/mapSlice";
+import { useTranslation } from "react-i18next";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
 function ReviewMapDialog() {
+  const { t: tButton } = useTranslation("button");
+
   const dispatch = useDispatch();
   const { isMapReviewed } = useSelector((store) => store.map);
 
@@ -45,7 +48,7 @@ function ReviewMapDialog() {
         </DialogContent>
         <DialogActions>
           <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
-            Kapat
+            {tButton("close")}
           </Button>
         </DialogActions>
       </Dialog>
