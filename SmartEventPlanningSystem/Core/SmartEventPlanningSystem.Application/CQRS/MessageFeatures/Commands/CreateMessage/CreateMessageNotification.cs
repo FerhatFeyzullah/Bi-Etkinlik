@@ -8,7 +8,7 @@ using SmartEventPlanningSystem.Application.DTOs.MessageDto;
 
 namespace SmartEventPlanningSystem.Application.CQRS.MessageFeatures.Commands.CreateMessage
 {
-    public class CreateMessageRequest:IRequest<Unit>
+    public class CreateMessageNotification : INotification
     {
         public CreateMessageDto MessageDto { get; set; }
     }

@@ -14,5 +14,6 @@
   "female": "Female",
   "oldPassword": "Old Password",
   "newPassword": "New Password",
-  "newPasswordRepeat": "New Password Repeat "
+  "newPasswordRepeat": "New Password Repeat ",
+  "writeMessage": "Write your message..."
 }

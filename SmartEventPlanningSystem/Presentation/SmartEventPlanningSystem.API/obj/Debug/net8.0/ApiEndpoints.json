@@ -612,22 +612,6 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.MessagesController",
-    "Method": "CreateMessage",
-    "RelativePath": "api/Messages/CreateMessage",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "request",
-        "Type": "SmartEventPlanningSystem.Application.CQRS.MessageFeatures.Commands.CreateMessage.CreateMessageRequest",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SmartEventPlanningSystem.API.Controllers.MessagesController",
     "Method": "GetMessages",
     "RelativePath": "api/Messages/GetMessages",
     "HttpMethod": "GET",

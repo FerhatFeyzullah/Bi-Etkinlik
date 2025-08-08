@@ -11,11 +11,11 @@ namespace SmartEventPlanningSystem.API.Controllers
     [ApiController]
     public class MessagesController(IMediator mediator) : ControllerBase
     {
-        [HttpPost("CreateMessage")]
-        public async Task<IActionResult> CreateMessage([FromBody] CreateMessageRequest request)
-        {
-            return Ok(await mediator.Send(request));
-        }
+        //[HttpPost("CreateMessage")]
+        //public async Task<IActionResult> CreateMessage([FromBody] CreateMessageNotification request)
+        //{
+        //    return Ok(await mediator.Send(request));
+        //}
 
         [HttpGet("GetMessages")]
         public async Task<IActionResult> GetMessages([FromQuery] GetMessagesForEventRequest request)

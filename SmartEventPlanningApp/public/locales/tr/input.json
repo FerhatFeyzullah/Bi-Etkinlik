@@ -14,5 +14,6 @@
   "female": "Kadın",
   "oldPassword": "Eski Şifre",
   "newPassword": "Yeni Şifre",
-  "newPasswordRepeat": "Yeni Şifre Tekrarı"
+  "newPasswordRepeat": "Yeni Şifre Tekrarı",
+  "writeMessage": "Mesajınızı yazın..."
 }

@@ -29,6 +29,12 @@
   align-items: flex-start;
   justify-content: flex-start;
 }
+.flex-column-align-end-justify-start {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
 .flex-row-justify-space-around {
   display: flex;
   flex-direction: row;

@@ -11,7 +11,7 @@ namespace SmartEventPlanningSystem.Application.Services
 {
     public interface IMessageService
     {
-        Task SendMessage(CreateMessageDto createMessageDto,CancellationToken ct);
+        Task CreateMessage(CreateMessageDto createMessageDto,CancellationToken ct);
 
         Task<GetMessagesForEventResponse> GetMessagesForEvent(int eventId, CancellationToken ct);
     }

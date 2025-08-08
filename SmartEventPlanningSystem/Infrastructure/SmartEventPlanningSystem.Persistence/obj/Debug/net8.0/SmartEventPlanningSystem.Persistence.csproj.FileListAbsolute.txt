@@ -4,6 +4,12 @@ C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEve
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.AssemblyInfo.cs
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.csproj.CoreCompileInputs.cache
 C:\Users\Dell\Desktop\Full Stack Projects\Smart Event Planning Platform\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.sourcelink.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.csproj.AssemblyReference.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.AssemblyInfoInputs.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.AssemblyInfo.cs
+C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.csproj.CoreCompileInputs.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.sourcelink.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Persistence.deps.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Persistence.runtimeconfig.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Persistence.dll
@@ -14,12 +20,6 @@ C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlannin
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Application.pdb
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.pdb
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Infrastructure.pdb
-C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.csproj.AssemblyReference.cache
-C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.GeneratedMSBuildEditorConfig.editorconfig
-C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.AssemblyInfoInputs.cache
-C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.AssemblyInfo.cs
-C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.csproj.CoreCompileInputs.cache
-C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.sourcelink.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEve.4CBDE192.Up2Date
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.dll
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\refint\SmartEventPlanningSystem.Persistence.dll

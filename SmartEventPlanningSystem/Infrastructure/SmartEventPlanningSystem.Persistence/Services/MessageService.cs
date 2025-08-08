@@ -19,7 +19,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
     {
        
 
-        public async Task SendMessage(CreateMessageDto createMessageDto, CancellationToken ct)
+        public async Task CreateMessage(CreateMessageDto createMessageDto, CancellationToken ct)
         {
             var message = mapper.Map<Message>(createMessageDto);
             message.SendingTime = DateTime.Now;
