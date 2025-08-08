@@ -122,6 +122,22 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
+    "Method": "GetAllEventsI_Joined",
+    "RelativePath": "api/EventRegisters/GetAllEventsI_Joined",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppUserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventRegistersController",
     "Method": "GetMyCurrentEvents",
     "RelativePath": "api/EventRegisters/GetMyCurrentEvents",
     "HttpMethod": "GET",

@@ -5,7 +5,7 @@ import Tab from "@mui/material/Tab";
 import DiscoveryPanel from "../components/User/Panels/Discovery/DiscoveryPanel";
 import RecommendedPanel from "../components/User/Panels/Recommended/RecommendedPanel";
 import CreateAndEditPanel from "../components/User/Panels/CreateEvent/CreateAndEditPanel";
-import MessagesPanel from "../components/User/Panels/MessagesPanel";
+import MessagesPanel from "../components/User/Panels/Message/MessagesPanel";
 import NotificationPanel from "../components/User/Panels/NotificationPanel";
 import ProfilePanel from "../components/User/Panels/Profile/ProfilePanel";
 import DiscoveryFilterPanel from "../components/User/Panels/Discovery/DiscoveryFilterPanel";
@@ -29,9 +29,9 @@ import {
 import { Button } from "@mui/material";
 import { LogoutFromSystem } from "../redux/slices/authSlice";
 import { useTranslation } from "react-i18next";
+import EventChatGroupsPanel from "../components/User/Panels/Message/EventChatGroupsPanel";
 
 function User() {
-  const { t: tUser } = useTranslation("user");
   const { t: tButton } = useTranslation("button");
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -224,7 +224,15 @@ function User() {
           <EditableEventsPanel />
         </div>
       )}
-      {selectedTab === 3 && <MessagesPanel />}
+      {selectedTab === 3 && (
+        <div
+          className="flex-row-justify-start"
+          style={{ width: "100%", height: "100vh" }}
+        >
+          <MessagesPanel />
+          <EventChatGroupsPanel />
+        </div>
+      )}
       {selectedTab === 4 && <NotificationPanel />}
       {selectedTab === 5 && (
         <div className="flex-row" style={{ width: "100%" }}>

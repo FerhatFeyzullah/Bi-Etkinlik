@@ -1,0 +1,11 @@
+.chat-group-card-container {
+  width: 90%;
+  height: 100px;
+  background-color: whitesmoke;
+  border-radius: 12px;
+  margin: 7px 0px;
+}
+.chat-group-card-container:hover {
+  cursor: pointer;
+  background-color: rgb(192, 191, 191);
+}

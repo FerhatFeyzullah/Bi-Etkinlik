@@ -15,6 +15,7 @@ namespace SmartEventPlanningSystem.Infrastructure.ServiceExtensions
         {
             services.AddScoped<IMailService, MailService>();
             services.AddScoped<IFileStorageService, FileStorageService>();
+            services.AddSignalR();
         }
     }
 }

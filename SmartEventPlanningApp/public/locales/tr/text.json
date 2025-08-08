@@ -21,5 +21,7 @@
   "turkish": "Türkçe",
   "userSettings": "User Settings",
   "passwordChange": "Password Change",
-  "profileInfo": "Profile Information"
+  "profileInfo": "Profile Information",
+  "events": "Etkinlikler",
+  "selectChatGroup": "Sohbet etmek istediğiniz etkinliği seçin"
 }

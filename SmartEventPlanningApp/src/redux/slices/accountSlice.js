@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../api/axios";
-import i18n from "../../i18n";
-
-const { t: tElement } = i18n.useTranlation("element");
 
 const initialState = {
   myProfile: {},

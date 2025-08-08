@@ -9,6 +9,7 @@ import eventReducer from "./slices/eventSlice";
 import eventRegisterReducer from "./slices/eventRegisterSlice";
 import forgotPasswordReducer from "./slices/forgotPasswordSlice";
 import userSettingReducer from "./slices/userSettingSlice";
+import messageReducer from "./slices/messageSlice";
 
 const appReducer = combineReducers({
   auth: authReducer,
@@ -21,6 +22,7 @@ const appReducer = combineReducers({
   eventRegister: eventRegisterReducer,
   forgotPassword: forgotPasswordReducer,
   userSetting: userSettingReducer,
+  message: messageReducer,
 });
 
 const rootReducer = (state, action) => {

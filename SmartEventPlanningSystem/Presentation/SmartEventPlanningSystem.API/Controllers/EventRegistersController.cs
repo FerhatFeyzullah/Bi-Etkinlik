@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.DeleteEventRegister;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RateTheEvent;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RegisterEvent;
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetAllEventsI_Joined;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyPastEvents;
@@ -47,6 +48,12 @@ namespace SmartEventPlanningSystem.API.Controllers
 
         [HttpGet("GetMyCurrentEvents")]
         public async Task<IActionResult> GetMyCurrentEvents([FromQuery] GetMyCurrentEventsRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
+        [HttpGet("GetAllEventsI_Joined")]
+        public async Task<IActionResult> GetAllEventsI_Joined([FromQuery] GetAllEventsI_JoinedRequest request)
         {
             return Ok(await mediator.Send(request));
         }

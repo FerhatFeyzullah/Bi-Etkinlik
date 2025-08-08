@@ -10,6 +10,7 @@ using SmartEventPlanningSystem.Persistence.DbContext;
 using SmartEventPlanningSystem.Persistence.ServiceExtensions;
 using SmartEventPlanningSystem.Application.ServiceExtensions;
 using SmartEventPlanningSystem.Infrastructure.ServiceExtensions;
+using SmartEventPlanningSystem.Infrastructure.Hubs;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -111,6 +112,7 @@ app.UseAuthorization();
 app.UseStaticFiles();
 
 app.MapControllers();
+app.MapHub<ChatHub>("chat");
 
 app.Run();
 

@@ -325,6 +325,28 @@
         }
       }
     },
+    "/api/EventRegisters/GetAllEventsI_Joined": {
+      "get": {
+        "tags": [
+          "EventRegisters"
+        ],
+        "parameters": [
+          {
+            "name": "AppUserId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Events/CreateEvent": {
       "post": {
         "tags": [

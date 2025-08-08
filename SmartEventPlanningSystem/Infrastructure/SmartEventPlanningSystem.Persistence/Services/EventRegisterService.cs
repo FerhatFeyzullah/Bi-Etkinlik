@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyPastEvents;
+using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 using SmartEventPlanningSystem.Domain.Entities;
@@ -163,6 +164,16 @@ namespace SmartEventPlanningSystem.Persistence.Services
             return  mapper.Map<List<GetMyFutureEventsResponse>>(value);
         }
 
-       
+        public async Task<List<EventForMessageDto>> GetAllEventI_Joined(int userId, CancellationToken ct)
+        {
+            var evenRegisters = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
+                x => x.AppUserId == userId,           
+                q => q.Include(x => x.Event),
+                ct);
+
+            var events = evenRegisters.Select(er => er.Event).ToList();
+            var filteredEvents = events.Where(e => e.StartDate < DateTime.Now).ToList();
+            return mapper.Map<List<EventForMessageDto>>(filteredEvents);
+        }
     }
 }

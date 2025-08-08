@@ -152,3 +152,7 @@ C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningS
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.genruntimeconfig.cache
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\ref\SmartEventPlanningSystem.API.dll
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\Microsoft.Extensions.Diagnostics.Abstractions.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\Microsoft.Extensions.Hosting.Abstractions.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\Microsoft.Extensions.ObjectPool.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\bin\Debug\net8.0\System.Net.WebSockets.WebSocketProtocol.dll

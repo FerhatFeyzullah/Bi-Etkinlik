@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyPastEvents;
+using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 
 namespace SmartEventPlanningSystem.Application.Services
 {
@@ -17,6 +18,7 @@ namespace SmartEventPlanningSystem.Application.Services
         Task<List<GetMyPastEventsResponse>> GetMyPastEvents(int id, CancellationToken ct);
         Task<List<GetMyCurrentEventsResponse>> GetMyCurrentEvents(int id, CancellationToken ct);
         Task<List<GetMyFutureEventsResponse>> GetMyFutureEvents(int id, CancellationToken ct);
+        Task<List<EventForMessageDto>> GetAllEventI_Joined(int userId, CancellationToken ct);
 
     }
 }
