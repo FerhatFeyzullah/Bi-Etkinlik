@@ -613,7 +613,7 @@
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.MessagesController",
     "Method": "GetMessages",
-    "RelativePath": "api/Messages/GetMessages",
+    "RelativePath": "api/Messages/GetOldMessages",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -17,7 +17,7 @@ namespace SmartEventPlanningSystem.API.Controllers
         //    return Ok(await mediator.Send(request));
         //}
 
-        [HttpGet("GetMessages")]
+        [HttpGet("GetOldMessages")]
         public async Task<IActionResult> GetMessages([FromQuery] GetMessagesForEventRequest request)
         {
             return Ok(await mediator.Send(request));

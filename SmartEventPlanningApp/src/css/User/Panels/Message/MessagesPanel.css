@@ -24,14 +24,14 @@
   display: none; /* Chrome/Safari */
 }
 .m-panel-message-card {
-  background-color: rgb(77, 131, 165);
+  background-color: rgb(53, 179, 158);
   max-width: 300px; /* en fazla 200px genişle */
   display: inline-block; /* içeriğe göre genişlik */
   word-wrap: break-word; /* kelimeleri böl */
   overflow-wrap: break-word;
   white-space: pre-wrap; /* satır kaydırmaya izin ver, boşlukları koru */
   margin: 10px 10px;
-  border-radius: 10px;
+  border-radius: 8px;
   padding: 8px 12px;
   color: white;
   font-size: 14px;

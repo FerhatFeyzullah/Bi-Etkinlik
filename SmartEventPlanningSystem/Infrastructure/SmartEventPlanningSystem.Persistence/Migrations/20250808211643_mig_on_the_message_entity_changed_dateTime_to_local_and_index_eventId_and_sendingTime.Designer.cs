@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using SmartEventPlanningSystem.Persistence.DbContext;
@@ -11,9 +12,11 @@ using SmartEventPlanningSystem.Persistence.DbContext;
 namespace SmartEventPlanningSystem.Persistence.Migrations
 {
     [DbContext(typeof(SEP_DbContext))]
-    partial class SEP_DbContextModelSnapshot : ModelSnapshot
+    [Migration("20250808211643_mig_on_the_message_entity_changed_dateTime_to_local_and_index_eventId_and_sendingTime")]
+    partial class mig_on_the_message_entity_changed_dateTime_to_local_and_index_eventId_and_sendingTime
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

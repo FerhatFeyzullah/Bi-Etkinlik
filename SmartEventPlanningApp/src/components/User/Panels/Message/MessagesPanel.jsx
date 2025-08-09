@@ -4,20 +4,22 @@ import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
 import { Avatar } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import * as signalR from "@microsoft/signalr";
+import { GetOldMessages } from "../../../../redux/slices/messageSlice";
 
 function MessagesPanel() {
   const { t: tText } = useTranslation("text");
   const { t: tInput } = useTranslation("input");
+  const dispatch = useDispatch();
 
   const messagesEndRef = useRef(null);
 
   const [imgError, setImgError] = useState(false);
-  const { chattingEvent } = useSelector((store) => store.message);
+  const { chattingEvent, oldMessages } = useSelector((store) => store.message);
   const { myProfile } = useSelector((store) => store.account);
 
   const [connection, setConnection] = useState(null);
@@ -29,6 +31,24 @@ function MessagesPanel() {
   const [message, setMessage] = useState("");
 
   const previousEventId = useRef(null);
+
+  useEffect(() => {
+    if (oldMessages.length > 0) {
+      setChatMessages([]);
+      setChatMessages((prev) => [
+        ...prev,
+        ...oldMessages.map((m) => ({
+          sender: m.userName,
+          message: m.content,
+        })),
+      ]);
+    }
+  }, [oldMessages]);
+
+  useEffect(() => {
+    setChatMessages([]);
+    dispatch(GetOldMessages(eventId));
+  }, [eventId]);
 
   useEffect(() => {
     const newConnection = new signalR.HubConnectionBuilder()
@@ -111,7 +131,7 @@ function MessagesPanel() {
     await connection.invoke(
       "SendMessageToEventGroup",
       eventId,
-      // userId,
+      userId,
       userName,
       message
     );
@@ -155,21 +175,22 @@ function MessagesPanel() {
       </div>
 
       <div className="m-panel-messages-phase">
-        {chatMessages.map((m, i) => (
-          <div
-            key={i}
-            className={
-              m.sender == userName
-                ? "flex-column-align-end-justify-start"
-                : "flex-column-align-justify-start"
-            }
-          >
-            <div className="m-panel-message-card">
-              <b>{m.sender}</b>
-              <div>{m.message}</div>
+        {chatMessages &&
+          chatMessages.map((m, i) => (
+            <div
+              key={i}
+              className={
+                m.sender == userName
+                  ? "flex-column-align-end-justify-start"
+                  : "flex-column-align-justify-start"
+              }
+            >
+              <div className="m-panel-message-card">
+                <b>{m.sender}</b>
+                <div>{m.message}</div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
         <div ref={messagesEndRef} />
       </div>
 

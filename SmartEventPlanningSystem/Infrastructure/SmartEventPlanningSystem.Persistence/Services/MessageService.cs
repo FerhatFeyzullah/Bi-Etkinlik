@@ -36,14 +36,21 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x => x.AppUser
                 );
 
-            var orderedMessages = messages.OrderBy(x => x.SendingTime).ToList();
-
-            var Event = await unitOfWork.ReadRepository<Event>().GetByIdAsync(eventId, ct);
+            var orderedMessages =
+                messages
+        .OrderBy(x => x.SendingTime)
+        .Select(m => new ResultMessagesDto
+        {
+            MessageId = m.MessageId,
+            UserName = m.AppUser.UserName,
+            Content = m.Content,
+            SendingTime = m.SendingTime
+        })
+        .ToList();
 
             return new GetMessagesForEventResponse
             {
-                Messages = mapper.Map<List<ResultMessagesDto>>(orderedMessages),
-                Event = mapper.Map<EventForMessageDto>(Event)
+                AllMessages = orderedMessages
             };
         }
 

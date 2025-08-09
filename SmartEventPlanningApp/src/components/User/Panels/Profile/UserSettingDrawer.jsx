@@ -13,6 +13,14 @@ import {
   UpdateEmailNotification,
 } from "../../../../redux/slices/userSettingSlice";
 import { Drawer, Tooltip } from "@mui/material";
+import {
+  TextField,
+  InputAdornment,
+  IconButton,
+  Box,
+  Popover,
+} from "@mui/material";
+import PaletteIcon from "@mui/icons-material/Palette";
 import "../../../../css/User/Panels/Profile/UserSettingDrawer.css";
 import Switch from "react-switch";
 import { Button } from "@mui/material";
@@ -35,10 +43,6 @@ function UserSettingDrawer() {
   const emailConfirmed = myProfile?.myProfile?.emailConfirmed;
 
   const UserId = localStorage.getItem("UserId");
-
-  // useEffect(() => {
-  //   console.log(language);
-  // }, [language]);
 
   const Close = () => {
     dispatch(SetUserSettingDrawer(false));

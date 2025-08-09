@@ -947,7 +947,7 @@
         }
       }
     },
-    "/api/Messages/GetMessages": {
+    "/api/Messages/GetOldMessages": {
       "get": {
         "tags": [
           "Messages"

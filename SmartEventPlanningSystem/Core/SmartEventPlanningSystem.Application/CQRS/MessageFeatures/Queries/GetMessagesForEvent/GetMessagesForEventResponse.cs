@@ -10,8 +10,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.MessageFeatures.Queries.GetM
 {
     public class GetMessagesForEventResponse
     {
-        public EventForMessageDto Event { get; set; }
-        public List<ResultMessagesDto> Messages { get; set; }
 
+        public List<ResultMessagesDto> AllMessages { get; set; }
     }
 }

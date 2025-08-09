@@ -24,7 +24,7 @@ namespace SmartEventPlanningSystem.Infrastructure.Hubs
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, $"Event-{eventId}");
         }
 
-        public async Task SendMessageToEventGroup(int eventId, string userName, string message)
+        public async Task SendMessageToEventGroup(int eventId,int userId, string userName, string message)
         {
             var payload = new
             {
@@ -34,13 +34,14 @@ namespace SmartEventPlanningSystem.Infrastructure.Hubs
 
             await Clients.Group($"Event-{eventId}").SendAsync("ReceiveGroupMessage", payload);
 
-            //var messageDto = new CreateMessageDto
-            //{
-            //    EventId = eventId,
-            //    AppUserId = userId,
-            //    Content = message
-            //};
-            //await mediator.Publish(new CreateMessageNotification { MessageDto = messageDto });
+            var messageDto = new CreateMessageDto
+            {
+                EventId = eventId,
+                AppUserId = userId,
+                Content = message
+            };
+            Console.WriteLine($"Message sent to event {eventId} by user {userId}: {message}");
+            await mediator.Publish(new CreateMessageNotification { MessageDto = messageDto });
         }
 
 

@@ -66,12 +66,6 @@ function ProfilePanel() {
     dispatch(SetChangePassSuccess(false));
   };
 
-  const UserId = localStorage.getItem("UserId");
-
-  useEffect(() => {
-    dispatch(GetMyProfile(UserId));
-  }, []);
-
   return (
     <>
       <div className="profile-panel-container flex-column">

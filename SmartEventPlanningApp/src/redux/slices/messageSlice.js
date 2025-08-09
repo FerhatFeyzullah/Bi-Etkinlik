@@ -4,6 +4,7 @@ import axios from "../../api/axios";
 const initialState = {
   eventGroups: [],
   chattingEvent: null,
+  oldMessages: [],
 };
 
 export const GetAllEventsI_Joined = createAsyncThunk(
@@ -17,6 +18,15 @@ export const GetAllEventsI_Joined = createAsyncThunk(
     return response.data;
   }
 );
+
+export const GetOldMessages = createAsyncThunk("getAllMessage", async (id) => {
+  var response = await axios.get("Messages/GetOldMessages", {
+    params: {
+      EventId: id,
+    },
+  });
+  return response.data;
+});
 
 export const messageSlice = createSlice({
   name: "message",
@@ -33,6 +43,15 @@ export const messageSlice = createSlice({
       })
       .addCase(GetAllEventsI_Joined.rejected, () => {
         console.log("GetAllEventsI_Joined Basarisiz");
+      })
+
+      //Old Messages
+      .addCase(GetOldMessages.fulfilled, (state, action) => {
+        state.oldMessages = action.payload.allMessages;
+        console.log("old messages api basarili");
+      })
+      .addCase(GetOldMessages.rejected, (state, action) => {
+        console.log("old messages api basarisiz");
       });
   },
 });

@@ -30,6 +30,7 @@ import { Button } from "@mui/material";
 import { LogoutFromSystem } from "../redux/slices/authSlice";
 import { useTranslation } from "react-i18next";
 import EventChatGroupsPanel from "../components/User/Panels/Message/EventChatGroupsPanel";
+import { GetMyProfile } from "../redux/slices/accountSlice";
 
 function User() {
   const { t: tButton } = useTranslation("button");
@@ -45,6 +46,7 @@ function User() {
 
   const FirstOp = (id) => {
     dispatch(GetUserSetting(id));
+    dispatch(GetMyProfile(id));
     dispatch(GetAllCategory());
   };
 
