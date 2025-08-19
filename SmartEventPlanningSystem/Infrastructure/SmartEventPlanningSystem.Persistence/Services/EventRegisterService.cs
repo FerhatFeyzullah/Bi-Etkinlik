@@ -112,15 +112,25 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
+<<<<<<< HEAD
                     x.Event.EndDate < now ,
                    
+=======
+                    x.Event.EndDate < now &&
+                    x.Event.AppUserId != id,                 
+
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                     q => q
                     .Include(x => x.Event)
                     .ThenInclude(e => e.AppUser)
                     .Include(x => x.Event)
                     .ThenInclude(e => e.EventCategories)
                     .ThenInclude(ec => ec.Category),
+<<<<<<< HEAD
                     ct);
+=======
+                            ct);
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
 
             return mapper.Map<List<GetMyPastEventsResponse>>(value);
@@ -133,7 +143,12 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
+<<<<<<< HEAD
                     x.Event.StartDate < now && x.Event.EndDate > now,
+=======
+                    x.Event.StartDate < now && x.Event.EndDate > now &&
+                    x.Event.AppUserId != id,
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
                     q => q
                     .Include(x => x.Event)
@@ -152,7 +167,12 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
+<<<<<<< HEAD
                     x.Event.StartDate > now,
+=======
+                    x.Event.StartDate > now &&
+                    x.Event.AppUserId != id,
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
                     q => q
                     .Include(x => x.Event)

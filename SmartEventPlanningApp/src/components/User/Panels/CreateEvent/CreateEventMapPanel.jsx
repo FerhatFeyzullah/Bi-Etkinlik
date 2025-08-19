@@ -24,9 +24,15 @@ L.Icon.Default.mergeOptions({
   shadowUrl: markerShadow,
 });
 
+<<<<<<< HEAD
 function DiscoveryMapPanel() {
   const { t: tButton } = useTranslation("button");
   const { t: tText } = useTranslation("text");
+=======
+function CreateEventMapPanel({ isError }) {
+  const { t: tButton } = useTranslation("button");
+  const { t: tValidation } = useTranslation("validation");
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   const { t: tInput } = useTranslation("input");
 
   const dispatch = useDispatch();
@@ -110,6 +116,11 @@ function DiscoveryMapPanel() {
     <div className="create-event-map-panel">
       <div style={{ width: "100%" }}>
         <TextField
+<<<<<<< HEAD
+=======
+          error={Boolean(isError)}
+          helperText={isError}
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           label={tInput("searchAdressOrLocation")}
@@ -144,4 +155,8 @@ function DiscoveryMapPanel() {
   );
 }
 
+<<<<<<< HEAD
 export default DiscoveryMapPanel;
+=======
+export default CreateEventMapPanel;
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)

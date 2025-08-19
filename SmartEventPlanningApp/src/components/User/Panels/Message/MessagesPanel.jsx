@@ -6,14 +6,25 @@ import SendIcon from "@mui/icons-material/Send";
 import IconButton from "@mui/material/IconButton";
 import { useDispatch, useSelector } from "react-redux";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
+<<<<<<< HEAD
 import { Avatar } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import * as signalR from "@microsoft/signalr";
 import { GetOldMessages } from "../../../../redux/slices/messageSlice";
+=======
+import { Avatar, Tooltip } from "@mui/material";
+import { useTranslation } from "react-i18next";
+import * as signalR from "@microsoft/signalr";
+import { GetOldMessages, IsEventFinished } from "../../../../redux/slices/messageSlice";
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
 function MessagesPanel() {
   const { t: tText } = useTranslation("text");
   const { t: tInput } = useTranslation("input");
+<<<<<<< HEAD
+=======
+  const { t: tTooltip } = useTranslation("tooltip");
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   const dispatch = useDispatch();
 
   const messagesEndRef = useRef(null);
@@ -29,10 +40,33 @@ function MessagesPanel() {
   const userName = myProfile?.myProfile?.userName;
   const [chatMessages, setChatMessages] = useState([]);
   const [message, setMessage] = useState("");
+<<<<<<< HEAD
+=======
+  const [eventFinished, setEventFinished] = useState(false);
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
   const previousEventId = useRef(null);
 
   useEffect(() => {
+<<<<<<< HEAD
+=======
+    setChatMessages([]);
+    dispatch(GetOldMessages(eventId));
+
+    const checkEventFinished = async () => {
+      if (eventId != null) {
+        const result = await dispatch(IsEventFinished(eventId)).unwrap();
+        setEventFinished(result);
+      }
+
+    };
+
+    checkEventFinished();
+  }, [eventId, dispatch]);
+
+
+  useEffect(() => {
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
     if (oldMessages.length > 0) {
       setChatMessages([]);
       setChatMessages((prev) => [
@@ -45,10 +79,14 @@ function MessagesPanel() {
     }
   }, [oldMessages]);
 
+<<<<<<< HEAD
   useEffect(() => {
     setChatMessages([]);
     dispatch(GetOldMessages(eventId));
   }, [eventId]);
+=======
+
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
   useEffect(() => {
     const newConnection = new signalR.HubConnectionBuilder()
@@ -195,6 +233,7 @@ function MessagesPanel() {
       </div>
 
       <div className="m-panel-input-phase flex-row">
+<<<<<<< HEAD
         <TextField
           sx={{ width: "95%" }}
           value={message}
@@ -216,6 +255,36 @@ function MessagesPanel() {
             if (e.key === "Enter") SendMessage();
           }}
         />
+=======
+        <Tooltip title={eventFinished ? tTooltip("eventFinished") : null}>
+          <span style={{ width: "95%" }}>
+            <TextField
+              sx={{ width: "100%" }}
+              disabled={eventFinished}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              fullWidth
+              placeholder={tInput("writeMessage")}
+              slotProps={{
+                input: {
+                  endAdornment: (
+                    <InputAdornment>
+                      <IconButton size="large" onClick={SendMessage}
+                        disabled={eventFinished}>
+                        <SendIcon />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                },
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "Enter") SendMessage();
+              }}
+            />
+          </span>
+        </Tooltip>
+
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       </div>
     </div>
   );

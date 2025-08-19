@@ -548,6 +548,25 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+<<<<<<< HEAD
+=======
+    "Method": "IsEventFinished",
+    "RelativePath": "api/Events/IsEventFinished",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "EventId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
     "Method": "RemoveEvent",
     "RelativePath": "api/Events/RemoveEvent/{id}",
     "HttpMethod": "DELETE",

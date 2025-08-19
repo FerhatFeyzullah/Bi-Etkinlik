@@ -19,6 +19,10 @@ using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Cr
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusTrue;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedUnFiltered;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsRecommendedToMe;
+<<<<<<< HEAD
+=======
+using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.IsEventFinished;
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
@@ -90,6 +94,15 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(await mediator.Send(new SetEventPermissionFalseRequest { EventId = id }));
         }
 
+<<<<<<< HEAD
+=======
+        [HttpGet("IsEventFinished")]
+        public async Task<IActionResult> IsEventFinished([FromQuery] IsEventFinishedRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         //Events I Created Queries
 
         [HttpGet("GetEventsI_CreatedUnFiltered")]

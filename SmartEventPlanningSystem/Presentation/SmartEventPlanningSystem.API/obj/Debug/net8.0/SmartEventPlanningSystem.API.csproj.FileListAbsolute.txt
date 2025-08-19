@@ -138,17 +138,23 @@ C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningS
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.csproj.CoreCompileInputs.cache
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.MvcApplicationPartsAssemblyInfo.cs
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.MvcApplicationPartsAssemblyInfo.cache
+<<<<<<< HEAD
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.sourcelink.json
+=======
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\scopedcss\bundle\SmartEventPlanningSystem.API.styles.css
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+<<<<<<< HEAD
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets\msbuild.SmartEventPlanningSystem.API.Microsoft.AspNetCore.StaticWebAssets.props
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets\msbuild.SmartEventPlanningSystem.API.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets\msbuild.build.SmartEventPlanningSystem.API.props
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.SmartEventPlanningSystem.API.props
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.SmartEventPlanningSystem.API.props
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets.pack.json
+=======
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEve.A74C4F88.Up2Date
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.dll
@@ -156,3 +162,11 @@ C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningS
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.pdb
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\SmartEventPlanningSystem.API.genruntimeconfig.cache
 C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\ref\SmartEventPlanningSystem.API.dll
+<<<<<<< HEAD
+=======
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\rpswa.dswa.cache.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\obj\Debug\net8.0\staticwebassets.build.json.cache
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)

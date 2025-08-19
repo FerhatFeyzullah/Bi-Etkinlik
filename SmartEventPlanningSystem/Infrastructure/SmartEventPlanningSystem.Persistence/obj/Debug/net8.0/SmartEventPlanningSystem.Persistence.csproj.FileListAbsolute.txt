@@ -9,7 +9,10 @@ C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlannin
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.AssemblyInfoInputs.cache
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.AssemblyInfo.cs
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.csproj.CoreCompileInputs.cache
+<<<<<<< HEAD
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\obj\Debug\net8.0\SmartEventPlanningSystem.Persistence.sourcelink.json
+=======
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Persistence.deps.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Persistence.runtimeconfig.json
 C:\Projects\SEP_System\SmartEventPlanningSystem\Infrastructure\SmartEventPlanningSystem.Persistence\bin\Debug\net8.0\SmartEventPlanningSystem.Persistence.dll

@@ -29,6 +29,11 @@ namespace SmartEventPlanningSystem.Application.Services
         Task SetEventPermissionTrue(int id,CancellationToken ct);
         Task SetEventPermissionFalse(int id,CancellationToken ct);
 
+<<<<<<< HEAD
+=======
+        Task<bool> IsEventFinished(int id, CancellationToken ct);
+
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         //EventI_Created Queries
         Task<GetEventsICreatedUnFilteredResponse> GetEventsI_CreatedUnFiltered(int id, CancellationToken ct);
         Task<GetEventsICreatedAwaitingResponse> GetEventsI_CreatedAwaiting(int id, CancellationToken ct);

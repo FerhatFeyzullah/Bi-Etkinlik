@@ -27,7 +27,14 @@ function DiscoveryFilterPanel() {
 
   const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
     (store) => store.category
+<<<<<<< HEAD
   );
+=======
+
+  );
+  const { language } =
+    useSelector((store) => store.userSetting);
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   const { dateFilterMode } = useSelector((store) => store.discovery);
 
   const [selectedCities, setSelectedCities] = useState([]);
@@ -153,6 +160,7 @@ function DiscoveryFilterPanel() {
           )}
         </div>
         <div className="discovery-filter-lists">
+<<<<<<< HEAD
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DemoContainer components={["DatePicker"]}>
               <div className="flex-column" style={{ width: "100%" }}>
@@ -173,6 +181,32 @@ function DiscoveryFilterPanel() {
                 />
               </div>
             </DemoContainer>
+=======
+          <LocalizationProvider dateAdapter={AdapterDayjs}
+            adapterLocale={language}
+          >
+
+            <div className="flex-column" style={{ width: "100%", marginTop: '5px' }}>
+              <DatePicker
+                disablePast
+                label={tInput("fromDate")}
+                sx={{
+                  width: "100%",
+                  marginBottom: "10px",
+                }}
+                value={startDate}
+                onChange={(e) => setStartDate(e)}
+              />
+              <DatePicker
+                disablePast
+                label={tInput("toDate")}
+                sx={{ width: "100%" }}
+                value={endDate}
+                onChange={(e) => setEndDate(e)}
+              />
+            </div>
+
+>>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           </LocalizationProvider>
           <div className="flex-column">
             <div style={{ marginTop: "20px" }}>
