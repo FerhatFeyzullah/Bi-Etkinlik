@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using SmartEventPlanningSystem.Application.Services;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.SetEventPermissionTrue
@@ -12,7 +7,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.SetEv
     {
         public async Task<Unit> Handle(SetEventPermissionTrueRequest request, CancellationToken cancellationToken)
         {
-             await eventService.SetEventPermissionTrue(request.EventId, cancellationToken);
+            await eventService.SetEventPermissionTrue(request.EventId, cancellationToken);
             return Unit.Value;
         }
     }

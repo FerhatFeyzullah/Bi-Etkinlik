@@ -7,11 +7,7 @@ import {
 } from "../../../../redux/slices/userSettingSlice";
 import { Drawer } from "@mui/material";
 import { Button, InputAdornment, IconButton } from "@mui/material";
-<<<<<<< HEAD
-import { schema } from "../../../../schemas/ChangePasswordSchema";
-=======
 import { changePasswordSchema } from "../../../../schemas/ChangePasswordSchema";
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { useTranslation } from "react-i18next";
@@ -20,12 +16,9 @@ function ChangePasswordDrawer() {
   const { t: tButton } = useTranslation("button");
   const { t: tText } = useTranslation("text");
   const { t: tInput } = useTranslation("input");
-<<<<<<< HEAD
-=======
   const { t: tValidation } = useTranslation("validation");
 
   const schema = changePasswordSchema(tValidation);
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
   const dispatch = useDispatch();
   const { changePasswordDrawer, changePassSuccess } = useSelector(
@@ -109,28 +102,17 @@ function ChangePasswordDrawer() {
 
           <TextField
             label={tInput("oldPassword")}
-<<<<<<< HEAD
-            error={Boolean(errors.confirmPass)}
-            helperText={errors.confirmPass}
-            sx={{ margin: "10px 0px" }}
-=======
             error={Boolean(errors.oldPassword)}
             helperText={errors.oldPassword}
             sx={{ margin: "10px 0px", width: "225px" }}
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
             value={oldPassword}
             onChange={(e) => setOldPassword(e.target.value)}
           />
 
           <TextField
             label={tInput("newPassword")}
-<<<<<<< HEAD
-            error={Boolean(errors.confirmPass)}
-            helperText={errors.confirmPass}
-=======
             error={Boolean(errors.newPassword)}
             helperText={errors.newPassword}
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
             sx={{ margin: "10px 0px", width: "225px" }}
             value={newPassword}
             onChange={(e) => setNewPassword(e.target.value)}

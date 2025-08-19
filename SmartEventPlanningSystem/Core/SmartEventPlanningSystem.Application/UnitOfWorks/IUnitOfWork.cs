@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartEventPlanningSystem.Application.Repositories;
+﻿using SmartEventPlanningSystem.Application.Repositories;
 
 namespace SmartEventPlanningSystem.Application.UnitOfWorks
 {

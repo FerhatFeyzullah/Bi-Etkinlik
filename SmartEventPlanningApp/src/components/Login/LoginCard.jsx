@@ -94,21 +94,14 @@ function LoginCard() {
               </InputAdornment>
             ),
           }}
-<<<<<<< HEAD
-=======
           onKeyDown={(e) => {
             if (e.key === "Enter") submit();
           }}
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         />
       </div>
       <div>
         <Button
           variant="contained"
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           size="medium"
           fullWidth
           sx={{ textTransform: "none", width: "200px" }}

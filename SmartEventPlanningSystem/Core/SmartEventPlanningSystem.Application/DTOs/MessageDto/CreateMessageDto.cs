@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartEventPlanningSystem.Domain.Entities;
-
-namespace SmartEventPlanningSystem.Application.DTOs.MessageDto
+﻿namespace SmartEventPlanningSystem.Application.DTOs.MessageDto
 {
     public class CreateMessageDto
     {

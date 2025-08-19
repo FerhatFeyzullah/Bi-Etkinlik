@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartEventPlanningSystem.Application.DTOs.EventDtos;
+﻿using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_UnFiltered
 {
     public class GetE_UnFilteredResponse
     {
-        public List<EventsDiscoveryDto>Events { get; set; }
+        public List<EventsDiscoveryDto> Events { get; set; }
     }
 }

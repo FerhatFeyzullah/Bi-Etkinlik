@@ -10,22 +10,14 @@
         "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\SmartEventPlanningSystem.Application.csproj",
         "projectName": "SmartEventPlanningSystem.Application",
         "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\SmartEventPlanningSystem.Application.csproj",
-<<<<<<< HEAD
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-=======
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -59,11 +51,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-<<<<<<< HEAD
-        "SdkAnalysisLevel": "9.0.200"
-=======
         "SdkAnalysisLevel": "9.0.300"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       },
       "frameworks": {
         "net8.0": {
@@ -102,11 +90,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
-=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         }
       }
     },
@@ -116,22 +100,14 @@
         "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
         "projectName": "SmartEventPlanningSystem.Domain",
         "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
-<<<<<<< HEAD
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-=======
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -158,11 +134,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-<<<<<<< HEAD
-        "SdkAnalysisLevel": "9.0.200"
-=======
         "SdkAnalysisLevel": "9.0.300"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       },
       "frameworks": {
         "net8.0": {
@@ -189,11 +161,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
-=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         }
       }
     },
@@ -203,22 +171,14 @@
         "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj",
         "projectName": "SmartEventPlanningSystem.Infrastructure",
         "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj",
-<<<<<<< HEAD
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-=======
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -245,11 +205,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-<<<<<<< HEAD
-        "SdkAnalysisLevel": "9.0.200"
-=======
         "SdkAnalysisLevel": "9.0.300"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       },
       "frameworks": {
         "net8.0": {
@@ -291,11 +247,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
-=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         }
       }
     },
@@ -305,22 +257,14 @@
         "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\SmartEventPlanningSystem.Persistence.csproj",
         "projectName": "SmartEventPlanningSystem.Persistence",
         "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\SmartEventPlanningSystem.Persistence.csproj",
-<<<<<<< HEAD
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-=======
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -357,11 +301,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-<<<<<<< HEAD
-        "SdkAnalysisLevel": "9.0.200"
-=======
         "SdkAnalysisLevel": "9.0.300"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       },
       "frameworks": {
         "net8.0": {
@@ -402,11 +342,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
-=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         }
       }
     },
@@ -416,22 +352,14 @@
         "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\SmartEventPlanningSystem.API.csproj",
         "projectName": "SmartEventPlanningSystem.API",
         "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\SmartEventPlanningSystem.API.csproj",
-<<<<<<< HEAD
-        "packagesPath": "C:\\Users\\Dell\\.nuget\\packages\\",
-=======
         "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Presentation\\SmartEventPlanningSystem.API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-<<<<<<< HEAD
-          "C:\\Users\\Dell\\AppData\\Roaming\\NuGet\\NuGet.Config",
-=======
           "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -465,11 +393,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-<<<<<<< HEAD
-        "SdkAnalysisLevel": "9.0.200"
-=======
         "SdkAnalysisLevel": "9.0.300"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       },
       "frameworks": {
         "net8.0": {
@@ -505,11 +429,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.203/PortableRuntimeIdentifierGraph.json"
-=======
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         }
       }
     }

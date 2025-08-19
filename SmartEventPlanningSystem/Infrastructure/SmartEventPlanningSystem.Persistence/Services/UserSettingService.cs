@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Queries.GetUserSetting;
+﻿using AutoMapper;
 using SmartEventPlanningSystem.Application.DTOs.UserSettingDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
@@ -12,7 +6,7 @@ using SmartEventPlanningSystem.Domain.Entities;
 
 namespace SmartEventPlanningSystem.Persistence.Services
 {
-    public class UserSettingService(IUnitOfWork unitOfWork,IMapper mapper) : IUserSettingService
+    public class UserSettingService(IUnitOfWork unitOfWork, IMapper mapper) : IUserSettingService
     {
         public async Task<UserSettingDto> GetUserSetting(int id, CancellationToken ct)
         {
@@ -61,7 +55,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
         public async Task<UserSettingDto> UpdateTheme(int id, string theme, CancellationToken ct)
         {
-           var user = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(id, ct);
+            var user = await unitOfWork.ReadRepository<AppUser>().GetByIdAsync(id, ct);
 
             user.Settings = new UserSetting
             {

@@ -1,13 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "../../../../css/User/Panels/CreateEventPanel/CreateAndEditPanel.css";
 import CreateEventMapPanel from "../CreateEvent/CreateEventMapPanel";
-<<<<<<< HEAD
-import { schema } from "../../../../schemas/CreateEventSchema";
-import { updateSchema } from "../../../../schemas/UpdateEventSchema";
-=======
 import { createEventSchema } from "../../../../schemas/CreateEventSchema";
 import { updateEventSchema } from "../../../../schemas/UpdateEventSchema";
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 import { styled } from "@mui/material/styles";
 import Button from "@mui/material/Button";
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
@@ -52,23 +47,18 @@ const VisuallyHiddenInput = styled("input")({
 function CreateAndEditPanel() {
   const { t: tButton } = useTranslation("button");
   const { t: tInput } = useTranslation("input");
-<<<<<<< HEAD
-=======
   const { t: tValidation } = useTranslation("validation");
 
   const createSchema = createEventSchema(tValidation)
   const updateSchema = updateEventSchema(tValidation)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
   const dispatch = useDispatch();
   const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
     (store) => store.category
   );
-<<<<<<< HEAD
-=======
+
   const { language } =
     useSelector((store) => store.userSetting);
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   const {
     createAndEditS_Alert,
     createAndEditM_Alert,
@@ -87,20 +77,12 @@ function CreateAndEditPanel() {
       );
       setStartDate(dayjs(updateEventProp.startDate));
       setEndDate(dayjs(updateEventProp.endDate));
-<<<<<<< HEAD
-
-=======
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       setEventId(updateEventProp.eventId);
       setUpdatingImageId(updateEventProp.eventImageId);
       setUpdating(true);
       dispatch(SetIsUpdateMode(false));
     }
-<<<<<<< HEAD
-=======
     setErrors({});
-
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   }, [isUpdateMode]);
 
   const { latitude, longitude } = useSelector((store) => store.event);
@@ -114,13 +96,8 @@ function CreateAndEditPanel() {
   const [description, setDescription] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
   const [selectedCategories, setSelectedCategories] = useState([]);
-<<<<<<< HEAD
-  const [startDate, setStartDate] = useState(dayjs(null));
-  const [endDate, setEndDate] = useState(dayjs(null));
-=======
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   const [updating, setUpdating] = useState(false);
   const [updatingImageId, setUpdatingImageId] = useState("");
   const [errors, setErrors] = useState({});
@@ -163,11 +140,7 @@ function CreateAndEditPanel() {
     setPreviewUrl(null);
     setUpdating(false);
     dispatch(SetGaveUpUpdating(1));
-<<<<<<< HEAD
-=======
     setErrors({});
-
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   };
   useEffect(() => {
     if (createAndEditS_Alert) {
@@ -184,11 +157,7 @@ function CreateAndEditPanel() {
 
   const Create = async () => {
     try {
-<<<<<<< HEAD
-      await schema.validate(
-=======
       await createSchema.validate(
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         {
           eventName,
           description,
@@ -202,11 +171,6 @@ function CreateAndEditPanel() {
         { abortEarly: false }
       );
       setErrors({});
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       const data = new FormData();
       const dto = {
         Name: eventName,
@@ -222,10 +186,6 @@ function CreateAndEditPanel() {
       data.append("EventImage", image);
       data.append("EventCategories", JSON.stringify(selectedCategories));
 
-<<<<<<< HEAD
-      console.log(dto);
-=======
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
       await dispatch(CreateEvent(data));
     } catch (error) {
       const errObj = {};
@@ -233,10 +193,6 @@ function CreateAndEditPanel() {
         errObj[e.path] = e.message;
       });
       setErrors(errObj);
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
     }
   };
   const Update = async () => {
@@ -260,13 +216,8 @@ function CreateAndEditPanel() {
           EventId: eventId,
           Name: eventName,
           Description: description,
-<<<<<<< HEAD
-          StartDate: startDate.format("YYYY-MM-DDTHH:mm:ss"),
-          EndDate: endDate.format("YYYY-MM-DDTHH:mm:ss"),
-=======
           StartDate: dayjs(startDate).format("YYYY-MM-DDTHH:mm:ss"),
           EndDate: dayjs(endDate).format("YYYY-MM-DDTHH:mm:ss"),
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
           City: selectedCity,
           Latitude: Number(latitude.toFixed(6)),
           Longitude: Number(longitude.toFixed(6)),
@@ -393,10 +344,7 @@ function CreateAndEditPanel() {
                 onChange={(e) => setEventName(e.target.value)}
                 error={Boolean(errors.eventName)}
                 helperText={errors.eventName}
-<<<<<<< HEAD
-=======
                 sx={{ width: "250px" }}
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
               />
             </div>
             <div className="create-edit-form-inputs">
@@ -411,11 +359,7 @@ function CreateAndEditPanel() {
                     label={tInput("city")}
                     variant="outlined"
                     size="medium"
-<<<<<<< HEAD
-                    sx={{ width: "225px" }}
-=======
                     sx={{ width: "250px" }}
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                     error={Boolean(errors.selectedCity)}
                     helperText={errors.selectedCity}
                   />
@@ -459,11 +403,7 @@ function CreateAndEditPanel() {
                       label={tInput("category")}
                       variant="outlined"
                       size="medium"
-<<<<<<< HEAD
-                      sx={{ width: "225px" }}
-=======
                       sx={{ width: "250px" }}
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                       error={Boolean(errors.selectedCategories)}
                       helperText={errors.selectedCategories}
                     />
@@ -498,32 +438,24 @@ function CreateAndEditPanel() {
             <div className="create-edit-form-inputs">
               <LocalizationProvider
                 dateAdapter={AdapterDayjs}
-<<<<<<< HEAD
-                adapterLocale="tr"
-              >
-                <Box sx={{ width: "225px" }}>
-                  <DateTimePicker
-=======
                 adapterLocale={language}
               >
                 <Box sx={{ width: "250px" }}>
                   <DateTimePicker
                     disablePast
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                     label={tInput("fromDate")}
                     value={startDate}
                     onChange={(date) => setStartDate(date)}
                     slotProps={{
                       textField: {
                         fullWidth: true,
-<<<<<<< HEAD
-                        error: Boolean(errors?.startDate),
-                        helperText: errors?.startDate,
-=======
                         error: Boolean(errors.startDate),
                         helperText: errors.startDate,
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                       },
+                    }}
+                    localeText={{
+                      cancelButtonLabel: tButton("cancel"),
+                      okButtonLabel: tButton("ok"),
                     }}
                   />
                 </Box>
@@ -532,32 +464,24 @@ function CreateAndEditPanel() {
             <div className="create-edit-form-inputs">
               <LocalizationProvider
                 dateAdapter={AdapterDayjs}
-<<<<<<< HEAD
-                adapterLocale="tr"
-              >
-                <Box sx={{ width: "225px" }}>
-                  <DateTimePicker
-=======
                 adapterLocale={language}
               >
                 <Box sx={{ width: "250px" }}>
                   <DateTimePicker
                     disablePast
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                     label={tInput("toDate")}
                     value={endDate}
                     onChange={(date) => setEndDate(date)}
                     slotProps={{
                       textField: {
                         fullWidth: true,
-<<<<<<< HEAD
-                        error: Boolean(errors?.endDate),
-                        helperText: errors?.endDate,
-=======
                         error: Boolean(errors.endDate),
                         helperText: errors.endDate,
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                       },
+                    }}
+                    localeText={{
+                      cancelButtonLabel: tButton("cancel"),
+                      okButtonLabel: tButton("ok"),
                     }}
                   />
                 </Box>
@@ -609,13 +533,9 @@ function CreateAndEditPanel() {
         </div>
 
         <div>
-<<<<<<< HEAD
-          <CreateEventMapPanel />
-=======
           <CreateEventMapPanel isError={errors.latitude} />
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
-        </div>
-      </div>
+        </div >
+      </div >
     </>
   );
 }

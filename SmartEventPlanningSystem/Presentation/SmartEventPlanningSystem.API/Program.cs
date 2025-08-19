@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
-using System.Security.Claims;
-using System.Text;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using SmartEventPlanningSystem.Application.ServiceExtensions;
 using SmartEventPlanningSystem.Domain.Entities;
+using SmartEventPlanningSystem.Infrastructure.Hubs;
+using SmartEventPlanningSystem.Infrastructure.ServiceExtensions;
 using SmartEventPlanningSystem.Persistence.Configurations;
 using SmartEventPlanningSystem.Persistence.DbContext;
 using SmartEventPlanningSystem.Persistence.ServiceExtensions;
-using SmartEventPlanningSystem.Application.ServiceExtensions;
-using SmartEventPlanningSystem.Infrastructure.ServiceExtensions;
-using SmartEventPlanningSystem.Infrastructure.Hubs;
+using System.Security.Claims;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 

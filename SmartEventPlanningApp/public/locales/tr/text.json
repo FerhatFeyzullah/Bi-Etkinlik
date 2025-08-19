@@ -21,14 +21,8 @@
   "turkish": "Türkçe",
   "userSettings": "Kullanıcı Ayarları",
   "passwordChange": "Şifre Değişikliği",
-<<<<<<< HEAD
   "profileInfo": "Profile Information",
   "events": "Etkinlikler",
-  "selectChatGroup": "Sohbet etmek istediğiniz etkinliği seçin"
+  "selectChatGroup": "Sohbet etmek istediğiniz etkinliği seçin",
+  "filterPanelTitle": "Filtreler"
 }
-=======
-  "profileInfo": "Profil Bilgileri",
-  "events": "Etkinlikler",
-  "selectChatGroup": "Sohbet etmek istediğiniz etkinliği seçin"
-}
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)

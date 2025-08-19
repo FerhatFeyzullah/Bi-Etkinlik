@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore.Storage;
+﻿using Microsoft.EntityFrameworkCore.Storage;
 using SmartEventPlanningSystem.Application.Repositories;
-using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 using SmartEventPlanningSystem.Persistence.DbContext;
 using SmartEventPlanningSystem.Persistence.Repositories;
@@ -42,8 +36,8 @@ namespace SmartEventPlanningSystem.Persistence.UnitOfWorks
                 await _transaction.RollbackAsync();
         }
 
-        public IReadRepository<T> ReadRepository<T>() where T : class => new ReadRepository<T>(_context); 
+        public IReadRepository<T> ReadRepository<T>() where T : class => new ReadRepository<T>(_context);
         public IWriteRepository<T> WriteRepository<T>() where T : class => new WriteRepository<T>(_context);
-        
+
     }
 }

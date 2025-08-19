@@ -1,10 +1,9 @@
-﻿using System.Security.Claims;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.LoginTheSystem;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RegisterTheSystem;
+using System.Security.Claims;
 
 namespace SmartEventPlanningSystem.API.Controllers
 {

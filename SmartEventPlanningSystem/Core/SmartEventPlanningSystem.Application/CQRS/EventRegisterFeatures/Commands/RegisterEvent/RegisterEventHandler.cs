@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using SmartEventPlanningSystem.Application.Services;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RegisterEvent
@@ -17,7 +12,8 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Comman
                 await eventRegisterService.RegisterEvent(request.EventId, request.AppUserId, cancellationToken);
                 return true;
             }
-            catch { 
+            catch
+            {
                 return false;
 
             }

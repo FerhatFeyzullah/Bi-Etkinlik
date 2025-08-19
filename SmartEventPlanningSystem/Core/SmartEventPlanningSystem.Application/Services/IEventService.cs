@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.UpdateEvent;
+﻿using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.UpdateEvent;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_Category;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_City;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_CityCategory;
@@ -23,17 +18,15 @@ namespace SmartEventPlanningSystem.Application.Services
 {
     public interface IEventService
     {
-        Task CreateEvent(CreateEventDto createEventDto,List<int> Catgeories, string filePath, CancellationToken ct);
+        Task CreateEvent(CreateEventDto createEventDto, List<int> Catgeories, string filePath, CancellationToken ct);
         Task<UpdateEventResponse> UpdateEvent(UpdateEventDto updateEventDto, List<int> Catgeories, int id, CancellationToken ct);
         Task<string> RemoveEvent(int id, CancellationToken ct);
-        Task SetEventPermissionTrue(int id,CancellationToken ct);
-        Task SetEventPermissionFalse(int id,CancellationToken ct);
+        Task SetEventPermissionTrue(int id, CancellationToken ct);
+        Task SetEventPermissionFalse(int id, CancellationToken ct);
 
-<<<<<<< HEAD
-=======
+
         Task<bool> IsEventFinished(int id, CancellationToken ct);
 
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
         //EventI_Created Queries
         Task<GetEventsICreatedUnFilteredResponse> GetEventsI_CreatedUnFiltered(int id, CancellationToken ct);
         Task<GetEventsICreatedAwaitingResponse> GetEventsI_CreatedAwaiting(int id, CancellationToken ct);
@@ -44,9 +37,9 @@ namespace SmartEventPlanningSystem.Application.Services
 
         Task<GetE_UnFilteredResponse> GetE_UnFiltered(int id, CancellationToken ct);
         Task<GetE_F_CategoryResponse> GetE_F_Category(int id, List<int> categories, CancellationToken ct);
-        Task<GetE_F_CityResponse> GetE_F_City(int id, List<string> cities,CancellationToken ct);
+        Task<GetE_F_CityResponse> GetE_F_City(int id, List<string> cities, CancellationToken ct);
         Task<GetE_F_CityCategoryResponse> GetE_F_CityCategory(int id, List<string> cities, List<int> categories, CancellationToken ct);
-        Task<GetE_F_DateResponse> GetE_F_Date(int id, DateOnly Start,DateOnly End,CancellationToken ct);
+        Task<GetE_F_DateResponse> GetE_F_Date(int id, DateOnly Start, DateOnly End, CancellationToken ct);
         Task<GetE_F_DateCategoryResponse> GetE_F_DateCategory(int id, DateOnly Start, DateOnly End, List<int> categories, CancellationToken ct);
         Task<GetE_F_DateCityResponse> GetE_F_DateCity(int id, DateOnly Start, DateOnly End, List<string> cities, CancellationToken ct);
         Task<GetE_F_DateCityCategoryResponse> GetE_F_DateCityCategory(int id, DateOnly Start, DateOnly End, List<string> cities, List<int> categories, CancellationToken ct);

@@ -15,6 +15,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import ClearIcon from "@mui/icons-material/Clear";
 import AddIcon from "@mui/icons-material/Add";
 import { SetUserSettingDrawer } from "../../../../redux/slices/userSettingSlice";
+import confirmed from '../../../../assets/eventImage/confirmed.png'
 import { useTranslation } from "react-i18next";
 
 function MyProfileInfo() {
@@ -53,18 +54,12 @@ function MyProfileInfo() {
   };
 
   const ReviewPhoto = () => {
-<<<<<<< HEAD
-    dispatch(SetReviewedPhoto(myProfile.myProfile.profilePhotoId));
-    dispatch(SetIsPhotoReviewedDialog(true));
-=======
     if (
       myProfile.myProfile.profilePhotoId != null
     ) {
       dispatch(SetReviewedPhoto(myProfile.myProfile.profilePhotoId));
       dispatch(SetIsPhotoReviewedDialog(true));
     }
-
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   };
 
   const EditProfile = () => {
@@ -150,6 +145,7 @@ function MyProfileInfo() {
         <div className="flex-column-justify-start profile-panel-name-surname">
           <div style={{ width: "200px" }}>
             {myProfile.myProfile?.firstName} {myProfile.myProfile?.lastName}
+            <img src={confirmed} alt="confirmed" style={{ width: "20px", height: "20px", marginLeft: "10px" }} />
           </div>
           <div style={{ marginTop: "10px", width: "200px" }}>
             {myProfile.myProfile?.userName}

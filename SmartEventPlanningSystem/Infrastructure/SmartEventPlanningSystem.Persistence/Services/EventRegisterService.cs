@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyCurrentEvents;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents;
@@ -15,21 +10,21 @@ using SmartEventPlanningSystem.Domain.Entities;
 
 namespace SmartEventPlanningSystem.Persistence.Services
 {
-    public class EventRegisterService(IUnitOfWork unitOfWork,IMapper mapper) : IEventRegisterService
+    public class EventRegisterService(IUnitOfWork unitOfWork, IMapper mapper) : IEventRegisterService
     {
         public async Task RegisterEvent(int eventId, int userId, CancellationToken ct)
         {
-            ct.ThrowIfCancellationRequested();         
-          
-                var register = new EventRegister
-                {
-                    AppUserId = userId,
-                    EventId = eventId,
-                };
-                await unitOfWork.WriteRepository<EventRegister>().AddAsync(register, ct);
+            ct.ThrowIfCancellationRequested();
 
-                await unitOfWork.CommitAsync();
- 
+            var register = new EventRegister
+            {
+                AppUserId = userId,
+                EventId = eventId,
+            };
+            await unitOfWork.WriteRepository<EventRegister>().AddAsync(register, ct);
+
+            await unitOfWork.CommitAsync();
+
         }
 
         public async Task DeleteEventRegister(int eventId, int userId, CancellationToken ct)
@@ -51,9 +46,9 @@ namespace SmartEventPlanningSystem.Persistence.Services
             try
             {
                 var eventRegister = await unitOfWork.ReadRepository<EventRegister>().GetByFiltered
-                    (x=>x.EventRegisterId == eventRegisterId,
+                    (x => x.EventRegisterId == eventRegisterId,
                     q => q.Include(x => x.Event)
-                        .ThenInclude(e => e.AppUser) , ct);              
+                        .ThenInclude(e => e.AppUser), ct);
 
                 if (eventRegister == null)
                 {
@@ -106,31 +101,24 @@ namespace SmartEventPlanningSystem.Persistence.Services
         }
 
 
-        public async Task<List<GetMyPastEventsResponse>> GetMyPastEvents (int id, CancellationToken ct)
+        public async Task<List<GetMyPastEventsResponse>> GetMyPastEvents(int id, CancellationToken ct)
         {
             var now = DateTime.Now;
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
-<<<<<<< HEAD
-                    x.Event.EndDate < now ,
-                   
-=======
                     x.Event.EndDate < now &&
-                    x.Event.AppUserId != id,                 
+                    x.Event.EndDate < now &&
+                    x.Event.AppUserId != id,
 
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                     q => q
                     .Include(x => x.Event)
                     .ThenInclude(e => e.AppUser)
                     .Include(x => x.Event)
                     .ThenInclude(e => e.EventCategories)
                     .ThenInclude(ec => ec.Category),
-<<<<<<< HEAD
                     ct);
-=======
-                            ct);
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+
 
 
             return mapper.Map<List<GetMyPastEventsResponse>>(value);
@@ -143,12 +131,9 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
-<<<<<<< HEAD
-                    x.Event.StartDate < now && x.Event.EndDate > now,
-=======
+                    x.Event.StartDate < now && x.Event.EndDate > now &&
                     x.Event.StartDate < now && x.Event.EndDate > now &&
                     x.Event.AppUserId != id,
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
                     q => q
                     .Include(x => x.Event)
@@ -167,12 +152,9 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var value = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
 
                     x => x.AppUserId == id &&
-<<<<<<< HEAD
-                    x.Event.StartDate > now,
-=======
+                    x.Event.StartDate > now &&
                     x.Event.StartDate > now &&
                     x.Event.AppUserId != id,
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
                     q => q
                     .Include(x => x.Event)
@@ -181,13 +163,13 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     .ThenInclude(e => e.EventCategories)
                     .ThenInclude(ec => ec.Category),
                     ct);
-            return  mapper.Map<List<GetMyFutureEventsResponse>>(value);
+            return mapper.Map<List<GetMyFutureEventsResponse>>(value);
         }
 
         public async Task<List<EventForMessageDto>> GetAllEventI_Joined(int userId, CancellationToken ct)
         {
             var evenRegisters = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
-                x => x.AppUserId == userId,           
+                x => x.AppUserId == userId,
                 q => q.Include(x => x.Event),
                 ct);
 

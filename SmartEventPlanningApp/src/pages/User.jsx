@@ -190,31 +190,24 @@ function User() {
 
       {selectedTab === 0 && (
         <div
-          className="flex-row-justify-start"
+          className="flex-row"
           style={{ width: "100%", height: "100%" }}
         >
-          <DiscoveryPanel />
-          <div
-            className="flex-column"
-            style={{ height: "100vh", width: "100%" }}
-          >
-            <DiscoveryFilterPanel />
-            <ReviewMapPanel />
+          <div style={{ width: "80%" }}>
+            <DiscoveryPanel />
           </div>
+          <div style={{ width: "20%" }}>
+            <DiscoveryFilterPanel />
+          </div>
+
         </div>
       )}
       {selectedTab === 1 && (
         <div
-          className="flex-row-justify-start"
+          className="flex-row"
           style={{ width: "100%", height: "100%" }}
         >
           <RecommendedPanel />
-          <div
-            className="flex-column"
-            style={{ height: "100vh", width: "100%" }}
-          >
-            <ReviewMapPanel />
-          </div>
         </div>
       )}
       {selectedTab === 2 && (

@@ -1,18 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SmartEventPlanningSystem.Domain.Entities;
 
 
 namespace SmartEventPlanningSystem.Persistence.DbContext
 {
-    public class SEP_DbContext:IdentityDbContext<AppUser,AppRole,int>
+    public class SEP_DbContext : IdentityDbContext<AppUser, AppRole, int>
     {
-        public SEP_DbContext(DbContextOptions<SEP_DbContext> options) :base(options)
+        public SEP_DbContext(DbContextOptions<SEP_DbContext> options) : base(options)
         {
         }
 

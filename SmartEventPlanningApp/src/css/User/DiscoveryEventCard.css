@@ -1,59 +1,69 @@
 .discovery-e-c-main-with-card {
-  width: 500px;
+  width: 600px;
   height: auto;
   border: 1px solid grey;
   margin: 15px;
   border-radius: 10px;
   background-color: whitesmoke;
 }
+
 .discovery-e-c-main-without-card {
-  width: 500px;
+  width: 600px;
   height: auto;
   margin: 15px;
   padding-bottom: 20px;
   border-bottom: 1px solid gray;
   background-color: white;
 }
+
 .review-e-c-main-without-card {
   width: 500px;
   height: auto;
   margin: 15px;
   background-color: white;
 }
+
 .discovery-e-c-user-info {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
 }
+
 .discovery-e-c-image {
   width: 95%;
-  height: 250px;
+  height: 350px;
 }
+
 .discovery-e-c-description-container {
   margin: 0px 10px;
 }
+
 .discovery-e-c-name {
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
 }
+
 .discovery-e-c-category {
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   margin-left: 5px;
 }
+
 .discovery-e-c-description {
   font-weight: 500;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
 }
+
 .discovery-e-c-description-title {
   font-weight: 700;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 17px;
 }
+
 .discovery-e-c-register {
   margin: 10px;
 }

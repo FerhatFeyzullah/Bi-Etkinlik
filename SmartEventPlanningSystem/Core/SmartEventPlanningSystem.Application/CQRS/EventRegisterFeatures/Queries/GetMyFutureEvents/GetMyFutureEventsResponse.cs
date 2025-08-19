@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartEventPlanningSystem.Application.DTOs.EventCategoryDtos;
-using SmartEventPlanningSystem.Application.DTOs.EventDtos;
-using SmartEventPlanningSystem.Application.DTOs.UserDtos;
+﻿using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.GetMyFutureEvents
 {

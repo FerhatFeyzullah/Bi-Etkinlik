@@ -8,11 +8,7 @@ import {
   UpdateProfile,
 } from "../../../../redux/slices/accountSlice";
 import { cities } from "../../../../data/MyData";
-<<<<<<< HEAD
-import { schema } from "../../../../schemas/UpdateProfileSchema";
-=======
 import { updateProfileSchema } from "../../../../schemas/UpdateProfileSchema";
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 import dayjs from "dayjs";
 import "dayjs/locale/tr";
 import { Box } from "@mui/material";
@@ -33,23 +29,18 @@ function UpdateProfileDrawer() {
   const { t: tButton } = useTranslation("button");
   const { t: tText } = useTranslation("text");
   const { t: tInput } = useTranslation("input");
-<<<<<<< HEAD
-=======
   const { t: tValidation } = useTranslation("validation");
 
   const schema = updateProfileSchema(tValidation);
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
   const dispatch = useDispatch();
   const { updateProfileDrawer, updatedProfile } = useSelector(
     (store) => store.account
   );
-<<<<<<< HEAD
 
-=======
   const { language } =
     useSelector((store) => store.userSetting);
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+
   const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
     (store) => store.category
   );
@@ -250,11 +241,8 @@ function UpdateProfileDrawer() {
             )}
           </div>
           <div className="update-profile-drawer-inputs">
-<<<<<<< HEAD
-            <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="tr">
-=======
             <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale={language}>
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+
               <Box sx={{ width: "250px" }}>
                 <DatePicker
                   label={tInput("birthDate")}
@@ -298,8 +286,8 @@ function UpdateProfileDrawer() {
               {tButton("update")}
             </Button>
           </div>
-        </div>
-      </Drawer>
+        </div >
+      </Drawer >
     </>
   );
 }

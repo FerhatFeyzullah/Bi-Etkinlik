@@ -6,7 +6,7 @@ const initialState = {
   discoveryEvents: [],
   recommendedEvents: [],
   discoverySkeletonLoading: false,
-  dateFilterMode: false,
+  filterMode: false,
   startDate: null,
   endDate: null,
   cities: [],
@@ -141,8 +141,8 @@ export const discoverySlice = createSlice({
     SetCategories: (state, action) => {
       state.categories = action.payload;
     },
-    SetDateFilterMode: (state, action) => {
-      state.dateFilterMode = action.payload;
+    SetFilterMode: (state, action) => {
+      state.filterMode = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -260,7 +260,7 @@ export const {
   SetEndDate,
   SetCities,
   SetCategories,
-  SetDateFilterMode,
+  SetFilterMode,
   MarkEventAsRegistered,
 } = discoverySlice.actions;
 export default discoverySlice.reducer;

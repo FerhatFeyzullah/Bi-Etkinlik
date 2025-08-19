@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using SmartEventPlanningSystem.Application.DTOs.CategoryDtos;
 using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 using SmartEventPlanningSystem.Domain.Entities;
 
 namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetMyProfile
 {
-    public class GetMyProfileHandler(IUnitOfWork unitOfWork,IMapper mapper) : IRequestHandler<GetMyProfileRequest, GetMyProfileResponse>
+    public class GetMyProfileHandler(IUnitOfWork unitOfWork, IMapper mapper) : IRequestHandler<GetMyProfileRequest, GetMyProfileResponse>
     {
         public async Task<GetMyProfileResponse> Handle(GetMyProfileRequest request, CancellationToken cancellationToken)
         {

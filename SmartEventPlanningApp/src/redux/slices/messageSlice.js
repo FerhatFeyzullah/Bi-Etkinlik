@@ -28,8 +28,6 @@ export const GetOldMessages = createAsyncThunk("getAllMessage", async (id) => {
   return response.data;
 });
 
-<<<<<<< HEAD
-=======
 export const IsEventFinished = createAsyncThunk("isEventFinish", async (id) => {
   var response = await axios.get("Events/IsEventFinished", {
     params: {
@@ -39,7 +37,6 @@ export const IsEventFinished = createAsyncThunk("isEventFinish", async (id) => {
   return response.data;
 });
 
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 export const messageSlice = createSlice({
   name: "message",
   initialState,

@@ -23,5 +23,6 @@
   "passwordChange": "Password Change",
   "profileInfo": "Profile Information",
   "events": "Events",
-  "selectChatGroup": "Select the event you want to chat about"
+  "selectChatGroup": "Select the event you want to chat about",
+  "filterPanelTitle": "Filters"
 }

@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using SmartEventPlanningSystem.Application.CQRS.MessageFeatures.Commands.CreateMessage;
+﻿using AutoMapper;
 using SmartEventPlanningSystem.Application.CQRS.MessageFeatures.Queries.GetMessagesForEvent;
-using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 using SmartEventPlanningSystem.Application.DTOs.MessageDto;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
@@ -15,9 +7,9 @@ using SmartEventPlanningSystem.Domain.Entities;
 
 namespace SmartEventPlanningSystem.Persistence.Services
 {
-    public class MessageService(IUnitOfWork unitOfWork,IMapper mapper) : IMessageService
+    public class MessageService(IUnitOfWork unitOfWork, IMapper mapper) : IMessageService
     {
-       
+
 
         public async Task CreateMessage(CreateMessageDto createMessageDto, CancellationToken ct)
         {

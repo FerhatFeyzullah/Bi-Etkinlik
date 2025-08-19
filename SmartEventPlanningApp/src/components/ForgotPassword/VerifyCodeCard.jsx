@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../../css/ForgotPassword/VerifyCodeCard.css";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { InputOtp } from 'primereact/inputotp';
 import { schema } from "../../schemas/FP_VerifyCodeSchema";
 import { FaArrowLeft } from "react-icons/fa";
 import IconButton from "@mui/material/IconButton";
@@ -23,7 +24,7 @@ function VerifyCodeCard() {
     (store) => store.forgotPassword
   );
 
-  const [code, setCode] = useState("");
+  const [code, setCode] = useState();
   const [errors, setErrors] = useState({});
   const [isExpired, setIsExpired] = useState(false);
   const [resetKey, setResetKey] = useState(0);
@@ -39,6 +40,7 @@ function VerifyCodeCard() {
         VerifyCode: code,
       };
       dispatch(VerifyCode(data));
+      setCode();
     } catch (error) {
       const errObj = {};
       error.inner.forEach((e) => {
@@ -87,18 +89,18 @@ function VerifyCodeCard() {
           </p>
         </div>
 
-        <div className="fp-input-text">
-          <TextField
-            error={Boolean(errors.code)}
-            helperText={errors.code}
-            variant="outlined"
-            size="medium"
-            label="Doğrulama Kodu"
+        <div className="fp-input-text flex-column">
+          <InputOtp
             value={code}
-            onChange={(e) => setCode(e.target.value)}
-            fullWidth
-            type="number"
+            onChange={(e) => setCode(e.value)}
+            integerOnly
+            length={6}
           />
+          {errors.code && (
+            <div style={{ color: "red", fontSize: "0.8rem", marginTop: "4px" }}>
+              {errors.code}
+            </div>
+          )}
         </div>
         <div
           className="fp-timer flex-row"

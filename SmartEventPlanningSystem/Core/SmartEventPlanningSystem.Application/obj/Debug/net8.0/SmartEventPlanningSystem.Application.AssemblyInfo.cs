@@ -14,11 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SmartEventPlanningSystem.Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-<<<<<<< HEAD
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b9f6b500c7c55b2ca68bf5c57017ef64bfdc245b")]
-=======
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+00b1f360cb36040e7708981b1108edc12a013e9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("SmartEventPlanningSystem.Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SmartEventPlanningSystem.Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -15,11 +15,12 @@ import DiscoveryEventCard from "./DiscoveryEventCard";
 import ReviewEventCardSkeleton from "../../../Skeletons/ReviewEventCardSkeleton";
 import ToastMistake from "../../../Elements/ToastMistake";
 import { SetEventRegisterMistakeAlert } from "../../../../redux/slices/eventRegisterSlice";
+import ReviewMapDialog from "../ReviewMapDialog";
 
 function DiscoveryPanel() {
   const dispatch = useDispatch();
   const {
-    dateFilterMode,
+    filterMode,
     startDate,
     endDate,
     cities,
@@ -99,28 +100,35 @@ function DiscoveryPanel() {
 
   useEffect(() => {
     const id = UserId;
-    const hasDate = dateFilterMode;
+    const hasDate = startDate != null && endDate != null;
     const hasCity = cities.length > 0;
     const hasCategory = categories.length > 0;
 
-    if (hasDate && hasCity && hasCategory) {
-      DateCityCategory(id, startDate, endDate, cities, categories);
-    } else if (hasDate && hasCity) {
-      DateCity(id, startDate, endDate, cities);
-    } else if (hasDate && hasCategory) {
-      DateCategory(id, startDate, endDate, categories);
-    } else if (hasCity && hasCategory) {
-      CityCategory(id, cities, categories);
-    } else if (hasDate) {
-      Date(id, startDate, endDate);
-    } else if (hasCity) {
-      City(id, cities);
-    } else if (hasCategory) {
-      Category(id, categories);
-    } else {
-      UnFiltreted(id);
+    if (filterMode) {
+
+      if (hasDate && hasCity && hasCategory) {
+        DateCityCategory(id, startDate, endDate, cities, categories);
+      } else if (hasDate && hasCity) {
+        DateCity(id, startDate, endDate, cities);
+      } else if (hasDate && hasCategory) {
+        DateCategory(id, startDate, endDate, categories);
+      } else if (hasCity && hasCategory) {
+        CityCategory(id, cities, categories);
+      } else if (hasDate) {
+        Date(id, startDate, endDate);
+      } else if (hasCity) {
+        City(id, cities);
+      } else if (hasCategory) {
+        Category(id, categories);
+      }
     }
-  }, [UserId, dateFilterMode, startDate, endDate, cities, categories]);
+  }, [UserId, filterMode, startDate, endDate, cities, categories]);
+
+  useEffect(() => {
+    if (!filterMode) {
+      UnFiltreted(UserId);
+    }
+  }, [UserId, filterMode])
 
   const CloseEventRegisterMistakeToast = () => {
     dispatch(SetEventRegisterMistakeAlert(false));
@@ -138,6 +146,7 @@ function DiscoveryPanel() {
           ))
         )}
       </div>
+      <ReviewMapDialog />
 
       <ToastMistake
         visible={eventRegisterMistakeAlert}

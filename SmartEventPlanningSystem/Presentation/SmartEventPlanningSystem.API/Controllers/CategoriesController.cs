@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.CategoryFeatures.Commands.CreateCategory;
 using SmartEventPlanningSystem.Application.CQRS.CategoryFeatures.Commands.RemoveCategory;
@@ -12,7 +11,7 @@ namespace SmartEventPlanningSystem.API.Controllers
     public class CategoriesController(IMediator mediator) : ControllerBase
     {
         [HttpPost("CreateCategory")]
-        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequest request) 
+        public async Task<IActionResult> CreateCategory([FromBody] CreateCategoryRequest request)
         {
             return Ok(await mediator.Send(request));
         }

@@ -15,6 +15,13 @@ import { useSelector } from "react-redux";
 import "../../../css/User/Panels/ReviewMapPanel.css";
 import RecenterMap from "../../../hooks/RecenterMap";
 import { useTranslation } from "react-i18next";
+import SatelliteIcon from '@mui/icons-material/Satellite';
+import TerrainIcon from '@mui/icons-material/Terrain';
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import Brightness5Icon from '@mui/icons-material/Brightness5';
+import ShowChartIcon from '@mui/icons-material/ShowChart';
+import MapIcon from '@mui/icons-material/Map';
+import IconButton from "@mui/material/IconButton";
 
 // Leaflet ikonları ayarlanıyor
 delete L.Icon.Default.prototype._getIconUrl;
@@ -50,6 +57,7 @@ function ReviewMapPanel() {
   const [routeCoords, setRouteCoords] = useState([]);
   const [distance, setDistance] = useState(null);
   const [duration, setDuration] = useState(null);
+  const [viewMode, setViewMode] = useState("streets");
 
   const formatDuration = (minutes) => {
     const saat = Math.floor(minutes / 60);
@@ -133,7 +141,7 @@ function ReviewMapPanel() {
         style={{ height: "100%", width: "100%" }}
       >
         <TileLayer
-          url={`https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=${MAPTILER_KEY}`}
+          url={`https://api.maptiler.com/maps/${viewMode}/{z}/{x}/{y}.png?key=${MAPTILER_KEY}`}
           attribution='&copy; <a href="https://www.maptiler.com/copyright/" target="_blank">MapTiler</a> &copy; OpenStreetMap contributors'
         />
 
@@ -172,6 +180,35 @@ function ReviewMapPanel() {
         ) : !userLocation ? (
           <>🔘 {tText("eventSelectYourLocation")}</>
         ) : null}
+      </div>
+      {/*Gorunum Modu */}
+      <div className="flex-column r-map-view-mode-button">
+        <IconButton sx={{ backgroundColor: "#fff", border: "1px solid grey", marginBottom: "10px" }}
+          onClick={() => setViewMode("streets")}
+        >
+          <MapIcon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "#fff", border: "1px solid grey", marginBottom: "10px" }}
+          onClick={() => setViewMode("satellite")}
+        >
+          <SatelliteIcon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "#fff", border: "1px solid grey", marginBottom: "10px" }}
+          onClick={() => setViewMode("outdoor")}
+        >
+          <TerrainIcon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "#fff", border: "1px solid grey", marginBottom: "10px" }}
+          onClick={() => setViewMode("basic")}
+        >
+          <Brightness5Icon />
+        </IconButton>
+        <IconButton sx={{ backgroundColor: "#fff", border: "1px solid grey" }}
+          onClick={() => setViewMode("dataviz")}
+
+        >
+          <ShowChartIcon />
+        </IconButton>
       </div>
     </div>
   );

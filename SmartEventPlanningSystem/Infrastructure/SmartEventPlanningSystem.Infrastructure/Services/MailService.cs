@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using SmartEventPlanningSystem.Infrastructure.Interfaces;
-using MimeKit;
-using MailKit.Net.Smtp;
+﻿using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
+using MimeKit;
+using SmartEventPlanningSystem.Infrastructure.Interfaces;
 
 namespace SmartEventPlanningSystem.Infrastructure.Services
 {

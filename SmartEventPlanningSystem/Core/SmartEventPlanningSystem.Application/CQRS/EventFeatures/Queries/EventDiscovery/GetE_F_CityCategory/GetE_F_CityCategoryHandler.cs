@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using SmartEventPlanningSystem.Application.Services;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_CityCategory
@@ -12,7 +7,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventD
     {
         public async Task<GetE_F_CityCategoryResponse> Handle(GetE_F_CityCategoryRequest request, CancellationToken cancellationToken)
         {
-            return await eventService.GetE_F_CityCategory(request.AppUserId, request.Cities,request.Categories, cancellationToken);
+            return await eventService.GetE_F_CityCategory(request.AppUserId, request.Cities, request.Categories, cancellationToken);
         }
     }
 }

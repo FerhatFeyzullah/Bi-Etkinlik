@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedUnFiltered
 {
-    public class GetEventsICreatedUnFilteredRequest:IRequest<GetEventsICreatedUnFilteredResponse>
+    public class GetEventsICreatedUnFilteredRequest : IRequest<GetEventsICreatedUnFilteredResponse>
     {
         public int AppUserId { get; set; }
     }

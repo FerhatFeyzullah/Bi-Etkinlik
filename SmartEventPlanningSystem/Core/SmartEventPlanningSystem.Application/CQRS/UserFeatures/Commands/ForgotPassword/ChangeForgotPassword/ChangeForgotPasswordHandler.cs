@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 using SmartEventPlanningSystem.Application.Services;
 
@@ -13,7 +8,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.Forgot
     {
         public Task<IdentityResult> Handle(ChangeForgotPasswordRequest request, CancellationToken cancellationToken)
         {
-            return userService.ChangeForgotPassword(request.Email, request.NewPassword, request.ConfirmNewPassword,cancellationToken);
+            return userService.ChangeForgotPassword(request.Email, request.NewPassword, request.ConfirmNewPassword, cancellationToken);
         }
     }
 }

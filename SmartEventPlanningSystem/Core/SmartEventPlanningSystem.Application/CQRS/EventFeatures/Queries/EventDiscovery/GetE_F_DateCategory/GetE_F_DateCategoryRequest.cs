@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCategory
 {
-    public class GetE_F_DateCategoryRequest:IRequest<GetE_F_DateCategoryResponse>
+    public class GetE_F_DateCategoryRequest : IRequest<GetE_F_DateCategoryResponse>
     {
         public int AppUserId { get; set; }
 

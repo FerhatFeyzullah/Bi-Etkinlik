@@ -1,33 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.Extensions.Hosting;
-using Org.BouncyCastle.Asn1.Ocsp;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile;
-using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
-using SmartEventPlanningSystem.Application.DTOs.CategoryDtos;
 using SmartEventPlanningSystem.Application.DTOs.UserDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 using SmartEventPlanningSystem.Domain.Entities;
 using SmartEventPlanningSystem.Infrastructure.Interfaces;
-using SmartEventPlanningSystem.Persistence.DbContext;
 
 namespace SmartEventPlanningSystem.Persistence.Services
 {
-    public class UserService(UserManager<AppUser> userManager,IJwtService jwtService, IMapper mapper,IMediator mediator,IUnitOfWork unitOfWork,IFileStorageService fileStorageService, IWebHostEnvironment _environment) : IUserService
+    public class UserService(UserManager<AppUser> userManager, IJwtService jwtService, IMapper mapper, IMediator mediator, IUnitOfWork unitOfWork, IFileStorageService fileStorageService, IWebHostEnvironment _environment) : IUserService
     {
 
-        public async Task<string> ChangePassword(int id,string oldPass, string newPass, string confPass, CancellationToken ct)
+        public async Task<string> ChangePassword(int id, string oldPass, string newPass, string confPass, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
             var user = await userManager.FindByIdAsync(id.ToString());
@@ -48,7 +36,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
             return resultMessage = "";
         }
 
-        public async Task<IdentityResult> ChangeForgotPassword(string email, string newPass, string confNewPass,CancellationToken ct)
+        public async Task<IdentityResult> ChangeForgotPassword(string email, string newPass, string confNewPass, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
             var user = await userManager.FindByEmailAsync(email);
@@ -60,7 +48,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
             var token = await userManager.GeneratePasswordResetTokenAsync(user);
             var result = await userManager.ResetPasswordAsync(user, token, newPass);
-            if (!result.Succeeded) 
+            if (!result.Succeeded)
             {
                 return IdentityResult.Failed(new IdentityError { Description = "Sifre Guncellenemedi" });
 
@@ -80,7 +68,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     Success = false,
                     Message = "Kullanıcı Bulunamadı."
                 };
-               
+
             }
 
             var result = await userManager.CheckPasswordAsync(user, userLoginDto.Password);
@@ -146,22 +134,22 @@ namespace SmartEventPlanningSystem.Persistence.Services
                             AppUser = user,
                             CategoryId = area
                         };
-                        await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory,c_token);
-                    }                   
+                        await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory, c_token);
+                    }
 
                     await unitOfWork.CommitAsync();
                     return createResult;
                 }
-                else 
+                else
                 {
                     return IdentityResult.Failed(new IdentityError
                     {
-                        Description = "Kullanıcı Oluşturulamadı."+createResult
+                        Description = "Kullanıcı Oluşturulamadı." + createResult
                     });
-                }             
+                }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 await unitOfWork.RollbackAsync();
                 return IdentityResult.Failed(new IdentityError
@@ -169,7 +157,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     Description = "Kayit sırasında hata oluştu:" + ex.Message
                 });
             }
-        }       
+        }
 
         public async Task<IdentityResult> RemoveAccountAsync(int id, CancellationToken ct)
         {
@@ -211,12 +199,12 @@ namespace SmartEventPlanningSystem.Persistence.Services
             if (user == null)
             {
                 return IdentityResult.Failed(new IdentityError
-                    {
-                        Description = "Kullanıcı Bulunamadı."
-                    });
+                {
+                    Description = "Kullanıcı Bulunamadı."
+                });
             }
             var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
-            var result = await userManager.ConfirmEmailAsync( user,token);
+            var result = await userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
                 return IdentityResult.Success;
@@ -228,7 +216,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     Description = "Email Doğrulaması Başarısız."
                 });
             }
-            
+
         }
 
         public async Task<AppUser> UploadProfilePhoto(int id, string ppid, CancellationToken ct)
@@ -260,11 +248,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
             ct.ThrowIfCancellationRequested();
 
             var user = await userManager.FindByIdAsync(id.ToString());
-            if (user == null) 
+            if (user == null)
             {
-            throw new KeyNotFoundException("User not found");
+                throw new KeyNotFoundException("User not found");
             }
-                
+
             var oldFilePath = user.ProfilePhotoId;
 
             await fileStorageService.DeleteImage(oldFilePath);
@@ -292,7 +280,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 mapper.Map(updateProfileDto, user); // mevcut entity'ye map
                 await unitOfWork.WriteRepository<AppUser>().Update(user);
 
-                var oldCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(x => x.AppUserId == user.Id,ct);
+                var oldCategories = await unitOfWork.ReadRepository<AppUserCategory>().GetByFilteredList(x => x.AppUserId == user.Id, ct);
 
                 await unitOfWork.WriteRepository<AppUserCategory>().DeleteRangeAsync(oldCategories);
 
@@ -303,7 +291,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                         AppUser = user,
                         CategoryId = area
                     };
-                    await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory,ct);
+                    await unitOfWork.WriteRepository<AppUserCategory>().AddAsync(appUserCategory, ct);
                 }
 
                 await unitOfWork.CommitAsync();
@@ -312,8 +300,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 var updatedUser = await unitOfWork.ReadRepository<AppUser>().GetByFiltered(
                     x => x.Id == user.Id,
-                    x => x.Include(u => u.AppUserCategories).ThenInclude(uc => uc.Category),ct
- 
+                    x => x.Include(u => u.AppUserCategories).ThenInclude(uc => uc.Category), ct
+
                     );
 
                 return new UpdateProfileResponse

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.LoginTheSystem;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RemoveProfilePhoto;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
@@ -14,7 +9,7 @@ using SmartEventPlanningSystem.Domain.Entities;
 
 namespace SmartEventPlanningSystem.Application.Mapping
 {
-    public class UserMapping:Profile
+    public class UserMapping : Profile
     {
         public UserMapping()
         {

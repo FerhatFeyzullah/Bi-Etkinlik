@@ -1,18 +1,5 @@
-<<<<<<< HEAD
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-=======
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
-using Org.BouncyCastle.Asn1.Ocsp;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.UpdateEvent;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_Category;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_City;
@@ -31,59 +18,50 @@ using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 using SmartEventPlanningSystem.Application.Services;
 using SmartEventPlanningSystem.Application.UnitOfWorks;
 using SmartEventPlanningSystem.Domain.Entities;
-using SmartEventPlanningSystem.Persistence.UnitOfWorks;
-<<<<<<< HEAD
-=======
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+using SmartEventPlanningSystem.Infrastructure.Interfaces;
 
 namespace SmartEventPlanningSystem.Persistence.Services
 {
-    public class EventService(IUnitOfWork unitOfWork,IMapper mapper) : IEventService
+    public class EventService(IUnitOfWork unitOfWork, IMapper mapper, IMailService mailService) : IEventService
     {
-        public async Task CreateEvent(CreateEventDto createEventDto,List<int> Categories,string filePath, CancellationToken ct)
+        public async Task CreateEvent(CreateEventDto createEventDto, List<int> Categories, string filePath, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
 
-                var newEvent = mapper.Map<Event>(createEventDto);
-                newEvent.Status = null;
-                newEvent.EventImageId = filePath;
+            var newEvent = mapper.Map<Event>(createEventDto);
+            newEvent.Status = null;
+            newEvent.EventImageId = filePath;
 
             newEvent.TimeInBetween = newEvent.StartDate - DateTime.Now;
 
-            await unitOfWork.WriteRepository<Event>().AddAsync(newEvent,ct);
+            await unitOfWork.WriteRepository<Event>().AddAsync(newEvent, ct);
 
-                foreach (var categoryId in Categories)
+            foreach (var categoryId in Categories)
+            {
+                var eventCategory = new EventCategory
                 {
-                    var eventCategory = new EventCategory
-                    {
-                        Event = newEvent, 
-                        CategoryId = categoryId
-                    };
-                    await unitOfWork.WriteRepository<EventCategory>().AddAsync(eventCategory,ct);
-                }
+                    Event = newEvent,
+                    CategoryId = categoryId
+                };
+                await unitOfWork.WriteRepository<EventCategory>().AddAsync(eventCategory, ct);
+            }
 
         }
 
-        public async Task<UpdateEventResponse> UpdateEvent(UpdateEventDto updateEventDto, List<int> Catgeories,int id, CancellationToken ct)
+        public async Task<UpdateEventResponse> UpdateEvent(UpdateEventDto updateEventDto, List<int> Catgeories, int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
             await unitOfWork.BeginTransactionAsync();
             try
             {
                 var eventToUpdate = await unitOfWork.ReadRepository<Event>().GetByIdAsync(updateEventDto.EventId);
-                mapper.Map(updateEventDto,eventToUpdate);
+                mapper.Map(updateEventDto, eventToUpdate);
                 eventToUpdate.Status = null;
 
 
                 await unitOfWork.WriteRepository<Event>().Update(eventToUpdate);
                 var oldCategories = await unitOfWork.ReadRepository<EventCategory>().GetByFilteredList(
-                    x => x.EventId == eventToUpdate.EventId,ct);
+                    x => x.EventId == eventToUpdate.EventId, ct);
 
                 await unitOfWork.WriteRepository<EventCategory>().DeleteRangeAsync(oldCategories);
 
@@ -101,8 +79,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 var updatedEvent = await unitOfWork.ReadRepository<Event>().GetByFilteredList
                     (
                         x => x.AppUserId == id,
-                        x=>x.Include(x=>x.EventCategories).
-                        ThenInclude(x=>x.Category)
+                        x => x.Include(x => x.EventCategories).
+                        ThenInclude(x => x.Category)
                     );
 
                 return new UpdateEventResponse
@@ -120,19 +98,20 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 };
             }
 
-            
-        } 
+
+        }
 
         public async Task<string> RemoveEvent(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
             await unitOfWork.BeginTransactionAsync();
-            try { 
+            try
+            {
 
                 var value = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
-                var photoPath = value.EventImageId; 
+                var photoPath = value.EventImageId;
 
-                await unitOfWork.WriteRepository<Event>().DeleteAsync(id,ct);
+                await unitOfWork.WriteRepository<Event>().DeleteAsync(id, ct);
                 await unitOfWork.CommitAsync();
                 return photoPath;
             }
@@ -148,56 +127,44 @@ namespace SmartEventPlanningSystem.Persistence.Services
         public async Task SetEventPermissionTrue(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-<<<<<<< HEAD
-            var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
-
-            eventToEdit.Status = true;
             await unitOfWork.CommitAsync();
-=======
             await unitOfWork.BeginTransactionAsync();
             try
             {
-             var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
+                var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
 
-               eventToEdit.Status = true;
+                eventToEdit.Status = true;
 
                 var isCreatorRegistered = await unitOfWork.ReadRepository<EventRegister>().GetByFiltered(
                     x => x.EventId == id &&
                     x.AppUserId == eventToEdit.AppUserId, ct
                     );
 
-                if (isCreatorRegistered == null) 
+                if (isCreatorRegistered == null)
                 {
-                     var register = new EventRegister
-                   {
-                       AppUserId = eventToEdit.AppUserId,
-                       EventId = id,
-                   };
-               await unitOfWork.WriteRepository<EventRegister>().AddAsync(register, ct);
+                    var register = new EventRegister
+                    {
+                        AppUserId = eventToEdit.AppUserId,
+                        EventId = id,
+                    };
+                    await unitOfWork.WriteRepository<EventRegister>().AddAsync(register, ct);
                 }
-                               
 
-               await unitOfWork.CommitAsync();
+
+                await unitOfWork.CommitAsync();
             }
-            catch (Exception ex){ 
+            catch (Exception ex)
+            {
                 await unitOfWork.RollbackAsync();
                 Console.WriteLine("HATA VARRRRRRRRRRRRRR" + ex);
             }
-           
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+
         }
 
         public async Task SetEventPermissionFalse(int id, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
-<<<<<<< HEAD
-            var eventToEdit = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
 
-            eventToEdit.Status = false;
-            await unitOfWork.CommitAsync();
-        }
-
-=======
             await unitOfWork.BeginTransactionAsync();
             try
             {
@@ -205,13 +172,38 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
                 eventToEdit.Status = false;
 
-                var registeredUsers = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(
-                    x => x.EventId == id ,
-                     ct
-                    );
-                if (registeredUsers.Any()) 
-                {                  
-                       await unitOfWork.WriteRepository<EventRegister>().DeleteRangeAsync(registeredUsers,ct);                   
+                var registeredUsers = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(x => x.EventId == id,
+                    q => q.Include(x => x.AppUser)
+                    .Include(x => x.Event),
+                    ct);
+
+                var confirmedUsers = registeredUsers.Where(x => x.AppUser.EmailConfirmed == true).ToList();
+
+                if (confirmedUsers.Any())
+                {
+                    foreach (var ev in confirmedUsers)
+                    {
+                        string htmlBody = $@" <html>
+                          <body style='font-family: \""Segoe UI\"", Tahoma, Geneva, Verdana, sans-serif; color: #444; line-height:1.6;'>
+                            <div style='max-width:600px; margin:auto; padding:20px; border:1px solid #e0e0e0; border-radius:10px;'>
+                              <h2 style='color:#d9534f; font-weight:600;'>Etkinlik Güncellemesi</h2>
+                              <p>Merhaba <strong>{ev.AppUser.UserName}</strong>,</p>
+                              <p>Maalesef, katıldığınız <strong>{ev.Event.Name}</strong> etkinliği, uygulamamızın yaptığı değerlendirmeler sonucunda yayından kaldırıldı.</p>
+                              <p>Bu nedenle etkinlik planlandığı gibi gerçekleşmeyecek.</p>
+                              <p>💡 Ancak merak etmeyin! Güncel ve onaylı etkinlikleri keşfetmek için <a href='https://www.bietkinlik.com' style='color:#d9534f; text-decoration:none;'>uygulamamızı ziyaret edebilirsiniz</a>.</p>
+                              <br/>
+                              <p>Size her zaman güvenli ve keyifli bir deneyim sunmayı amaçlıyoruz. Anlayışınız için teşekkür ederiz.</p>
+                              <p style='margin-top:20px;'>Sevgilerimizle,<br/><strong>[Bi Etkinlik] Ekibi</strong></p>
+                            </div>
+                          </body>
+                        </html>";
+                        await mailService.SendEmailAsync(ev.AppUser.Email, "Katıldığınız Etkinlik Kaldırıldı", htmlBody, isHtml: true);
+                    }
+                }
+
+                if (registeredUsers.Any())
+                {
+                    await unitOfWork.WriteRepository<EventRegister>().DeleteRangeAsync(registeredUsers, ct);
                 }
 
                 await unitOfWork.CommitAsync();
@@ -232,13 +224,12 @@ namespace SmartEventPlanningSystem.Persistence.Services
             {
                 return true;
             }
-            else 
+            else
             {
                 return false;
 
             }
         }
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
 
         // EventI_Created Queries
 
@@ -248,10 +239,10 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var now = DateTime.Now;
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id &&
-                x.StartDate>now,
+                x.StartDate > now,
                 q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
-                      .ThenInclude(e => e.Category).OrderByDescending(x=>x.EventId),
+                      .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
             var mappedEvents = mapper.Map<List<EventsI_CreatedDto>>(allEvents);
@@ -302,7 +293,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
             ct.ThrowIfCancellationRequested();
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.AppUserId == id &&
-                x.Status ==false,
+                x.Status == false,
                 q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
                       .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
@@ -318,7 +309,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
         // Event Discovery Queries
 
 
-        private async Task<List<EventsDiscoveryDto>> MarkRegisteredEventsAsync( List<EventsDiscoveryDto> events, int userId, CancellationToken ct)       
+        private async Task<List<EventsDiscoveryDto>> MarkRegisteredEventsAsync(List<EventsDiscoveryDto> events, int userId, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
 
@@ -343,33 +334,27 @@ namespace SmartEventPlanningSystem.Persistence.Services
 
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
                 x => x.Status == true,
-                q => q.Include(x=>x.AppUser)
+                q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
                       .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
                 ct
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                 .ToList();
 
             var filteredFromCreated = filteredEvents
                 .Where(x => x.AppUserId != id)
                 .ToList();
 
-<<<<<<< HEAD
 
 
 
 
-=======
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredFromCreated);
-            result = await MarkRegisteredEventsAsync(result, id, ct);          
+            result = await MarkRegisteredEventsAsync(result, id, ct);
 
             return new GetE_UnFilteredResponse
             {
@@ -383,7 +368,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var now = DateTime.Now;
 
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
-            x => 
+            x =>
                 x.Status == true &&
                 x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
                  q => q.Include(x => x.AppUser)
@@ -393,11 +378,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                 .ToList();
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
@@ -414,7 +396,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
             var now = DateTime.Now;
 
             var allEvents = await unitOfWork.ReadRepository<Event>().GetByFilteredList(
-            x => 
+            x =>
                 x.Status == true &&
                cities.Contains(x.City),
                 q => q.Include(x => x.AppUser)
@@ -424,15 +406,12 @@ namespace SmartEventPlanningSystem.Persistence.Services
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
                 .ToList();
 
             var filteredFromCreated = filteredEvents
                 .Where(x => x.AppUserId != id)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                 .ToList();
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
@@ -460,11 +439,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                 .ToList();
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
@@ -491,17 +467,10 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 ct
             );
 
-            var filteredEvents = allEvents
-<<<<<<< HEAD
-                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-                .ToList();
-
-=======
-                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
+            var filteredEvents = allEvents.Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
                 .ToList();
 
 
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
             result = await MarkRegisteredEventsAsync(result, id, ct);
             return new GetE_F_DateResponse
@@ -520,7 +489,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x.Status == true &&
                 DateOnly.FromDateTime(x.StartDate) >= Start &&
                 DateOnly.FromDateTime(x.EndDate) <= End &&
-                x.EventCategories.Any(ec=>categories.Contains(ec.CategoryId)),
+                x.EventCategories.Any(ec => categories.Contains(ec.CategoryId)),
                  q => q.Include(x => x.AppUser)
                 .Include(x => x.EventCategories)
                       .ThenInclude(e => e.Category).OrderByDescending(x => x.EventId),
@@ -528,11 +497,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
-                .Where(x => x.StartDate - now >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId!=id)   
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+                .Where(x => x.StartDate - now >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
                 .ToList();
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
@@ -561,11 +527,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
                 .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                 .ToList();
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
@@ -595,11 +558,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                .ToList();
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
@@ -640,11 +600,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             );
 
             var filteredEvents = allEvents
-<<<<<<< HEAD
                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12))
-=======
                .Where(x => (x.StartDate - now) >= TimeSpan.FromTicks(x.TimeInBetween.Ticks / 12) && x.AppUserId != id)
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
                .ToList();
 
             var result = mapper.Map<List<EventsDiscoveryDto>>(filteredEvents);
@@ -655,11 +612,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             };
 
         }
-<<<<<<< HEAD
-       
-=======
 
-        
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
+
+
     }
 }

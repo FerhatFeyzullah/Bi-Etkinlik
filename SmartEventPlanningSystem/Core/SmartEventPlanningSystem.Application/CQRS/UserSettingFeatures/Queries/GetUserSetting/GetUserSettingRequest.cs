@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
 namespace SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Queries.GetUserSetting
 {
-    public class GetUserSettingRequest:IRequest<GetUserSettingResponse>
+    public class GetUserSettingRequest : IRequest<GetUserSettingResponse>
     {
         public int AppUserId { get; set; }
     }

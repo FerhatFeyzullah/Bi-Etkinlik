@@ -6,9 +6,9 @@ function CategoryFilterSkeleton() {
     <div>
       <Skeleton
         variant="rounded"
-        width={230}
+        width={250}
         height={55}
-        sx={{ marginTop: "5px" }}
+        sx={{ marginTop: "20px" }}
       />
     </div>
   );

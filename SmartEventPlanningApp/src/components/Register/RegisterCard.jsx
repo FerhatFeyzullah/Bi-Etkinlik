@@ -22,17 +22,13 @@ import {
 } from "../../redux/slices/authSlice";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-<<<<<<< HEAD
 
-function RegisterCard() {
-  const dispatch = useDispatch();
-=======
+
 import { useNavigate } from "react-router-dom";
 
 function RegisterCard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
   const { allCategory } = useSelector((store) => store.category);
   const { registerStatus } = useSelector((store) => store.auth);
 
@@ -83,10 +79,7 @@ function RegisterCard() {
     if (registerStatus) {
       FormClear();
       dispatch(SetRegisterStatusFalse());
-<<<<<<< HEAD
-=======
       navigate("/girisyap");
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
     }
   }, [registerStatus]);
 
@@ -254,13 +247,9 @@ function RegisterCard() {
         </div>
         <div className="register-date-gender" style={{ marginBottom: "7px" }}>
           <div style={{ marginBottom: "7px" }}>
-<<<<<<< HEAD
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-=======
             <LocalizationProvider dateAdapter={AdapterDayjs}
               adapterLocale="tr"
             >
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)
               <DemoContainer components={["DatePicker"]}>
                 <DatePicker
                   label="Doğum Tarihi"
@@ -302,14 +291,16 @@ function RegisterCard() {
               )}
             </FormControl>
           </div>
-        </div>
-      </div>
+        </div >
+      </div >
 
       <br />
       <div className="register-category-title">İlgi Alanları</div>
-      {errors.areas && (
-        <div className="register-category-error-text">{errors.areas}</div>
-      )}
+      {
+        errors.areas && (
+          <div className="register-category-error-text">{errors.areas}</div>
+        )
+      }
 
       <div className="register-areas-container">
         {allCategory &&
@@ -345,7 +336,7 @@ function RegisterCard() {
           Kaydol
         </Button>
       </div>
-    </div>
+    </div >
   );
 }
 

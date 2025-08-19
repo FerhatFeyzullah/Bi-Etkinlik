@@ -78,6 +78,9 @@ function EmailCard() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             fullWidth
+            onKeyDown={(e) => {
+              if (e.key === "Enter") Post();
+            }}
           />
         </div>
         <div className="fp-input-text">

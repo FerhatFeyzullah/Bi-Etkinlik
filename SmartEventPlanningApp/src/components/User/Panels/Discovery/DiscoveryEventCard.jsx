@@ -9,6 +9,7 @@ import Tooltip from "@mui/material/Tooltip";
 import {
   SetDiscoveryLatitude,
   SetDiscoveryLongitude,
+  SetIsMapReviewed,
 } from "../../../../redux/slices/mapSlice";
 import { RegisterEvent } from "../../../../redux/slices/eventRegisterSlice";
 import { MarkEventAsRegistered } from "../../../../redux/slices/discoverySlice";
@@ -42,6 +43,7 @@ function DiscoveryEventCard({ event }) {
   const ReviewTheLocation = (lat, lng) => {
     dispatch(SetDiscoveryLatitude(lat));
     dispatch(SetDiscoveryLongitude(lng));
+    dispatch(SetIsMapReviewed(true));
   };
 
   const Register = async () => {
@@ -68,7 +70,7 @@ function DiscoveryEventCard({ event }) {
           <div>
             <IconButton disabled>
               <Avatar
-                sx={{ width: 60, height: 60 }}
+                sx={{ width: 65, height: 65 }}
                 src={
                   !imgError && event.appUser?.profilePhotoId
                     ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
@@ -136,7 +138,7 @@ function DiscoveryEventCard({ event }) {
             <Button
               variant={
                 event.latitude == discoveryLatitude &&
-                event.longitude == discoveryLongitude
+                  event.longitude == discoveryLongitude
                   ? "contained"
                   : "outlined"
               }

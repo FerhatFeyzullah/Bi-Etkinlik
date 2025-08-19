@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 using Microsoft.AspNetCore.Identity;
 
 namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ForgotPassword.ChangeForgotPassword
 {
-    public class ChangeForgotPasswordRequest:IRequest<IdentityResult>
+    public class ChangeForgotPasswordRequest : IRequest<IdentityResult>
     {
         public string Email { get; set; }
         public string NewPassword { get; set; }

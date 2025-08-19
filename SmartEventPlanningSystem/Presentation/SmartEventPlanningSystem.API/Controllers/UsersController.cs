@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ChangePassword;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ConfirmEmail;
@@ -11,7 +10,6 @@ using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RemoveProf
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetMyProfile;
-using SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Queries.GetUserSetting;
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
@@ -20,11 +18,11 @@ namespace SmartEventPlanningSystem.API.Controllers
     public class UsersController(IMediator mediator, IWebHostEnvironment _environment) : ControllerBase
     {
         [HttpGet("GetMyProfile")]
-        public async Task<IActionResult> GetMyProfile([FromQuery] GetMyProfileRequest request) 
+        public async Task<IActionResult> GetMyProfile([FromQuery] GetMyProfileRequest request)
         {
-            return Ok(await mediator.Send(request));       
+            return Ok(await mediator.Send(request));
         }
-      
+
 
         [HttpGet("ProfileImage/{*photoPath}")]
         public IActionResult GetProfileImage(string photoPath)
@@ -75,7 +73,7 @@ namespace SmartEventPlanningSystem.API.Controllers
         [HttpPut("RemoveProfilePhoto/{id}")]
         public async Task<IActionResult> RemoveProfilePhoto([FromRoute] int id)
         {
-            return Ok(await mediator.Send(new RemoveProfilePhotoRequest { AppUserId = id}));
+            return Ok(await mediator.Send(new RemoveProfilePhotoRequest { AppUserId = id }));
         }
 
         [HttpPost("ChangePassword")]
@@ -111,7 +109,7 @@ namespace SmartEventPlanningSystem.API.Controllers
         [HttpDelete("RemoveAccount/{id}")]
         public async Task<IActionResult> RemoveAccount([FromRoute] int id)
         {
-            return Ok(await mediator.Send( new RemoveAccountRequest { AppUserId = id}));
+            return Ok(await mediator.Send(new RemoveAccountRequest { AppUserId = id }));
         }
 
     }

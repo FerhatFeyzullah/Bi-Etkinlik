@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using SmartEventPlanningSystem.Infrastructure.Interfaces;
 
@@ -28,17 +23,17 @@ namespace SmartEventPlanningSystem.Infrastructure.Services
             }
             var fullPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", imagePath);
 
-                if (File.Exists(fullPath))
-                {
-                    File.Delete(fullPath);
-                }
-          
-            await Task.CompletedTask; 
+            if (File.Exists(fullPath))
+            {
+                File.Delete(fullPath);
+            }
+
+            await Task.CompletedTask;
         }
 
         public async Task<string> UploadImage(IFormFile image, string folderName)
         {
-           
+
             var uploadFolder = Path.Combine(_environment.WebRootPath, "upload", folderName);
 
             if (!Directory.Exists(uploadFolder))

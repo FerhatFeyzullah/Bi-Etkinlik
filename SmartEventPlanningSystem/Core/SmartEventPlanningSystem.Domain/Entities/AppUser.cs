@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 
 namespace SmartEventPlanningSystem.Domain.Entities
 {
-    public class AppUser:IdentityUser<int>
+    public class AppUser : IdentityUser<int>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

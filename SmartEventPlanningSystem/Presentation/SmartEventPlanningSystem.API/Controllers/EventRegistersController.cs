@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.DeleteEventRegister;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RateTheEvent;
@@ -23,9 +22,9 @@ namespace SmartEventPlanningSystem.API.Controllers
         }
 
         [HttpDelete("DeleteEventRegister/{userId}/{eventId}")]
-        public async Task<IActionResult> DeleteEventRegister([FromRoute] int userId,int eventId)
+        public async Task<IActionResult> DeleteEventRegister([FromRoute] int userId, int eventId)
         {
-            return Ok(await mediator.Send(new DeleteEventRegisterRequest { AppUserId = userId,EventId = eventId}));
+            return Ok(await mediator.Send(new DeleteEventRegisterRequest { AppUserId = userId, EventId = eventId }));
         }
 
         [HttpPut("RateTheEvent")]

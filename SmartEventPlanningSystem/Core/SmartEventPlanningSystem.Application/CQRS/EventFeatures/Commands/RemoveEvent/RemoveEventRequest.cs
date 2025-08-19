@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using MediatR;
+﻿using MediatR;
 
 namespace SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.RemoveEvent
 {
-    public class RemoveEventRequest:IRequest<Unit>
+    public class RemoveEventRequest : IRequest<Unit>
     {
         public int EventId { get; set; }
     }

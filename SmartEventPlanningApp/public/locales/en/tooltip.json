@@ -10,11 +10,6 @@
   "deleteMyRegistration": "Delete my registration",
   "viewLocation": "View the location of the event",
   "rateYourExperience": "Rate your experience",
-<<<<<<< HEAD
-  "ratedEvent": "This event has been evaluated."
-}
-=======
   "ratedEvent": "This event has been evaluated.",
   "eventFinished": "You can no longer send messages because this event has ended."
 }
->>>>>>> 0f5e1de (The error messages in the yup diagram have been translated. An automatic registration and registration deletion service has been prepared according to the change in the status of the event, and some deficiencies in the project have been completed.)

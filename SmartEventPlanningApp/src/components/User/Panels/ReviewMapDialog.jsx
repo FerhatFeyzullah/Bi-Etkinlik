@@ -47,7 +47,9 @@ function ReviewMapDialog() {
           </>
         </DialogContent>
         <DialogActions>
-          <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
+          <Button
+            variant="outlined"
+            sx={{ textTransform: "none", marginRight: "20px" }} onClick={CloseDialog}>
             {tButton("close")}
           </Button>
         </DialogActions>
