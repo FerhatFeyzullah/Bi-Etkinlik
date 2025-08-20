@@ -12,6 +12,12 @@ const initialState = {
   changePassSuccess: false,
   changePassResponse: "",
 
+  confirmEmailLoading: false,
+  confirmEmailDialog: false,
+  confirmEmailMistake: false,
+  confirmEmailSuccess: false,
+  confrimEmailResponse: null,
+
   theme: savedSettings.theme || "light",
   viewMode: savedSettings.viewMode || "card",
   emailNotification: savedSettings.emailNotification || false,
@@ -20,6 +26,24 @@ const initialState = {
 
 export const ChangePassword = createAsyncThunk("changePass", async (data) => {
   var response = await axios.post("Users/ChangePassword", data);
+  return response.data;
+});
+export const SendResetCode = createAsyncThunk("resetCodeforEmail", async (data) => {
+  var response = await axios.post("Users/SendResetCode", data);
+  return response.data;
+});
+export const SendResetCodeAgain = createAsyncThunk(
+  "sendAgainforEmail",
+  async (data) => {
+    await axios.post("Users/SendResetCode", data);
+  }
+);
+export const VerifyCode = createAsyncThunk("verifyCodeforEmail", async (data) => {
+  var response = await axios.post("Users/VerifyResetCode", data);
+  return response.data;
+});
+export const ConfirmEmail = createAsyncThunk("confirmEmail", async (data) => {
+  var response = await axios.post("Users/ConfirmEmail", data);
   return response.data;
 });
 
@@ -88,6 +112,19 @@ export const userSettingSlice = createSlice({
     SetEmailNotification: (state, action) => {
       state.emailNotification = action.payload;
     },
+    SetConfrimEmailDialog: (state, action) => {
+      state.confirmEmailDialog = action.payload;
+    },
+    SetConfrimEmailMistake: (state, action) => {
+      state.confirmEmailMistake = action.payload;
+    },
+    SetConfrimEmailSuccess: (state, action) => {
+      state.confirmEmailSuccess = action.payload;
+    },
+    SetConfirmEmailResponse: (state, action) => {
+      state.confrimEmailResponse = action.payload;
+    }
+
   },
   extraReducers: (builder) => {
     builder
@@ -111,6 +148,31 @@ export const userSettingSlice = createSlice({
         state.changePassResponse =
           "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
         state.changePassMistake = true;
+      })
+
+      //SendResetCode
+      .addCase(SendResetCode.pending, (state, action) => {
+        state.userSettingDrawer = false;
+        state.confirmEmailLoading = true;
+
+      })
+      .addCase(SendResetCode.fulfilled, (state, action) => {
+        state.confirmEmailLoading = false;
+        state.userSettingDrawer = false;
+        state.confirmEmailDialog = true;
+      })
+      .addCase(SendResetCode.rejected, (state) => {
+        state.confirmEmailLoading = false;
+        state.confrimEmailResponse = "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+        state.confirmEmailMistake = true;
+
+      })
+
+      //VerifyCode
+      .addCase(VerifyCode.rejected, (state) => {
+        state.confirmEmailDialog = false;
+        state.confirmEmailMistake = true;
+        state.confrimEmailResponse = "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
       })
 
       //GetUserSetting
@@ -177,5 +239,9 @@ export const {
   SetViewMode,
   SetLanguage,
   SetEmailNotification,
+  SetConfrimEmailDialog,
+  SetConfrimEmailMistake,
+  SetConfrimEmailSuccess,
+  SetConfirmEmailResponse
 } = userSettingSlice.actions;
 export default userSettingSlice.reducer;

@@ -73,7 +73,7 @@ function User() {
   return (
     <div className="user-container">
       <div className="user-tab-panel">
-        <div className="user-app-title">Bi Etkinlik</div>
+        <div className="user-app-title" onClick={() => setSelectedTab(0)}>Bi Etkinlik</div>
         <div
           className="flex-column-justify-space-between"
           style={{ height: "800px" }}

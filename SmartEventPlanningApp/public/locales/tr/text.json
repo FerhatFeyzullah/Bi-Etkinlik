@@ -24,5 +24,9 @@
   "profileInfo": "Profile Information",
   "events": "Etkinlikler",
   "selectChatGroup": "Sohbet etmek istediğiniz etkinliği seçin",
-  "filterPanelTitle": "Filtreler"
+  "filterPanelTitle": "Filtreler",
+  "deleteEvent": "Etkinliği Silmek Üzeresiniz",
+  "deleteEventInfo": "Etkinliği sildiğinizde, tüm katılımcı kayıtları iptal edilir ve katılımcılara etkinliğin iptal edildiğini bildiren bir e-posta bildirimi gönderilir. Bu işlem geri alınamaz.",
+  "emailVerification": "E-posta Doğrulama",
+  "emailVerificationInfo": "E-posta hesabınızı onaylamak için size gönderilen 6 haneli doğrulama kodunu giriniz. Bu kod kısa süreliğine geçerlidir. Hesabınızı başarıyla doğrulamak için süresi dolmadan işlemi tamamlayınız."
 }

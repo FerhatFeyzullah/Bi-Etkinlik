@@ -28,25 +28,26 @@ function MessagesPanel() {
 
   const userId = Number(localStorage.getItem("UserId"));
   const eventId = chattingEvent?.eventId;
+  const creatorId = chattingEvent?.appUserId;
   const userName = myProfile?.myProfile?.userName;
   const [chatMessages, setChatMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [eventFinished, setEventFinished] = useState(false);
-
 
   const previousEventId = useRef(null);
 
   useEffect(() => {
 
     setChatMessages([]);
-    dispatch(GetOldMessages(eventId));
+    if (eventId != null) {
+      dispatch(GetOldMessages(eventId));
+    }
 
     const checkEventFinished = async () => {
       if (eventId != null) {
         const result = await dispatch(IsEventFinished(eventId)).unwrap();
         setEventFinished(result);
       }
-
     };
 
     checkEventFinished();
@@ -61,6 +62,7 @@ function MessagesPanel() {
         ...prev,
         ...oldMessages.map((m) => ({
           sender: m.userName,
+          senderId: m.senderId,
           message: m.content,
         })),
       ]);
@@ -97,7 +99,7 @@ function MessagesPanel() {
         connection.on("ReceiveGroupMessage", (payload) => {
           setChatMessages((prev) => [
             ...prev,
-            { sender: payload.sender, message: payload.message },
+            { sender: payload.sender, senderId: payload.userId, message: payload.message },
           ]);
         });
 
@@ -157,7 +159,7 @@ function MessagesPanel() {
     setMessage("");
   };
 
-  //EYni Mesajlarda Scroll Indirme
+  //Yeni Mesajlarda Scroll Indirme
   useEffect(() => {
     if (messagesEndRef.current) {
       messagesEndRef.current.scrollIntoView({ behavior: "smooth" });
@@ -204,7 +206,12 @@ function MessagesPanel() {
               }
             >
               <div className="m-panel-message-card">
-                <b>{m.sender}</b>
+                <div className="m-panel-messager-name">
+                  {m.sender} {m.senderId === creatorId ?
+                    <span className="m-panel-messager-title">
+                      - Yönetici
+                    </span> : ""}
+                </div>
                 <div>{m.message}</div>
               </div>
             </div>

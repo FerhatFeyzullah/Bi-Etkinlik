@@ -24,5 +24,9 @@
   "profileInfo": "Profile Information",
   "events": "Events",
   "selectChatGroup": "Select the event you want to chat about",
-  "filterPanelTitle": "Filters"
+  "filterPanelTitle": "Filters",
+  "deleteEvent": "You Are About to Delete the Event",
+  "deleteEventInfo": "Once you delete the event, all participant registrations will be canceled, and they will receive an email notification informing them that the event has been canceled. This action cannot be undone.",
+  "emailVerification": "Email Verification",
+  "emailVerificationInfo": "Enter the 6-digit verification code sent to you to verify your email account. This code is valid for a limited time. Complete the process before the code expires to successfully verify your account."
 }

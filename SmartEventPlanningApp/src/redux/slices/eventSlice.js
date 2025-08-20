@@ -15,6 +15,8 @@ const initialState = {
   gaveUpUpdating: 0,
   isEventPreview: false,
   previewedEvent: {},
+  isEventDeleteDialog: false,
+  deletedEvent: null,
 };
 
 export const CreateEvent = createAsyncThunk("createEvent", async (data) => {
@@ -112,6 +114,12 @@ export const eventSlice = createSlice({
     },
     SetPreviewedEvent: (state, action) => {
       state.previewedEvent = action.payload;
+    },
+    SetEventDeleteDialog: (state, action) => {
+      state.isEventDeleteDialog = action.payload;
+    },
+    SetDeletedEvent: (state, action) => {
+      state.deletedEvent = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -225,5 +233,7 @@ export const {
   SetGaveUpUpdating,
   SetIsEventPreview,
   SetPreviewedEvent,
+  SetEventDeleteDialog,
+  SetDeletedEvent
 } = eventSlice.actions;
 export default eventSlice.reducer;

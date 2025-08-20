@@ -108,10 +108,48 @@ namespace SmartEventPlanningSystem.Persistence.Services
             try
             {
 
-                var value = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
-                var photoPath = value.EventImageId;
+                var deletedEvent = await unitOfWork.ReadRepository<Event>().GetByIdAsync(id, ct);
+                var photoPath = deletedEvent.EventImageId;
 
                 await unitOfWork.WriteRepository<Event>().DeleteAsync(id, ct);
+
+                var registeredUsers = await unitOfWork.ReadRepository<EventRegister>().GetByFilteredList(x => x.EventId == id,
+                    q => q.Include(x => x.AppUser)
+                    .Include(x => x.Event),
+                    ct);
+
+                if (registeredUsers.Any())
+                {
+                    await unitOfWork.WriteRepository<EventRegister>().DeleteRangeAsync(registeredUsers, ct);
+                }
+
+                var confirmedUsers = registeredUsers.Where(x => x.AppUser.Settings.EmailNotification == true).ToList();
+
+                if (confirmedUsers.Any())
+                {
+                    foreach (var ev in confirmedUsers)
+                    {
+                        string htmlBody = $@"
+                            <html>
+                              <body style='font-family: ""Segoe UI"", Tahoma, Geneva, Verdana, sans-serif; color: #444; line-height:1.6;'>
+                                <div style='max-width:600px; margin:auto; padding:20px; border:1px solid #e0e0e0; border-radius:10px;'>
+                                  <h2 style='color:#d9534f; font-weight:600;'>Önemli Duyuru</h2>
+                                  <p>Merhaba <strong>{ev.AppUser.UserName}</strong>,</p>
+                                  <p>Kaydınızı yaptığınız <strong>{ev.Event.Name}</strong> etkinliği, etkinlik sahibi tarafından iptal edilmiştir.</p>
+                                  <p>Bazen planlar değişebilir, bu yüzden etkinlik planlandığı tarihte gerçekleşmeyecektir.</p>
+                                  <p>Sizi hayal kırıklığına uğrattığımız için üzgünüz 🙏. Ancak yeni deneyimler için sizi uygulamamızda bekleyen birçok farklı etkinlik bulunuyor.</p>
+                                  <p><a href='https://www.bietkinlik.com' style='color:#d9534f; font-weight:bold; text-decoration:none;'>Buraya tıklayarak güncel etkinlikleri inceleyebilirsiniz</a>.</p>
+                                  <br/>
+                                  <p>Destek ve anlayışınız için teşekkür ederiz. Sizleri en kısa sürede farklı etkinliklerde görmek dileğiyle!</p>
+                                  <p style='margin-top:20px;'>Sevgiler,<br/><strong>[Bi Etkinlik] Ekibi</strong></p>
+                                </div>
+                              </body>
+                            </html>";
+                        await mailService.SendEmailAsync(ev.AppUser.Email, "Etkinlik İptal Edildi", htmlBody, isHtml: true);
+
+                    }
+                }
+
                 await unitOfWork.CommitAsync();
                 return photoPath;
             }
@@ -177,7 +215,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                     .Include(x => x.Event),
                     ct);
 
-                var confirmedUsers = registeredUsers.Where(x => x.AppUser.EmailConfirmed == true).ToList();
+                var confirmedUsers = registeredUsers.Where(x => x.AppUser.Settings.EmailNotification == true).ToList();
 
                 if (confirmedUsers.Any())
                 {

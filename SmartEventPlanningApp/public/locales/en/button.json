@@ -26,6 +26,8 @@
   "emailNotification": "Email Notification",
   "systemLanguage": "System Language",
   "changeMyPassword": "Change My Password",
+  "confirmMyEmail": "Email Verification",
+  "emailConfirmed": "Email Verified",
   "change": "Change",
   "registered": "Registered",
   "turnOffPreview": "Turn Off Preview",
@@ -33,5 +35,7 @@
   "rate": "Rate",
   "yes": "Yes",
   "no": "No",
-  "ok": "Ok"
+  "ok": "Ok",
+  "send": "Send",
+  "getCodeAgain": "Get Code Again"
 }

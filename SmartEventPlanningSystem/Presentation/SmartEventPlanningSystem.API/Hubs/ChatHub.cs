@@ -24,6 +24,7 @@ namespace SmartEventPlanningSystem.Infrastructure.Hubs
             var payload = new
             {
                 sender = userName,
+                userId = userId,
                 message = message
             };
 

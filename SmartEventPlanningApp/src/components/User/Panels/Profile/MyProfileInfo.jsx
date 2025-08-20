@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Avatar, Button, IconButton } from "@mui/material";
+import { Avatar, Button, IconButton, Tooltip } from "@mui/material";
 import "../../../../css/User/Panels/Profile/MyProfileInfo.css";
 import SettingsIcon from "@mui/icons-material/Settings";
 import {
@@ -21,6 +21,7 @@ import { useTranslation } from "react-i18next";
 function MyProfileInfo() {
   const { t: tButton } = useTranslation("button");
   const { t: tText } = useTranslation("text");
+  const { t: tTooltip } = useTranslation("tooltip");
 
   const dispatch = useDispatch();
 
@@ -145,11 +146,21 @@ function MyProfileInfo() {
         <div className="flex-column-justify-start profile-panel-name-surname">
           <div style={{ width: "200px" }}>
             {myProfile.myProfile?.firstName} {myProfile.myProfile?.lastName}
-            <img src={confirmed} alt="confirmed" style={{ width: "20px", height: "20px", marginLeft: "10px" }} />
+
+            {
+              myProfile.myProfile?.emailConfirmed == true &&
+              <Tooltip title={tTooltip("verifedEmailIcon")}>
+                <img src={confirmed} alt="confirmed" style={{ width: "20px", height: "20px", marginLeft: "10px" }} />
+              </Tooltip>
+
+
+            }
           </div>
+
           <div style={{ marginTop: "10px", width: "200px" }}>
             {myProfile.myProfile?.userName}
           </div>
+
         </div>
         <div className="profile-panel-button">
           <Button

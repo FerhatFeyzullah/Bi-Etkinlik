@@ -31,6 +31,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 dayjs.locale("tr");
 import { useTranslation } from "react-i18next";
+import DeleteEventDialog from "./DeleteEventDialog";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -48,6 +49,8 @@ function CreateAndEditPanel() {
   const { t: tButton } = useTranslation("button");
   const { t: tInput } = useTranslation("input");
   const { t: tValidation } = useTranslation("validation");
+  const { t: tCategory } = useTranslation("category");
+
 
   const createSchema = createEventSchema(tValidation)
   const updateSchema = updateEventSchema(tValidation)
@@ -388,7 +391,7 @@ function CreateAndEditPanel() {
                   options={allCategory}
                   multiple
                   limitTags={1}
-                  getOptionLabel={(option) => option.categoryName}
+                  getOptionLabel={(option) => tCategory(option.categoryName)}
                   value={allCategory.filter((cat) =>
                     selectedCategories.includes(cat.categoryId)
                   )}
@@ -535,6 +538,7 @@ function CreateAndEditPanel() {
         <div>
           <CreateEventMapPanel isError={errors.latitude} />
         </div >
+        <DeleteEventDialog />
       </div >
     </>
   );

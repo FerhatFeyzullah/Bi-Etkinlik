@@ -19,6 +19,8 @@ function RecommendedEventCard({ event }) {
   const { t: tButton } = useTranslation("button");
   const { t: tTooltip } = useTranslation("tooltip");
   const { t: tText } = useTranslation("text");
+  const { t: tCategory } = useTranslation("category");
+
 
   const dispatch = useDispatch();
   const { viewMode } = useSelector((store) => store.userSetting);
@@ -170,7 +172,7 @@ function RecommendedEventCard({ event }) {
                     className="recommended-e-c-category"
                     key={c.category.categoryId}
                   >
-                    {c.category.categoryName}
+                    {tCategory(c.category.categoryName)}
                   </div>
                 ))}
               </div>

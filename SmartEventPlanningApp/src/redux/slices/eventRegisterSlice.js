@@ -7,8 +7,8 @@ const initialState = {
   eventRegisterResponse: "",
   eventRegisterMistakeAlert: false,
   eventRegistirationDeleted: false,
-  isEventDeleteDialog: false,
-  deletedEvent: {},
+  isEventRegisterDeleteDialog: false,
+  deletedRegisterEvent: {},
   isEventScoreRatedDialog: false,
   ratedEvent: null,
   eventRatedMistakeAlert: false,
@@ -76,11 +76,11 @@ export const eventRegisterSlice = createSlice({
     SetEventRegisterationDeleted: (state, action) => {
       state.eventRegistirationDeleted = action.payload;
     },
-    SetIsEventDialog: (state, action) => {
-      state.isEventDeleteDialog = action.payload;
+    SetIsEventRegisterDeleteDialog: (state, action) => {
+      state.isEventRegisterDeleteDialog = action.payload;
     },
-    SetDeletedEvent: (state, action) => {
-      state.deletedEvent = action.payload;
+    SetDeletedEventRegister: (state, action) => {
+      state.deletedRegisterEvent = action.payload;
     },
     SetIsEventRateDialog: (state, action) => {
       state.isEventScoreRatedDialog = action.payload;
@@ -183,8 +183,8 @@ export const eventRegisterSlice = createSlice({
 
 export const {
   SetEventRegisterMistakeAlert,
-  SetIsEventDialog,
-  SetDeletedEvent,
+  SetIsEventRegisterDeleteDialog,
+  SetDeletedEventRegister,
   SetEventRegisterationDeleted,
   SetIsEventRateDialog,
   SetRatedEvent,

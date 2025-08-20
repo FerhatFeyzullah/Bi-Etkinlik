@@ -19,6 +19,8 @@ function DiscoveryEventCard({ event }) {
   const { t: tButton } = useTranslation("button");
   const { t: tTooltip } = useTranslation("tooltip");
   const { t: tText } = useTranslation("text");
+  const { t: tCategory } = useTranslation("category");
+
   const dispatch = useDispatch();
   const { viewMode } = useSelector((store) => store.userSetting);
 
@@ -57,6 +59,17 @@ function DiscoveryEventCard({ event }) {
     }
   };
 
+  // assets/categories klasöründeki tüm png’leri import et
+  const images = import.meta.glob("../../../../assets/categoryImages/gif/*.gif", { eager: true });
+
+  const getCategoryIcon = (name) => {
+    // Dosya adını küçük harf + tire ile normalize et
+    const fileName = name.toLowerCase().replace(/\s+/g, "-") + ".gif";
+    const path = `../../../../assets/categoryImages/gif/${fileName}`;
+    return images[path]?.default || images["../../../../assets/categoryImages/gif/default.gif"].default;
+  };
+
+
   return (
     <>
       <div
@@ -66,32 +79,43 @@ function DiscoveryEventCard({ event }) {
             : "discovery-e-c-main-without-card"
         }
       >
-        <div className="discovery-e-c-user-info">
-          <div>
-            <IconButton disabled>
-              <Avatar
-                sx={{ width: 65, height: 65 }}
-                src={
-                  !imgError && event.appUser?.profilePhotoId
-                    ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
-                    : undefined
-                }
-                onError={() => setImgError(true)}
-              >
-                {!event.appUser?.profilePhotoId &&
-                  event.appUser.firstName?.[0].toUpperCase()}
-              </Avatar>
-            </IconButton>
-          </div>
-          <div>
-            {event.appUser.firstName} {event.appUser.lastName} {"("}
-          </div>
-          <Tooltip title={tTooltip("communityScore")} placement="right">
+        <div className="flex-row-justify-space-between">
+          <div className="flex-row">
             <div>
-              {event.appUser.score}
-              {")"}
+              <IconButton disabled>
+                <Avatar
+                  sx={{ width: 65, height: 65 }}
+                  src={
+                    !imgError && event.appUser?.profilePhotoId
+                      ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
+                      : undefined
+                  }
+                  onError={() => setImgError(true)}
+                >
+                  {!event.appUser?.profilePhotoId &&
+                    event.appUser.firstName?.[0].toUpperCase()}
+                </Avatar>
+              </IconButton>
             </div>
-          </Tooltip>
+            <div>
+              {event.appUser.firstName} {event.appUser.lastName} {"("}
+            </div>
+            <Tooltip title={tTooltip("communityScore")} placement="right">
+              <div>
+                {event.appUser.score}
+                {")"}
+              </div>
+            </Tooltip>
+          </div>
+
+          <div className="flex-column-justify-end" style={{ marginRight: "10px" }}>
+            {event.eventCategories.map((c) => (
+              <div key={c.category.categoryId} >
+                <img src={getCategoryIcon(c.category.categoryName)} alt={c.category.categoryName} width={85} height={85} />
+              </div>
+            ))}
+
+          </div>
         </div>
         <div className="flex-row">
           <div className="discovery-e-c-image">
@@ -166,14 +190,13 @@ function DiscoveryEventCard({ event }) {
               <div className="flex-row-justify-start">
                 <div className="discovery-e-c-name">{event.name} - </div>
                 {event.eventCategories.map((c) => (
-                  <div
-                    className="discovery-e-c-category"
-                    key={c.category.categoryId}
-                  >
-                    {c.category.categoryName}
+                  <div className="discovery-e-c-category" key={c.category.categoryId}>
+
+                    {tCategory(c.category.categoryName)}
                   </div>
                 ))}
               </div>
+
             </AccordionSummary>
             <AccordionDetails sx={{ padding: "8px 0" }}>
               <div>

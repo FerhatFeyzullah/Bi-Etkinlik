@@ -12,7 +12,7 @@ namespace SmartEventPlanningSystem.Application.Services
         Task<string> ChangePassword(int id, string oldpass, string newpass, string confpass, CancellationToken ct);
         Task<IdentityResult> ChangeForgotPassword(string email, string newPass, string confNewPass, CancellationToken ct);
         Task<IdentityResult> RemoveAccountAsync(int id, CancellationToken ct);
-        Task<IdentityResult> ConfirmEmailAsync(string email, CancellationToken ct);
+        Task<bool> ConfirmEmailAsync(string email, CancellationToken ct);
         Task<AppUser> UploadProfilePhoto(int id, string ppid, CancellationToken ct);
         Task<AppUser> RemoveProfilePhoto(int id, CancellationToken ct);
         Task<UpdateProfileResponse> UpdateProfile(UpdateProfileDto updateProfileDto, List<int> Categories, CancellationToken ct);

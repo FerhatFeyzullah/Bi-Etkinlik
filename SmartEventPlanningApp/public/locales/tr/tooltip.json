@@ -10,5 +10,7 @@
   "deleteMyRegistration": "Kaydımı sil.",
   "viewLocation": "Etkinliğin konumunu gör.",
   "rateYourExperience": "Deneyiminizi değerlendir.",
-  "ratedEvent": "Bu Etkinlik Değerlendirildi."
+  "ratedEvent": "Bu Etkinlik Değerlendirildi.",
+  "verifedEmailIcon": "Doğrulanmış hesap",
+  "darkModeSwitch": "Karanlık mod yakında geliyor."
 }

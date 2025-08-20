@@ -9,8 +9,8 @@ import GradeIcon from "@mui/icons-material/Grade";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import {
-  SetDeletedEvent,
-  SetIsEventDialog,
+  SetDeletedEventRegister,
+  SetIsEventRegisterDeleteDialog,
   SetIsEventRateDialog,
   SetRatedEvent,
 } from "../../../../redux/slices/eventRegisterSlice";
@@ -37,8 +37,8 @@ function MyRegisteredEventCard({ events, tabNumber }) {
       userId: usId,
       eventId: evId,
     };
-    dispatch(SetDeletedEvent(data));
-    dispatch(SetIsEventDialog(true));
+    dispatch(SetDeletedEventRegister(data));
+    dispatch(SetIsEventRegisterDeleteDialog(true));
   };
 
   const PreviewEvent = (a) => {

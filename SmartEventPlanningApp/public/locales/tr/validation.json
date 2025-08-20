@@ -10,8 +10,8 @@
         "startDateRequired": "Başlangıç Tarihi Seçmediniz.",
         "endDateRequired": "Bitiş Tarihi Seçmediniz.",
         "endDateTest": "Bitiş Tarihi Başlangıç Tarihinden Önce Olamaz.",
-        "categoriesMin": "Etkinlik Kategorisi Seçmediniz.",
-        "categoriesMax": "En Fazla 5 Tane Kategori Seçebilirsin!"
+        "categoriesRequired": "Etkinlik Kategorisi Seçmediniz.",
+        "categoriesMax": "En Fazla 1 Tane Kategori Seçebilirsin!"
     },
     "userInfo": {
         "firstNameRequired": "İsim Giriniz.",
@@ -33,5 +33,10 @@
         "newPasswordMatchesSpecial": "Özel Karakter İçermeli.",
         "confirmNewPasswordRequired": "Şifre Tekrarı Zorunlu.",
         "confirmNewPasswordOneOf": "Şifreler Eşleşmiyor."
+    },
+    "emailVerification": {
+        "codeRequired": "Herhangi bir kod girmediniz",
+        "codeMatchesSixDigit": "Lütfen 6 haneyi de giriniz",
+        "codeNotVerified": "Kod Doğrulanamadı"
     }
 }

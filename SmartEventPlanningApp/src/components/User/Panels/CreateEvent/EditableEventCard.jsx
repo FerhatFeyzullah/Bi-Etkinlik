@@ -9,6 +9,8 @@ import EditIcon from "@mui/icons-material/Edit";
 import { IconButton } from "@mui/material";
 import {
   RemoveEvent,
+  SetDeletedEvent,
+  SetEventDeleteDialog,
   SetIsEventPreview,
   SetIsUpdateMode,
   SetPreviewedEvent,
@@ -28,6 +30,11 @@ function EditableEventCard() {
     dispatch(SetIsUpdateMode(true));
     dispatch(SetUpdateEventProp(a));
   };
+
+  const DeleteEvent = (id) => {
+    dispatch(SetDeletedEvent(id));
+    dispatch(SetEventDeleteDialog(true));
+  }
 
   const PreviewEvent = (a) => {
     dispatch(SetIsEventPreview(true));
@@ -68,7 +75,7 @@ function EditableEventCard() {
                 <Tooltip title={tTooltip("deleteEvent")}>
                   <IconButton
                     sx={{ marginRight: "20px" }}
-                    onClick={() => dispatch(RemoveEvent(e.eventId))}
+                    onClick={() => DeleteEvent(e.eventId)}
                   >
                     <DeleteIcon fontSize="medium" />
                   </IconButton>
@@ -86,8 +93,8 @@ function EditableEventCard() {
                     e.status == null
                       ? "editable-event-status-null"
                       : e.status === true
-                      ? "editable-event-status-true"
-                      : "editable-event-status-false"
+                        ? "editable-event-status-true"
+                        : "editable-event-status-false"
                   }
                 >
                   <Tooltip
@@ -95,16 +102,16 @@ function EditableEventCard() {
                       e.status == null
                         ? tTooltip("eventStatusNull")
                         : e.status
-                        ? tTooltip("eventStatusTrue")
-                        : tTooltip("eventStatusFalse")
+                          ? tTooltip("eventStatusTrue")
+                          : tTooltip("eventStatusFalse")
                     }
                   >
                     <div>
                       {e.status == null
                         ? tText("waiting")
                         : e.status
-                        ? tText("approved")
-                        : tText("rejected")}
+                          ? tText("approved")
+                          : tText("rejected")}
                     </div>
                   </Tooltip>
                 </div>

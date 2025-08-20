@@ -24,6 +24,8 @@ function EventReviewDialog() {
   const { t: tButton } = useTranslation("button");
   const { t: tTooltip } = useTranslation("tooltip");
   const { t: tText } = useTranslation("text");
+  const { t: tCategory } = useTranslation("category");
+
 
   const dispatch = useDispatch();
   const [imgError, setImgError] = useState(false);
@@ -131,7 +133,7 @@ function EventReviewDialog() {
                           className="discovery-e-c-category"
                           key={c.category.categoryId}
                         >
-                          {c.category.categoryName}
+                          {tCategory(c.category.categoryName)}
                         </div>
                       ))}
                     </div>

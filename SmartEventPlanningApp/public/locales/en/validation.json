@@ -10,8 +10,8 @@
         "startDateRequired": "You Have Not Selected A Start Date.",
         "endDateRequired": "You Have Not Selected An End Date.",
         "endDateTest": "The End Date Cannot Be Before The Start Date.",
-        "categoriesMin": "Event Category Not Selected",
-        "categoriesMax": "You Can Select Up To 5 Categories!"
+        "categoriesRequired": "Event Category Not Selected",
+        "categoriesMax": "You Can Select Up To 1 Categories!"
     },
     "userInfo": {
         "firstNameRequired": "Enter Name.",
@@ -33,5 +33,10 @@
         "newPasswordMatchesSpecial": "Must Contain Special Characters.",
         "confirmNewPasswordRequired": "Password Repetition Required.",
         "confirmNewPasswordOneOf": "Passwords Don't Match."
+    },
+    "emailVerification": {
+        "codeRequired": "You did not enter any code",
+        "codeMatchesSixDigit": "Please enter all 6 digits",
+        "codeNotVerified": "Code could not be verified"
     }
 }

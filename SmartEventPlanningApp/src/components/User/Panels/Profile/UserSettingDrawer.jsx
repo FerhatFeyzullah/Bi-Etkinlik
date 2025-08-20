@@ -11,46 +11,52 @@ import {
   SetLanguage,
   SetEmailNotification,
   UpdateEmailNotification,
+  SendResetCode,
+  SetConfrimEmailDialog,
 } from "../../../../redux/slices/userSettingSlice";
 import { Drawer, Tooltip } from "@mui/material";
-import {
-  TextField,
-  InputAdornment,
-  IconButton,
-  Box,
-  Popover,
-} from "@mui/material";
-import PaletteIcon from "@mui/icons-material/Palette";
 import "../../../../css/User/Panels/Profile/UserSettingDrawer.css";
 import Switch from "react-switch";
 import { Button } from "@mui/material";
 import LockOutlineIcon from "@mui/icons-material/LockOutline";
+import EmailIcon from '@mui/icons-material/Email';
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useTranslation } from "react-i18next";
 
+
 function UserSettingDrawer() {
   const { t: tButton } = useTranslation("button");
   const { t: tText } = useTranslation("text");
+  const { t: tTooltip } = useTranslation("tooltip");
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const dispatch = useDispatch();
   const { userSettingDrawer, theme, viewMode, language, emailNotification } =
     useSelector((store) => store.userSetting);
   const { myProfile } = useSelector((store) => store.account);
   const emailConfirmed = myProfile?.myProfile?.emailConfirmed;
+  const email = myProfile?.myProfile?.email;
+
 
   const UserId = localStorage.getItem("UserId");
 
   const Close = () => {
     dispatch(SetUserSettingDrawer(false));
   };
-  const ChangePasswordDrawerOpen = () => {
+  const ChangePasswordDrawer = () => {
     dispatch(SetUserSettingDrawer(false));
     dispatch(SetChangePasswordDrawer(true));
   };
+
+  const EmailVerificationDialog = () => {
+    var data = {
+      Email: email
+    }
+    dispatch(SendResetCode(data));
+  }
 
   const HandleChangeLanguage = (event) => {
     const newLanguage = event.target.value;
@@ -105,27 +111,29 @@ function UserSettingDrawer() {
               </div>
             </div>
             {/* Theme */}
-            <div className="flex-row" style={{ margin: "10px 0px" }}>
-              <Switch
-                checked={theme === "dark"}
-                onChange={(checked) => {
-                  const newTheme = checked ? "dark" : "light";
-
-                  dispatch(SetTheme(newTheme)); // UI hemen güncellensin
-                  dispatch(UpdateTheme({ AppUserId: UserId, Theme: newTheme })); // backend'e yolla
-                }}
-                width={100}
-                height={36}
-                handleDiameter={28}
-                offColor="#ccc"
-                onColor="#4caf50"
-                uncheckedIcon={false}
-                checkedIcon={false}
-              />
-              <div className="user-setting-switch-text">
-                {tButton("darkMode")}
+            <Tooltip title={tTooltip("darkModeSwitch")}>
+              <div className="flex-row" style={{ margin: "10px 0px" }}>
+                <Switch
+                  disabled
+                  checked={theme === "dark"}
+                  onChange={(checked) => {
+                    const newTheme = checked ? "dark" : "light";
+                    dispatch(SetTheme(newTheme)); // UI hemen güncellensin
+                    dispatch(UpdateTheme({ AppUserId: UserId, Theme: newTheme })); // backend'e yolla
+                  }}
+                  width={100}
+                  height={36}
+                  handleDiameter={28}
+                  offColor="#ccc"
+                  onColor="#4caf50"
+                  uncheckedIcon={false}
+                  checkedIcon={false}
+                />
+                <div className="user-setting-switch-text">
+                  {tButton("darkMode")}
+                </div>
               </div>
-            </div>
+            </Tooltip>
             {/* EmailNotification */}
             <div className="flex-row" style={{ margin: "10px 0px" }}>
               <Tooltip
@@ -180,7 +188,7 @@ function UserSettingDrawer() {
               </div>
             </div>
             {/* ChangePassword */}
-            <div className="flex-row user-setting-password-button">
+            <div className="flex-row user-setting-button">
               <Button
                 variant="outlined"
                 size="large"
@@ -190,9 +198,30 @@ function UserSettingDrawer() {
                   textTransform: "none",
                   fontWeight: 600,
                 }}
-                onClick={ChangePasswordDrawerOpen}
+                onClick={ChangePasswordDrawer}
               >
                 {tButton("changeMyPassword")}
+              </Button>
+            </div>
+            {/* EmailConfirm */}
+            <div className="flex-row user-setting-button">
+              <Button
+                disabled={emailConfirmed}
+                variant="outlined"
+                size="large"
+                startIcon={<EmailIcon />}
+                sx={{
+                  color: "#000000ff",
+                  textTransform: "none",
+                  fontWeight: 600,
+                }}
+                onClick={EmailVerificationDialog}
+              >
+                {
+                  emailConfirmed ?
+                    tButton("emailConfirmed")
+                    :
+                    tButton("confirmMyEmail")}
               </Button>
             </div>
           </div>

@@ -23,12 +23,7 @@
   background-color: white;
 }
 
-.discovery-e-c-user-info {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-}
+.discovery-e-c-user-info {}
 
 .discovery-e-c-image {
   width: 95%;

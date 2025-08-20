@@ -28,6 +28,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 x => x.AppUser
                 );
 
+
             var orderedMessages =
                 messages
         .OrderBy(x => x.SendingTime)
@@ -36,7 +37,8 @@ namespace SmartEventPlanningSystem.Persistence.Services
             MessageId = m.MessageId,
             UserName = m.AppUser.UserName,
             Content = m.Content,
-            SendingTime = m.SendingTime
+            SendingTime = m.SendingTime,
+            SenderId = m.AppUserId,
         })
         .ToList();
 

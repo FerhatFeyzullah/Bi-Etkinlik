@@ -22,6 +22,8 @@ function DiscoveryFilterPanel() {
   const { t: tButton } = useTranslation("button");
   const { t: tInput } = useTranslation("input");
   const { t: tText } = useTranslation("text");
+  const { t: tCategory } = useTranslation("category");
+
   const dispatch = useDispatch();
 
   const { allCategory, cetegoryFilterSkeletonLoaing } = useSelector(
@@ -110,7 +112,7 @@ function DiscoveryFilterPanel() {
           <Autocomplete
             options={allCategory}
             multiple
-            getOptionLabel={(option) => option.categoryName}
+            getOptionLabel={(option) => tCategory(option.categoryName)}
             value={allCategory.filter((cat) =>
               selectedCategories.includes(cat.categoryId)
             )}

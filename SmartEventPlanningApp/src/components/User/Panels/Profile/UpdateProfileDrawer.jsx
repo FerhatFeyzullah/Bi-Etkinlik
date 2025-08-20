@@ -30,6 +30,8 @@ function UpdateProfileDrawer() {
   const { t: tText } = useTranslation("text");
   const { t: tInput } = useTranslation("input");
   const { t: tValidation } = useTranslation("validation");
+  const { t: tCategory } = useTranslation("category");
+
 
   const schema = updateProfileSchema(tValidation);
 
@@ -195,7 +197,7 @@ function UpdateProfileDrawer() {
                 options={allCategory}
                 multiple
                 limitTags={1}
-                getOptionLabel={(option) => option.categoryName}
+                getOptionLabel={(option) => tCategory(option.categoryName)}
                 value={allCategory.filter((cat) =>
                   areas.includes(cat.categoryId)
                 )}

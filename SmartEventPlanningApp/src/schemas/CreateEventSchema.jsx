@@ -37,6 +37,6 @@ export const createEventSchema = (t) => yup.object().shape({
   selectedCategories: yup
     .array()
     .of(yup.string())
-    .min(1, t("validation:event.categoriesMin"))
-    .max(5, t("validation:event.categoriesMax")),
+    .required(t("validation:event.categoriesRequired"))
+    .max(1, t("validation:event.categoriesMax")),
 });

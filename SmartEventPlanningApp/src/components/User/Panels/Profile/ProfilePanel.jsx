@@ -10,7 +10,7 @@ import {
 } from "../../../../redux/slices/accountSlice";
 import MyProfileInfo from "./MyProfileInfo";
 import MyActivities from "./MyActivities";
-import DeleteEventDialog from "./DeleteEventDialog";
+import DeleteEventRegisterDialog from "./DeleteEventRegisterDialog";
 import EventReviewDialog from "../EventReviewDialog";
 import ReviewMapDialog from "../ReviewMapDialog";
 import RateEventDialog from "./RateEventDialog";
@@ -25,7 +25,10 @@ import ChangePasswordDrawer from "./ChangePasswordDrawer";
 import {
   SetChangePassMistake,
   SetChangePassSuccess,
+  SetConfrimEmailMistake,
+  SetConfrimEmailSuccess,
 } from "../../../../redux/slices/userSettingSlice";
+import EmailVerificationDialog from "./EmailVerificationDialog";
 
 function ProfilePanel() {
   const dispatch = useDispatch();
@@ -37,6 +40,11 @@ function ProfilePanel() {
     changePassSuccess,
     changePassMistake,
     changePassLoading,
+    confirmEmailDialog,
+    confirmEmailLoading,
+    confirmEmailMistake,
+    confirmEmailSuccess,
+    confrimEmailResponse,
   } = useSelector((store) => store.userSetting);
 
   const {
@@ -65,6 +73,12 @@ function ProfilePanel() {
   const CloseChangePasswordSuccess = () => {
     dispatch(SetChangePassSuccess(false));
   };
+  const CloseEmailVerificationMistake = () => {
+    dispatch(SetConfrimEmailMistake(false));
+  };
+  const CloseEmailVerificationSuccess = () => {
+    dispatch(SetConfrimEmailSuccess(false));
+  };
 
   return (
     <>
@@ -76,7 +90,8 @@ function ProfilePanel() {
           <MyActivities />
         </div>
       </div>
-      <DeleteEventDialog />
+
+      <DeleteEventRegisterDialog />
       <EventReviewDialog />
       <RateEventDialog />
       <ReviewMapDialog />
@@ -84,6 +99,11 @@ function ProfilePanel() {
       <UpdateProfileDrawer />
       <UserSettingDrawer />
       <ChangePasswordDrawer />
+      {
+        confirmEmailDialog &&
+        <EmailVerificationDialog />
+
+      }
 
       {/* EventRate */}
 
@@ -115,7 +135,7 @@ function ProfilePanel() {
       />
       <Loading status={updateProfileLoading} />
 
-      {/* ChangePassword */}
+      {/* Change Password */}
       <ToastMistake
         visible={changePassMistake}
         detail={changePassResponse}
@@ -127,8 +147,22 @@ function ProfilePanel() {
         closer={CloseChangePasswordSuccess}
       />
 
-      {/* ChangePassword */}
+      {/* Email Verification */}
+      <ToastMistake
+        visible={confirmEmailMistake}
+        detail={confrimEmailResponse}
+        closer={CloseEmailVerificationMistake}
+      />
+      <ToastSuccess
+        visible={confirmEmailSuccess}
+        detail={confrimEmailResponse}
+        closer={CloseEmailVerificationSuccess}
+      />
+
+      {/* Change Password */}
       <Loading status={changePassLoading} />
+      {/* Email Verification */}
+      <Loading status={confirmEmailLoading} />
     </>
   );
 }

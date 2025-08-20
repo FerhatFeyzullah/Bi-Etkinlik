@@ -9,7 +9,8 @@ import { Button } from "@mui/material";
 
 import {
   DeleteEventRegister,
-  SetIsEventDialog,
+  SetDeletedEventRegister,
+  SetIsEventRegisterDeleteDialog,
 } from "../../../../redux/slices/eventRegisterSlice";
 import { useTranslation } from "react-i18next";
 
@@ -17,26 +18,28 @@ const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function DeleteEventDialog() {
+function DeleteEventRegisterDialog() {
   const { t: tButton } = useTranslation("button");
   const { t: tText } = useTranslation("text");
   const dispatch = useDispatch();
-  const { isEventDeleteDialog, deletedEvent } = useSelector(
+  const { isEventRegisterDeleteDialog, deletedRegisterEvent } = useSelector(
     (store) => store.eventRegister
   );
 
   const CloseDialog = () => {
-    dispatch(SetIsEventDialog(false));
+    dispatch(SetIsEventRegisterDeleteDialog(false));
+    dispatch(SetDeletedEventRegister({}));
   };
 
-  const DeleteEvent = () => {
-    dispatch(DeleteEventRegister(deletedEvent));
-    dispatch(SetIsEventDialog(false));
+  const DeleteRegister = () => {
+    dispatch(DeleteEventRegister(deletedRegisterEvent));
+    dispatch(SetDeletedEventRegister({}));
+    dispatch(SetIsEventRegisterDeleteDialog(false));
   };
   return (
     <div>
       <Dialog
-        open={isEventDeleteDialog}
+        open={isEventRegisterDeleteDialog}
         slots={{
           transition: Transition,
         }}
@@ -55,7 +58,7 @@ function DeleteEventDialog() {
           <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
             {tButton("no")}
           </Button>
-          <Button sx={{ textTransform: "none" }} onClick={DeleteEvent}>
+          <Button sx={{ textTransform: "none" }} onClick={DeleteRegister}>
             {tButton("yes")}
           </Button>
         </DialogActions>
@@ -64,4 +67,4 @@ function DeleteEventDialog() {
   );
 }
 
-export default DeleteEventDialog;
+export default DeleteEventRegisterDialog;

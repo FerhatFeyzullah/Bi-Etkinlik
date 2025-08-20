@@ -11,5 +11,7 @@
   "viewLocation": "View the location of the event",
   "rateYourExperience": "Rate your experience",
   "ratedEvent": "This event has been evaluated.",
-  "eventFinished": "You can no longer send messages because this event has ended."
+  "eventFinished": "You can no longer send messages because this event has ended.",
+  "verifedEmailIcon": "Verifed",
+  "darkModeSwitch": "Dark mode coming soon."
 }

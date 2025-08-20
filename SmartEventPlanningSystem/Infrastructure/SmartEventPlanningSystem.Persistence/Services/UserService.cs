@@ -192,29 +192,24 @@ namespace SmartEventPlanningSystem.Persistence.Services
             }
         }
 
-        public async Task<IdentityResult> ConfirmEmailAsync(string email, CancellationToken ct)
+        public async Task<bool> ConfirmEmailAsync(string email, CancellationToken ct)
         {
             ct.ThrowIfCancellationRequested();
             var user = await userManager.FindByEmailAsync(email);
             if (user == null)
             {
-                return IdentityResult.Failed(new IdentityError
-                {
-                    Description = "Kullanıcı Bulunamadı."
-                });
+                return false;
             }
+
             var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
             var result = await userManager.ConfirmEmailAsync(user, token);
             if (result.Succeeded)
             {
-                return IdentityResult.Success;
+                return true;
             }
             else
             {
-                return IdentityResult.Failed(new IdentityError
-                {
-                    Description = "Email Doğrulaması Başarısız."
-                });
+                return false;
             }
 
         }
