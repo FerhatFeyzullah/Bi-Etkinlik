@@ -105,6 +105,11 @@ function EmailVerificationDialog() {
                 slots={{
                     transition: Transition,
                 }}
+                PaperProps={{
+                    sx: {
+                        borderRadius: "20px", // istediğin değeri verebilirsin
+                    },
+                }}
                 keepMounted
                 onClose={CloseDialog}
             >

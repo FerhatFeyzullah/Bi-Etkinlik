@@ -12,6 +12,7 @@ const initialState = {
   updatedProfile: {},
   updateProfileLoading: false,
   updateProfileMistake: false,
+  updateProfileSuccess: false,
 };
 
 export const GetMyProfile = createAsyncThunk("getMyProfile", async (id) => {
@@ -65,6 +66,9 @@ export const accountSlice = createSlice({
     SetUpdateProfileMistake: (state, action) => {
       state.updateProfileMistake = action.payload;
     },
+    SetUpdateProfileSuccess: (state, action) => {
+      state.updateProfileSuccess = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -106,6 +110,9 @@ export const accountSlice = createSlice({
         state.myProfile = action.payload;
         state.updateProfileDrawer = false;
         state.updateProfileLoading = false;
+        state.updateProfileSuccess = true;
+        state.accountSliceResponse =
+          "Profil bilgileri başarıyla güncellendi.";
       })
       .addCase(UpdateProfile.rejected, (state) => {
         state.updateProfileLoading = false;
@@ -126,5 +133,6 @@ export const {
   SetUpdateProfileDrawer,
   SetUpdatedProfile,
   SetUpdateProfileMistake,
+  SetUpdateProfileSuccess,
 } = accountSlice.actions;
 export default accountSlice.reducer;

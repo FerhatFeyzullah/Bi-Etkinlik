@@ -114,7 +114,6 @@ function DiscoveryEventCard({ event }) {
                 <img src={getCategoryIcon(c.category.categoryName)} alt={c.category.categoryName} width={85} height={85} />
               </div>
             ))}
-
           </div>
         </div>
         <div className="flex-row">

@@ -7,6 +7,7 @@ import {
   SetPPRemoveMistake,
   SetPPUploadMistake,
   SetUpdateProfileMistake,
+  SetUpdateProfileSuccess,
 } from "../../../../redux/slices/accountSlice";
 import MyProfileInfo from "./MyProfileInfo";
 import MyActivities from "./MyActivities";
@@ -52,6 +53,7 @@ function ProfilePanel() {
     ppUploadMistake,
     ppRemoveMistake,
     updateProfileMistake,
+    updateProfileSuccess,
     updateProfileLoading,
   } = useSelector((store) => store.account);
 
@@ -66,6 +68,9 @@ function ProfilePanel() {
   };
   const CloseUpdateProfileMistake = () => {
     dispatch(SetUpdateProfileMistake(false));
+  };
+  const CloseUpdateProfileSuccess = () => {
+    dispatch(SetUpdateProfileSuccess(false));
   };
   const CloseChangePasswordMistake = () => {
     dispatch(SetChangePassMistake(false));
@@ -132,6 +137,11 @@ function ProfilePanel() {
         visible={updateProfileMistake}
         detail={accountSliceResponse}
         closer={CloseUpdateProfileMistake}
+      />
+      <ToastSuccess
+        visible={updateProfileSuccess}
+        detail={accountSliceResponse}
+        closer={CloseUpdateProfileSuccess}
       />
       <Loading status={updateProfileLoading} />
 

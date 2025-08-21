@@ -59,6 +59,15 @@ function RecommendedEventCard({ event }) {
     }
   };
 
+  const images = import.meta.glob("../../../../assets/categoryImages/gif/*.gif", { eager: true });
+
+  const getCategoryIcon = (name) => {
+    // Dosya adını küçük harf + tire ile normalize et
+    const fileName = name.toLowerCase().replace(/\s+/g, "-") + ".gif";
+    const path = `../../../../assets/categoryImages/gif/${fileName}`;
+    return images[path]?.default || images["../../../../assets/categoryImages/gif/default.gif"].default;
+  };
+
   return (
     <>
       <div
@@ -68,32 +77,43 @@ function RecommendedEventCard({ event }) {
             : "recommended-e-c-main-without-card"
         }
       >
-        <div className="recommended-e-c-user-info">
-          <div>
-            <IconButton>
-              <Avatar
-                sx={{ width: 65, height: 65 }}
-                src={
-                  !imgError && event.appUser?.profilePhotoId
-                    ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
-                    : undefined
-                }
-                onError={() => setImgError(true)}
-              >
-                {!event.appUser?.profilePhotoId &&
-                  event.appUser.firstName?.[0].toUpperCase()}
-              </Avatar>
-            </IconButton>
-          </div>
-          <div>
-            {event.appUser.firstName} {event.appUser.lastName} {"("}
-          </div>
-          <Tooltip title={tTooltip("communityScore")} placement="right">
+        <div className="flex-row-justify-space-between">
+          <div className="flex-row">
             <div>
-              {event.appUser.score}
-              {")"}
+              <IconButton>
+                <Avatar
+                  sx={{ width: 65, height: 65 }}
+                  src={
+                    !imgError && event.appUser?.profilePhotoId
+                      ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
+                      : undefined
+                  }
+                  onError={() => setImgError(true)}
+                >
+                  {!event.appUser?.profilePhotoId &&
+                    event.appUser.firstName?.[0].toUpperCase()}
+                </Avatar>
+              </IconButton>
             </div>
-          </Tooltip>
+            <div>
+              {event.appUser.firstName} {event.appUser.lastName} {"("}
+            </div>
+            <Tooltip title={tTooltip("communityScore")} placement="right">
+              <div>
+                {event.appUser.score}
+                {")"}
+              </div>
+            </Tooltip>
+          </div>
+
+          <div className="flex-column-justify-end" style={{ marginRight: "10px" }}>
+            {event.eventCategories.map((c) => (
+              <div key={c.category.categoryId} >
+                <img src={getCategoryIcon(c.category.categoryName)} alt={c.category.categoryName} width={85} height={85} />
+              </div>
+            ))}
+
+          </div>
         </div>
         <div className="flex-row">
           <div className="recommended-e-c-image">

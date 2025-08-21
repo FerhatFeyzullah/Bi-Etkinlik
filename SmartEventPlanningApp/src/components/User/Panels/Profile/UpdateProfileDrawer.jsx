@@ -127,7 +127,7 @@ function UpdateProfileDrawer() {
             position: "absolute", // ✅ artık fixed değil
             top: "80px", // ✅ istediğin kadar aşağı al
             height: "auto", // ✅ yükseklik belirle
-            borderRadius: "10px",
+            borderRadius: "20px",
             marginRight: "10px",
             width: "400px",
             backgroundColor: "whitesmoke",

@@ -50,6 +50,15 @@ function EventReviewDialog() {
     dispatch(SetPreviewedEvent({}));
   };
 
+  const images = import.meta.glob("../../../assets/categoryImages/gif/*.gif", { eager: true });
+
+  const getCategoryIcon = (name) => {
+    // Dosya adını küçük harf + tire ile normalize et
+    const fileName = name.toLowerCase().replace(/\s+/g, "-") + ".gif";
+    const path = `../../../assets/categoryImages/gif/${fileName}`;
+    return images[path]?.default || images["../../../assets/categoryImages/gif/default.gif"].default;
+  };
+
   return (
     <div>
       <Dialog
@@ -57,39 +66,55 @@ function EventReviewDialog() {
         slots={{
           transition: Transition,
         }}
+        PaperProps={{
+          sx: {
+            borderRadius: "20px", // istediğin değeri verebilirsin
+          },
+        }}
         keepMounted
         onClose={CloseDialog}
       >
         <DialogContent sx={{ width: "600px" }} className="flex-row">
           <>
             <div className="review-e-c-main-without-card">
-              <div className="discovery-e-c-user-info">
-                <div>
-                  <IconButton disabled>
-                    <Avatar
-                      sx={{ width: 60, height: 60 }}
-                      src={
-                        !imgError && previewedEvent.appUser?.profilePhotoId
-                          ? `https://localhost:7126/api/Users/ProfileImage/${previewedEvent.appUser.profilePhotoId}`
-                          : undefined
-                      }
-                      onError={() => setImgError(true)}
-                    >
-                      {!previewedEvent.appUser?.profilePhotoId &&
-                        previewedEvent.appUser?.firstName?.[0].toUpperCase()}
-                    </Avatar>
-                  </IconButton>
-                </div>
-                <div>
-                  {previewedEvent.appUser?.firstName}{" "}
-                  {previewedEvent.appUser?.lastName} {"("}
-                </div>
-                <Tooltip title={tTooltip("communityScore")} placement="right">
+              <div className="flex-row-justify-space-between">
+                <div className="flex-row">
                   <div>
-                    {previewedEvent.appUser?.score}
-                    {")"}
+                    <IconButton disabled>
+                      <Avatar
+                        sx={{ width: 60, height: 60 }}
+                        src={
+                          !imgError && previewedEvent.appUser?.profilePhotoId
+                            ? `https://localhost:7126/api/Users/ProfileImage/${previewedEvent.appUser.profilePhotoId}`
+                            : undefined
+                        }
+                        onError={() => setImgError(true)}
+                      >
+                        {!previewedEvent.appUser?.profilePhotoId &&
+                          previewedEvent.appUser?.firstName?.[0].toUpperCase()}
+                      </Avatar>
+                    </IconButton>
                   </div>
-                </Tooltip>
+                  <div>
+                    {previewedEvent.appUser?.firstName}{" "}
+                    {previewedEvent.appUser?.lastName} {"("}
+                  </div>
+                  <Tooltip title={tTooltip("communityScore")} placement="right">
+                    <div>
+                      {previewedEvent.appUser?.score}
+                      {")"}
+                    </div>
+                  </Tooltip>
+                </div>
+
+
+                <div className="flex-column-justify-end" style={{ marginRight: "10px" }}>
+                  {previewedEvent.eventCategories?.map((c) => (
+                    <div key={c.category.categoryId} >
+                      <img src={getCategoryIcon(c.category.categoryName)} alt={c.category.categoryName} width={85} height={85} />
+                    </div>
+                  ))}
+                </div>
               </div>
               <div className="flex-row">
                 <div className="discovery-e-c-image">
