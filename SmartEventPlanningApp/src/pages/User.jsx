@@ -6,13 +6,12 @@ import DiscoveryPanel from "../components/User/Panels/Discovery/DiscoveryPanel";
 import RecommendedPanel from "../components/User/Panels/Recommended/RecommendedPanel";
 import CreateAndEditPanel from "../components/User/Panels/CreateEvent/CreateAndEditPanel";
 import MessagesPanel from "../components/User/Panels/Message/MessagesPanel";
-import NotificationPanel from "../components/User/Panels/NotificationPanel";
+import ArchivePanel from '../components/User/Panels/Archive/ArchivePanel'
 import ProfilePanel from "../components/User/Panels/Profile/ProfilePanel";
 import DiscoveryFilterPanel from "../components/User/Panels/Discovery/DiscoveryFilterPanel";
 import { useDispatch, useSelector } from "react-redux";
 import { GetUserSetting } from "../redux/slices/userSettingSlice";
 import { useNavigate, useParams } from "react-router-dom";
-import ReviewMapPanel from "../components/User/Panels/ReviewMapPanel";
 import LogoutIcon from "@mui/icons-material/Logout";
 import EditableEventsPanel from "../components/User/Panels/CreateEvent/EditableEventsPanel";
 import { GetAllCategory } from "../redux/slices/categorySlice";
@@ -20,7 +19,7 @@ import TravelExploreIcon from "@mui/icons-material/TravelExplore";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import Forum from "@mui/icons-material/Forum";
-import NotificationsIcon from "@mui/icons-material/Notifications";
+import { RiArchive2Fill } from "react-icons/ri";
 import PersonIcon from "@mui/icons-material/Person";
 import {
   SetDiscoveryLatitude,
@@ -31,6 +30,7 @@ import { LogoutFromSystem } from "../redux/slices/authSlice";
 import { useTranslation } from "react-i18next";
 import EventChatGroupsPanel from "../components/User/Panels/Message/EventChatGroupsPanel";
 import { GetMyProfile } from "../redux/slices/accountSlice";
+import ArchiveNavbar from "../components/User/Panels/Archive/ArchiveNavbar";
 
 function User() {
   const { t: tButton } = useTranslation("button");
@@ -145,8 +145,8 @@ function User() {
               }}
             />
             <Tab
-              label={tButton("notificationTab")}
-              icon={<NotificationsIcon />}
+              label={tButton("archiveTab")}
+              icon={<RiArchive2Fill size={24} />}
               iconPosition="start"
               sx={{
                 textTransform: "none",
@@ -228,7 +228,13 @@ function User() {
           <EventChatGroupsPanel />
         </div>
       )}
-      {selectedTab === 4 && <NotificationPanel />}
+      {selectedTab === 4 &&
+        <div style={{ width: "100%", height: "100vh" }}>
+          <ArchiveNavbar />
+          <ArchivePanel />
+        </div>
+
+      }
       {selectedTab === 5 && (
         <div className="flex-row" style={{ width: "100%" }}>
           <ProfilePanel />

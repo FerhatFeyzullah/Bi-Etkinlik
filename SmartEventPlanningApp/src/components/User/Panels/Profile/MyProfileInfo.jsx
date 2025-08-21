@@ -171,13 +171,6 @@ function MyProfileInfo() {
           >
             {tButton("editProfile")}
           </Button>
-          <Button
-            variant="contained"
-            color="inherit"
-            sx={{ marginRight: "20px", textTransform: "none" }}
-          >
-            {tButton("archive")}
-          </Button>
         </div>
         <div>
           <IconButton onClick={ChangeUserSetting}>

@@ -11,12 +11,12 @@ import { SetLoginMistakeAlert, SetRegisterSuccessAlert } from "../redux/slices/a
 
 function Login() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const { loginLoading, errorMessage, loginMistakeAlert, registerResponse,
     registerSuccessAlert, } = useSelector(
       (store) => store.auth
     );
-
-  const dispatch = useDispatch();
 
   const LoginToastMistakeClose = () => {
     dispatch(SetLoginMistakeAlert());
@@ -26,7 +26,7 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
+    <div className="login-container login-background">
       <div>
         <div className="app-header">Bi Etkinlik</div>
 

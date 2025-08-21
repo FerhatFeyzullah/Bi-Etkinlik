@@ -30,7 +30,7 @@ function Register() {
   };
 
   return (
-    <div className="register-container">
+    <div className="register-container register-background">
       <div>
         <div className="register-app-header">Bi Etkinlik</div>
         <div className="register-description">

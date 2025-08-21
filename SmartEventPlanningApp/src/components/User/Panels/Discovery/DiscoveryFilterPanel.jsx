@@ -79,6 +79,7 @@ function DiscoveryFilterPanel() {
         <Autocomplete
           options={cities}
           multiple
+          sx={{ width: "80%", marginTop: "30px" }}
           getOptionLabel={(option) => option}
           value={selectedCities}
           onChange={(event, newValue) => setSelectedCities(newValue)}
@@ -88,7 +89,6 @@ function DiscoveryFilterPanel() {
               label={tInput("city")}
               variant="outlined"
               size="medium"
-              sx={{ width: "250px", marginTop: "30px" }}
             />
           )}
           disablePortal
@@ -112,6 +112,7 @@ function DiscoveryFilterPanel() {
           <Autocomplete
             options={allCategory}
             multiple
+            sx={{ width: "80%", marginTop: "30px" }}
             getOptionLabel={(option) => tCategory(option.categoryName)}
             value={allCategory.filter((cat) =>
               selectedCategories.includes(cat.categoryId)
@@ -125,7 +126,6 @@ function DiscoveryFilterPanel() {
                 label={tInput("category")}
                 variant="outlined"
                 size="medium"
-                sx={{ width: "250px", marginTop: "20px" }}
               />
             )}
             disablePortal
@@ -150,7 +150,7 @@ function DiscoveryFilterPanel() {
             disablePast
             label={tInput("fromDate")}
             sx={{
-              width: "250px",
+              width: "80%",
               marginTop: "20px",
             }}
             value={startDate}
@@ -160,7 +160,7 @@ function DiscoveryFilterPanel() {
             disablePast
             label={tInput("toDate")}
             sx={{
-              width: "250px",
+              width: "80%",
               marginTop: "20px"
             }}
             value={endDate}

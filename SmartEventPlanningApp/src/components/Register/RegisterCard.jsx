@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, InputAdornment, IconButton } from "@mui/material";
+import { Button, InputAdornment, IconButton, Tooltip } from "@mui/material";
 import { Autocomplete, TextField } from "@mui/material";
 import { schema } from "../../schemas/RegisterSchema";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
@@ -22,13 +22,15 @@ import {
 } from "../../redux/slices/authSlice";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
-
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
+import styled from "@emotion/styled";
 
 function RegisterCard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { t: tCategory } = useTranslation("category");
+
   const { allCategory } = useSelector((store) => store.category);
   const { registerStatus } = useSelector((store) => store.auth);
 
@@ -124,6 +126,15 @@ function RegisterCard() {
       });
       setErrors(errObj);
     }
+  };
+
+  const images = import.meta.glob("../../assets/categoryImages/gif/*.gif", { eager: true });
+
+  const getCategoryIcon = (name) => {
+    // Dosya adını küçük harf + tire ile normalize et
+    const fileName = name.toLowerCase().replace(/\s+/g, "-") + ".gif";
+    const path = `../../assets/categoryImages/gif/${fileName}`;
+    return images[path]?.default || images["../../assets/categoryImages/gif/default.gif"].default;
   };
 
   return (
@@ -245,53 +256,53 @@ function RegisterCard() {
             fullWidth
           />
         </div>
-        <div className="register-date-gender" style={{ marginBottom: "7px" }}>
-          <div style={{ marginBottom: "7px" }}>
-            <LocalizationProvider dateAdapter={AdapterDayjs}
-              adapterLocale="tr"
-            >
-              <DemoContainer components={["DatePicker"]}>
-                <DatePicker
-                  label="Doğum Tarihi"
-                  value={birthDate}
-                  onChange={(e) => setBirthDate(e)}
-                  sx={{ width: "300px" }}
-                  slotProps={{
-                    textField: {
-                      error: !!errors.birthDate,
-                      helperText: errors.birthDate || "",
-                      variant: "outlined",
-                      fullWidth: true,
-                      size: "small",
-                    },
-                  }}
-                />
-              </DemoContainer>
-            </LocalizationProvider>
-          </div>
-          <div>
-            <FormControl error={!!errors.gender}>
-              <FormLabel>Cinsiyet</FormLabel>
-              <RadioGroup value={gender} onChange={(e) => handleChange(e)} row>
-                <FormControlLabel
-                  value={"Erkek"}
-                  control={<Radio />}
-                  label="Erkek"
-                />
-                <FormControlLabel
-                  value={"Kadın"}
-                  control={<Radio />}
-                  label="Kadın"
-                />
-              </RadioGroup>
-              {errors.gender && (
-                <p style={{ color: "rgba(153, 20, 20, 1)", fontSize: "14px" }}>
-                  {errors.gender}
-                </p>
-              )}
-            </FormControl>
-          </div>
-        </div >
+
+        <div className="register-input">
+          <LocalizationProvider dateAdapter={AdapterDayjs}
+            adapterLocale="tr"
+          >
+            <DatePicker
+              label="Doğum Tarihi"
+              value={birthDate}
+              onChange={(e) => setBirthDate(e)}
+              sx={{ width: "300px" }}
+              slotProps={{
+                textField: {
+                  error: !!errors.birthDate,
+                  helperText: errors.birthDate || "",
+                  variant: "outlined",
+                  fullWidth: true,
+                  size: "small",
+                },
+              }}
+            />
+
+          </LocalizationProvider>
+        </div>
+
+        <div className="flex-column">
+          <FormControl error={!!errors.gender}>
+            <FormLabel sx={{ textAlign: "center" }}>Cinsiyet</FormLabel>
+            <RadioGroup value={gender} onChange={(e) => handleChange(e)} row>
+              <FormControlLabel
+                value={"Erkek"}
+                control={<Radio />}
+                label="Erkek"
+              />
+              <FormControlLabel
+                value={"Kadın"}
+                control={<Radio />}
+                label="Kadın"
+              />
+            </RadioGroup>
+            {errors.gender && (
+              <p style={{ color: "rgba(153, 20, 20, 1)", fontSize: "14px" }}>
+                {errors.gender}
+              </p>
+            )}
+          </FormControl>
+        </div>
+
       </div >
 
       <br />
@@ -308,21 +319,29 @@ function RegisterCard() {
             const isSelected = areas.includes(c.categoryId);
 
             return (
-              <div
-                className="register-category-card"
+              <Tooltip
                 key={c.categoryId}
-                onClick={() => toggleEvent(c.categoryId)}
-                style={{
-                  border: isSelected ? "3px solid #55af2bff" : "1px solid #ccc",
-                  boxShadow: isSelected
-                    ? "0px 0px 10px 3px rgba(70, 189, 59, 1)"
-                    : "0px 0px 10px 3px rgba(100, 146, 187, 1)",
-                  backgroundColor: "white",
-                  transition: "all 0.2s ease-in-out",
-                }}
-              >
-                {c.categoryName}
-              </div>
+                title={tCategory(c.categoryName)}>
+                <div
+                  className="register-category-card"
+
+                  onClick={() => toggleEvent(c.categoryId)}
+                  style={{
+                    border: isSelected ? "3px solid #30d64cff" : "1px solid #ccc",
+                    boxShadow: isSelected
+                      ? "0px 0px 10px 3px rgba(83, 230, 38, 1)"
+                      : "0px 0px 10px 3px rgba(132, 183, 228, 1)",
+                    backgroundColor: "white",
+                  }}
+                >
+
+                  <div key={c.categoryId} >
+                    <img src={getCategoryIcon(c.categoryName)} alt={c.categoryName} width={90} height={90} />
+                  </div>
+
+                </div>
+              </Tooltip>
+
             );
           })}
       </div>

@@ -35,7 +35,7 @@ namespace SmartEventPlanningSystem.API.Controllers
                     SameSite = SameSiteMode.None,
                     Secure = true,
                 });
-                return Ok(result.Success);
+                return Ok(result);
             }
             return Ok(result);
         }

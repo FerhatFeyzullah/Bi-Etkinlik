@@ -20,8 +20,8 @@ function ReviewEventCardSkeleton() {
           <div>
             <Skeleton
               variant="rounded"
-              width={400}
-              height={250}
+              width={550}
+              height={350}
               sx={{ marginTop: "10px" }}
             />
           </div>

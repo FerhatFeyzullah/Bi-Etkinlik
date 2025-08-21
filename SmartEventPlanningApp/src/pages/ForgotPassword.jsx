@@ -6,11 +6,12 @@ import NewPasswordCard from "../components/ForgotPassword/NewPasswordCard";
 import SuccessCard from "../components/ForgotPassword/SuccessCard";
 import Loading from "../components/Elements/Loading";
 import { useSelector } from "react-redux";
+import '../css/ForgotPassword/ForgotPassword.css'
 
 function ForgotPassword() {
   const { cardCount, loading } = useSelector((store) => store.forgotPassword);
   return (
-    <>
+    <div className="fp-background">
       <div className="flex-column" style={{ height: "150px" }}>
         <StepByStep />
       </div>
@@ -44,7 +45,7 @@ function ForgotPassword() {
         </div>
       )}
       <Loading status={loading} />
-    </>
+    </div>
   );
 }
 
