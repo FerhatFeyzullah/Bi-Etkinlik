@@ -8,10 +8,12 @@ import ToastSuccess from "../components/Elements/ToastSuccess";
 import Loading from "../components/Elements/Loading";
 import { useNavigate } from "react-router-dom";
 import { SetLoginMistakeAlert, SetRegisterSuccessAlert } from "../redux/slices/authSlice";
+import { useTranslation } from "react-i18next";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t: tAlert } = useTranslation("alert");
 
   const { loginLoading, errorMessage, loginMistakeAlert, registerResponse,
     registerSuccessAlert, } = useSelector(
@@ -57,13 +59,13 @@ function Login() {
 
         <ToastMistake
           visible={loginMistakeAlert}
-          detail={errorMessage}
+          detail={tAlert(errorMessage)}
           closer={LoginToastMistakeClose}
         />
 
         <ToastSuccess
           visible={registerSuccessAlert}
-          detail={registerResponse}
+          detail={tAlert(registerResponse)}
           closer={registerToastSuccessClose}
         />
       </div >

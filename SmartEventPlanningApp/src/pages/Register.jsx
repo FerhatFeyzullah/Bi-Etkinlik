@@ -11,8 +11,10 @@ import {
   SetRegisterMistakeAlert,
   SetRegisterSuccessAlert,
 } from "../redux/slices/authSlice";
+import { useTranslation } from "react-i18next";
 
 function Register() {
+  const { t: tAlert } = useTranslation("alert")
   const navigate = useNavigate();
   const {
     registerLoading,
@@ -20,6 +22,8 @@ function Register() {
     registerMistakeAlert,
     registerSuccessAlert,
   } = useSelector((store) => store.auth);
+
+  const { categoryLoaing } = useSelector(store => store.category)
   const dispatch = useDispatch();
 
   const registerToastMistakeClose = () => {
@@ -53,17 +57,19 @@ function Register() {
       </div>
       <div>
         <Loading status={registerLoading} />
+        <Loading status={categoryLoaing} />
 
         <ToastMistake
           visible={registerMistakeAlert}
-          detail={registerResponse}
+          detail={tAlert(registerResponse)}
           closer={registerToastMistakeClose}
         />
         <ToastSuccess
           visible={registerSuccessAlert}
-          detail={registerResponse}
+          detail={tAlert(registerResponse)}
           closer={registerToastSuccessClose}
         />
+
       </div>
     </div>
   );

@@ -17,8 +17,12 @@ import {
   DecrementStepCount,
   SetFP_Mistake,
 } from "../../redux/slices/forgotPasswordSlice";
+import { useTranslation } from "react-i18next";
+
 
 function NewPasswordCard() {
+  const { t: tAlert } = useTranslation("alert");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -135,7 +139,7 @@ function NewPasswordCard() {
 
       <ToastMistake
         visible={fpMistake}
-        detail={fpErrorMessage}
+        detail={tAlert(fpErrorMessage)}
         closer={Closer}
       />
     </div>

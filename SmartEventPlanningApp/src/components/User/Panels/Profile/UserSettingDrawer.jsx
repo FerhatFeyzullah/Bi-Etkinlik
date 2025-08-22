@@ -181,6 +181,8 @@ function UserSettingDrawer() {
                 <Select value={language} onChange={HandleChangeLanguage}>
                   <MenuItem value={"tr"}>{tText("turkish")}</MenuItem>
                   <MenuItem value={"en"}>{tText("english")}</MenuItem>
+                  <MenuItem value={"de"}>{tText("deutsch")}</MenuItem>
+
                 </Select>
               </FormControl>
               <div className="user-setting-switch-text">

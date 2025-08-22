@@ -535,6 +535,28 @@
         }
       }
     },
+    "/api/Events/GetEventsI_CreatedForArchive": {
+      "get": {
+        "tags": [
+          "Events"
+        ],
+        "parameters": [
+          {
+            "name": "AppUserId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Events/GetEventsI_CreatedUnFiltered": {
       "get": {
         "tags": [
@@ -557,18 +579,17 @@
         }
       }
     },
-    "/api/Events/GetEventsI_CreatedAwaiting": {
+    "/api/Events/GetEventsStatusNull": {
       "get": {
         "tags": [
           "Events"
         ],
         "parameters": [
           {
-            "name": "AppUserId",
+            "name": "request",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "$ref": "#/components/schemas/GetEventsStatusNullRequest"
             }
           }
         ],
@@ -579,18 +600,17 @@
         }
       }
     },
-    "/api/Events/GetEventsI_CreatedStatusTrue": {
+    "/api/Events/GetEventsStatusTrue": {
       "get": {
         "tags": [
           "Events"
         ],
         "parameters": [
           {
-            "name": "AppUserId",
+            "name": "request",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "$ref": "#/components/schemas/GetEventsStatusTrueRequest"
             }
           }
         ],
@@ -601,18 +621,17 @@
         }
       }
     },
-    "/api/Events/GetEventsI_CreatedStatusFalse": {
+    "/api/Events/GetEventsStatusFalse": {
       "get": {
         "tags": [
           "Events"
         ],
         "parameters": [
           {
-            "name": "AppUserId",
+            "name": "request",
             "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "$ref": "#/components/schemas/GetEventsStatusFalseRequest"
             }
           }
         ],
@@ -1516,6 +1535,18 @@
         "additionalProperties": false
       },
       "GetAllCategoryRequest": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "GetEventsStatusFalseRequest": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "GetEventsStatusNullRequest": {
+        "type": "object",
+        "additionalProperties": false
+      },
+      "GetEventsStatusTrueRequest": {
         "type": "object",
         "additionalProperties": false
       },

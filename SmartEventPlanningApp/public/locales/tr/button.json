@@ -19,6 +19,9 @@
   "completedEvents": "Geçmiş Etkinlikler",
   "ongoingEvents": "Devam Eden Etkinlikler",
   "upcomingEvents": "Yaklaşan Etkinlikler",
+  "pendingEvents": "Onay Bekleyen Etkinlikler",
+  "approvedEvents": "Onaylanan Etkinlikler",
+  "rejectedEvents": "Reddedilen Etkinlikler",
   "editProfile": "Profili Düzenle",
   "listView": "Liste Görünümü",
   "darkMode": "Karanlık Mod",
@@ -36,5 +39,8 @@
   "no": "Hayır",
   "ok": "Tamam",
   "send": "Gönder",
-  "getCodeAgain": "Tekrar Kod Al"
+  "getCodeAgain": "Tekrar Kod Al",
+  "evaluate": "Değerlendir",
+  "approve": "Onayla",
+  "reject": "Reddet"
 }

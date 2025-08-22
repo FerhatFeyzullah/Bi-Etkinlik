@@ -13,10 +13,11 @@ using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDisco
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCity;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCityCategory;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_UnFiltered;
-using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedAwaiting;
-using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusFalse;
-using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusTrue;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedForArchive;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedUnFiltered;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusFalse;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusNull;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusTrue;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsRecommendedToMe;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.IsEventFinished;
 
@@ -98,26 +99,32 @@ namespace SmartEventPlanningSystem.API.Controllers
 
         //Events I Created Queries
 
+        [HttpGet("GetEventsI_CreatedForArchive")]
+        public async Task<IActionResult> GetEventsI_CreatedForArchive([FromQuery] GetEventsICreatedForArchiveRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
         [HttpGet("GetEventsI_CreatedUnFiltered")]
         public async Task<IActionResult> GetEventsI_CreatedUnFiltered([FromQuery] GetEventsICreatedUnFilteredRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
-        [HttpGet("GetEventsI_CreatedAwaiting")]
-        public async Task<IActionResult> GetEventsI_CreatedAwaiting([FromQuery] GetEventsICreatedAwaitingRequest request)
+        [HttpGet("GetEventsStatusNull")]
+        public async Task<IActionResult> GetEventsStatusNull([FromQuery] GetEventsStatusNullRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
-        [HttpGet("GetEventsI_CreatedStatusTrue")]
-        public async Task<IActionResult> GetEventsI_CreatedStatusTrue([FromQuery] GetEventsICreatedStatusTrueRequest request)
+        [HttpGet("GetEventsStatusTrue")]
+        public async Task<IActionResult> GetEventsStatusTrue([FromQuery] GetEventsStatusTrueRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
-        [HttpGet("GetEventsI_CreatedStatusFalse")]
-        public async Task<IActionResult> GetEventsI_CreatedStatusFalse([FromQuery] GetEventsICreatedStatusFalseRequest request)
+        [HttpGet("GetEventsStatusFalse")]
+        public async Task<IActionResult> GetEventsStatusFalse([FromQuery] GetEventsStatusFalseRequest request)
         {
             return Ok(await mediator.Send(request));
         }

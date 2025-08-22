@@ -14,8 +14,10 @@ import {
   SetFP_Mistake,
   SetRecoveryEmail,
 } from "../../redux/slices/forgotPasswordSlice";
+import { useTranslation } from "react-i18next";
 
 function EmailCard() {
+  const { t: tAlert } = useTranslation("alert");
   const [email, setEmail] = useState("");
   const [errors, setErrors] = useState({});
   const { fpErrorMessage, fpMistake } = useSelector(
@@ -92,7 +94,7 @@ function EmailCard() {
 
       <ToastMistake
         visible={fpMistake}
-        detail={fpErrorMessage}
+        detail={tAlert(fpErrorMessage)}
         closer={Closer}
       />
     </div>

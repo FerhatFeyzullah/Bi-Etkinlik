@@ -468,40 +468,8 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
-    "Method": "GetEventsI_CreatedAwaiting",
-    "RelativePath": "api/Events/GetEventsI_CreatedAwaiting",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "AppUserId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
-    "Method": "GetEventsI_CreatedStatusFalse",
-    "RelativePath": "api/Events/GetEventsI_CreatedStatusFalse",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "AppUserId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
-    "Method": "GetEventsI_CreatedStatusTrue",
-    "RelativePath": "api/Events/GetEventsI_CreatedStatusTrue",
+    "Method": "GetEventsI_CreatedForArchive",
+    "RelativePath": "api/Events/GetEventsI_CreatedForArchive",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -541,6 +509,54 @@
       {
         "Name": "AppUserId",
         "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "GetEventsStatusFalse",
+    "RelativePath": "api/Events/GetEventsStatusFalse",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusFalse.GetEventsStatusFalseRequest",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "GetEventsStatusNull",
+    "RelativePath": "api/Events/GetEventsStatusNull",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusNull.GetEventsStatusNullRequest",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.EventsController",
+    "Method": "GetEventsStatusTrue",
+    "RelativePath": "api/Events/GetEventsStatusTrue",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusTrue.GetEventsStatusTrueRequest",
         "IsRequired": false
       }
     ],

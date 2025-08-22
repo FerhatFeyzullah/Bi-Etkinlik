@@ -1,5 +1,18 @@
 .archive-panel-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
     width: 100%;
-    height: 100%;
-    background-color: beige;
+    height: 90%;
+    flex-wrap: wrap;
+    overflow: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+}
+
+.archive-panel-container::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
 }

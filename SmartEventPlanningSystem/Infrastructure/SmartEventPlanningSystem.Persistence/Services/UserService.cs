@@ -25,11 +25,11 @@ namespace SmartEventPlanningSystem.Persistence.Services
             bool isOldPasswordValid = await userManager.CheckPasswordAsync(user, oldPass);
             if (!isOldPasswordValid)
             {
-                return resultMessage = "Eski şifre yanlış";
+                return resultMessage = "Error-1";
             }
             if (newPass != confPass)
             {
-                return resultMessage = "Yeni şifreler eşleşmiyor";
+                return resultMessage = "Error-2";
             }
 
             await userManager.ChangePasswordAsync(user, oldPass, newPass);
@@ -66,7 +66,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 return new UserLoginResponseDto
                 {
                     Success = false,
-                    Message = "Kullanıcı Bulunamadı."
+                    Message = "Error-1"
                 };
 
             }
@@ -77,7 +77,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 return new UserLoginResponseDto
                 {
                     Success = false,
-                    Message = "Hatalı Şifre Girişi"
+                    Message = "Error-2"
                 };
             }
 
@@ -100,7 +100,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 {
                     return IdentityResult.Failed(new IdentityError
                     {
-                        Description = "Bu Kullanıcı İsmi Zaten Kullanılıyor."
+                        Description = "Error-1"
                     });
                 }
                 var userEmailExist = await userManager.FindByEmailAsync(userRegisterDto.Email);
@@ -108,7 +108,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 {
                     return IdentityResult.Failed(new IdentityError
                     {
-                        Description = "Bu Email Adresi Zaten Kullanılıyor."
+                        Description = "Error-2"
                     });
                 }
 
@@ -144,7 +144,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 {
                     return IdentityResult.Failed(new IdentityError
                     {
-                        Description = "Kullanıcı Oluşturulamadı." + createResult
+                        Description = "Error-3"
                     });
                 }
 
@@ -154,7 +154,7 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 await unitOfWork.RollbackAsync();
                 return IdentityResult.Failed(new IdentityError
                 {
-                    Description = "Kayit sırasında hata oluştu:" + ex.Message
+                    Description = "Error-4"
                 });
             }
         }

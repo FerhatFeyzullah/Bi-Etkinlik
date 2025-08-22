@@ -17,6 +17,17 @@ const initialState = {
   previewedEvent: {},
   isEventDeleteDialog: false,
   deletedEvent: null,
+  eventArchive: [],
+  reviewEvents: [],
+  reviewEventSkeleton: false,
+  evaluateEventDialog: false,
+  approvedEventDialog: false,
+  rejectedEventDialog: false,
+  evaluatedEventId: null,
+  isEventEvaluated: false,
+  reviewEventResponse: "",
+  reviewEventMistake: false,
+  reviewEventSuccess: false,
 };
 
 export const CreateEvent = createAsyncThunk("createEvent", async (data) => {
@@ -33,6 +44,18 @@ export const RemoveEvent = createAsyncThunk("removeEvent", async (id) => {
   await axios.delete("Events/RemoveEvent/" + id);
 });
 
+export const GetEventsI_CreatedForArchive = createAsyncThunk(
+  "iCreatedArchive",
+  async (id) => {
+    var response = await axios.get("Events/GetEventsI_CreatedForArchive", {
+      params: {
+        AppUserId: id,
+      },
+    });
+    return response.data;
+  }
+);
+
 export const GetEventsI_CreatedUnFiltreted = createAsyncThunk(
   "iCreatedUnFiltreted",
   async (id) => {
@@ -45,41 +68,37 @@ export const GetEventsI_CreatedUnFiltreted = createAsyncThunk(
   }
 );
 
-export const GetEventsI_CreatedAwaiting = createAsyncThunk(
+export const GetEventsStatusNull = createAsyncThunk(
   "iCreatedAwaiting",
-  async (id) => {
-    var response = await axios.get("Events/GetEventsI_CreatedAwaiting", {
-      params: {
-        AppUserId: id,
-      },
-    });
+  async () => {
+    var response = await axios.get("Events/GetEventsStatusNull");
     return response.data;
   }
 );
 
-export const GetEventsI_CreatedStatusTrue = createAsyncThunk(
+export const GetEventsStatusTrue = createAsyncThunk(
   "iCreatedStatusTrue",
-  async (id) => {
-    var response = await axios.get("Events/GetEventsI_CreatedStatusTrue", {
-      params: {
-        AppUserId: id,
-      },
-    });
+  async () => {
+    var response = await axios.get("Events/GetEventsStatusTrue");
     return response.data;
   }
 );
 
-export const GetEventsI_CreatedStatusFalse = createAsyncThunk(
+export const GetEventsStatusFalse = createAsyncThunk(
   "iCreatedStatusFalse",
-  async (id) => {
-    var response = await axios.get("Events/GetEventsI_CreatedStatusFalse", {
-      params: {
-        AppUserId: id,
-      },
-    });
+  async () => {
+    var response = await axios.get("Events/GetEventsStatusFalse");
     return response.data;
   }
 );
+
+export const SetEventStatusTrue = createAsyncThunk('setStatusTrue', async (id) => {
+  await axios.put("Events/SetEventPermissionTrue/" + id);
+})
+
+export const SetEventStatusFalse = createAsyncThunk('setStatusFalse', async (id) => {
+  await axios.put("Events/SetEventPermissionFalse/" + id);
+})
 
 export const eventSlice = createSlice({
   name: "event",
@@ -121,6 +140,27 @@ export const eventSlice = createSlice({
     SetDeletedEvent: (state, action) => {
       state.deletedEvent = action.payload;
     },
+    SetReviewEventMistake: (state, action) => {
+      state.reviewEventMistake = action.payload;
+    },
+    SetReviewEventSuccess: (state, action) => {
+      state.reviewEventSuccess = action.payload;
+    },
+    SetEvaluateEventDialog: (state, action) => {
+      state.evaluateEventDialog = action.payload;
+    },
+    SetApprovedEventDialog: (state, action) => {
+      state.approvedEventDialog = action.payload;
+    },
+    SetRejectedEventDialog: (state, action) => {
+      state.rejectedEventDialog = action.payload;
+    },
+    SetEvaluatedEventId: (state, action) => {
+      state.evaluatedEventId = action.payload;
+    },
+    SetIsEventEvaluated: (state, action) => {
+      state.isEventEvaluated = action.payload;
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -130,17 +170,17 @@ export const eventSlice = createSlice({
         if (action.payload) {
           state.createAndEditS_Alert = true;
           state.createAndEditResponse =
-            "Etkinlik Başarıyla Oluşturuldu. Etkinliklerim Panelinden Onay Durumunu Takip Edebilirsiniz.";
+            "event.createEventFulfilledSuccess";
         } else {
           state.createAndEditM_Alert = true;
           state.createAndEditResponse =
-            "Etkinlik Oluşturulamadı. Lütfen Daha Sonra Tekrar Deneyiniz.";
+            "event.createEventFulfilledError";
         }
       })
       .addCase(CreateEvent.rejected, (state) => {
         state.createAndEditM_Alert = true;
         state.createAndEditResponse =
-          "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+          "rejected";
       })
 
       //Update Event
@@ -148,25 +188,34 @@ export const eventSlice = createSlice({
       .addCase(UpdateEvent.fulfilled, (state, action) => {
         state.createAndEditS_Alert = true;
         state.editableEvents = action.payload;
-        state.createAndEditResponse = "Etkinlik Başarıyla Güncellendi.";
+        state.createAndEditResponse = "event.updateEventFulfilledSuccess";
       })
       .addCase(UpdateEvent.rejected, (state) => {
         state.createAndEditM_Alert = true;
         state.createAndEditResponse =
-          "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+          "rejected";
       })
 
       //RemoveEvent
 
       .addCase(RemoveEvent.fulfilled, (state) => {
         state.createAndEditS_Alert = true;
-        state.createAndEditResponse = "Etkinlik Başarıyla Silindi.";
+        state.createAndEditResponse = "event.removeEventFulfilledSuccess";
       })
       .addCase(RemoveEvent.rejected, (state) => {
         state.createAndEditM_Alert = true;
         state.createAndEditResponse =
-          "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+          "rejected";
       })
+
+      //Events I Created Unfiltreted
+      .addCase(GetEventsI_CreatedForArchive.fulfilled, (state, action) => {
+        state.eventArchive = action.payload;
+      })
+      .addCase(GetEventsI_CreatedForArchive.rejected, (state) => {
+        console.log("archive events failed")
+      })
+
 
       //Events I Created Unfiltreted
       .addCase(GetEventsI_CreatedUnFiltreted.pending, (state) => {
@@ -178,47 +227,75 @@ export const eventSlice = createSlice({
       })
       .addCase(GetEventsI_CreatedUnFiltreted.rejected, (state) => {
         state.editableEventSkeleton = false;
-        console.log("hoooop");
       })
 
-      //Events I Created Awaiting
+      //Events Status Null
 
-      .addCase(GetEventsI_CreatedAwaiting.pending, (state) => {
-        state.editableEventSkeleton = true;
+      .addCase(GetEventsStatusNull.pending, (state) => {
+        state.reviewEventSkeleton = true;
       })
-      .addCase(GetEventsI_CreatedAwaiting.fulfilled, (state, action) => {
-        state.editableEvents = action.payload;
-        state.editableEventSkeleton = false;
+      .addCase(GetEventsStatusNull.fulfilled, (state, action) => {
+        state.reviewEvents = action.payload;
+        state.reviewEventSkeleton = false;
       })
-      .addCase(GetEventsI_CreatedAwaiting.rejected, (state) => {
-        state.editableEventSkeleton = false;
-      })
-
-      //Events I Created Awaiting
-
-      .addCase(GetEventsI_CreatedStatusTrue.pending, (state) => {
-        state.editableEventSkeleton = true;
-      })
-      .addCase(GetEventsI_CreatedStatusTrue.fulfilled, (state, action) => {
-        state.editableEvents = action.payload;
-        state.editableEventSkeleton = false;
-      })
-      .addCase(GetEventsI_CreatedStatusTrue.rejected, (state) => {
-        state.editableEventSkeleton = false;
+      .addCase(GetEventsStatusNull.rejected, (state) => {
+        console.log("review Events Failed")
+        state.reviewEventSkeleton = false;
       })
 
-      //Events I Created Awaiting
+      //Events Status True
 
-      .addCase(GetEventsI_CreatedStatusFalse.pending, (state) => {
-        state.editableEventSkeleton = true;
+      .addCase(GetEventsStatusTrue.pending, (state) => {
+        state.reviewEventSkeleton = true;
       })
-      .addCase(GetEventsI_CreatedStatusFalse.fulfilled, (state, action) => {
-        state.editableEvents = action.payload;
-        state.editableEventSkeleton = false;
+      .addCase(GetEventsStatusTrue.fulfilled, (state, action) => {
+        state.reviewEvents = action.payload;
+        state.reviewEventSkeleton = false;
       })
-      .addCase(GetEventsI_CreatedStatusFalse.rejected, (state) => {
-        state.editableEventSkeleton = false;
+      .addCase(GetEventsStatusTrue.rejected, (state) => {
+        console.log("review Events Failed")
+        state.reviewEventSkeleton = false;
+      })
+
+      //Events Status False
+
+      .addCase(GetEventsStatusFalse.pending, (state) => {
+        state.reviewEventSkeleton = true;
+      })
+      .addCase(GetEventsStatusFalse.fulfilled, (state, action) => {
+        state.reviewEvents = action.payload;
+        state.reviewEventSkeleton = false;
+      })
+      .addCase(GetEventsStatusFalse.rejected, (state) => {
+        console.log("review Events Failed")
+        state.reviewEventSkeleton = false;
+      })
+
+
+      //Set Status True
+      .addCase(SetEventStatusTrue.fulfilled, (state) => {
+        state.isEventEvaluated = true;
+        state.reviewEventSuccess = true;
+        state.reviewEventResponse = "event.setEventStatusTrueFulfilledSuccess";
+      })
+      .addCase(SetEventStatusTrue.rejected, (state) => {
+        state.reviewEventMistake = true;
+        state.reviewEventResponse = "rejected";
+      })
+
+      //Set Status False
+      .addCase(SetEventStatusFalse.fulfilled, (state) => {
+        state.isEventEvaluated = true;
+        state.reviewEventSuccess = true;
+        state.reviewEventResponse = "event.setEventStatusFalseFulfilledSuccess";
+
+      })
+      .addCase(SetEventStatusFalse.rejected, (state) => {
+        state.reviewEventMistake = true;
+        state.reviewEventResponse = "rejected";
       });
+
+
   },
 });
 
@@ -234,6 +311,13 @@ export const {
   SetIsEventPreview,
   SetPreviewedEvent,
   SetEventDeleteDialog,
-  SetDeletedEvent
+  SetDeletedEvent,
+  SetReviewEventMistake,
+  SetReviewEventSuccess,
+  SetEvaluateEventDialog,
+  SetApprovedEventDialog,
+  SetRejectedEventDialog,
+  SetEvaluatedEventId,
+  SetIsEventEvaluated,
 } = eventSlice.actions;
 export default eventSlice.reducer;

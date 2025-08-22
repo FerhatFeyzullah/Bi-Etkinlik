@@ -19,6 +19,9 @@
   "completedEvents": "Completed Events",
   "ongoingEvents": "Ongoing Events",
   "upcomingEvents": "Upcoming Events",
+  "pendingEvents": "Pending Events",
+  "approvedEvents": "Approved Events",
+  "rejectedEvents": "Rejected Events",
   "editProfile": "Edit Profile",
   "listView": "List View",
   "darkMode": "Dark Mode",
@@ -36,5 +39,8 @@
   "no": "No",
   "ok": "Ok",
   "send": "Send",
-  "getCodeAgain": "Get Code Again"
+  "getCodeAgain": "Get Code Again",
+  "evaluate": "Evaluate",
+  "approve": "Approve",
+  "reject": "Refuse"
 }

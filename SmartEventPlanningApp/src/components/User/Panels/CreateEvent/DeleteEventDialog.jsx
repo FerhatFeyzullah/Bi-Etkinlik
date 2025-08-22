@@ -33,6 +33,7 @@ function DeleteEventDialog() {
         dispatch(SetDeletedEvent(null));
         dispatch(SetEventDeleteDialog(false));
     };
+
     return (
         <div>
             <Dialog

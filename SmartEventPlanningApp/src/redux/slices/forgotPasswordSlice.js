@@ -65,7 +65,7 @@ export const forgotPasswordSlice = createSlice({
 
         if (action.payload !== "") {
           state.fpMistake = true;
-          state.fpErrorMessage = action.payload;
+          state.fpErrorMessage = "forgotPassword.sendResetCode";
         } else {
           state.fpErrorMessage = "";
           state.cardCount += 1;
@@ -74,7 +74,7 @@ export const forgotPasswordSlice = createSlice({
       })
       .addCase(SendResetCode.rejected, (state) => {
         state.fploading = false;
-        state.fpErrorMessage = "Sunucu Tarafında Bir Hata Oluştu.";
+        state.fpErrorMessage = "rejected";
         state.fpMistake = true;
       })
 
@@ -87,7 +87,7 @@ export const forgotPasswordSlice = createSlice({
 
         if (action.payload == false) {
           state.fpMistake = true;
-          state.fpErrorMessage = "Kod Doğrulanamadı";
+          state.fpErrorMessage = "forgotPassword.verifyCodeFulfilledError";
         } else {
           state.fpErrorMessage = "";
           state.cardCount += 1;
@@ -96,7 +96,7 @@ export const forgotPasswordSlice = createSlice({
       })
       .addCase(VerifyCode.rejected, (state) => {
         state.fploading = false;
-        state.fpErrorMessage = "Sunucu Tarafında Bir Hata Oluştu.";
+        state.fpErrorMessage = "rejected";
         state.fpMistake = true;
       })
 
@@ -112,7 +112,7 @@ export const forgotPasswordSlice = createSlice({
       })
       .addCase(ChangeForgotPassword.rejected, (state) => {
         state.fploading = false;
-        state.fpErrorMessage = "Sunucu Tarafında Bir Hata Oluştu.";
+        state.fpErrorMessage = "rejected";
         state.fpMistake = true;
       });
   },

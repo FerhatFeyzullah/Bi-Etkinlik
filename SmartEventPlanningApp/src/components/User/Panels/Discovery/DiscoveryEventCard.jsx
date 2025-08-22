@@ -74,7 +74,7 @@ function DiscoveryEventCard({ event }) {
     <>
       <div
         className={
-          viewMode === "card"
+          viewMode === "classic"
             ? "discovery-e-c-main-with-card"
             : "discovery-e-c-main-without-card"
         }
@@ -177,7 +177,7 @@ function DiscoveryEventCard({ event }) {
             sx={{
               width: "100%",
               boxShadow: "none",
-              backgroundColor: viewMode === "card" ? "whitesmoke" : "white",
+              backgroundColor: viewMode === "classic" ? "whitesmoke" : "white",
             }}
           >
             <AccordionSummary

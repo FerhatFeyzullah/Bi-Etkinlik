@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "Geben Sie der Veranstaltung einen Namen.",
+        "nameMax": "Der Veranstaltungsname darf bis zu 30 Zeichen lang sein.",
+        "descriptionRequired": "Eine Beschreibung ist erforderlich.",
+        "cityRequired": "Stadt der Veranstaltung nicht ausgewählt.",
+        "locationRequired": "Sie haben keinen Veranstaltungsort ausgewählt.",
+        "imageRequired": "Laden Sie ein Veranstaltungsfoto hoch.",
+        "imageTest": "Die Dateigröße darf bis zu 10 MB betragen.",
+        "startDateRequired": "Sie haben kein Startdatum ausgewählt.",
+        "endDateRequired": "Sie haben kein Enddatum ausgewählt.",
+        "endDateTest": "Das Enddatum darf nicht vor dem Startdatum liegen.",
+        "categoriesRequired": "Veranstaltungskategorie nicht ausgewählt.",
+        "categoriesMax": "Sie können bis zu 1 Kategorie auswählen!"
+    },
+    "userInfo": {
+        "firstNameRequired": "Geben Sie den Vornamen ein.",
+        "lastNameRequired": "Geben Sie den Nachnamen ein.",
+        "cityRequired": "Die Auswahl der Stadt ist erforderlich.",
+        "birthDateRequired": "Geburtsdatum erforderlich.",
+        "genderRequired": "Die Auswahl des Geschlechts ist erforderlich.",
+        "areasMin": "Sie müssen mindestens einen Interessensbereich auswählen!",
+        "areasMax": "Sie können bis zu 5 Interessensbereiche auswählen!"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "Geben Sie Ihr altes Passwort ein.",
+        "oldPasswordMin": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+        "newPasswordRequired": "Geben Sie Ihr neues Passwort ein.",
+        "newPasswordMin": "Das Passwort muss mindestens 8 Zeichen lang sein.",
+        "newPasswordMatchesLower": "Muss Kleinbuchstaben enthalten.",
+        "newPasswordMatchesUpper": "Muss Großbuchstaben enthalten.",
+        "newPasswordMatchesDigit": "Muss Zahlen enthalten.",
+        "newPasswordMatchesSpecial": "Muss Sonderzeichen enthalten.",
+        "confirmNewPasswordRequired": "Wiederholung des Passworts erforderlich.",
+        "confirmNewPasswordOneOf": "Die Passwörter stimmen nicht überein."
+    },
+    "emailVerification": {
+        "codeRequired": "Sie haben keinen Code eingegeben.",
+        "codeMatchesSixDigit": "Bitte geben Sie alle 6 Ziffern ein.",
+        "codeNotVerified": "Der Code konnte nicht verifiziert werden."
+    }
+}

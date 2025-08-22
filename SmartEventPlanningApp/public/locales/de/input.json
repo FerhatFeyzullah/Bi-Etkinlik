@@ -1,0 +1,19 @@
+{
+    "city": "Stadt",
+    "category": "Kategorie",
+    "fromDate": "Von Datum",
+    "toDate": "Bis Datum",
+    "eventDescription": "Veranstaltungsbeschreibung",
+    "eventName": "Veranstaltungsname",
+    "searchAdressOrLocation": "Nach einer Adresse oder einem Ort suchen...",
+    "name": "Vorname",
+    "surname": "Nachname",
+    "birthDate": "Geburtsdatum",
+    "gender": "Geschlecht",
+    "male": "Männlich",
+    "female": "Weiblich",
+    "oldPassword": "Altes Passwort",
+    "newPassword": "Neues Passwort",
+    "newPasswordRepeat": "Neues Passwort wiederholen",
+    "writeMessage": "Schreiben Sie Ihre Nachricht..."
+}

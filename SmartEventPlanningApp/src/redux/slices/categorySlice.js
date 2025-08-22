@@ -4,6 +4,7 @@ import axios from "../../api/axios";
 const initialState = {
   allCategory: [],
   cetegoryFilterSkeletonLoaing: false,
+  categoryLoaing: false,
 };
 
 export const GetAllCategory = createAsyncThunk("allCategory", async () => {
@@ -19,13 +20,16 @@ export const categorySlice = createSlice({
     builder
       .addCase(GetAllCategory.pending, (state) => {
         state.cetegoryFilterSkeletonLoaing = true;
+        state.categoryLoaing = true;
       })
       .addCase(GetAllCategory.fulfilled, (state, action) => {
         state.allCategory = action.payload;
         state.cetegoryFilterSkeletonLoaing = false;
+        state.categoryLoaing = false;
       })
       .addCase(GetAllCategory.rejected, (state) => {
         state.cetegoryFilterSkeletonLoaing = false;
+        state.categoryLoaing = false;
       });
   },
 });

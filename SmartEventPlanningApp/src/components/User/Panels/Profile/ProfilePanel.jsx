@@ -30,8 +30,12 @@ import {
   SetConfrimEmailSuccess,
 } from "../../../../redux/slices/userSettingSlice";
 import EmailVerificationDialog from "./EmailVerificationDialog";
+import { useTranslation } from "react-i18next";
+
 
 function ProfilePanel() {
+  const { t: tAlert } = useTranslation("alert");
+
   const dispatch = useDispatch();
   const { eventRatedMistakeAlert, eventRegisterResponse } = useSelector(
     (store) => store.eventRegister
@@ -114,33 +118,33 @@ function ProfilePanel() {
 
       <ToastMistake
         visible={eventRatedMistakeAlert}
-        detail={eventRegisterResponse}
+        detail={tAlert(eventRegisterResponse)}
         closer={CloseEventRatedMistakeToast}
       />
       {/* PP Upload */}
 
       <ToastMistake
         visible={ppUploadMistake}
-        detail={accountSliceResponse}
+        detail={tAlert(accountSliceResponse)}
         closer={CloseUploadPPMistakeToast}
       />
 
       {/* PP Remove */}
       <ToastMistake
         visible={ppRemoveMistake}
-        detail={accountSliceResponse}
+        detail={tAlert(accountSliceResponse)}
         closer={CloseRemovePPMistakeToast}
       />
 
       {/* UpdateProfile */}
       <ToastMistake
         visible={updateProfileMistake}
-        detail={accountSliceResponse}
+        detail={tAlert(accountSliceResponse)}
         closer={CloseUpdateProfileMistake}
       />
       <ToastSuccess
         visible={updateProfileSuccess}
-        detail={accountSliceResponse}
+        detail={tAlert(accountSliceResponse)}
         closer={CloseUpdateProfileSuccess}
       />
       <Loading status={updateProfileLoading} />
@@ -148,24 +152,24 @@ function ProfilePanel() {
       {/* Change Password */}
       <ToastMistake
         visible={changePassMistake}
-        detail={changePassResponse}
+        detail={tAlert(changePassResponse)}
         closer={CloseChangePasswordMistake}
       />
       <ToastSuccess
         visible={changePassSuccess}
-        detail={changePassResponse}
+        detail={tAlert(changePassResponse)}
         closer={CloseChangePasswordSuccess}
       />
 
       {/* Email Verification */}
       <ToastMistake
         visible={confirmEmailMistake}
-        detail={confrimEmailResponse}
+        detail={tAlert(confrimEmailResponse)}
         closer={CloseEmailVerificationMistake}
       />
       <ToastSuccess
         visible={confirmEmailSuccess}
-        detail={confrimEmailResponse}
+        detail={tAlert(confrimEmailResponse)}
         closer={CloseEmailVerificationSuccess}
       />
 

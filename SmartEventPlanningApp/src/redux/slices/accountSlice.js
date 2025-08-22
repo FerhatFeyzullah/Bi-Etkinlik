@@ -88,7 +88,7 @@ export const accountSlice = createSlice({
       })
       .addCase(UploadPP.rejected, (state) => {
         state.accountSliceResponse =
-          "Profil fotoğrafı yüklenirken beklenmeyen bir hata oluştu.";
+          "account.uploadPPRejected";
         state.ppUploadMistake = true;
       })
 
@@ -98,7 +98,7 @@ export const accountSlice = createSlice({
       })
       .addCase(RemovePP.rejected, (state) => {
         state.accountSliceResponse =
-          "Profil fotoğrafı silinirken beklenmeyen bir hata oluştu.";
+          "account.removePPRejected";
         state.ppRemoveMistake = true;
       })
 
@@ -112,13 +112,13 @@ export const accountSlice = createSlice({
         state.updateProfileLoading = false;
         state.updateProfileSuccess = true;
         state.accountSliceResponse =
-          "Profil bilgileri başarıyla güncellendi.";
+          "account.updateProfileFulfilledSuccess";
       })
       .addCase(UpdateProfile.rejected, (state) => {
         state.updateProfileLoading = false;
         state.updateProfileDrawer = false;
         state.accountSliceResponse =
-          "Profil bilgileri güncellenirken beklenmeyen bir hata oluştu.";
+          "account.updateProfileRejected";
         state.updateProfileMistake = true;
       });
   },

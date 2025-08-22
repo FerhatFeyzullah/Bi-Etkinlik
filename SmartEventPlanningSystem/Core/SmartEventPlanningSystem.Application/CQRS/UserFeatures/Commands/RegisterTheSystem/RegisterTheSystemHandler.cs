@@ -17,7 +17,7 @@ namespace SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.Regist
                     new RegisterTheSystemResponse
                     {
                         Success = true,
-                        Message = "Yeni Kullanıcı Kaydı Başarıyla Yapıldı.",
+                        Message = "Success",
                     };
             }
             return

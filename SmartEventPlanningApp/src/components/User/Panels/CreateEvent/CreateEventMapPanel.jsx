@@ -58,6 +58,7 @@ function CreateEventMapPanel({ isError }) {
   useEffect(() => {
     setLat(null);
     setLng(null);
+    setQuery("");
   }, [createAndEditS_Alert, gaveUpUpdating]);
 
   const MAPTILER_API_KEY = "JKyaJvr3yalg5h65ESlT"; // 👈 buraya kendi key’ini koy
@@ -126,6 +127,9 @@ function CreateEventMapPanel({ isError }) {
                 </Button>
               </InputAdornment>
             ),
+          }}
+          onKeyDown={(e) => {
+            if (e.key === "Enter") { handleSearch(); };
           }}
         />
       </div>

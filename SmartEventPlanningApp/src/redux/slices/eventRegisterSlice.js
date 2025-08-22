@@ -110,13 +110,13 @@ export const eventRegisterSlice = createSlice({
       .addCase(RegisterEvent.fulfilled, (state, action) => {
         if (!action.payload) {
           state.eventRegisterResponse =
-            "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+            "eventRegister.registerEventFulfilledError";
           state.eventRegisterMistakeAlert = true;
         }
       })
       .addCase(RegisterEvent.rejected, (state) => {
         state.eventRegisterResponse =
-          "Sunucuya Ulaşılamadı. Lütfen Daha Sonra Tekrar Deneyiniz.";
+          "rejected";
         state.eventRegisterMistakeAlert = true;
       })
 
@@ -124,13 +124,13 @@ export const eventRegisterSlice = createSlice({
       .addCase(RateEvent.fulfilled, (state, action) => {
         if (!action.payload) {
           state.eventRegisterResponse =
-            "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+            "eventRegister.rateEventFulfilledError";
           state.eventRatedMistakeAlert = true;
         }
       })
       .addCase(RateEvent.rejected, (state) => {
         state.eventRegisterResponse =
-          "Sunucuya Ulaşılamadı. Lütfen Daha Sonra Tekrar Deneyiniz.";
+          "rejected";
         state.eventRatedMistakeAlert = true;
       })
 

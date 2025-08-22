@@ -19,6 +19,7 @@
   "hour": "Saat",
   "english": "İngilizce",
   "turkish": "Türkçe",
+  "deutsch": "Almanca",
   "userSettings": "Kullanıcı Ayarları",
   "passwordChange": "Şifre Değişikliği",
   "profileInfo": "Profile Information",
@@ -28,5 +29,13 @@
   "deleteEvent": "Etkinliği Silmek Üzeresiniz",
   "deleteEventInfo": "Etkinliği sildiğinizde, tüm katılımcı kayıtları iptal edilir ve katılımcılara etkinliğin iptal edildiğini bildiren bir e-posta bildirimi gönderilir. Bu işlem geri alınamaz.",
   "emailVerification": "E-posta Doğrulama",
-  "emailVerificationInfo": "E-posta hesabınızı onaylamak için size gönderilen 6 haneli doğrulama kodunu giriniz. Bu kod kısa süreliğine geçerlidir. Hesabınızı başarıyla doğrulamak için süresi dolmadan işlemi tamamlayınız."
+  "emailVerificationInfo": "E-posta hesabınızı onaylamak için size gönderilen 6 haneli doğrulama kodunu giriniz. Bu kod kısa süreliğine geçerlidir. Hesabınızı başarıyla doğrulamak için süresi dolmadan işlemi tamamlayınız.",
+  "evaluateEvent": "Etkinliği Değerlendir",
+  "approveEvent": "Etkinliği Onayla",
+  "rejectEvent": "Etkinliği Reddet",
+  "evaluateEventInfo": "Bu etkinliği inceleyip akışa dahil edip etmeyeceğinize karar verin.",
+  "approveEventInfo": "Bu etkinliği onaylamak istediğinize emin misiniz? Onaylanan etkinlik akışa dahil edilir.",
+  "rejectEventInfo": "Bu etkinliği reddetmek istediğinize emin misiniz? Reddedilen etkinlik akıştan çıkarılır ve eğer etkinliğe  kayıtlı bir kullanıcı varsa, kendisine ayrıca bilgilendirme e-postası gönderilir.",
+  "recommendedEmptyPanelInfo": "Şu an için tam sana göre bir etkinlik yokgibi... Ama merak etme, yakında burada seni bekleyen etkinlikler olacak!",
+  "adminNavbarHeader": "Bi Etkinlik Yönetici Paneli"
 }

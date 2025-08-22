@@ -134,19 +134,25 @@ export const userSettingSlice = createSlice({
       .addCase(ChangePassword.fulfilled, (state, action) => {
         state.changePassLoading = false;
         if (action.payload == "") {
-          state.changePassResponse = "Şifreniz Başarıyla Değiştirildi.";
+          state.changePassResponse = "userSetting.changePasswordFulfilledSuccess";
           state.changePasswordDrawer = false;
           state.changePassSuccess = true;
         } else {
-          state.changePassResponse = action.payload;
           state.changePassMistake = true;
+          if (action.payload == "Error-1") {
+            state.changePassResponse = "userSetting.changePasswordFulfilledErrorOne";
+          }
+          else if (action.payload == "Error-2") {
+            state.changePassResponse = "userSetting.changePasswordFulfilledErrorTwo";
+          }
+
         }
       })
       .addCase(ChangePassword.rejected, (state) => {
         state.changePasswordDrawer = false;
         state.changePassLoading = false;
-        state.changePassResponse =
-          "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+        state.changePassResponse = "rejected";
+
         state.changePassMistake = true;
       })
 
@@ -163,7 +169,7 @@ export const userSettingSlice = createSlice({
       })
       .addCase(SendResetCode.rejected, (state) => {
         state.confirmEmailLoading = false;
-        state.confrimEmailResponse = "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+        state.confrimEmailResponse = "rejected";
         state.confirmEmailMistake = true;
 
       })
@@ -172,7 +178,7 @@ export const userSettingSlice = createSlice({
       .addCase(VerifyCode.rejected, (state) => {
         state.confirmEmailDialog = false;
         state.confirmEmailMistake = true;
-        state.confrimEmailResponse = "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.";
+        state.confrimEmailResponse = "rejected";
       })
 
       //GetUserSetting

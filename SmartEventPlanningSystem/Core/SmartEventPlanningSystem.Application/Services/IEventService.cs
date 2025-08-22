@@ -7,10 +7,11 @@ using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDisco
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCity;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_F_DateCityCategory;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventDiscovery.GetE_UnFiltered;
-using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedAwaiting;
-using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusFalse;
-using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedStatusTrue;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedForArchive;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.EventsI_Created.GetEventsICreatedUnFiltered;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusFalse;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusNull;
+using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsByStatus.GetEventsStatusTrue;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Queries.GetEventsRecommendedToMe;
 using SmartEventPlanningSystem.Application.DTOs.EventDtos;
 
@@ -29,13 +30,14 @@ namespace SmartEventPlanningSystem.Application.Services
 
         //EventI_Created Queries
         Task<GetEventsICreatedUnFilteredResponse> GetEventsI_CreatedUnFiltered(int id, CancellationToken ct);
-        Task<GetEventsICreatedAwaitingResponse> GetEventsI_CreatedAwaiting(int id, CancellationToken ct);
-        Task<GetEventsICreatedStatusTrueResponse> GetEventsI_CreatedStatusTrue(int id, CancellationToken ct);
-        Task<GetEventsICreatedStatusFalseResponse> GetEventsI_CreatedStatusFalse(int id, CancellationToken ct);
+        Task<GetEventsStatusNullResponse> GetEventsStatusNull(CancellationToken ct);
+        Task<GetEventsStatusTrueResponse> GetEventsStatusTrue(CancellationToken ct);
+        Task<GetEventsStatusFalseResponse> GetEventsStatusFalse(CancellationToken ct);
 
         //Event Discovery Queries
 
         Task<GetE_UnFilteredResponse> GetE_UnFiltered(int id, CancellationToken ct);
+        Task<GetEventsICreatedForArchiveResponse> GetEventsI_CreatedForArchive(int id, CancellationToken ct);
         Task<GetE_F_CategoryResponse> GetE_F_Category(int id, List<int> categories, CancellationToken ct);
         Task<GetE_F_CityResponse> GetE_F_City(int id, List<string> cities, CancellationToken ct);
         Task<GetE_F_CityCategoryResponse> GetE_F_CityCategory(int id, List<string> cities, List<int> categories, CancellationToken ct);

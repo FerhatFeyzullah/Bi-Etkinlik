@@ -67,13 +67,18 @@ export const authSlice = createSlice({
           state.errorMessage = "";
           state.loginMistakeAlert = false;
         } else {
-          state.errorMessage = action.payload.message;
           state.loginMistakeAlert = true;
+          if (action.payload.message == "Error-1") {
+            state.errorMessage = "auth.loginFulfilledErrorOne";
+          }
+          else if (action.payload.message == "Error-2") {
+            state.errorMessage = "auth.loginFulfilledErrorTwo";
+          }
         }
       })
       .addCase(LoginTheSystem.rejected, (state) => {
         state.loginLoading = false;
-        state.errorMessage = "Sunucuya ulaşılamadı.";
+        state.errorMessage = "rejected";
         state.loginMistakeAlert = true;
       })
 
@@ -85,17 +90,28 @@ export const authSlice = createSlice({
         state.registerLoading = false;
 
         if (action.payload.success) {
-          state.registerResponse = action.payload.message;
+          state.registerResponse = "auth.registerFulfilledSuccess";
           state.registerSuccessAlert = true;
           state.registerStatus = true;
         } else {
-          state.registerResponse = action.payload.message;
           state.registerMistakeAlert = true;
+          if (action.payload.message == "Error-1") {
+            state.registerResponse = "auth.registerFulfilledErrorOne";
+          }
+          else if (action.payload.message == "Error-2") {
+            state.registerResponse = "auth.registerFulfilledErrorTwo";
+          }
+          else if (action.payload.message == "Error-3") {
+            state.registerResponse = "auth.registerFulfilledErrorThree";
+          }
+          else if (action.payload.message == "Error-4") {
+            state.registerResponse = "auth.registerFulfilledErrorFour";
+          }
         }
       })
       .addCase(RegisterTheSystem.rejected, (state) => {
         state.registerLoading = false;
-        state.registerResponse = "Sunucuya ulaşılamadı.";
+        state.registerResponse = "rejected";
         state.registerMistakeAlert = true;
       })
 

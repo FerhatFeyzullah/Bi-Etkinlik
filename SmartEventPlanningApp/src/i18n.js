@@ -17,7 +17,7 @@ i18n
   .use(initReactI18next)
   .use(Backend)
   .init({
-    ns: ["button", "tooltip", "text", "input", "element", "category"],
+    ns: ["button", "tooltip", "text", "input", "alert", "category"],
     lng: language,
     fallbackLng: "tr",
   });

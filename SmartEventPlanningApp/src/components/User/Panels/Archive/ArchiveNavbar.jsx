@@ -9,7 +9,6 @@ function ArchiveNavbar() {
                     Etkinliklerim
                 </h2>
             </div>
-
         </div>
     )
 }

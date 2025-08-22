@@ -72,7 +72,7 @@ function RecommendedEventCard({ event }) {
     <>
       <div
         className={
-          viewMode === "card"
+          viewMode === "classic"
             ? "recommended-e-c-main-with-card"
             : "recommended-e-c-main-without-card"
         }
@@ -176,7 +176,7 @@ function RecommendedEventCard({ event }) {
             sx={{
               width: "100%",
               boxShadow: "none",
-              backgroundColor: viewMode === "card" ? "whitesmoke" : "white",
+              backgroundColor: viewMode === "classic" ? "whitesmoke" : "white",
             }}
           >
             <AccordionSummary

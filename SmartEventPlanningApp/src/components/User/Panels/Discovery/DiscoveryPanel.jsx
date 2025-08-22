@@ -16,8 +16,12 @@ import ReviewEventCardSkeleton from "../../../Skeletons/ReviewEventCardSkeleton"
 import ToastMistake from "../../../Elements/ToastMistake";
 import { SetEventRegisterMistakeAlert } from "../../../../redux/slices/eventRegisterSlice";
 import ReviewMapDialog from "../ReviewMapDialog";
+import { useTranslation } from "react-i18next";
+
 
 function DiscoveryPanel() {
+  const { t: tAlert } = useTranslation("alert");
+
   const dispatch = useDispatch();
   const {
     filterMode,
@@ -150,7 +154,7 @@ function DiscoveryPanel() {
 
       <ToastMistake
         visible={eventRegisterMistakeAlert}
-        detail={eventRegisterResponse}
+        detail={tAlert(eventRegisterResponse)}
         closer={CloseEventRegisterMistakeToast}
       />
     </>

@@ -18,8 +18,12 @@ import {
   SetFP_Mistake,
   VerifyCode,
 } from "../../redux/slices/forgotPasswordSlice";
+import { useTranslation } from "react-i18next";
+
 
 function VerifyCodeCard() {
+  const { t: tAlert } = useTranslation("alert");
+
   const { recoveryEmail, fpErrorMessage, fpMistake } = useSelector(
     (store) => store.forgotPassword
   );
@@ -140,7 +144,7 @@ function VerifyCodeCard() {
       </div>
       <ToastMistake
         visible={fpMistake}
-        detail={fpErrorMessage}
+        detail={tAlert(fpErrorMessage)}
         closer={Closer}
       />
     </div>

@@ -50,6 +50,7 @@ function CreateAndEditPanel() {
   const { t: tInput } = useTranslation("input");
   const { t: tValidation } = useTranslation("validation");
   const { t: tCategory } = useTranslation("category");
+  const { t: tAlert } = useTranslation("alert");
 
 
   const createSchema = createEventSchema(tValidation)
@@ -244,12 +245,12 @@ function CreateAndEditPanel() {
     <>
       <ToastSuccess
         visible={createAndEditS_Alert}
-        detail={createAndEditResponse}
+        detail={tAlert(createAndEditResponse)}
         closer={CreateAndEditToastSuccessClose}
       />
       <ToastMistake
         visible={createAndEditM_Alert}
-        detail={createAndEditResponse}
+        detail={tAlert(createAndEditResponse)}
         closer={CreateAndEditToastMistakeClose}
       />
 

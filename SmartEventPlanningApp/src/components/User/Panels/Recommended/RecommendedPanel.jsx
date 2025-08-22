@@ -6,8 +6,12 @@ import { GetEventsRecommendedToMe } from "../../../../redux/slices/recommendedSl
 import ReviewEventCardSkeleton from "../../../Skeletons/ReviewEventCardSkeleton";
 import noResult from "../../../../assets/eventImage/noResult.png";
 import ReviewMapDialog from "../ReviewMapDialog";
+import { useTranslation } from "react-i18next";
+
 
 function RecommendedPanel() {
+  const { t: tText } = useTranslation("text");
+
   const dispatch = useDispatch();
   const { recommendedSkeletonLoading, recommendedEvents } = useSelector(
     (store) => store.recommended
@@ -35,8 +39,7 @@ function RecommendedPanel() {
           <div className="recommended-container-empty-text flex-column">
             <img src={noResult} alt="Sonuç Yok" width={300} height={300} />
             <div>
-              Şu an için tam sana göre bir etkinlik yok gibi... Ama merak etme,
-              yakında burada seni bekleyen etkinlikler olacak!
+              {tText("recommendedEmptyPanelInfo")}
             </div>
           </div>
         )
