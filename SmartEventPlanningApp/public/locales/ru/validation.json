@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "Дайте мероприятию название.",
+        "nameMax": "Название мероприятия может содержать до 30 символов.",
+        "descriptionRequired": "Требуется описание.",
+        "cityRequired": "Город мероприятия не выбран.",
+        "locationRequired": "Вы не выбрали место проведения мероприятия.",
+        "imageRequired": "Загрузите фотографию мероприятия.",
+        "imageTest": "Размер файла может быть до 10 МБ.",
+        "startDateRequired": "Вы не выбрали дату начала.",
+        "endDateRequired": "Вы не выбрали дату окончания.",
+        "endDateTest": "Дата окончания не может быть раньше даты начала.",
+        "categoriesRequired": "Категория мероприятия не выбрана.",
+        "categoriesMax": "Вы можете выбрать до 1 категории!"
+    },
+    "userInfo": {
+        "firstNameRequired": "Введите имя.",
+        "lastNameRequired": "Введите фамилию.",
+        "cityRequired": "Требуется выбор города.",
+        "birthDateRequired": "Требуется дата рождения.",
+        "genderRequired": "Требуется указать пол.",
+        "areasMin": "Вы должны выбрать хотя бы одну область интересов!",
+        "areasMax": "Вы можете выбрать до 5 областей интересов!"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "Введите ваш старый пароль.",
+        "oldPasswordMin": "Пароль должен содержать не менее 8 символов.",
+        "newPasswordRequired": "Введите ваш новый пароль.",
+        "newPasswordMin": "Пароль должен содержать не менее 8 символов.",
+        "newPasswordMatchesLower": "Должен содержать строчные буквы.",
+        "newPasswordMatchesUpper": "Должен содержать заглавные буквы.",
+        "newPasswordMatchesDigit": "Должен содержать цифры.",
+        "newPasswordMatchesSpecial": "Должен содержать специальные символы.",
+        "confirmNewPasswordRequired": "Требуется повторение пароля.",
+        "confirmNewPasswordOneOf": "Пароли не совпадают."
+    },
+    "emailVerification": {
+        "codeRequired": "Вы не ввели код.",
+        "codeMatchesSixDigit": "Пожалуйста, введите все 6 цифр.",
+        "codeNotVerified": "Не удалось проверить код."
+    }
+}

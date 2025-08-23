@@ -34,6 +34,8 @@ import ArchiveNavbar from "../components/User/Panels/Archive/ArchiveNavbar";
 
 function User() {
   const { t: tButton } = useTranslation("button");
+  const { i18n } = useTranslation();
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   var { userId } = useParams();
@@ -64,6 +66,7 @@ function User() {
       await dispatch(LogoutFromSystem()).unwrap();
       localStorage.clear();
       dispatch({ type: "auth/logout" });
+      i18n.changeLanguage("tr")
       navigate("/girisyap");
     } catch (error) {
       console.error("Çıkış başarısız:", error);

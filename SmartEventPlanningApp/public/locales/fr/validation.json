@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "Donnez un nom à l'événement.",
+        "nameMax": "Le nom de l'événement peut contenir jusqu'à 30 caractères.",
+        "descriptionRequired": "Une description est requise.",
+        "cityRequired": "Ville de l'événement non sélectionnée.",
+        "locationRequired": "Vous n'avez pas sélectionné d'emplacement pour l'événement.",
+        "imageRequired": "Téléchargez une photo pour l'événement.",
+        "imageTest": "La taille du fichier peut aller jusqu'à 10 Mo.",
+        "startDateRequired": "Vous n'avez pas sélectionné de date de début.",
+        "endDateRequired": "Vous n'avez pas sélectionné de date de fin.",
+        "endDateTest": "La date de fin ne peut pas être antérieure à la date de début.",
+        "categoriesRequired": "Catégorie de l'événement non sélectionnée.",
+        "categoriesMax": "Vous pouvez sélectionner jusqu'à 1 catégorie !"
+    },
+    "userInfo": {
+        "firstNameRequired": "Entrez votre prénom.",
+        "lastNameRequired": "Entrez votre nom de famille.",
+        "cityRequired": "La sélection de la ville est requise.",
+        "birthDateRequired": "Date de naissance requise.",
+        "genderRequired": "La sélection du genre est requise.",
+        "areasMin": "Vous devez sélectionner au moins un centre d'intérêt !",
+        "areasMax": "Vous pouvez sélectionner jusqu'à 5 centres d'intérêt !"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "Entrez votre ancien mot de passe.",
+        "oldPasswordMin": "Le mot de passe doit contenir au moins 8 caractères.",
+        "newPasswordRequired": "Entrez votre nouveau mot de passe.",
+        "newPasswordMin": "Le mot de passe doit contenir au moins 8 caractères.",
+        "newPasswordMatchesLower": "Doit contenir des lettres minuscules.",
+        "newPasswordMatchesUpper": "Doit contenir des lettres majuscules.",
+        "newPasswordMatchesDigit": "Doit contenir des chiffres.",
+        "newPasswordMatchesSpecial": "Doit contenir des caractères spéciaux.",
+        "confirmNewPasswordRequired": "La répétition du mot de passe est requise.",
+        "confirmNewPasswordOneOf": "Les mots de passe ne correspondent pas."
+    },
+    "emailVerification": {
+        "codeRequired": "Vous n'avez entré aucun code",
+        "codeMatchesSixDigit": "Veuillez entrer les 6 chiffres",
+        "codeNotVerified": "Le code n'a pas pu être vérifié"
+    }
+}

@@ -2,8 +2,12 @@ import React, { useRef, useEffect } from "react";
 import { Toast } from "primereact/toast";
 import { useDispatch } from "react-redux";
 import { SetLoginMistakeAlert } from "../../redux/slices/authSlice";
+import { useTranslation } from "react-i18next";
+
 
 function ToastMistake({ detail, visible, closer }) {
+  const { t: tText } = useTranslation("text")
+
   const dispatch = useDispatch();
   const toast = useRef(null);
 
@@ -11,7 +15,7 @@ function ToastMistake({ detail, visible, closer }) {
     if (visible) {
       toast.current.show({
         severity: "warn",
-        summary: "Uyarı",
+        summary: tText("toastWarning"),
         detail,
         life: 3000,
       });

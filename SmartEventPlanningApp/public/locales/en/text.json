@@ -20,6 +20,14 @@
   "english": "English",
   "turkish": "Turkish",
   "deutsch": "Deutsch",
+  "french": "French",
+  "spanish": "Spanish",
+  "russian": "Russian",
+  "chinese": "Chinese",
+  "japanese": "Japanese",
+  "arabic": "Arabic",
+  "dutch": "Dutch",
+  "urdu": "Urdu",
   "userSettings": "User Settings",
   "passwordChange": "Password Change",
   "profileInfo": "Profile Information",
@@ -37,5 +45,8 @@
   "approveEventInfo": "Are you sure you want to approve this event? Approved events are included in the stream.",
   "rejectEventInfo": "Are you sure you want to decline this event? Declined events will be removed from the stream. If there are registered users for the event, they will be notified via email.",
   "recommendedEmptyPanelInfo": "There doesn't seem to be an event that suits you right now... But don't worry, there will be events waiting for you here soon!",
-  "adminNavbarHeader": "Bi Etkinlik Management Panel"
+  "adminNavbarHeader": "Bi Etkinlik Management Panel",
+  "toastSuccess": "Successful",
+  "toastMistake": "Error",
+  "toastWarning": "Warning"
 }

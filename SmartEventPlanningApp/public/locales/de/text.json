@@ -20,6 +20,14 @@
     "english": "Englisch",
     "turkish": "Türkisch",
     "deutsch": "Deutsch",
+    "french": "Französisch",
+    "spanish": "Spanisch",
+    "russian": "Russisch",
+    "chinese": "Chinesisch",
+    "japanese": "Japanisch",
+    "arabic": "Arabisch",
+    "dutch": "Niederländisch",
+    "urdu": "Urdu",
     "userSettings": "Benutzereinstellungen",
     "passwordChange": "Passwort ändern",
     "profileInfo": "Profilinformationen",
@@ -37,5 +45,8 @@
     "approveEventInfo": "Sind Sie sicher, dass Sie diese Veranstaltung genehmigen möchten? Genehmigte Veranstaltungen werden in den Stream aufgenommen.",
     "rejectEventInfo": "Sind Sie sicher, dass Sie diese Veranstaltung ablehnen möchten? Abgelehnte Veranstaltungen werden aus dem Stream entfernt. Registrierte Benutzer werden per E-Mail benachrichtigt.",
     "recommendedEmptyPanelInfo": "Es scheint derzeit keine Veranstaltung zu geben, die zu Ihnen passt... Aber keine Sorge, hier werden bald Veranstaltungen auf Sie warten!",
-    "adminNavbarHeader": "Bi Etkinlik Verwaltungs-Panel"
+    "adminNavbarHeader": "Bi Etkinlik Verwaltungs-Panel",
+    "toastSuccess": "Erfolgreich",
+    "toastMistake": "Fehler",
+    "toastWarning": "Warnung"
 }

@@ -1,0 +1,39 @@
+{
+    "rejected": "Se produjo un error del servidor. Por favor, inténtelo de nuevo más tarde.",
+    "account": {
+        "uploadPPRejected": "Se produjo un error inesperado al subir la foto de perfil.",
+        "removePPRejected": "Se produjo un error inesperado al eliminar la foto de perfil.",
+        "updateProfileFulfilledSuccess": "Información del perfil actualizada correctamente.",
+        "updateProfileRejected": "Se produjo un error inesperado al actualizar la información del perfil."
+    },
+    "auth": {
+        "loginFulfilledErrorOne": "Usuario no encontrado.",
+        "loginFulfilledErrorTwo": "Contraseña incorrecta.",
+        "registerFulfilledSuccess": "Nuevo usuario registrado correctamente.",
+        "registerFulfilledErrorOne": "Este nombre de usuario ya está en uso.",
+        "registerFulfilledErrorTwo": "Esta dirección de correo electrónico ya está en uso.",
+        "registerFulfilledErrorThree": "No se pudo crear el usuario.",
+        "registerFulfilledErrorFour": "Se produjo un error inesperado durante el registro. Por favor, inténtelo de nuevo más tarde."
+    },
+    "eventRegister": {
+        "registerEventFulfilledError": "Se produjo un error inesperado al registrarse en el evento. Por favor, inténtelo de nuevo más tarde.",
+        "rateEventFulfilledError": "Se produjo un error inesperado al calificar el evento. Por favor, inténtelo de nuevo más tarde."
+    },
+    "event": {
+        "createEventFulfilledSuccess": "Evento creado correctamente. Puede seguir su estado de aprobación en su panel de Eventos.",
+        "createEventFulfilledError": "No se pudo crear el evento. Por favor, inténtelo de nuevo más tarde.",
+        "updateEventFulfilledSuccess": "Evento actualizado correctamente.",
+        "removeEventFulfilledSuccess": "Evento eliminado correctamente.",
+        "setEventStatusTrueFulfilledSuccess": "Estado del evento cambiado correctamente.",
+        "setEventStatusFalseFulfilledSuccess": "Estado del evento cambiado correctamente."
+    },
+    "forgotPassword": {
+        "sendResetCode": "No se encontró ningún usuario con esta dirección de correo electrónico.",
+        "verifyCodeFulfilledError": "No se pudo verificar el código."
+    },
+    "userSetting": {
+        "changePasswordFulfilledSuccess": "Su contraseña ha sido cambiada correctamente.",
+        "changePasswordFulfilledErrorOne": "La contraseña antigua es incorrecta.",
+        "changePasswordFulfilledErrorTwo": "Las nuevas contraseñas no coinciden."
+    }
+}

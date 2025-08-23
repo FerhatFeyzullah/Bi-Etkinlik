@@ -20,6 +20,14 @@
   "english": "İngilizce",
   "turkish": "Türkçe",
   "deutsch": "Almanca",
+  "french": "Fransızca",
+  "spanish": "İspanyolca",
+  "russian": "Rusça",
+  "chinese": "Çince",
+  "japanese": "Japonca",
+  "arabic": "Arapça",
+  "dutch": "Flemenkçe",
+  "urdu": "Urduca",
   "userSettings": "Kullanıcı Ayarları",
   "passwordChange": "Şifre Değişikliği",
   "profileInfo": "Profile Information",
@@ -37,5 +45,8 @@
   "approveEventInfo": "Bu etkinliği onaylamak istediğinize emin misiniz? Onaylanan etkinlik akışa dahil edilir.",
   "rejectEventInfo": "Bu etkinliği reddetmek istediğinize emin misiniz? Reddedilen etkinlik akıştan çıkarılır ve eğer etkinliğe  kayıtlı bir kullanıcı varsa, kendisine ayrıca bilgilendirme e-postası gönderilir.",
   "recommendedEmptyPanelInfo": "Şu an için tam sana göre bir etkinlik yokgibi... Ama merak etme, yakında burada seni bekleyen etkinlikler olacak!",
-  "adminNavbarHeader": "Bi Etkinlik Yönetici Paneli"
+  "adminNavbarHeader": "Bi Etkinlik Yönetici Paneli",
+  "toastSuccess": "Başarılı",
+  "toastMistake": "Hata",
+  "toastWarning": "Uyarı"
 }

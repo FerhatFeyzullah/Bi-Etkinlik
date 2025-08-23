@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "أعطِ الحدث اسمًا.",
+        "nameMax": "يمكن أن يصل اسم الحدث إلى 30 حرفًا.",
+        "descriptionRequired": "الوصف مطلوب.",
+        "cityRequired": "لم يتم اختيار مدينة الحدث.",
+        "locationRequired": "لم تقم باختيار موقع الحدث.",
+        "imageRequired": "قم برفع صورة الحدث.",
+        "imageTest": "يمكن أن يصل حجم الملف إلى 10 ميجابايت.",
+        "startDateRequired": "لم تقم باختيار تاريخ البدء.",
+        "endDateRequired": "لم تقم باختيار تاريخ الانتهاء.",
+        "endDateTest": "لا يمكن أن يكون تاريخ الانتهاء قبل تاريخ البدء.",
+        "categoriesRequired": "لم يتم اختيار فئة الحدث",
+        "categoriesMax": "يمكنك اختيار فئة واحدة فقط!"
+    },
+    "userInfo": {
+        "firstNameRequired": "أدخل الاسم.",
+        "lastNameRequired": "أدخل اسم العائلة.",
+        "cityRequired": "اختيار المدينة مطلوب.",
+        "birthDateRequired": "تاريخ الميلاد مطلوب.",
+        "genderRequired": "اختيار الجنس مطلوب.",
+        "areasMin": "يجب عليك اختيار مجال اهتمام واحد على الأقل!",
+        "areasMax": "يمكنك اختيار حتى 5 مجالات اهتمام!"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "أدخل كلمة المرور القديمة.",
+        "oldPasswordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+        "newPasswordRequired": "أدخل كلمة المرور الجديدة.",
+        "newPasswordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+        "newPasswordMatchesLower": "يجب أن تحتوي على أحرف صغيرة.",
+        "newPasswordMatchesUpper": "يجب أن تحتوي على أحرف كبيرة.",
+        "newPasswordMatchesDigit": "يجب أن تحتوي على أرقام.",
+        "newPasswordMatchesSpecial": "يجب أن تحتوي على رموز خاصة.",
+        "confirmNewPasswordRequired": "مطلوب إعادة كلمة المرور.",
+        "confirmNewPasswordOneOf": "كلمات المرور غير متطابقة."
+    },
+    "emailVerification": {
+        "codeRequired": "لم تدخل أي رمز",
+        "codeMatchesSixDigit": "يرجى إدخال جميع الأرقام الستة",
+        "codeNotVerified": "تعذر التحقق من الرمز"
+    }
+}

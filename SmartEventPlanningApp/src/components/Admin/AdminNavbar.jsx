@@ -40,6 +40,7 @@ function AdminNavbar() {
             await dispatch(LogoutFromSystem()).unwrap();
             localStorage.clear();
             dispatch({ type: "auth/logout" });
+            i18n.changeLanguage("tr");
             navigate("/girisyap");
         } catch (error) {
             console.error("Çıkış başarısız:", error);
@@ -51,11 +52,18 @@ function AdminNavbar() {
             <div className='flex-row-justify-space-between admin-navbar-title'>
                 <div className="flex-column" style={{ marginLeft: "10px" }}>
                     <div className='admin-navbar-language-title'>Sistem Dili</div>
-                    <FormControl sx={{ width: "110px" }} size="small">
+                    <FormControl sx={{ width: "130px" }} size="small">
                         <Select value={language} onChange={HandleChangeLanguage}>
                             <MenuItem value={"tr"}>{tText("turkish")}</MenuItem>
                             <MenuItem value={"en"}>{tText("english")}</MenuItem>
                             <MenuItem value={"de"}>{tText("deutsch")}</MenuItem>
+                            <MenuItem value={"fr"}>{tText("french")}</MenuItem>
+                            <MenuItem value={"es"}>{tText("spanish")}</MenuItem>
+                            <MenuItem value={"ru"}>{tText("russian")}</MenuItem>
+                            <MenuItem value={"ar"}>{tText("arabic")}</MenuItem>
+                            <MenuItem value={"zh"}>{tText("chinese")}</MenuItem>
+                            <MenuItem value={"nl"}>{tText("dutch")}</MenuItem>
+                            <MenuItem value={"ur"}>{tText("urdu")}</MenuItem>
                         </Select>
                     </FormControl>
                 </div>

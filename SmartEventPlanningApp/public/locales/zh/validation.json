@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "请为活动命名。",
+        "nameMax": "活动名称最多可包含30个字符。",
+        "descriptionRequired": "需要提供描述。",
+        "cityRequired": "未选择活动城市。",
+        "locationRequired": "您尚未选择活动地点。",
+        "imageRequired": "请上传活动照片。",
+        "imageTest": "文件大小最多可为10MB。",
+        "startDateRequired": "您尚未选择开始日期。",
+        "endDateRequired": "您尚未选择结束日期。",
+        "endDateTest": "结束日期不能早于开始日期。",
+        "categoriesRequired": "未选择活动类别",
+        "categoriesMax": "您最多可以选择1个类别！"
+    },
+    "userInfo": {
+        "firstNameRequired": "请输入名字。",
+        "lastNameRequired": "请输入姓氏。",
+        "cityRequired": "需要选择城市。",
+        "birthDateRequired": "需要出生日期。",
+        "genderRequired": "需要选择性别。",
+        "areasMin": "您必须至少选择一个兴趣领域！",
+        "areasMax": "您最多可以选择5个兴趣领域！"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "请输入您的旧密码。",
+        "oldPasswordMin": "密码必须至少包含8个字符。",
+        "newPasswordRequired": "请输入您的新密码。",
+        "newPasswordMin": "密码必须至少包含8个字符。",
+        "newPasswordMatchesLower": "必须包含小写字母。",
+        "newPasswordMatchesUpper": "必须包含大写字母。",
+        "newPasswordMatchesDigit": "必须包含数字。",
+        "newPasswordMatchesSpecial": "必须包含特殊字符。",
+        "confirmNewPasswordRequired": "需要重复密码。",
+        "confirmNewPasswordOneOf": "密码不匹配。"
+    },
+    "emailVerification": {
+        "codeRequired": "您未输入任何代码",
+        "codeMatchesSixDigit": "请输入全部6位数字",
+        "codeNotVerified": "无法验证代码"
+    }
+}

@@ -182,7 +182,13 @@ function UserSettingDrawer() {
                   <MenuItem value={"tr"}>{tText("turkish")}</MenuItem>
                   <MenuItem value={"en"}>{tText("english")}</MenuItem>
                   <MenuItem value={"de"}>{tText("deutsch")}</MenuItem>
-
+                  <MenuItem value={"fr"}>{tText("french")}</MenuItem>
+                  <MenuItem value={"es"}>{tText("spanish")}</MenuItem>
+                  <MenuItem value={"ru"}>{tText("russian")}</MenuItem>
+                  <MenuItem value={"ar"}>{tText("arabic")}</MenuItem>
+                  <MenuItem value={"zh"}>{tText("chinese")}</MenuItem>
+                  <MenuItem value={"nl"}>{tText("dutch")}</MenuItem>
+                  <MenuItem value={"ur"}>{tText("urdu")}</MenuItem>
                 </Select>
               </FormControl>
               <div className="user-setting-switch-text">
