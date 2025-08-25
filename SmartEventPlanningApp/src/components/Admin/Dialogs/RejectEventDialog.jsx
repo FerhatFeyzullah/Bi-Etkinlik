@@ -57,12 +57,15 @@ function RejectEventDialog() {
                     </>
                 </DialogContent>
                 <DialogActions>
-                    <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
+
+                    <Button sx={{ textTransform: "none" }} variant='outlined' color='primary' onClick={CloseDialog}>
                         {tButton("cancel")}
                     </Button>
-                    <Button sx={{ textTransform: "none" }} onClick={RejecetedEvent}>
+                    <Button sx={{ textTransform: "none", margin: "5px 10px" }} variant='outlined' color='error' onClick={RejecetedEvent}>
                         {tButton("reject")}
                     </Button>
+
+
                 </DialogActions>
             </Dialog>
         </div>

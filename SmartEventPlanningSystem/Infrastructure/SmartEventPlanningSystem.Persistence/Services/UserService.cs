@@ -318,5 +318,14 @@ namespace SmartEventPlanningSystem.Persistence.Services
                 };
             }
         }
+
+        public async Task<List<ResultUserForEvent>> GetAllUser(int adminId, CancellationToken ct)
+        {
+            var users = await unitOfWork.ReadRepository<AppUser>().GetByFilteredList(
+                x => x.Id != adminId, ct
+                );
+
+            return mapper.Map<List<ResultUserForEvent>>(users);
+        }
     }
 }

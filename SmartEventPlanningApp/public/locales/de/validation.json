@@ -20,7 +20,7 @@
         "birthDateRequired": "Geburtsdatum erforderlich.",
         "genderRequired": "Die Auswahl des Geschlechts ist erforderlich.",
         "areasMin": "Sie müssen mindestens einen Interessensbereich auswählen!",
-        "areasMax": "Sie können bis zu 5 Interessensbereiche auswählen!"
+        "areasMax": "Sie können bis zu 7 Interessensbereiche auswählen!"
     },
     "changePassword": {
         "oldPasswordRequired": "Geben Sie Ihr altes Passwort ein.",

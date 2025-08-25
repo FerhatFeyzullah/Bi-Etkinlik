@@ -16,6 +16,7 @@ namespace SmartEventPlanningSystem.Application.Services
         Task<AppUser> UploadProfilePhoto(int id, string ppid, CancellationToken ct);
         Task<AppUser> RemoveProfilePhoto(int id, CancellationToken ct);
         Task<UpdateProfileResponse> UpdateProfile(UpdateProfileDto updateProfileDto, List<int> Categories, CancellationToken ct);
+        Task<List<ResultUserForEvent>> GetAllUser(int adminId, CancellationToken ct);
 
     }
 }

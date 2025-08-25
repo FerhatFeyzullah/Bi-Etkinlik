@@ -16,7 +16,7 @@ function ArchivePanel() {
 
 
     return (
-        <div className='archive-panel-container flex-row-justify-start'>
+        <div className='archive-panel-container flex-row-align-justify-start'>
             {eventArchive.events?.map((e) => (
                 <ArchiveEventCard event={e} />
             ))}

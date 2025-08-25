@@ -20,7 +20,7 @@
         "birthDateRequired": "Date de naissance requise.",
         "genderRequired": "La sélection du genre est requise.",
         "areasMin": "Vous devez sélectionner au moins un centre d'intérêt !",
-        "areasMax": "Vous pouvez sélectionner jusqu'à 5 centres d'intérêt !"
+        "areasMax": "Vous pouvez sélectionner jusqu'à 7 centres d'intérêt !"
     },
     "changePassword": {
         "oldPasswordRequired": "Entrez votre ancien mot de passe.",

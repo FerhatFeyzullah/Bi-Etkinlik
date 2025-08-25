@@ -3,23 +3,25 @@ import '../../css/Admin/EventStatusPanel.css'
 import { Tabs, Tab, Box } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { GetEventsStatusFalse, GetEventsStatusNull, GetEventsStatusTrue, SetIsEventEvaluated, SetReviewEventMistake, SetReviewEventSuccess } from '../../redux/slices/eventSlice';
+import { GetEventsStatusFalse, GetEventsStatusNull, GetEventsStatusTrue, SetIsEventDeleteComplete, SetIsEventEvaluated, SetReviewEventMistake, SetReviewEventSuccess } from '../../redux/slices/eventSlice';
 import ReviewEventCard from './ReviewEventCard';
 import EventReviewDialog from '../User/Panels/EventReviewDialog'
 import ToastMistake from '../Elements/ToastMistake'
 import ToastSuccess from '../Elements/ToastSuccess'
-import EvaluateEventDialog from '../Admin/Dialogs/EvaluateEventDialog'
+import EvaluateEventDialog from './Dialogs/EvaluateEventDialog'
 import ApproveEventDialog from './Dialogs/ApproveEventDialog'
-import RejectEventDialog from '../Admin/Dialogs/RejectEventDialog'
+import RejectEventDialog from './Dialogs/RejectEventDialog'
 import AdminEventCardSkeleton from '../Skeletons/AdminEventCardSkeleton';
+import DeleteEventDialog from '../User/Panels/CreateEvent/DeleteEventDialog'
 
 
-function EventStatusPanel() {
+function AdminPanels() {
     const { t: tButton } = useTranslation("button");
     const { t: tAlert } = useTranslation("alert");
+    const { t: tText } = useTranslation("text");
     const dispatch = useDispatch();
 
-    const { reviewEvents, reviewEventResponse, reviewEventMistake, reviewEventSuccess, isEventEvaluated, reviewEventSkeleton } = useSelector(store => store.event);
+    const { reviewEvents, reviewEventResponse, reviewEventMistake, reviewEventSuccess, isEventEvaluated, reviewEventSkeleton, isEventDeleteComplete } = useSelector(store => store.event);
     const { events } = reviewEvents;
 
     const [selectedTab, setSelectedTab] = useState(0);
@@ -29,7 +31,7 @@ function EventStatusPanel() {
     };
 
     useEffect(() => {
-        if (isEventEvaluated === true || selectedTab !== null) {
+        if (isEventEvaluated === true || selectedTab !== null || isEventDeleteComplete === true) {
             if (selectedTab === 0) {
                 dispatch(GetEventsStatusNull());
             } else if (selectedTab === 1) {
@@ -39,7 +41,8 @@ function EventStatusPanel() {
             }
         }
         dispatch(SetIsEventEvaluated(false));
-    }, [selectedTab, isEventEvaluated]);
+        dispatch(SetIsEventDeleteComplete(false));
+    }, [selectedTab, isEventEvaluated, isEventDeleteComplete]);
 
     const CloseReviewEventMistake = () => {
         dispatch(SetReviewEventMistake(false));
@@ -78,6 +81,7 @@ function EventStatusPanel() {
                             fontWeight: "bold",
                             fontSize: "16px",
                         }}
+
                     />
                     <Tab
                         label={tButton("approvedEvents")}
@@ -99,16 +103,27 @@ function EventStatusPanel() {
                             fontSize: "16px",
                         }}
                     />
+                    <Tab
+                        label={tButton("usersTab")}
+                        sx={{
+                            flex: 1,
+                            minWidth: 0,
+                            textTransform: "none",
+                            fontWeight: "bold",
+                            fontSize: "16px",
+                        }}
+                    />
                 </Tabs>
             </Box>
 
             <div className="event-status-card-phase flex-row-align-justify-start">
-                {reviewEventSkeleton || events?.length == 0 ?
+                {reviewEventSkeleton ?
                     <AdminEventCardSkeleton />
-                    :
-                    events && events.map((e) => (
-                        <ReviewEventCard event={e} key={e.eventId} />
-                    ))
+                    : events?.length == 0 ?
+                        <div className='event-status-empty-info flex-row'>{tText("adminEmptyPanelInfo")}</div> :
+                        events && events.map((e) => (
+                            <ReviewEventCard event={e} key={e.eventId} />
+                        ))
                 }
             </div>
             <EventReviewDialog />
@@ -116,6 +131,7 @@ function EventStatusPanel() {
             <EvaluateEventDialog />
             <ApproveEventDialog />
             <RejectEventDialog />
+            <DeleteEventDialog />
 
 
             <ToastMistake
@@ -132,4 +148,4 @@ function EventStatusPanel() {
     )
 }
 
-export default EventStatusPanel
+export default AdminPanels

@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import AdminNavbar from "../components/Admin/AdminNavbar";
-import EventStatusPanel from "../components/Admin/EventStatusPanel";
+import AdminPanels from "../components/Admin/AdminPanels";
 import { GetUserSetting } from "../redux/slices/userSettingSlice";
 import { useDispatch } from "react-redux";
 
@@ -24,7 +24,7 @@ function Admin() {
       </div>
 
       <div className="flex-column-justify-start" style={{ height: "90%" }}>
-        <EventStatusPanel />
+        <AdminPanels />
       </div>
     </div>
   )

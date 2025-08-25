@@ -12,7 +12,6 @@ import {
   SetEmailNotification,
   UpdateEmailNotification,
   SendResetCode,
-  SetConfrimEmailDialog,
 } from "../../../../redux/slices/userSettingSlice";
 import { Drawer, Tooltip } from "@mui/material";
 import "../../../../css/User/Panels/Profile/UserSettingDrawer.css";
@@ -20,10 +19,12 @@ import Switch from "react-switch";
 import { Button } from "@mui/material";
 import LockOutlineIcon from "@mui/icons-material/LockOutline";
 import EmailIcon from '@mui/icons-material/Email';
+import DeleteIcon from '@mui/icons-material/Delete';
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { useTranslation } from "react-i18next";
+import { SetRemoveAccountDialog, SetTheRemovedAccount } from "../../../../redux/slices/accountSlice";
 
 
 function UserSettingDrawer() {
@@ -64,6 +65,11 @@ function UserSettingDrawer() {
     i18n.changeLanguage(newLanguage);
     dispatch(UpdateLanguage({ AppUserId: UserId, Language: newLanguage }));
   };
+
+  const RemoveAccountDialog = () => {
+    dispatch(SetRemoveAccountDialog(true));
+    dispatch(SetTheRemovedAccount(UserId));
+  }
 
   return (
     <>
@@ -206,6 +212,7 @@ function UserSettingDrawer() {
                   textTransform: "none",
                   fontWeight: 600,
                 }}
+                fullWidth
                 onClick={ChangePasswordDrawer}
               >
                 {tButton("changeMyPassword")}
@@ -223,6 +230,7 @@ function UserSettingDrawer() {
                   textTransform: "none",
                   fontWeight: 600,
                 }}
+                fullWidth
                 onClick={EmailVerificationDialog}
               >
                 {
@@ -232,6 +240,27 @@ function UserSettingDrawer() {
                     tButton("confirmMyEmail")}
               </Button>
             </div>
+            {/* Remove Account */}
+            <div className="flex-row user-setting-button">
+              <Button
+                variant="outlined"
+                color="error"
+                size="large"
+                startIcon={<DeleteIcon />}
+                sx={{
+                  color: "#000000ff",
+                  textTransform: "none",
+                  fontWeight: 600,
+
+                }}
+                fullWidth
+
+                onClick={RemoveAccountDialog}
+              >
+                Hesabımı Sil
+              </Button>
+            </div>
+
           </div>
         </div>
       </Drawer>

@@ -58,10 +58,10 @@ function DeleteEventDialog() {
                     </>
                 </DialogContent>
                 <DialogActions>
-                    <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
+                    <Button sx={{ textTransform: "none" }} variant='outlined' color='error' onClick={CloseDialog}>
                         {tButton("no")}
                     </Button>
-                    <Button sx={{ textTransform: "none" }} onClick={DeleteEvent}>
+                    <Button sx={{ textTransform: "none", margin: "5px 10px" }} variant='outlined' color='success' onClick={DeleteEvent}>
                         {tButton("yes")}
                     </Button>
                 </DialogActions>

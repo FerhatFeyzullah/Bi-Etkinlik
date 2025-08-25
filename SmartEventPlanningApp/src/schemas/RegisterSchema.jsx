@@ -35,5 +35,5 @@ export const schema = yup.object().shape({
     .array()
     .of(yup.string())
     .min(1, "En Az 1 İlgi Alanı Seçmelisin!")
-    .max(5, "En Fazla 5 Tane İlgi Alanı Seçebilirsin!"),
+    .max(7, "En Fazla 7 Tane İlgi Alanı Seçebilirsin!"),
 });

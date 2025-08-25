@@ -88,7 +88,7 @@ function User() {
             indicatorColor="primary"
             orientation="vertical"
             sx={{
-              minWidth: 300,
+              width: "100%"
             }}
           >
             <Tab

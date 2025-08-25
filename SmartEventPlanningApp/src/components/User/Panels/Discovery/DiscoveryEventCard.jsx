@@ -11,8 +11,8 @@ import {
   SetDiscoveryLongitude,
   SetIsMapReviewed,
 } from "../../../../redux/slices/mapSlice";
-import { RegisterEvent } from "../../../../redux/slices/eventRegisterSlice";
-import { MarkEventAsRegistered } from "../../../../redux/slices/discoverySlice";
+import { SetEventRegisterDialog, SetRegisteredEvent } from "../../../../redux/slices/eventRegisterSlice";
+
 import { useTranslation } from "react-i18next";
 
 function DiscoveryEventCard({ event }) {
@@ -48,16 +48,10 @@ function DiscoveryEventCard({ event }) {
     dispatch(SetIsMapReviewed(true));
   };
 
-  const Register = async () => {
-    const data = {
-      AppUserId: Number(UserId),
-      EventId: event.eventId,
-    };
-    var result = await dispatch(RegisterEvent(data)).unwrap();
-    if (result) {
-      dispatch(MarkEventAsRegistered(event.eventId));
-    }
-  };
+  const RegisterEventDialog = () => {
+    dispatch(SetEventRegisterDialog(true));
+    dispatch(SetRegisteredEvent(event));
+  }
 
   // assets/categories klasöründeki tüm png’leri import et
   const images = import.meta.glob("../../../../assets/categoryImages/gif/*.gif", { eager: true });
@@ -142,7 +136,7 @@ function DiscoveryEventCard({ event }) {
                 variant="outlined"
                 color="success"
                 sx={{ textTransform: "none" }}
-                onClick={Register}
+                onClick={RegisterEventDialog}
               >
                 {tButton("registerEvent")}
               </Button>

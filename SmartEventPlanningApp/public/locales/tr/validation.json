@@ -20,7 +20,7 @@
         "birthDateRequired": "Doğum Tarihi Zorunlur.",
         "genderRequired": "Cinsiyet Seçimi Zorunludur",
         "areasMin": "En Az Bir Tane İlgi Alanı Seçmelisin!",
-        "areasMax": "En Fazla 5 Tane İlgi Alanı Seçebilirsin!"
+        "areasMax": "En Fazla 7 Tane İlgi Alanı Seçebilirsin!"
     },
     "changePassword": {
         "oldPasswordRequired": "Eski Şifrenini Giriniz.",

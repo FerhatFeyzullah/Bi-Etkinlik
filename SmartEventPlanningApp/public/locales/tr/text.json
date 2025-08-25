@@ -48,5 +48,10 @@
   "adminNavbarHeader": "Bi Etkinlik Yönetici Paneli",
   "toastSuccess": "Başarılı",
   "toastMistake": "Hata",
-  "toastWarning": "Uyarı"
+  "toastWarning": "Uyarı",
+  "deleteAccountTitle": "Hesabı Sil",
+  "deleteAccountInfo": "Bu hesabı silmek istedğine emin misin ?",
+  "registerEventTitle": "Etkinlik Kaydı",
+  "registerEventInfo": "Etkinliğine kayıt olmak istediğinize emin misiniz ?",
+  "adminEmptyPanelInfo": "Burada görülecek birşey yok gibi..."
 }

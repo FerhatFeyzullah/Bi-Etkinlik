@@ -4,7 +4,8 @@
         "uploadPPRejected": "Profil fotoğrafı yüklenirken beklenmeyen bir hata oluştu.",
         "removePPRejected": "Profil fotoğrafı silinirken beklenmeyen bir hata oluştu.",
         "updateProfileFulfilledSuccess": "Profil bilgileri başarıyla güncellendi.",
-        "updateProfileRejected": "Profil bilgileri güncellenirken beklenmeyen bir hata oluştu."
+        "updateProfileRejected": "Profil bilgileri güncellenirken beklenmeyen bir hata oluştu.",
+        "removeAccountFulfilled": "Hesap başarıyla silindi."
     },
     "auth": {
         "loginFulfilledErrorOne": "Kullanıcı Bulunamadı.",

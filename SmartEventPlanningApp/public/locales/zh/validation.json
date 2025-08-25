@@ -20,7 +20,7 @@
         "birthDateRequired": "需要出生日期。",
         "genderRequired": "需要选择性别。",
         "areasMin": "您必须至少选择一个兴趣领域！",
-        "areasMax": "您最多可以选择5个兴趣领域！"
+        "areasMax": "您最多可以选择7个兴趣领域！"
     },
     "changePassword": {
         "oldPasswordRequired": "请输入您的旧密码。",

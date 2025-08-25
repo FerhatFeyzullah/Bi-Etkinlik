@@ -13,6 +13,11 @@ const initialState = {
   updateProfileLoading: false,
   updateProfileMistake: false,
   updateProfileSuccess: false,
+  removeAccountLoading: false,
+  removeAccountSuccess: false,
+  theRemovedAccount: null,
+  removeAccountDialog: false,
+  removeAccountMistake: false,
 };
 
 export const GetMyProfile = createAsyncThunk("getMyProfile", async (id) => {
@@ -36,6 +41,10 @@ export const RemovePP = createAsyncThunk("removePP", async (id) => {
 export const UpdateProfile = createAsyncThunk("updateProfile", async (data) => {
   var response = await axios.put("Users/UpdateProfile", data);
   return response.data;
+});
+
+export const RemoveAccount = createAsyncThunk('removeAccount', async (id) => {
+  await axios.delete("Users/RemoveAccount/" + id);
 });
 
 export const accountSlice = createSlice({
@@ -69,6 +78,18 @@ export const accountSlice = createSlice({
     SetUpdateProfileSuccess: (state, action) => {
       state.updateProfileSuccess = action.payload;
     },
+    SetRemoveAccountSuccess: (state, action) => {
+      state.removeAccountSuccess = action.payload;
+    },
+    SetTheRemovedAccount: (state, action) => {
+      state.theRemovedAccount = action.payload;
+    },
+    SetRemoveAccountDialog: (state, action) => {
+      state.removeAccountDialog = action.payload;
+    },
+    SetRemoveAccountMistake: (state, action) => {
+      state.removeAccountMistake = action.payload
+    }
   },
   extraReducers: (builder) => {
     builder
@@ -120,6 +141,22 @@ export const accountSlice = createSlice({
         state.accountSliceResponse =
           "account.updateProfileRejected";
         state.updateProfileMistake = true;
+      })
+
+      //Remove Account
+      .addCase(RemoveAccount.pending, (state) => {
+        state.removeAccountLoading = true;
+      })
+      .addCase(RemoveAccount.fulfilled, (state, action) => {
+        state.removeAccountLoading = false;
+        state.accountSliceResponse = "account.removeAccountFulfilled";
+        state.removeAccountSuccess = true;
+
+      })
+      .addCase(RemoveAccount.rejected, (state) => {
+        state.removeAccountLoading = false;
+        state.accountSliceResponse = "rejected";
+        state.removeAccountMistake = true;
       });
   },
 });
@@ -134,5 +171,9 @@ export const {
   SetUpdatedProfile,
   SetUpdateProfileMistake,
   SetUpdateProfileSuccess,
+  SetRemoveAccountSuccess,
+  SetTheRemovedAccount,
+  SetRemoveAccountDialog,
+  SetRemoveAccountMistake,
 } = accountSlice.actions;
 export default accountSlice.reducer;

@@ -1,0 +1,3 @@
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\d7ac5ce7-21b1-467d-8a20-a58891b99057.jpg
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\d94b97b3-a624-48df-8669-63c2a7223424.jpg
+C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\upload\events\daadd31c-b7bc-4e8d-a733-db707f8736d9.jpg

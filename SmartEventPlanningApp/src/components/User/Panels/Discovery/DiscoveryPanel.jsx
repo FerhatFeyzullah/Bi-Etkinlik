@@ -17,6 +17,7 @@ import ToastMistake from "../../../Elements/ToastMistake";
 import { SetEventRegisterMistakeAlert } from "../../../../redux/slices/eventRegisterSlice";
 import ReviewMapDialog from "../ReviewMapDialog";
 import { useTranslation } from "react-i18next";
+import RegisterEventDialog from '../../../Dialogs/RegisterEventDialog'
 
 
 function DiscoveryPanel() {
@@ -151,6 +152,7 @@ function DiscoveryPanel() {
         )}
       </div>
       <ReviewMapDialog />
+      <RegisterEventDialog />
 
       <ToastMistake
         visible={eventRegisterMistakeAlert}

@@ -185,7 +185,7 @@ function EventReviewDialog() {
           </>
         </DialogContent>
         <DialogActions>
-          <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
+          <Button variant="outlined" sx={{ textTransform: "none", margin: "10px 10px" }} onClick={CloseDialog}>
             {tButton("turnOffPreview")}
           </Button>
         </DialogActions>

@@ -1,5 +1,5 @@
 .my-regisired-event-card-container {
-  width: 450px;
+  width: 400px;
   height: 300px;
   margin: 15px;
   border-radius: 12px;
@@ -7,6 +7,7 @@
   background-color: white;
   position: relative;
 }
+
 .my-registered-event-card-name {
   position: absolute;
   top: 10px;

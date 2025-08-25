@@ -20,7 +20,7 @@
         "birthDateRequired": "Birth Date Required.",
         "genderRequired": "Gender Selection Is Required.",
         "areasMin": "You Must Select At Least One Area Of Interest!",
-        "areasMax": "You Can Select Up To 5 Areas Of Interest!"
+        "areasMax": "You Can Select Up To 7 Areas Of Interest!"
     },
     "changePassword": {
         "oldPasswordRequired": "Enter Your Old Password.",

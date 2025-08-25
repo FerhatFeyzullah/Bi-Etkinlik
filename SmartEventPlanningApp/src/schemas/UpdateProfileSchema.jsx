@@ -14,5 +14,5 @@ export const updateProfileSchema = (t) => yup.object().shape({
     .array()
     .of(yup.string())
     .min(1, t("validation:userInfo.areasMin"))
-    .max(5, t("validation:userInfo.areasMax")),
+    .max(7, t("validation:userInfo.areasMax")),
 });

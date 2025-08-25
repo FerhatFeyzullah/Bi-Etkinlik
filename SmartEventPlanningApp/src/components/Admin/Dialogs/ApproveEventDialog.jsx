@@ -56,10 +56,10 @@ function ApproveEventDialog() {
                     </>
                 </DialogContent>
                 <DialogActions>
-                    <Button sx={{ textTransform: "none" }} onClick={CloseDialog}>
+                    <Button sx={{ textTransform: "none" }} variant='outlined' color='primary' onClick={CloseDialog}>
                         {tButton("cancel")}
                     </Button>
-                    <Button sx={{ textTransform: "none" }} onClick={ApprovedEvent}>
+                    <Button sx={{ textTransform: "none", margin: "5px 10px" }} variant='outlined' color='success' onClick={ApprovedEvent}>
                         {tButton("approve")}
                     </Button>
                 </DialogActions>

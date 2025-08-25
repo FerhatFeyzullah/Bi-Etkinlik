@@ -6,6 +6,8 @@ import {
   GetMyProfile,
   SetPPRemoveMistake,
   SetPPUploadMistake,
+  SetRemoveAccountMistake,
+  SetRemoveAccountSuccess,
   SetUpdateProfileMistake,
   SetUpdateProfileSuccess,
 } from "../../../../redux/slices/accountSlice";
@@ -31,12 +33,17 @@ import {
 } from "../../../../redux/slices/userSettingSlice";
 import EmailVerificationDialog from "./EmailVerificationDialog";
 import { useTranslation } from "react-i18next";
+import DeleteAccountDialog from "../../../Dialogs/DeleteAccountDialog";
+import { LogoutFromSystem } from "../../../../redux/slices/authSlice";
+import { useNavigate } from "react-router-dom";
 
 
 function ProfilePanel() {
   const { t: tAlert } = useTranslation("alert");
+  const { i18n } = useTranslation();
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { eventRatedMistakeAlert, eventRegisterResponse } = useSelector(
     (store) => store.eventRegister
   );
@@ -59,6 +66,9 @@ function ProfilePanel() {
     updateProfileMistake,
     updateProfileSuccess,
     updateProfileLoading,
+    removeAccountMistake,
+    removeAccountSuccess,
+    removeAccountLoading,
   } = useSelector((store) => store.account);
 
   const CloseEventRatedMistakeToast = () => {
@@ -88,6 +98,27 @@ function ProfilePanel() {
   const CloseEmailVerificationSuccess = () => {
     dispatch(SetConfrimEmailSuccess(false));
   };
+  const CloseRemoveAccountMistake = () => {
+    dispatch(SetRemoveAccountMistake(false));
+  };
+  const CloseRemoveAccountSuccess = async () => {
+    dispatch(SetRemoveAccountSuccess(false));
+    SignOut();
+
+  };
+
+  const SignOut = async () => {
+    try {
+      await dispatch(LogoutFromSystem()).unwrap();
+      localStorage.clear();
+      dispatch({ type: "auth/logout" });
+      i18n.changeLanguage("tr");
+      navigate("/girisyap");
+
+    } catch (error) {
+      console.error("Çıkış başarısız:", error);
+    }
+  }
 
   return (
     <>
@@ -113,6 +144,7 @@ function ProfilePanel() {
         <EmailVerificationDialog />
 
       }
+      <DeleteAccountDialog />
 
       {/* EventRate */}
 
@@ -134,6 +166,18 @@ function ProfilePanel() {
         visible={ppRemoveMistake}
         detail={tAlert(accountSliceResponse)}
         closer={CloseRemovePPMistakeToast}
+      />
+
+      {/* Remove Account */}
+      <ToastMistake
+        visible={removeAccountMistake}
+        detail={tAlert(accountSliceResponse)}
+        closer={CloseRemoveAccountMistake}
+      />
+      <ToastSuccess
+        visible={removeAccountSuccess}
+        detail={tAlert(accountSliceResponse)}
+        closer={CloseRemoveAccountSuccess}
       />
 
       {/* UpdateProfile */}
@@ -175,6 +219,10 @@ function ProfilePanel() {
 
       {/* Change Password */}
       <Loading status={changePassLoading} />
+
+      {/* Remove Account */}
+      <Loading status={removeAccountLoading} />
+
       {/* Email Verification */}
       <Loading status={confirmEmailLoading} />
     </>

@@ -2,13 +2,12 @@ import React, { useEffect, useState } from 'react'
 import '../../css/Admin/ReviewEventCard.css'
 import { useDispatch, useSelector } from "react-redux";
 import Tooltip from "@mui/material/Tooltip";
-import DeleteIcon from "@mui/icons-material/Delete";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import EditIcon from "@mui/icons-material/Edit";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { Button, IconButton } from "@mui/material";
 import BiEtkinlik from "../../assets/eventImage/BiEtkinlik.png";
 import { useTranslation } from "react-i18next";
-import { SetApprovedEventDialog, SetEvaluatedEventId, SetEvaluateEventDialog, SetIsEventPreview, SetPreviewedEvent, SetRejectedEventDialog } from '../../redux/slices/eventSlice';
+import { SetApprovedEventDialog, SetDeletedEvent, SetEvaluatedEventId, SetEvaluateEventDialog, SetEventDeleteDialog, SetIsEventPreview, SetPreviewedEvent, SetRejectedEventDialog } from '../../redux/slices/eventSlice';
 
 
 
@@ -23,6 +22,11 @@ function ReviewEventCard({ event }) {
         dispatch(SetIsEventPreview(true));
         dispatch(SetPreviewedEvent(a));
     };
+
+    const DeleteEvent = (id) => {
+        dispatch(SetDeletedEvent(id));
+        dispatch(SetEventDeleteDialog(true));
+    }
 
     const EvaluateDialog = () => {
         dispatch(SetEvaluateEventDialog(true))
@@ -64,6 +68,14 @@ function ReviewEventCard({ event }) {
                             onClick={() => PreviewEvent(event)}
                         >
                             <VisibilityIcon fontSize="medium" />
+                        </IconButton>
+                    </Tooltip>
+                    <Tooltip title={tTooltip("deleteEvent")}>
+                        <IconButton
+                            sx={{ marginRight: "20px" }}
+                            onClick={() => DeleteEvent(event.eventId)}
+                        >
+                            <DeleteIcon fontSize="medium" />
                         </IconButton>
                     </Tooltip>
 

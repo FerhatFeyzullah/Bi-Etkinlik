@@ -20,7 +20,7 @@
         "birthDateRequired": "Geboortedatum vereist.",
         "genderRequired": "Geslachtselectie is vereist.",
         "areasMin": "U moet minimaal één interessegebied selecteren!",
-        "areasMax": "U kunt maximaal 5 interessegebieden selecteren!"
+        "areasMax": "U kunt maximaal 7 interessegebieden selecteren!"
     },
     "changePassword": {
         "oldPasswordRequired": "Voer uw oude wachtwoord in.",

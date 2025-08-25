@@ -7,18 +7,25 @@ import ToastMistake from "../components/Elements/ToastMistake";
 import ToastSuccess from "../components/Elements/ToastSuccess";
 import Loading from "../components/Elements/Loading";
 import { useNavigate } from "react-router-dom";
-import { SetLoginMistakeAlert, SetRegisterSuccessAlert } from "../redux/slices/authSlice";
+import { LogoutFromSystem, SetLoginMistakeAlert, SetRegisterSuccessAlert } from "../redux/slices/authSlice";
 import { useTranslation } from "react-i18next";
+import { SetAccountSliceResponse, SetRemoveAccountSuccess } from "../redux/slices/accountSlice";
+
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t: tAlert } = useTranslation("alert");
+  const { i18n } = useTranslation();
 
   const { loginLoading, errorMessage, loginMistakeAlert, registerResponse,
     registerSuccessAlert, } = useSelector(
       (store) => store.auth
     );
+
+  const CloseRemoveAccountSuccess = () => {
+    dispatch(SetRemoveAccountSuccess(false));
+  }
 
   const LoginToastMistakeClose = () => {
     dispatch(SetLoginMistakeAlert());
@@ -57,17 +64,20 @@ function Login() {
       <div>
         <Loading status={loginLoading} />
 
+        {/* Login Mistake */}
         <ToastMistake
           visible={loginMistakeAlert}
           detail={tAlert(errorMessage)}
           closer={LoginToastMistakeClose}
         />
 
+        {/* Register Success */}
         <ToastSuccess
           visible={registerSuccessAlert}
           detail={tAlert(registerResponse)}
           closer={registerToastSuccessClose}
         />
+
       </div >
     </div >
   );

@@ -16,6 +16,7 @@ const initialState = {
   isEventPreview: false,
   previewedEvent: {},
   isEventDeleteDialog: false,
+  isEventDeleteComplete: false,
   deletedEvent: null,
   eventArchive: [],
   reviewEvents: [],
@@ -137,6 +138,9 @@ export const eventSlice = createSlice({
     SetEventDeleteDialog: (state, action) => {
       state.isEventDeleteDialog = action.payload;
     },
+    SetIsEventDeleteComplete: (state, action) => {
+      state.isEventDeleteComplete = action.payload;
+    },
     SetDeletedEvent: (state, action) => {
       state.deletedEvent = action.payload;
     },
@@ -200,6 +204,7 @@ export const eventSlice = createSlice({
 
       .addCase(RemoveEvent.fulfilled, (state) => {
         state.createAndEditS_Alert = true;
+        state.isEventDeleteComplete = true;
         state.createAndEditResponse = "event.removeEventFulfilledSuccess";
       })
       .addCase(RemoveEvent.rejected, (state) => {
@@ -319,5 +324,6 @@ export const {
   SetRejectedEventDialog,
   SetEvaluatedEventId,
   SetIsEventEvaluated,
+  SetIsEventDeleteComplete,
 } = eventSlice.actions;
 export default eventSlice.reducer;

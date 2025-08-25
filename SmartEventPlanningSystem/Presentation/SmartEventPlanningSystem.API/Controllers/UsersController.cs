@@ -9,6 +9,7 @@ using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RemoveAcco
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.RemoveProfilePhoto;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UpdateProfile;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.UploadProfilePhoto;
+using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetAllUsers;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetMyProfile;
 
 namespace SmartEventPlanningSystem.API.Controllers
@@ -111,6 +112,13 @@ namespace SmartEventPlanningSystem.API.Controllers
         {
             return Ok(await mediator.Send(new RemoveAccountRequest { AppUserId = id }));
         }
+
+        [HttpGet("GetAllUsers")]
+        public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
 
     }
 }

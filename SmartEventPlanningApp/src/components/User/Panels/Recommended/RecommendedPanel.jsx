@@ -7,6 +7,7 @@ import ReviewEventCardSkeleton from "../../../Skeletons/ReviewEventCardSkeleton"
 import noResult from "../../../../assets/eventImage/noResult.png";
 import ReviewMapDialog from "../ReviewMapDialog";
 import { useTranslation } from "react-i18next";
+import RegisterEventDialog from "../../../Dialogs/RegisterEventDialog";
 
 
 function RecommendedPanel() {
@@ -46,6 +47,7 @@ function RecommendedPanel() {
       }
 
       <ReviewMapDialog />
+      <RegisterEventDialog />
     </div>
   )
 }
