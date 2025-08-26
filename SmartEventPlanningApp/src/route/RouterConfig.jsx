@@ -5,6 +5,10 @@ import User from "../pages/User";
 import Admin from "../pages/Admin";
 import Register from "../pages/Register";
 import ForgotPassword from "../pages/ForgotPassword";
+import AccessDenied from '../pages/AccessDenied'
+import NotFound from '../pages/NotFound'
+import PrivateRoute from "./PrivateRoute";
+
 
 function RouterConfig() {
   return (
@@ -14,11 +18,22 @@ function RouterConfig() {
         <Route path="/girisyap" element={<Login />} />
         <Route path="/Kaydol" element={<Register />} />
 
-        <Route path="/kullanici/:userId" element={<User />} />
+        <Route path="/kullanici/:userId"
+          element={
+            <PrivateRoute allowedRoles={["User"]}>
+              <User />
+            </PrivateRoute>
+          } />
 
-        <Route path="/admin/:userId" element={<Admin />} />
+        <Route path="/admin/:userId" element={
+          <PrivateRoute allowedRoles={["Admin"]}>
+            <Admin />
+          </PrivateRoute>
+        } />
 
         <Route path="/sifremiunuttum" element={<ForgotPassword />} />
+        <Route path="/yetkisiz-erisim" element={<AccessDenied />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

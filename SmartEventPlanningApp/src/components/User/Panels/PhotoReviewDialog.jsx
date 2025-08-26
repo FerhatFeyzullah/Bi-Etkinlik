@@ -21,7 +21,7 @@ function PhotoReviewDialog() {
     <>
       <Dialog open={isPhotoReviewedDialog} onClose={() => dispatch(Close())}>
         <img
-          src={`https://localhost:7126/api/Users/ProfileImage/${reviewedPhoto}`}
+          src={`http://localhost:7126/api/Users/ProfileImage/${reviewedPhoto}`}
           alt="Profile"
           style={{ width: "100%", height: "auto" }}
         />

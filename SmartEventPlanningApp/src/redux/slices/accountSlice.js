@@ -48,7 +48,7 @@ export const RemoveAccount = createAsyncThunk('removeAccount', async (id) => {
 });
 
 export const accountSlice = createSlice({
-  name: "discovery",
+  name: "account",
   initialState,
   reducers: {
     SetPPUploadMistake: (state, action) => {

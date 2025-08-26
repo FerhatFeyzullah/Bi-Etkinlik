@@ -22,6 +22,7 @@
     "pendingEvents": "Ausstehende Veranstaltungen",
     "approvedEvents": "Genehmigte Veranstaltungen",
     "rejectedEvents": "Abgelehnte Veranstaltungen",
+    "usersTab": "Benutzer",
     "editProfile": "Profil bearbeiten",
     "listView": "Listenansicht",
     "darkMode": "Dunkelmodus",

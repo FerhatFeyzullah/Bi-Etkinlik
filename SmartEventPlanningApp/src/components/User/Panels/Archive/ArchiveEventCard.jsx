@@ -51,7 +51,7 @@ function ArchiveEventCard({ event }) {
                                     sx={{ width: 60, height: 60 }}
                                     src={
                                         !imgError && event.appUser?.profilePhotoId
-                                            ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
+                                            ? `http://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
                                             : undefined
                                     }
                                     onError={() => setImgError(true)}
@@ -87,7 +87,7 @@ function ArchiveEventCard({ event }) {
                         <img
                             src={
                                 !imgError && event.eventImageId
-                                    ? `https://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+                                    ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
                                     : BiEtkinlik
                             }
                             style={{

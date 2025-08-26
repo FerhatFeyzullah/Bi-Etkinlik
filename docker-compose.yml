@@ -1,0 +1,68 @@
+services:
+  frontend:
+    image: node:20-alpine
+    working_dir: /app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true
+    volumes:
+      - ./SmartEventPlanningApp:/app
+      - /app/node_modules
+    command: sh -c "npm ci && npm run dev -- --host 0.0.0.0 --port 80"
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - app-network
+
+  backend:
+    build:
+      context: .
+      dockerfile: SmartEventPlanningSystem/Presentation/SmartEventPlanningSystem.API/Dockerfile
+    container_name: bietkinlik_api
+    ports:
+      - "7126:7126"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://0.0.0.0:7126
+      - DISABLE_HTTPS_REDIRECT=true
+      - ConnectionStrings__Default=Host=postgres;Port=5432;Database=SEP_Db;Username=postgres;Password=vavi
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_DB=SEP_Db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=vavi
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init-scripts:/docker-entrypoint-initdb.d
+    networks:
+      - app-network
+
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=admin@admin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  pgdata:

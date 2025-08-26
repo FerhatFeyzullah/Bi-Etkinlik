@@ -48,5 +48,10 @@
   "adminNavbarHeader": "Bi Etkinlik Management Panel",
   "toastSuccess": "Successful",
   "toastMistake": "Error",
-  "toastWarning": "Warning"
+  "toastWarning": "Warning",
+  "deleteAccountTitle": "Delete Account",
+  "deleteAccountInfo": "Are you sure you want to delete this account?",
+  "registerEventTitle": "Event Registration",
+  "registerEventInfo": "Are you sure you want to register for this event?",
+  "adminEmptyPanelInfo": "Seems like there's nothing to display here."
 }

@@ -62,7 +62,7 @@ function MyRegisteredEventCard({ events, tabNumber }) {
       <img
         src={
           !imgError && events.event.eventImageId
-            ? `https://localhost:7126/api/Users/ProfileImage/${events.event.eventImageId}`
+            ? `http://localhost:7126/api/Users/ProfileImage/${events.event.eventImageId}`
             : BiEtkinlik
         }
         style={{

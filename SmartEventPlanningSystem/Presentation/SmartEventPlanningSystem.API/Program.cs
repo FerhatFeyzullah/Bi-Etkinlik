@@ -84,7 +84,7 @@ builder.Services.AddAuthentication(options =>
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
-        policy => policy.WithOrigins("http://localhost:5173", "http://localhost:3000", "http://frontend:80")
+        policy => policy.WithOrigins("http://localhost:5173", "http://localhost:3000", "http://frontend:80", "http://frontend:5173")
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials());
@@ -98,6 +98,13 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var context = services.GetRequiredService<SEP_DbContext>();
+    context.Database.Migrate(); // Start Migration
+}
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -105,7 +112,11 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+var disableHttpsRedirect = Environment.GetEnvironmentVariable("DISABLE_HTTPS_REDIRECT");
+if (string.IsNullOrWhiteSpace(disableHttpsRedirect) || !disableHttpsRedirect.Equals("true", StringComparison.OrdinalIgnoreCase))
+{
+    app.UseHttpsRedirection();
+}
 app.UseCors("AllowFrontend");
 
 app.UseAuthorization();

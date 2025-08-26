@@ -86,7 +86,7 @@ function MyProfileInfo() {
               }}
               src={
                 !imgError && myProfile.myProfile?.profilePhotoId
-                  ? `https://localhost:7126/api/Users/ProfileImage/${myProfile.myProfile.profilePhotoId}`
+                  ? `http://localhost:7126/api/Users/ProfileImage/${myProfile.myProfile.profilePhotoId}`
                   : undefined
               }
               onClick={ReviewPhoto}

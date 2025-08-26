@@ -1,0 +1,13 @@
+.review-user-card-container {
+    width: 250px;
+    height: 100px;
+    margin: 15px 15px;
+    background-color: whitesmoke;
+    box-shadow: 0px 0px 10px 5px rgb(161, 208, 216);
+    border-radius: 10px;
+}
+
+.review-user-card-name-phase {
+    width: 100%;
+    margin-left: 5px;
+}

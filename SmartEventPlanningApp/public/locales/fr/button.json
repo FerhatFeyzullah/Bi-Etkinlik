@@ -22,6 +22,7 @@
     "pendingEvents": "Événements en Attente",
     "approvedEvents": "Événements Approuvés",
     "rejectedEvents": "Événements Rejetés",
+    "usersTab": "Utilisateurs",
     "editProfile": "Modifier le Profil",
     "listView": "Vue Liste",
     "darkMode": "Mode Sombre",

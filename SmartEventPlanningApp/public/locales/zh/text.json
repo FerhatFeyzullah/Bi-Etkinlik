@@ -48,5 +48,10 @@
     "adminNavbarHeader": "Bi Etkinlik 管理面板",
     "toastSuccess": "成功",
     "toastMistake": "错误",
-    "toastWarning": "警告"
+    "toastWarning": "警告",
+    "deleteAccountTitle": "删除账户",
+    "deleteAccountInfo": "您确定要删除此账户吗？",
+    "registerEventTitle": "活动注册",
+    "registerEventInfo": "您确定要注册此活动吗？",
+    "adminEmptyPanelInfo": "这里似乎没有内容可显示。"
 }

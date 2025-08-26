@@ -72,7 +72,7 @@ function MessagesPanel() {
 
   useEffect(() => {
     const newConnection = new signalR.HubConnectionBuilder()
-      .withUrl("https://localhost:7126/chat")
+      .withUrl("http://localhost:7126/chat")
       .withAutomaticReconnect()
       .build();
 
@@ -176,7 +176,7 @@ function MessagesPanel() {
                 sx={{ width: 70, height: 70 }}
                 src={
                   !imgError && chattingEvent.eventImageId
-                    ? `https://localhost:7126/api/Users/ProfileImage/${chattingEvent.eventImageId}`
+                    ? `htts://localhost:7126/api/Users/ProfileImage/${chattingEvent.eventImageId}`
                     : BiEtkinlik
                 }
                 onError={() => setImgError(true)}

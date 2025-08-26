@@ -78,7 +78,7 @@ function RecommendedEventCard({ event }) {
                   sx={{ width: 65, height: 65 }}
                   src={
                     !imgError && event.appUser?.profilePhotoId
-                      ? `https://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
+                      ? `http://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
                       : undefined
                   }
                   onError={() => setImgError(true)}
@@ -113,7 +113,7 @@ function RecommendedEventCard({ event }) {
             <img
               src={
                 !imgError && event.eventImageId
-                  ? `https://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+                  ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
                   : BiEtkinlik
               }
               style={{

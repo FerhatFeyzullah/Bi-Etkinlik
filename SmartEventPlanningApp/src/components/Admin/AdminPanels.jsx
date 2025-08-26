@@ -13,6 +13,10 @@ import ApproveEventDialog from './Dialogs/ApproveEventDialog'
 import RejectEventDialog from './Dialogs/RejectEventDialog'
 import AdminEventCardSkeleton from '../Skeletons/AdminEventCardSkeleton';
 import DeleteEventDialog from '../User/Panels/CreateEvent/DeleteEventDialog'
+import { GetAllUsers } from '../../redux/slices/adminSlice';
+import ReviewUserCard from './ReviewUserCard';
+import DeleteAccountDialog from '../Dialogs/DeleteAccountDialog'
+import { SetRemoveAccountMistake, SetRemoveAccountSuccess } from '../../redux/slices/accountSlice';
 
 
 function AdminPanels() {
@@ -21,8 +25,13 @@ function AdminPanels() {
     const { t: tText } = useTranslation("text");
     const dispatch = useDispatch();
 
+    const UserId = localStorage.getItem("UserId");
+
     const { reviewEvents, reviewEventResponse, reviewEventMistake, reviewEventSuccess, isEventEvaluated, reviewEventSkeleton, isEventDeleteComplete } = useSelector(store => store.event);
     const { events } = reviewEvents;
+
+    const { users } = useSelector(store => store.admin);
+    const { removeAccountSuccess, removeAccountMistake, accountSliceResponse } = useSelector(store => store.account)
 
     const [selectedTab, setSelectedTab] = useState(0);
 
@@ -44,12 +53,26 @@ function AdminPanels() {
         dispatch(SetIsEventDeleteComplete(false));
     }, [selectedTab, isEventEvaluated, isEventDeleteComplete]);
 
+    useEffect(() => {
+        if (selectedTab === 3 || removeAccountSuccess) {
+            dispatch(GetAllUsers(UserId));
+        }
+    }, [selectedTab, removeAccountSuccess])
+
     const CloseReviewEventMistake = () => {
         dispatch(SetReviewEventMistake(false));
     };
     const CloseReviewEventSuccess = () => {
         dispatch(SetReviewEventSuccess(false));
     };
+    const CloseRemoveAccountSuccess = () => {
+        dispatch(SetRemoveAccountSuccess(false));
+    };
+    const CloseRemoveAccountMistake = () => {
+        dispatch(SetRemoveAccountMistake(false));
+    };
+
+
 
     return (
         <div className="event-status-container">
@@ -116,24 +139,51 @@ function AdminPanels() {
                 </Tabs>
             </Box>
 
-            <div className="event-status-card-phase flex-row-align-justify-start">
-                {reviewEventSkeleton ?
-                    <AdminEventCardSkeleton />
-                    : events?.length == 0 ?
-                        <div className='event-status-empty-info flex-row'>{tText("adminEmptyPanelInfo")}</div> :
-                        events && events.map((e) => (
-                            <ReviewEventCard event={e} key={e.eventId} />
-                        ))
-                }
-            </div>
+
+            {/* Events */}
+            {(selectedTab == 0 || selectedTab == 1 || selectedTab == 2) && (
+                <div className="event-status-card-phase flex-row-align-justify-start">
+                    {
+                        reviewEventSkeleton ? (
+                            <AdminEventCardSkeleton />
+                        ) : events?.length === 0 ? (
+                            <div className='event-status-empty-info flex-row'>
+                                {tText("adminEmptyPanelInfo")}
+                            </div>
+                        ) : (
+                            events?.map((e) => (
+                                <ReviewEventCard event={e} key={e.eventId} />
+                            ))
+                        )}
+                </div>
+            )}
+
+            {/* Users */}
+            {selectedTab == 3 && (
+                <div className="event-status-card-phase flex-row-align-start">
+                    {
+                        users?.length === 0 ? (
+                            <div className='event-status-empty-info flex-row'>
+                                {tText("adminEmptyPanelInfo")}
+                            </div>
+                        ) : (
+                            users?.map((u) => (
+                                <ReviewUserCard key={u.id} user={u} />
+                            ))
+                        )}
+                </div>
+            )}
+
+
             <EventReviewDialog />
 
             <EvaluateEventDialog />
             <ApproveEventDialog />
             <RejectEventDialog />
             <DeleteEventDialog />
+            <DeleteAccountDialog />
 
-
+            {/* Review Event */}
             <ToastMistake
                 visible={reviewEventMistake}
                 detail={tAlert(reviewEventResponse)}
@@ -143,6 +193,18 @@ function AdminPanels() {
                 visible={reviewEventSuccess}
                 detail={tAlert(reviewEventResponse)}
                 closer={CloseReviewEventSuccess}
+            />
+
+            {/* Delete User */}
+            <ToastMistake
+                visible={removeAccountMistake}
+                detail={tAlert(accountSliceResponse)}
+                closer={CloseRemoveAccountMistake}
+            />
+            <ToastSuccess
+                visible={removeAccountSuccess}
+                detail={tAlert(accountSliceResponse)}
+                closer={CloseRemoveAccountSuccess}
             />
         </div>
     )

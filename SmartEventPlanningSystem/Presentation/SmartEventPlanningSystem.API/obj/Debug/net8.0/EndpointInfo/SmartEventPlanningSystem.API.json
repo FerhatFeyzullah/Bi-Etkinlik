@@ -1325,6 +1325,28 @@
         }
       }
     },
+    "/api/Users/GetAllUsers": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "parameters": [
+          {
+            "name": "AdminId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/UserSettings/GetUserSetting": {
       "get": {
         "tags": [

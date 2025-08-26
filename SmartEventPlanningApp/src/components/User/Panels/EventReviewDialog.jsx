@@ -85,7 +85,7 @@ function EventReviewDialog() {
                         sx={{ width: 60, height: 60 }}
                         src={
                           !imgError && previewedEvent.appUser?.profilePhotoId
-                            ? `https://localhost:7126/api/Users/ProfileImage/${previewedEvent.appUser.profilePhotoId}`
+                            ? `http://localhost:7126/api/Users/ProfileImage/${previewedEvent.appUser.profilePhotoId}`
                             : undefined
                         }
                         onError={() => setImgError(true)}
@@ -121,7 +121,7 @@ function EventReviewDialog() {
                   <img
                     src={
                       !imgError && previewedEvent.eventImageId
-                        ? `https://localhost:7126/api/Users/ProfileImage/${previewedEvent.eventImageId}`
+                        ? `http://localhost:7126/api/Users/ProfileImage/${previewedEvent.eventImageId}`
                         : BiEtkinlik
                     }
                     style={{

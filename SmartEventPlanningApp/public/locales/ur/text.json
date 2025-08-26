@@ -48,5 +48,10 @@
     "adminNavbarHeader": "Bi Etkinlik مینجمنٹ پینل",
     "toastSuccess": "کامیاب",
     "toastMistake": "خرابی",
-    "toastWarning": "انتباہ"
+    "toastWarning": "انتباہ",
+    "deleteAccountTitle": "اکاؤنٹ حذف کریں",
+    "deleteAccountInfo": "کیا آپ واقعی اس اکاؤنٹ کو حذف کرنا چاہتے ہیں؟",
+    "registerEventTitle": "ایونٹ رجسٹریشن",
+    "registerEventInfo": "کیا آپ واقعی اس ایونٹ کے لیے رجسٹر کرنا چاہتے ہیں؟",
+    "adminEmptyPanelInfo": "ایسا لگتا ہے کہ یہاں دکھانے کے لیے کچھ نہیں ہے۔"
 }

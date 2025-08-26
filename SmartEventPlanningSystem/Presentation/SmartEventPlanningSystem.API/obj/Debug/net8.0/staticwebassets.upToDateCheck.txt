@@ -17,9 +17,6 @@ wwwroot\upload\events\8e70b789-5a9e-4a98-8924-cae22b17979f.jpg
 wwwroot\upload\events\a19b9c25-3450-474d-ac95-0de7689c3537.jpg
 wwwroot\upload\events\a3d1f2b9-6a96-4811-825d-94306dc695bc.jpg
 wwwroot\upload\events\b86bd20c-756b-4582-9297-6a00ca44d33c.jpg
-wwwroot\upload\events\d7ac5ce7-21b1-467d-8a20-a58891b99057.jpg
-wwwroot\upload\events\d94b97b3-a624-48df-8669-63c2a7223424.jpg
-wwwroot\upload\events\daadd31c-b7bc-4e8d-a733-db707f8736d9.jpg
 wwwroot\upload\events\dc92d204-0b4d-4b10-9d7f-462231e1ccc6.jpg
 wwwroot\upload\events\e02f74ef-7814-44f7-ac39-f02410894457.png
 wwwroot\upload\events\e37bd4fb-ab02-4d0b-8e6a-d80588df7a9f.jpg

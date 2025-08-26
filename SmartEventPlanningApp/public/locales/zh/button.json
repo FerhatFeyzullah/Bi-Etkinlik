@@ -22,6 +22,7 @@
     "pendingEvents": "待审核活动",
     "approvedEvents": "已批准活动",
     "rejectedEvents": "已拒绝活动",
+    "usersTab": "用户",
     "editProfile": "编辑个人资料",
     "listView": "列表视图",
     "darkMode": "深色模式",

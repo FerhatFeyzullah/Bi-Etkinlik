@@ -708,6 +708,22 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
+    "Method": "GetAllUsers",
+    "RelativePath": "api/Users/GetAllUsers",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AdminId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.UsersController",
     "Method": "GetMyProfile",
     "RelativePath": "api/Users/GetMyProfile",
     "HttpMethod": "GET",

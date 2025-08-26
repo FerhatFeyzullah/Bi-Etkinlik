@@ -48,7 +48,7 @@ function ReviewEventCard({ event }) {
                 <img
                     src={
                         !imgError && event.eventImageId
-                            ? `https://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+                            ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
                             : BiEtkinlik
                     }
                     style={{

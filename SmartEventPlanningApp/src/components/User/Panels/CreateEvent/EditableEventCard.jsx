@@ -50,7 +50,7 @@ function EditableEventCard() {
               <img
                 src={
                   !imgError && e.eventImageId
-                    ? `https://localhost:7126/api/Users/ProfileImage/${e.eventImageId}`
+                    ? `http://localhost:7126/api/Users/ProfileImage/${e.eventImageId}`
                     : BiEtkinlik
                 }
                 style={{

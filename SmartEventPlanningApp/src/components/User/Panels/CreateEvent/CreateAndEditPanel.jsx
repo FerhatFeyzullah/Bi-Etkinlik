@@ -262,7 +262,7 @@ function CreateAndEditPanel() {
                 <img
                   src={
                     !imgError && updatingImageId != ""
-                      ? `https://localhost:7126/api/Users/ProfileImage/${updatingImageId}`
+                      ? `http://localhost:7126/api/Users/ProfileImage/${updatingImageId}`
                       : BiEtkinlik
                   }
                   style={{

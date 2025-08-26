@@ -48,5 +48,10 @@
     "adminNavbarHeader": "Bi Etkinlik Beheerpaneel",
     "toastSuccess": "Geslaagd",
     "toastMistake": "Fout",
-    "toastWarning": "Waarschuwing"
+    "toastWarning": "Waarschuwing",
+    "deleteAccountTitle": "Account verwijderen",
+    "deleteAccountInfo": "Weet je zeker dat je dit account wilt verwijderen?",
+    "registerEventTitle": "Evenementregistratie",
+    "registerEventInfo": "Weet je zeker dat je je voor dit evenement wilt inschrijven?",
+    "adminEmptyPanelInfo": "Het lijkt erop dat er hier niets weer te geven is."
 }

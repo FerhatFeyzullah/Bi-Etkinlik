@@ -1,42 +1,36 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\SmartEventPlanningSystem.Persistence.csproj": {}
+    "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Persistence/SmartEventPlanningSystem.Persistence.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\SmartEventPlanningSystem.Application.csproj": {
+    "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Application/SmartEventPlanningSystem.Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\SmartEventPlanningSystem.Application.csproj",
+        "projectUniqueName": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Application/SmartEventPlanningSystem.Application.csproj",
         "projectName": "SmartEventPlanningSystem.Application",
-        "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\SmartEventPlanningSystem.Application.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\obj\\",
+        "projectPath": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Application/SmartEventPlanningSystem.Application.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Application/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj": {
-                "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj"
+              "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/SmartEventPlanningSystem.Domain.csproj": {
+                "projectPath": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/SmartEventPlanningSystem.Domain.csproj"
               },
-              "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj": {
-                "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj"
+              "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/SmartEventPlanningSystem.Infrastructure.csproj": {
+                "projectPath": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/SmartEventPlanningSystem.Infrastructure.csproj"
               }
             }
           }
@@ -50,8 +44,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -90,32 +83,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj": {
+    "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/SmartEventPlanningSystem.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
+        "projectUniqueName": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/SmartEventPlanningSystem.Domain.csproj",
         "projectName": "SmartEventPlanningSystem.Domain",
-        "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\obj\\",
+        "projectPath": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/SmartEventPlanningSystem.Domain.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -133,8 +120,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -161,32 +147,26 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj": {
+    "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/SmartEventPlanningSystem.Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj",
+        "projectUniqueName": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/SmartEventPlanningSystem.Infrastructure.csproj",
         "projectName": "SmartEventPlanningSystem.Infrastructure",
-        "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\obj\\",
+        "projectPath": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/SmartEventPlanningSystem.Infrastructure.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -204,8 +184,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -247,46 +226,40 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\SmartEventPlanningSystem.Persistence.csproj": {
+    "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Persistence/SmartEventPlanningSystem.Persistence.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\SmartEventPlanningSystem.Persistence.csproj",
+        "projectUniqueName": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Persistence/SmartEventPlanningSystem.Persistence.csproj",
         "projectName": "SmartEventPlanningSystem.Persistence",
-        "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\SmartEventPlanningSystem.Persistence.csproj",
-        "packagesPath": "C:\\Users\\DELL\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Persistence\\obj\\",
+        "projectPath": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Persistence/SmartEventPlanningSystem.Persistence.csproj",
+        "packagesPath": "/root/.nuget/packages/",
+        "outputPath": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Persistence/obj/",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\DELL\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+          "/root/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
         ],
         "sources": {
-          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\SmartEventPlanningSystem.Application.csproj": {
-                "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Application\\SmartEventPlanningSystem.Application.csproj"
+              "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Application/SmartEventPlanningSystem.Application.csproj": {
+                "projectPath": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Application/SmartEventPlanningSystem.Application.csproj"
               },
-              "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj": {
-                "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Core\\SmartEventPlanningSystem.Domain\\SmartEventPlanningSystem.Domain.csproj"
+              "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/SmartEventPlanningSystem.Domain.csproj": {
+                "projectPath": "/src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/SmartEventPlanningSystem.Domain.csproj"
               },
-              "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj": {
-                "projectPath": "C:\\Projects\\SEP_System\\SmartEventPlanningSystem\\Infrastructure\\SmartEventPlanningSystem.Infrastructure\\SmartEventPlanningSystem.Infrastructure.csproj"
+              "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/SmartEventPlanningSystem.Infrastructure.csproj": {
+                "projectPath": "/src/SmartEventPlanningSystem/Infrastructure/SmartEventPlanningSystem.Infrastructure/SmartEventPlanningSystem.Infrastructure.csproj"
               }
             }
           }
@@ -300,8 +273,7 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        },
-        "SdkAnalysisLevel": "9.0.300"
+        }
       },
       "frameworks": {
         "net8.0": {
@@ -342,7 +314,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/8.0.413/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

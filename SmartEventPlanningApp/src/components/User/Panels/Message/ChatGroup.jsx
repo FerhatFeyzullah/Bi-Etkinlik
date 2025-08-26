@@ -23,7 +23,7 @@ function ChatGroup({ event }) {
           sx={{ width: 70, height: 70 }}
           src={
             !imgError && event.eventImageId
-              ? `https://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+              ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
               : BiEtkinlik
           }
           onError={() => setImgError(true)}

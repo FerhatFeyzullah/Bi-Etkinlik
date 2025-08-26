@@ -26,9 +26,12 @@ export const categorySlice = createSlice({
         state.allCategory = action.payload;
         state.cetegoryFilterSkeletonLoaing = false;
         state.categoryLoaing = false;
+        console.log("getAllCategory success" + action.payload);
+
       })
       .addCase(GetAllCategory.rejected, (state) => {
         state.cetegoryFilterSkeletonLoaing = false;
+        console.log("getAllCategory failed")
         state.categoryLoaing = false;
       });
   },
