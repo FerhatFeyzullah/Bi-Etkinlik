@@ -17,10 +17,6 @@ export const LoginTheSystem = createAsyncThunk("login", async (data) => {
   const response = await axios.post("Auths/LoginTheSystem", data, {});
   return response.data;
 });
-export const RegisterTheSystem = createAsyncThunk("register", async (data) => {
-  const response = await axios.post("Auths/RegisterTheSystem", data, {});
-  return response.data;
-});
 
 export const ReadToken = createAsyncThunk("readToken", async () => {
   const response = await axios.get("Auths/CheckMe", {
@@ -28,6 +24,13 @@ export const ReadToken = createAsyncThunk("readToken", async () => {
   });
   return response.data;
 });
+
+export const RegisterTheSystem = createAsyncThunk("register", async (data) => {
+  const response = await axios.post("Auths/RegisterTheSystem", data, {});
+  return response.data;
+});
+
+
 
 export const LogoutFromSystem = createAsyncThunk("logout", async (data) => {
   await axios.post("Auths/LogoutFromSystem", data);

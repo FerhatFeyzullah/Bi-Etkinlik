@@ -1,20 +1,27 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-native';
+import RouterConfig from './navigation/RouterConfig';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Bi Etkinlik Mobile</Text>
-      <StatusBar style="auto" />
-    </View>
+    <Provider store={store}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+        <View style={styles.appContainer}>
+          <NavigationContainer>
+            <StatusBar style="auto" />
+            <RouterConfig />
+          </NavigationContainer>
+        </View>
+      </TouchableWithoutFeedback>
+    </Provider>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  appContainer: {
     flex: 1,
-    backgroundColor: '#2b911eff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  }
+})

@@ -90,6 +90,9 @@ builder.Services.AddCors(options =>
                         .AllowCredentials());
 });
 
+// Mobil icin 
+builder.WebHost.UseUrls("http://0.0.0.0:5112");
+
 
 
 builder.Services.AddControllers();

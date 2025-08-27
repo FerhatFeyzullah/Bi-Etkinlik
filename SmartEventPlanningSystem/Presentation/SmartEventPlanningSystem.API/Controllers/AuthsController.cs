@@ -40,6 +40,12 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost("LoginTheSystemFromMobile")]
+        public async Task<IActionResult> LoginTheSystemFromMobile([FromBody] LoginTheSystemRequest request)
+        {
+            return Ok(await mediator.Send(request));
+        }
+
         [Authorize]
         [HttpGet("CheckMe")]
         public IActionResult GetCurrentUser()
