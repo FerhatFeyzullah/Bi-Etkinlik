@@ -1,0 +1,19 @@
+{
+    "city": "Ville",
+    "category": "Catégorie",
+    "fromDate": "Date de début",
+    "toDate": "Date de fin",
+    "eventDescription": "Description de l'événement",
+    "eventName": "Nom de l'événement",
+    "searchAdressOrLocation": "Rechercher une adresse ou un lieu...",
+    "name": "Prénom",
+    "surname": "Nom",
+    "birthDate": "Date de naissance",
+    "gender": "Genre",
+    "male": "Homme",
+    "female": "Femme",
+    "oldPassword": "Ancien mot de passe",
+    "newPassword": "Nouveau mot de passe",
+    "newPasswordRepeat": "Répéter le nouveau mot de passe",
+    "writeMessage": "Écrivez votre message..."
+}

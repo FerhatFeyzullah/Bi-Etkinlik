@@ -1,0 +1,39 @@
+{
+    "rejected": "Une erreur de serveur s'est produite. Veuillez réessayer plus tard.",
+    "account": {
+        "uploadPPRejected": "Une erreur inattendue s'est produite lors du téléchargement de la photo de profil.",
+        "removePPRejected": "Une erreur inattendue s'est produite lors de la suppression de la photo de profil.",
+        "updateProfileFulfilledSuccess": "Informations du profil mises à jour avec succès.",
+        "updateProfileRejected": "Une erreur inattendue s'est produite lors de la mise à jour des informations du profil."
+    },
+    "auth": {
+        "loginFulfilledErrorOne": "Utilisateur non trouvé.",
+        "loginFulfilledErrorTwo": "Mot de passe incorrect.",
+        "registerFulfilledSuccess": "Nouvel utilisateur inscrit avec succès.",
+        "registerFulfilledErrorOne": "Ce nom d'utilisateur est déjà utilisé.",
+        "registerFulfilledErrorTwo": "Cette adresse e-mail est déjà utilisée.",
+        "registerFulfilledErrorThree": "La création de l'utilisateur a échoué.",
+        "registerFulfilledErrorFour": "Une erreur inattendue s'est produite lors de l'inscription. Veuillez réessayer plus tard."
+    },
+    "eventRegister": {
+        "registerEventFulfilledError": "Une erreur inattendue s'est produite lors de l'inscription à l'événement. Veuillez réessayer plus tard.",
+        "rateEventFulfilledError": "Une erreur inattendue s'est produite lors de l'évaluation de l'événement. Veuillez réessayer plus tard."
+    },
+    "event": {
+        "createEventFulfilledSuccess": "Événement créé avec succès. Vous pouvez suivre son statut d'approbation dans votre panneau d'événements.",
+        "createEventFulfilledError": "La création de l'événement a échoué. Veuillez réessayer plus tard.",
+        "updateEventFulfilledSuccess": "Événement mis à jour avec succès.",
+        "removeEventFulfilledSuccess": "Événement supprimé avec succès.",
+        "setEventStatusTrueFulfilledSuccess": "Statut de l'événement modifié avec succès.",
+        "setEventStatusFalseFulfilledSuccess": "Statut de l'événement modifié avec succès."
+    },
+    "forgotPassword": {
+        "sendResetCode": "Aucun utilisateur trouvé avec cette adresse e-mail.",
+        "verifyCodeFulfilledError": "Le code n'a pas pu être vérifié."
+    },
+    "userSetting": {
+        "changePasswordFulfilledSuccess": "Votre mot de passe a été changé avec succès.",
+        "changePasswordFulfilledErrorOne": "L'ancien mot de passe est incorrect.",
+        "changePasswordFulfilledErrorTwo": "Les nouveaux mots de passe ne correspondent pas."
+    }
+}

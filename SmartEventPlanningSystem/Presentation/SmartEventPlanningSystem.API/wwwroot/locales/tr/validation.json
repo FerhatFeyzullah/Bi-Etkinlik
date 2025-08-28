@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "Etkinliğe Bir İsim Veriniz.",
+        "nameMax": "Etkinlik Adı En Fazla 30 Karakter Uzunluğunda Olabilir.",
+        "descriptionRequired": "Açıklama Gereklidir.",
+        "cityRequired": "Şehir Seçimi Zorunludur.",
+        "locationRequired": "Etkinlik Konumu Seçmediniz.",
+        "imageRequired": "Etkinlik Fotoğrafını Yükle.",
+        "imageTest": "Dosya Boyutu 10 MB'a Kadar Olabilir.",
+        "startDateRequired": "Başlangıç Tarihi Seçmediniz.",
+        "endDateRequired": "Bitiş Tarihi Seçmediniz.",
+        "endDateTest": "Bitiş Tarihi Başlangıç Tarihinden Önce Olamaz.",
+        "categoriesRequired": "Etkinlik Kategorisi Seçmediniz.",
+        "categoriesMax": "En Fazla 1 Tane Kategori Seçebilirsin!"
+    },
+    "userInfo": {
+        "firstNameRequired": "İsim Giriniz.",
+        "lastNameRequired": "Soyisim Giriniz.",
+        "cityRequired": "Şehir Seçimi Zorunludur.",
+        "birthDateRequired": "Doğum Tarihi Zorunlur.",
+        "genderRequired": "Cinsiyet Seçimi Zorunludur",
+        "areasMin": "En Az Bir Tane İlgi Alanı Seçmelisin!",
+        "areasMax": "En Fazla 7 Tane İlgi Alanı Seçebilirsin!"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "Eski Şifrenini Giriniz.",
+        "oldPasswordMin": "Şifre En az 8 Karakter Olmalı.",
+        "newPasswordRequired": "Yeni Şifrenini Giriniz.",
+        "newPasswordMin": "Şifre En az 8 Karakter Olmalı.",
+        "newPasswordMatchesLower": "Küçük Harf İçermeli.",
+        "newPasswordMatchesUpper": "Büyük Harf İçermeli.",
+        "newPasswordMatchesDigit": "Rakam İçermeli.",
+        "newPasswordMatchesSpecial": "Özel Karakter İçermeli.",
+        "confirmNewPasswordRequired": "Şifre Tekrarı Zorunlu.",
+        "confirmNewPasswordOneOf": "Şifreler Eşleşmiyor."
+    },
+    "emailVerification": {
+        "codeRequired": "Herhangi bir kod girmediniz",
+        "codeMatchesSixDigit": "Lütfen 6 haneyi de giriniz",
+        "codeNotVerified": "Kod Doğrulanamadı"
+    }
+}

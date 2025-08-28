@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "Asigne un nombre al evento.",
+        "nameMax": "El nombre del evento puede tener hasta 30 caracteres.",
+        "descriptionRequired": "Se requiere una descripción.",
+        "cityRequired": "Ciudad del evento no seleccionada.",
+        "locationRequired": "No ha seleccionado una ubicación para el evento.",
+        "imageRequired": "Suba una foto del evento.",
+        "imageTest": "El tamaño del archivo puede ser de hasta 10 MB.",
+        "startDateRequired": "No ha seleccionado una fecha de inicio.",
+        "endDateRequired": "No ha seleccionado una fecha de finalización.",
+        "endDateTest": "La fecha de finalización no puede ser anterior a la fecha de inicio.",
+        "categoriesRequired": "Categoría del evento no seleccionada.",
+        "categoriesMax": "¡Puede seleccionar hasta 1 categoría!"
+    },
+    "userInfo": {
+        "firstNameRequired": "Ingrese su nombre.",
+        "lastNameRequired": "Ingrese su apellido.",
+        "cityRequired": "Se requiere la selección de la ciudad.",
+        "birthDateRequired": "Se requiere la fecha de nacimiento.",
+        "genderRequired": "Se requiere la selección de género.",
+        "areasMin": "¡Debe seleccionar al menos un área de interés!",
+        "areasMax": "¡Puede seleccionar hasta 7 áreas de interés!"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "Ingrese su contraseña anterior.",
+        "oldPasswordMin": "La contraseña debe tener al menos 8 caracteres.",
+        "newPasswordRequired": "Ingrese su nueva contraseña.",
+        "newPasswordMin": "La contraseña debe tener al menos 8 caracteres.",
+        "newPasswordMatchesLower": "Debe contener letras minúsculas.",
+        "newPasswordMatchesUpper": "Debe contener letras mayúsculas.",
+        "newPasswordMatchesDigit": "Debe contener números.",
+        "newPasswordMatchesSpecial": "Debe contener caracteres especiales.",
+        "confirmNewPasswordRequired": "Se requiere la repetición de la contraseña.",
+        "confirmNewPasswordOneOf": "Las contraseñas no coinciden."
+    },
+    "emailVerification": {
+        "codeRequired": "No ha ingresado ningún código.",
+        "codeMatchesSixDigit": "Por favor, ingrese los 6 dígitos.",
+        "codeNotVerified": "El código no pudo ser verificado."
+    }
+}

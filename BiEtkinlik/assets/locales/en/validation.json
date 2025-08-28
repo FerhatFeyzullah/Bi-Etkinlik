@@ -1,0 +1,42 @@
+{
+    "event": {
+        "nameRequired": "Give the event a name.",
+        "nameMax": "Event Name Can Be Up to 30 Characters Long.",
+        "descriptionRequired": "A Description Is Required.",
+        "cityRequired": "Event City Not Selected.",
+        "locationRequired": "You Have Not Selected An Event Location.",
+        "imageRequired": "Upload Event Photo.",
+        "imageTest": "The File Size Can Be Up To 10MB.",
+        "startDateRequired": "You Have Not Selected A Start Date.",
+        "endDateRequired": "You Have Not Selected An End Date.",
+        "endDateTest": "The End Date Cannot Be Before The Start Date.",
+        "categoriesRequired": "Event Category Not Selected",
+        "categoriesMax": "You Can Select Up To 1 Categories!"
+    },
+    "userInfo": {
+        "firstNameRequired": "Enter Name.",
+        "lastNameRequired": "Enter Last Name.",
+        "cityRequired": "City Selection Is Required.",
+        "birthDateRequired": "Birth Date Required.",
+        "genderRequired": "Gender Selection Is Required.",
+        "areasMin": "You Must Select At Least One Area Of Interest!",
+        "areasMax": "You Can Select Up To 7 Areas Of Interest!"
+    },
+    "changePassword": {
+        "oldPasswordRequired": "Enter Your Old Password.",
+        "oldPasswordMin": "Password Must Be At Least 8 Characters Long.",
+        "newPasswordRequired": "Enter Your New Password.",
+        "newPasswordMin": "Password Must Be At Least 8 Characters Long.",
+        "newPasswordMatchesLower": "Must Contain Lowercase Letters.",
+        "newPasswordMatchesUpper": "Must Contain Uppercase Letters.",
+        "newPasswordMatchesDigit": "Must Contain Numbers.",
+        "newPasswordMatchesSpecial": "Must Contain Special Characters.",
+        "confirmNewPasswordRequired": "Password Repetition Required.",
+        "confirmNewPasswordOneOf": "Passwords Don't Match."
+    },
+    "emailVerification": {
+        "codeRequired": "You did not enter any code",
+        "codeMatchesSixDigit": "Please enter all 6 digits",
+        "codeNotVerified": "Code could not be verified"
+    }
+}

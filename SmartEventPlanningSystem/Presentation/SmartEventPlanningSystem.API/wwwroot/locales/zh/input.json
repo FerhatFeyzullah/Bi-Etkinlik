@@ -1,0 +1,19 @@
+{
+    "city": "城市",
+    "category": "类别",
+    "fromDate": "开始日期",
+    "toDate": "结束日期",
+    "eventDescription": "活动描述",
+    "eventName": "活动名称",
+    "searchAdressOrLocation": "搜索地址或位置...",
+    "name": "名字",
+    "surname": "姓氏",
+    "birthDate": "出生日期",
+    "gender": "性别",
+    "male": "男",
+    "female": "女",
+    "oldPassword": "旧密码",
+    "newPassword": "新密码",
+    "newPasswordRepeat": "重复新密码",
+    "writeMessage": "输入您的消息..."
+}

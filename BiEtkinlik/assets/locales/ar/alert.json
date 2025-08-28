@@ -1,0 +1,39 @@
+{
+    "rejected": "حدث خطأ في الخادم. يرجى المحاولة مرة أخرى لاحقًا.",
+    "account": {
+        "uploadPPRejected": "حدث خطأ غير متوقع أثناء تحميل صورة الملف الشخصي.",
+        "removePPRejected": "حدث خطأ غير متوقع أثناء إزالة صورة الملف الشخصي.",
+        "updateProfileFulfilledSuccess": "تم تحديث معلومات الملف الشخصي بنجاح.",
+        "updateProfileRejected": "حدث خطأ غير متوقع أثناء تحديث معلومات الملف الشخصي."
+    },
+    "auth": {
+        "loginFulfilledErrorOne": "لم يتم العثور على المستخدم.",
+        "loginFulfilledErrorTwo": "كلمة المرور غير صحيحة.",
+        "registerFulfilledSuccess": "تم تسجيل المستخدم الجديد بنجاح.",
+        "registerFulfilledErrorOne": "اسم المستخدم هذا مستخدم بالفعل.",
+        "registerFulfilledErrorTwo": "عنوان البريد الإلكتروني هذا مستخدم بالفعل.",
+        "registerFulfilledErrorThree": "تعذر إنشاء المستخدم.",
+        "registerFulfilledErrorFour": "حدث خطأ غير متوقع أثناء التسجيل. يرجى المحاولة مرة أخرى لاحقًا."
+    },
+    "eventRegister": {
+        "registerEventFulfilledError": "حدث خطأ غير متوقع أثناء التسجيل في الحدث. يرجى المحاولة مرة أخرى لاحقًا.",
+        "rateEventFulfilledError": "حدث خطأ غير متوقع أثناء تقييم الحدث. يرجى المحاولة مرة أخرى لاحقًا."
+    },
+    "event": {
+        "createEventFulfilledSuccess": "تم إنشاء الحدث بنجاح. يمكنك تتبع حالة الموافقة عليه في لوحة الأحداث الخاصة بك.",
+        "createEventFulfilledError": "تعذر إنشاء الحدث. يرجى المحاولة مرة أخرى لاحقًا.",
+        "updateEventFulfilledSuccess": "تم تحديث الحدث بنجاح.",
+        "removeEventFulfilledSuccess": "تم إزالة الحدث بنجاح.",
+        "setEventStatusTrueFulfilledSuccess": "تم تغيير حالة الحدث بنجاح.",
+        "setEventStatusFalseFulfilledSuccess": "تم تغيير حالة الحدث بنجاح."
+    },
+    "forgotPassword": {
+        "sendResetCode": "لم يتم العثور على أي مستخدم بهذا العنوان البريدي.",
+        "verifyCodeFulfilledError": "تعذر التحقق من الرمز."
+    },
+    "userSetting": {
+        "changePasswordFulfilledSuccess": "تم تغيير كلمة المرور الخاصة بك بنجاح.",
+        "changePasswordFulfilledErrorOne": "كلمة المرور القديمة غير صحيحة.",
+        "changePasswordFulfilledErrorTwo": "كلمات المرور الجديدة غير متطابقة."
+    }
+}

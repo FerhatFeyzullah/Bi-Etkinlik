@@ -1,0 +1,19 @@
+{
+    "city": "المدينة",
+    "category": "الفئة",
+    "fromDate": "من تاريخ",
+    "toDate": "إلى تاريخ",
+    "eventDescription": "وصف الحدث",
+    "eventName": "اسم الحدث",
+    "searchAdressOrLocation": "ابحث عن عنوان أو موقع...",
+    "name": "الاسم",
+    "surname": "اسم العائلة",
+    "birthDate": "تاريخ الميلاد",
+    "gender": "الجنس",
+    "male": "ذكر",
+    "female": "أنثى",
+    "oldPassword": "كلمة المرور القديمة",
+    "newPassword": "كلمة المرور الجديدة",
+    "newPasswordRepeat": "إعادة كلمة المرور الجديدة",
+    "writeMessage": "اكتب رسالتك..."
+}

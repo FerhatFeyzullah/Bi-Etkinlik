@@ -24,3 +24,16 @@ C:/Projects/SEP_System/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Do
 /src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/obj/Debug/net8.0/refint/SmartEventPlanningSystem.Domain.dll
 /src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/obj/Debug/net8.0/SmartEventPlanningSystem.Domain.pdb
 /src/SmartEventPlanningSystem/Core/SmartEventPlanningSystem.Domain/obj/Debug/net8.0/ref/SmartEventPlanningSystem.Domain.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.deps.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\bin\Debug\net8.0\SmartEventPlanningSystem.Domain.pdb
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.csproj.AssemblyReference.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.AssemblyInfoInputs.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.AssemblyInfo.cs
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.csproj.CoreCompileInputs.cache
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.sourcelink.json
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\refint\SmartEventPlanningSystem.Domain.dll
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\SmartEventPlanningSystem.Domain.pdb
+C:\Projects\SEP_System\SmartEventPlanningSystem\Core\SmartEventPlanningSystem.Domain\obj\Debug\net8.0\ref\SmartEventPlanningSystem.Domain.dll

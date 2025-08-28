@@ -1,0 +1,16 @@
+{
+  "myEvents": "Bu panelde yalnızca henüz başlamamış etkinlikleri görüntüleyebilir, düzenleyebilir veya silebilirsiniz.",
+  "previewEvent": "Etkinliği Önizle.",
+  "deleteEvent": "Dikkat: Etkinlik silindikten sonra geri alınamaz!",
+  "updateEvent": "Bu etkinliği güncellediğinizde sistem tarafından tekrar incelenecektir.",
+  "eventStatusTrue": "Etkinlik onaylandı. Artık diğer kullanıcılar tarafından görüntülenebilir ve katılım alabilir.",
+  "eventStatusFalse": "Etkinlik reddedildi. İçerik politikalarına uymadığı için yayınlanmadı.",
+  "eventStatusNull": "Etkinlik inceleme aşamasında. Kısa süre içinde onaylanacak ya da reddedilecek.",
+  "communityScore": "Topluluk puanı",
+  "deleteMyRegistration": "Kaydımı sil.",
+  "viewLocation": "Etkinliğin konumunu gör.",
+  "rateYourExperience": "Deneyiminizi değerlendir.",
+  "ratedEvent": "Bu Etkinlik Değerlendirildi.",
+  "verifedEmailIcon": "Doğrulanmış hesap",
+  "darkModeSwitch": "Karanlık mod yakında geliyor."
+}

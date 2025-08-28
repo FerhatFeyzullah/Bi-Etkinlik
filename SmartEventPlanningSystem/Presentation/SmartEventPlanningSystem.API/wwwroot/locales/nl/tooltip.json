@@ -1,0 +1,17 @@
+{
+    "myEvents": "Op dit paneel kunt u alleen evenementen bekijken, bewerken of verwijderen die nog niet zijn begonnen.",
+    "previewEvent": "Bekijk een voorbeeld van het evenement.",
+    "deleteEvent": "Waarschuwing: Zodra een evenement is verwijderd, kan het niet worden hersteld!",
+    "updateEvent": "Wanneer u dit evenement bijwerkt, wordt het opnieuw beoordeeld door het systeem.",
+    "eventStatusTrue": "Het evenement is goedgekeurd. Het kan nu worden bekeken door andere gebruikers en deelnemers accepteren.",
+    "eventStatusFalse": "Het evenement is afgewezen. Het is niet gepubliceerd omdat het niet voldeed aan de inhoudsbeleid.",
+    "eventStatusNull": "Het evenement wordt momenteel beoordeeld. Het wordt binnenkort goedgekeurd of afgewezen.",
+    "communityScore": "Gemeenschapsscore",
+    "deleteMyRegistration": "Mijn registratie verwijderen",
+    "viewLocation": "Bekijk de locatie van het evenement",
+    "rateYourExperience": "Beoordeel uw ervaring",
+    "ratedEvent": "Dit evenement is beoordeeld.",
+    "eventFinished": "U kunt geen berichten meer verzenden omdat dit evenement is beëindigd.",
+    "verifedEmailIcon": "Geverifieerd",
+    "darkModeSwitch": "Donkere modus komt binnenkort."
+}

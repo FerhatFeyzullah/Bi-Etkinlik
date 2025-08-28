@@ -1,0 +1,17 @@
+{
+    "myEvents": "在此面板中，您只能查看、编辑或删除尚未开始的活动。",
+    "previewEvent": "预览活动。",
+    "deleteEvent": "警告：活动一旦删除，将无法恢复！",
+    "updateEvent": "当您更新此活动时，系统将重新审核。",
+    "eventStatusTrue": "活动已获批准。现在其他用户可以查看并接受参与者。",
+    "eventStatusFalse": "活动已被拒绝。由于不符合内容政策，未发布。",
+    "eventStatusNull": "活动目前正在审核中。很快就会批准或拒绝。",
+    "communityScore": "社区评分",
+    "deleteMyRegistration": "删除我的注册",
+    "viewLocation": "查看活动地点",
+    "rateYourExperience": "评价您的体验",
+    "ratedEvent": "此活动已评估。",
+    "eventFinished": "此活动已结束，无法再发送消息。",
+    "verifedEmailIcon": "已验证",
+    "darkModeSwitch": "深色模式即将推出。"
+}

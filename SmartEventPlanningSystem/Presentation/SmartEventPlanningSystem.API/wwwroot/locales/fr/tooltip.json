@@ -1,0 +1,17 @@
+{
+    "myEvents": "Sur ce panneau, vous ne pouvez voir, modifier ou supprimer que les événements qui n'ont pas encore commencé.",
+    "previewEvent": "Aperçu de l'événement.",
+    "deleteEvent": "Avertissement : Une fois un événement supprimé, il ne peut pas être récupéré !",
+    "updateEvent": "Lorsque vous mettez à jour cet événement, il sera à nouveau examiné par le système.",
+    "eventStatusTrue": "L'événement a été approuvé. Il peut maintenant être vu par d'autres utilisateurs et accepter des participants.",
+    "eventStatusFalse": "L'événement a été rejeté. Il n'a pas été publié car il ne respectait pas les politiques de contenu.",
+    "eventStatusNull": "L'événement est actuellement en cours d'examen. Il sera approuvé ou rejeté sous peu.",
+    "communityScore": "Score de la communauté",
+    "deleteMyRegistration": "Supprimer mon inscription",
+    "viewLocation": "Voir l'emplacement de l'événement",
+    "rateYourExperience": "Évaluez votre expérience",
+    "ratedEvent": "Cet événement a été évalué.",
+    "eventFinished": "Vous ne pouvez plus envoyer de messages car cet événement est terminé.",
+    "verifedEmailIcon": "Vérifié",
+    "darkModeSwitch": "Mode sombre à venir."
+}

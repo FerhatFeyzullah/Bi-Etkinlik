@@ -1,0 +1,39 @@
+{
+    "rejected": "Es ist ein Serverfehler aufgetreten. Bitte versuchen Sie es später erneut.",
+    "account": {
+        "uploadPPRejected": "Beim Hochladen des Profilfotos ist ein unerwarteter Fehler aufgetreten.",
+        "removePPRejected": "Beim Löschen des Profilfotos ist ein unerwarteter Fehler aufgetreten.",
+        "updateProfileFulfilledSuccess": "Die Profilinformationen wurden erfolgreich aktualisiert.",
+        "updateProfileRejected": "Beim Aktualisieren der Profilinformationen ist ein unerwarteter Fehler aufgetreten."
+    },
+    "auth": {
+        "loginFulfilledErrorOne": "Benutzer nicht gefunden.",
+        "loginFulfilledErrorTwo": "Falsches Passwort.",
+        "registerFulfilledSuccess": "Neuer Benutzer wurde erfolgreich registriert.",
+        "registerFulfilledErrorOne": "Dieser Benutzername wird bereits verwendet.",
+        "registerFulfilledErrorTwo": "Diese E-Mail-Adresse wird bereits verwendet.",
+        "registerFulfilledErrorThree": "Der Benutzer konnte nicht erstellt werden.",
+        "registerFulfilledErrorFour": "Während der Registrierung ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+    },
+    "eventRegister": {
+        "registerEventFulfilledError": "Beim Registrieren für die Veranstaltung ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut.",
+        "rateEventFulfilledError": "Beim Bewerten der Veranstaltung ist ein unerwarteter Fehler aufgetreten. Bitte versuchen Sie es später erneut."
+    },
+    "event": {
+        "createEventFulfilledSuccess": "Veranstaltung wurde erfolgreich erstellt. Sie können den Genehmigungsstatus in Ihrem Veranstaltungs-Panel verfolgen.",
+        "createEventFulfilledError": "Veranstaltung konnte nicht erstellt werden. Bitte versuchen Sie es später erneut.",
+        "updateEventFulfilledSuccess": "Veranstaltung wurde erfolgreich aktualisiert.",
+        "removeEventFulfilledSuccess": "Veranstaltung wurde erfolgreich gelöscht.",
+        "setEventStatusTrueFulfilledSuccess": "Der Status der Veranstaltung wurde erfolgreich geändert.",
+        "setEventStatusFalseFulfilledSuccess": "Der Status der Veranstaltung wurde erfolgreich geändert."
+    },
+    "forgotPassword": {
+        "sendResetCode": "Kein Benutzer mit dieser E-Mail-Adresse gefunden.",
+        "verifyCodeFulfilledError": "Der Code konnte nicht verifiziert werden."
+    },
+    "userSetting": {
+        "changePasswordFulfilledSuccess": "Ihr Passwort wurde erfolgreich geändert.",
+        "changePasswordFulfilledErrorOne": "Das alte Passwort ist falsch.",
+        "changePasswordFulfilledErrorTwo": "Die neuen Passwörter stimmen nicht überein."
+    }
+}

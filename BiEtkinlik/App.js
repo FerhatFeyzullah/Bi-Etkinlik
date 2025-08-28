@@ -4,6 +4,8 @@ import { Keyboard, StyleSheet, TouchableWithoutFeedback, View } from 'react-nati
 import RouterConfig from './navigation/RouterConfig';
 import { Provider } from 'react-redux';
 import store from './redux/store';
+import Toast from 'react-native-toast-message';
+import './i18n';
 
 export default function App() {
   return (
@@ -14,6 +16,7 @@ export default function App() {
             <StatusBar style="auto" />
             <RouterConfig />
           </NavigationContainer>
+          <Toast />
         </View>
       </TouchableWithoutFeedback>
     </Provider>

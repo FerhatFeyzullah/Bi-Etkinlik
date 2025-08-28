@@ -27,6 +27,22 @@
   },
   {
     "ContainingType": "SmartEventPlanningSystem.API.Controllers.AuthsController",
+    "Method": "LoginTheSystemFromMobile",
+    "RelativePath": "api/Auths/LoginTheSystemFromMobile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.LoginTheSystem.LoginTheSystemRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SmartEventPlanningSystem.API.Controllers.AuthsController",
     "Method": "Logout",
     "RelativePath": "api/Auths/LogoutFromSystem",
     "HttpMethod": "POST",

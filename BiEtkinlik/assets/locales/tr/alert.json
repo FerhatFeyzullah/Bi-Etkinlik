@@ -1,0 +1,40 @@
+{
+    "rejected": "Sunucu Tarafında Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.",
+    "account": {
+        "uploadPPRejected": "Profil fotoğrafı yüklenirken beklenmeyen bir hata oluştu.",
+        "removePPRejected": "Profil fotoğrafı silinirken beklenmeyen bir hata oluştu.",
+        "updateProfileFulfilledSuccess": "Profil bilgileri başarıyla güncellendi.",
+        "updateProfileRejected": "Profil bilgileri güncellenirken beklenmeyen bir hata oluştu.",
+        "removeAccountFulfilled": "Hesap başarıyla silindi."
+    },
+    "auth": {
+        "loginFulfilledErrorOne": "Kullanıcı Bulunamadı.",
+        "loginFulfilledErrorTwo": "Hatalı Şifre Girişi.",
+        "registerFulfilledSuccess": "Yeni Kullanıcı Kaydı Başarıyla Yapıldı.",
+        "registerFulfilledErrorOne": "Bu Kullanıcı İsmi Zaten Kullanılıyor.",
+        "registerFulfilledErrorTwo": "Bu Email Adresi Zaten Kullanılıyor.",
+        "registerFulfilledErrorThree": "Kullanıcı Oluşturulamadı.",
+        "registerFulfilledErrorFour": "Kayıt Sırasında Beklenmeyen Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz."
+    },
+    "eventRegister": {
+        "registerEventFulfilledError": "Etkinlik Kayıt Sırasında Beklenemdik Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz.",
+        "rateEventFulfilledError": "Etkinlik Değerlendirme Sırasında Beklenemdik Bir Hata Oluştu. Lütfen Daha Sonra Tekrar Deneyiniz."
+    },
+    "event": {
+        "createEventFulfilledSuccess": "Etkinlik Başarıyla Oluşturuldu. Etkinliklerim Panelinden Onay Durumunu Takip Edebilirsiniz.",
+        "createEventFulfilledError": "Etkinlik Oluşturulamadı. Lütfen Daha Sonra Tekrar Deneyiniz.",
+        "updateEventFulfilledSuccess": "Etkinlik Başarıyla Güncellendi.",
+        "removeEventFulfilledSuccess": "Etkinlik Başarıyla Silindi.",
+        "setEventStatusTrueFulfilledSuccess": "Etkinlik Durumu Başarıyla Değiştirildi",
+        "setEventStatusFalseFulfilledSuccess": "Etkinlik Durumu Başarıyla Değiştirildi"
+    },
+    "forgotPassword": {
+        "sendResetCode": "Bu e-posta adresiyle kayıtlı bir kullanıcı bulunamadı.",
+        "verifyCodeFulfilledError": "Kod Doğrulanamadı."
+    },
+    "userSetting": {
+        "changePasswordFulfilledSuccess": "Şifreniz Başarıyla Değiştirildi.",
+        "changePasswordFulfilledErrorOne": "Eski Şifre Yanlış.",
+        "changePasswordFulfilledErrorTwo": "Yeni Şifreler Eşleşmiyor."
+    }
+}

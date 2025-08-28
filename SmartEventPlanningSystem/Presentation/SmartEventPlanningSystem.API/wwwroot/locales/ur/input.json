@@ -1,0 +1,19 @@
+{
+    "city": "شہر",
+    "category": "قسم",
+    "fromDate": "شروع کی تاریخ",
+    "toDate": "ختم ہونے کی تاریخ",
+    "eventDescription": "ایونٹ کی تفصیل",
+    "eventName": "ایونٹ کا نام",
+    "searchAdressOrLocation": "ایڈریس یا جگہ تلاش کریں...",
+    "name": "نام",
+    "surname": "خاندانی نام",
+    "birthDate": "تاریخ پیدائش",
+    "gender": "جنس",
+    "male": "مرد",
+    "female": "عورت",
+    "oldPassword": "پرانا پاس ورڈ",
+    "newPassword": "نیا پاس ورڈ",
+    "newPasswordRepeat": "نیا پاس ورڈ دہرائیں",
+    "writeMessage": "اپنا پیغام لکھیں..."
+}

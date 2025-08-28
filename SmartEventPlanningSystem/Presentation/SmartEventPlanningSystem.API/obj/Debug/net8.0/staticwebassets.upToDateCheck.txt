@@ -1,4 +1,3 @@
-wwwroot\upload\events\02f04582-802b-4a6c-a52a-bb9c9e89417c.jpg
 wwwroot\upload\events\0998e29b-0334-4024-a797-d90e08d76018.jpg
 wwwroot\upload\events\0df06460-0860-4949-ad1f-27c111f4baaa.jpg
 wwwroot\upload\events\2000a1c4-4b33-4e80-afaf-5c299d49c319.jpg
