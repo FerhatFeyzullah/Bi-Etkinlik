@@ -3,6 +3,7 @@ import qs from "qs";
 
 const instance = axios.create({
   baseURL: "/api/",
+  //baseURL: "https://localhost:7126/api/",
   paramsSerializer: (params) => qs.stringify(params, { arrayFormat: "repeat" }),
   withCredentials: true,
 });

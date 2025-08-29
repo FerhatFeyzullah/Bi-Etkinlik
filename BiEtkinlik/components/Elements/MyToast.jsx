@@ -14,10 +14,12 @@ const MyToast = ({ type, visible, detail, closer }) => {
                 text1Style: { fontSize: 18, fontWeight: 'bold' },
                 text2: detail,
                 text2Style: { fontSize: 13 },
+                text2NumberOfLines: 0,
                 position: "top",
                 visibilityTime: 3000,
                 autoHide: true,
                 onHide: closer
+
             });
         }
     }, [visible]);

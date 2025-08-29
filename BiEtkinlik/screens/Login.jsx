@@ -110,7 +110,7 @@ const Login = () => {
                     style={styles.loginButton}
                     textColor='white'
                     mode='contained'
-                    buttonColor='rgba(156, 21, 134, 1)'
+                    buttonColor='rgba(21, 156, 50, 1)'
                     onPress={Submit}
                 >
                     Giriş Yap

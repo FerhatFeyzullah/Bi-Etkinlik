@@ -1,6 +1,7 @@
 import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 import Backend from "i18next-http-backend";
+import defaultTR from './assets/locales/tr/default.json'
 
 let language = "tr";
 
@@ -19,9 +20,15 @@ i18n
     .init({
         fallbackLng: "tr",
         lng: language,
-        ns: ["button", "tooltip", "text", "input", "alert", "category"],
+        ns: ["button", "tooltip", "text", "input", "alert", "category", "default"],
+        fallbackNS: 'default',
+        resources: {
+            tr: {
+                default: defaultTR,
+            },
+        },
         backend: {
-            loadPath: "http://192.168.1.102:5112/locales/{{lng}}/{{ns}}.json",
+            loadPath: "http://192.168.1.107:5112/locales/{{lng}}/{{ns}}.json",
         },
     });
 

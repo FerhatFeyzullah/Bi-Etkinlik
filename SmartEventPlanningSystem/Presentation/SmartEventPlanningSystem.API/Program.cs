@@ -115,12 +115,12 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-var disableHttpsRedirect = Environment.GetEnvironmentVariable("DISABLE_HTTPS_REDIRECT");
-if (string.IsNullOrWhiteSpace(disableHttpsRedirect) || !disableHttpsRedirect.Equals("true", StringComparison.OrdinalIgnoreCase))
-{
-    app.UseHttpsRedirection();
-}
-app.UseCors("AllowFrontend");
+//var disableHttpsRedirect = Environment.GetEnvironmentVariable("DISABLE_HTTPS_REDIRECT");
+//if (string.IsNullOrWhiteSpace(disableHttpsRedirect) || !disableHttpsRedirect.Equals("true", StringComparison.OrdinalIgnoreCase))
+//{
+//    app.UseHttpsRedirection();
+//}
+//app.UseCors("AllowFrontend");
 
 app.UseAuthorization();
 app.UseStaticFiles();

@@ -176,7 +176,7 @@ function MessagesPanel() {
                 sx={{ width: 70, height: 70 }}
                 src={
                   !imgError && chattingEvent.eventImageId
-                    ? `htts://localhost:7126/api/Users/ProfileImage/${chattingEvent.eventImageId}`
+                    ? `http://localhost:7126/api/Users/ProfileImage/${chattingEvent.eventImageId}`
                     : BiEtkinlik
                 }
                 onError={() => setImgError(true)}
