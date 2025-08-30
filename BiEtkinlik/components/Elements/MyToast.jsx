@@ -10,7 +10,7 @@ const MyToast = ({ type, visible, detail, closer }) => {
         if (visible) {
             Toast.show({
                 type: type,
-                text1: tText("toastMistake"),
+                text1: type == 'error' ? tText("toastMistake") : tText("toastSuccess"),
                 text1Style: { fontSize: 18, fontWeight: 'bold' },
                 text2: detail,
                 text2Style: { fontSize: 13 },

@@ -1,21 +1,28 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Pressable, TouchableOpacity } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { Button, HelperText, TextInput } from 'react-native-paper';
+import { Button, HelperText } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { schema } from '../schemas/LoginSchema'
 import { useDispatch, useSelector } from 'react-redux';
-import { LoginTheSystem, SetLoginToastMistake } from '../redux/slices/authSlice';
+import { LoginTheSystem, SetLoginMistakeAlert } from '../redux/slices/authSlice';
 import { jwtDecode } from 'jwt-decode';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 import MyToast from '../components/Elements/MyToast';
+import Loading from '../components/Elements/Loading';
+import { useSafeAreaInsets } from "react-native-safe-area-context";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { COLORS } from '../constants/colors'
+
 const Login = () => {
+    const insets = useSafeAreaInsets();
+
     const { t: tAlert } = useTranslation("alert");
 
     const navigation = useNavigation();
     const dispatch = useDispatch();
 
-    const { loginResponse, loginToastMistake } = useSelector(store => store.auth)
+    const { loginResponse, loginMistakeAlert, loginLoading } = useSelector(store => store.auth)
 
     const [userName, setUserName] = useState("");
     const [password, setPassword] = useState("");
@@ -65,64 +72,70 @@ const Login = () => {
     }
 
     const CloseLoginMistake = () => {
-        dispatch(SetLoginToastMistake(false));
+        dispatch(SetLoginMistakeAlert(false));
     }
 
     return (
-        <View style={styles.loginContainer}>
+
+        <View style={[styles.loginContainer, { paddingBottom: insets.bottom }]}>
             <View style={styles.title}>
                 <Text style={styles.titleText}>Bi Etkinlik</Text>
             </View>
-            <View style={styles.input}>
-                <TextInput
-                    mode='outlined'
-                    label="Kullanıcı Adı"
-                    activeOutlineColor='black'
-                    value={userName}
-                    onChangeText={text => setUserName(text)}
 
-                />
+            <View style={styles.viewInput}>
+                <Text style={{ fontWeight: '500', margin: 5, color: COLORS.text }}>Kullanıcı Adı</Text>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.textInput}
+                        value={userName}
+                        onChangeText={text => setUserName(text)}
+
+                    />
+                </View>
                 <HelperText type='error'
                     visible={Boolean(errors.userName)}>
                     {errors.userName}
                 </HelperText>
             </View>
-            <View style={styles.input}>
-                <TextInput
-                    label="Şifre"
-                    mode='outlined'
-                    activeOutlineColor='black'
-                    secureTextEntry={!passwordShow}
-                    right={<TextInput.Icon
-                        icon={passwordShow ? "eye" : "eye-off"}
-                        onPress={() => setPasswordShow(!passwordShow)} />}
-                    value={password}
-                    onChangeText={text => setPassword(text)}
+            <View style={styles.viewInput}>
+                <Text style={{ fontWeight: '500', margin: 5, color: COLORS.text }}>Şifre</Text>
 
-                />
-                <HelperText type='error'
-                    visible={Boolean(errors.password)}>
+                <View style={styles.inputContainer}>
+                    <TextInput
+                        style={styles.textInput}
+                        secureTextEntry={!passwordShow}
+                        value={password}
+                        onChangeText={text => setPassword(text)}
+                    />
+
+                    <TouchableOpacity
+                        style={styles.iconContainer}
+                        onPress={() => setPasswordShow(prevState => !prevState)}
+                    >
+                        <Icon name={passwordShow ? 'eye-slash' : 'eye'} size={20} color={COLORS.textLight} />
+                    </TouchableOpacity>
+                </View>
+
+                <HelperText type="error" visible={Boolean(errors.password)}>
                     {errors.password}
                 </HelperText>
             </View>
-            <View>
-                <Button
+            <View style={{ margin: 10 }}>
+                <Pressable
                     style={styles.loginButton}
-                    textColor='white'
-                    mode='contained'
-                    buttonColor='rgba(21, 156, 50, 1)'
                     onPress={Submit}
                 >
-                    Giriş Yap
-                </Button>
+                    <Text style={styles.loginButtonText}>
+                        Giriş Yap
+                    </Text>
+                </Pressable>
             </View>
             <View>
                 <Button
                     textColor='grey'
                     onPress={() => navigation.navigate("ForgotPassword")}
-
                 >
-                    Şifreni mi unuttun ?
+                    <Text>Şifreni mi unuttun ?</Text>
                 </Button>
             </View>
             <View>
@@ -130,20 +143,28 @@ const Login = () => {
                     textColor='grey'
                     onPress={() => navigation.navigate("Register")}
                 >
-                    Hesabın yok mu ? <Text style={{ color: "black" }}>Kaydol</Text>
+                    <Text> Hesabın yok mu ? <Text style={{ color: COLORS.text }}>Kaydol</Text></Text>
+
                 </Button>
             </View>
+
+
 
             {/* Login Mistake */}
             <View>
                 <MyToast
                     type={"error"}
-                    visible={loginToastMistake}
+                    visible={loginMistakeAlert}
                     detail={tAlert(loginResponse)}
                     closer={CloseLoginMistake}
                 />
             </View>
-        </View>
+
+            {/* Login Loading */}
+            <Loading status={loginLoading} />
+
+        </View >
+
 
     )
 }
@@ -155,25 +176,59 @@ const styles = StyleSheet.create({
         flex: 1,
         flexDirection: "column",
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "center",
+        backgroundColor: COLORS.background
     },
     title: {
         marginBottom: 50
     },
     titleText: {
-        fontSize: 35,
-        fontWeight: 'bold'
+        fontSize: 40,
+        fontWeight: 'bold',
+        color: COLORS.text
     },
-    input: {
+    viewInput: {
         height: 50,
         width: 250,
         margin: 15
     },
-    loginButton: {
-        marginTop: 20
+    textInput: {
+        flex: 1,
+        borderRadius: 10,
+        backgroundColor: COLORS.white,
+        height: 50,
+        borderWidth: 1,
+        borderColor: COLORS.border
     },
-    forgotPassword: {
-        color: 'blue'
-    }
+    iconContainer: {
+        position: 'absolute',
+        right: 20,
+
+    },
+    inputContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    loginButton: {
+        marginTop: 20,
+        backgroundColor: COLORS.primary,
+        width: 250,
+        height: 40,
+        borderRadius: 10,
+        justifyContent: 'center',
+        alignItems: 'center'
+
+    },
+    loginButtonText: {
+
+        color: 'whitesmoke',
+        fontWeight: '400',
+        color: COLORS.white
+    },
+    bottomButtonText: {
+        color: 'grey',
+    },
+
+
 
 })
