@@ -293,7 +293,7 @@ export const categoryImages = {
     yoga: require('../assets/categoryImages/yoga.gif'),
     yürüyüş: require('../assets/categoryImages/yürüyüş.gif'),
     yüzme: require('../assets/categoryImages/yüzme.gif'),
-    // default: require('../assets/categoryImages/default.gif'),
+    default: require('../assets/categoryImages/default.png'),
 
 
 

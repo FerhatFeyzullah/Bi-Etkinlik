@@ -4,7 +4,7 @@ import { Button, HelperText } from 'react-native-paper';
 import { useNavigation } from '@react-navigation/native';
 import { schema } from '../schemas/LoginSchema'
 import { useDispatch, useSelector } from 'react-redux';
-import { LoginTheSystem, SetLoginMistakeAlert } from '../redux/slices/authSlice';
+import { LoginTheSystem, SetIsLoggedIn, SetLoginMistakeAlert } from '../redux/slices/authSlice';
 import { jwtDecode } from 'jwt-decode';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
@@ -52,7 +52,7 @@ const Login = () => {
                 ClearState();
 
                 if (role === "User") {
-                    navigation.navigate("ForgotPassword");
+                    dispatch(SetIsLoggedIn(true));
                     AsyncStorage.setItem("UserId", userId);
                 }
             }
@@ -198,7 +198,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         height: 50,
         borderWidth: 1,
-        borderColor: COLORS.border
+        borderColor: COLORS.border,
+        color: COLORS.text
     },
     iconContainer: {
         position: 'absolute',

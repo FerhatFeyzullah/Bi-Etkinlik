@@ -64,6 +64,18 @@ const mintTheme = {
     shadow: "#000000",
 };
 
+const darkTheme = {
+    primary: "#4A90E2",      // Vurgu rengi (mavi ton, öne çıkar)
+    background: "#121212",   // Ana arka plan
+    text: "#E0E0E0",         // Açık gri yazı
+    border: "#2C2C2C",       // Koyu gri border
+    white: "#1E1E1E",        // Kart / alan zemin
+    textLight: "#A1A1A1",    // İkincil yazılar
+    card: "#1C1C1C",         // Kart arkaplanı
+    shadow: "#000000",       // Gölge
+};
+
+
 const midnightTheme = {
     primary: "#2C3E50",
     background: "#F4F6F7",
@@ -95,7 +107,8 @@ export const THEMES = {
     mint: mintTheme,
     midnight: midnightTheme,
     roseGold: roseGoldTheme,
+    dark: darkTheme
 };
 
 // 👇 change this to switch theme
-export const COLORS = THEMES.mint;
+export const COLORS = THEMES.purple;

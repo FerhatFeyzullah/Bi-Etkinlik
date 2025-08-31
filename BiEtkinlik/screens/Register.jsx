@@ -10,7 +10,6 @@ import { citiesTwo } from '../data/MyData'
 import { genders } from '../data/MyData'
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Dropdown } from 'react-native-element-dropdown';
-import { RadioButton } from 'react-native-paper';
 import { GetAllCategory, SetLoadedCount } from '../redux/slices/categorySlice';
 import CategoryCard from '../components/Register/CategoryCard';
 import { RegisterTheSystem, SetRegisterMistakeAlert, SetRegisterSuccessAlert } from '../redux/slices/authSlice';
@@ -429,7 +428,7 @@ const Register = () => {
 
 
                             <View style={styles.flexColumn}>
-                                <View style={{ width: '70%', marginTop: 30 }}>
+                                <View style={{ width: '70%', margin: 20 }}>
                                     <Button
                                         mode='contained'
                                         buttonColor={COLORS.primary}
@@ -441,7 +440,7 @@ const Register = () => {
                                     </Button>
                                 </View>
 
-                                <View style={{ marginTop: 10 }}>
+                                <View style={{ marginBottom: 30 }}>
                                     <Button
                                         textColor='grey'
                                         onPress={() => navigation.navigate("Login")}
@@ -458,7 +457,7 @@ const Register = () => {
                     :
                     <ScrollView showsVerticalScrollIndicator={false}>
 
-                        <View style={[styles.container, styles.flexRow]}>
+                        <View style={[styles.categoryContainer, styles.flexRow]}>
                             {allCategory.map(c => {
                                 const isSelected = areas.includes(c.categoryId);
                                 return (
@@ -478,7 +477,7 @@ const Register = () => {
                             {errors.areas}
                         </HelperText>
                         <View style={styles.flexColumn}>
-                            <View style={{ width: '70%', marginTop: 10 }}>
+                            <View style={{ width: '70%', margin: 20 }}>
                                 <Button
                                     mode='contained'
                                     buttonColor={COLORS.primary}
@@ -489,7 +488,7 @@ const Register = () => {
 
                             </View>
 
-                            <View style={{ marginTop: 10 }}>
+                            <View style={{ marginBottom: 30 }}>
                                 <Button
                                     textColor='grey'
                                     onPress={() => navigation.navigate("Login")}
@@ -523,14 +522,7 @@ const Register = () => {
 
             {/* Register Loading */}
             <Loading status={registerLoading} />
-
-
-
         </View >
-
-
-
-
     )
 }
 
@@ -611,7 +603,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-around',
         alignItems: 'center',
     },
-    container: { flexWrap: 'wrap' },
+    categoryContainer: {
+        flexWrap: 'wrap',
+        backgroundColor: COLORS.background
+    },
     viewInput: {
         height: 50,
         width: 250,
@@ -623,7 +618,8 @@ const styles = StyleSheet.create({
         backgroundColor: COLORS.white,
         height: 50,
         borderWidth: 1,
-        borderColor: COLORS.border
+        borderColor: COLORS.border,
+        color: COLORS.text
     },
     iconContainer: {
         position: 'absolute',

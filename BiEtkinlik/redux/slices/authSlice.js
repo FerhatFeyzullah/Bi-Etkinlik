@@ -7,6 +7,7 @@ const initialState = {
     loginLoading: false,
     loginMistakeAlert: false,
     loginResponse: "",
+    isLoggedIn: false,
     registerLoading: false,
     registerSuccessAlert: false,
     registerMistakeAlert: false,
@@ -36,6 +37,9 @@ export const authSlice = createSlice({
         SetRegisterSuccessAlert: (state) => {
             state.registerSuccessAlert = false;
         },
+        SetIsLoggedIn: (state, action) => {
+            state.isLoggedIn = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -50,7 +54,7 @@ export const authSlice = createSlice({
                     AsyncStorage.setItem("token", action.payload.message);
                     state.loginResponse = "";
                     state.loginMistakeAlert = false;
-
+                    state.loginStatus++;
                 }
                 else {
                     state.loginMistakeAlert = true;
@@ -103,5 +107,5 @@ export const authSlice = createSlice({
     }
 })
 
-export const { SetLoginMistakeAlert, SetRegisterMistakeAlert, SetRegisterSuccessAlert } = authSlice.actions
+export const { SetLoginMistakeAlert, SetRegisterMistakeAlert, SetRegisterSuccessAlert, SetIsLoggedIn } = authSlice.actions
 export default authSlice.reducer

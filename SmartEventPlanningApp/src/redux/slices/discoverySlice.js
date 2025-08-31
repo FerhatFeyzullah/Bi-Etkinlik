@@ -1,10 +1,9 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../api/axios";
-import qs from "qs";
+
 
 const initialState = {
   discoveryEvents: [],
-  recommendedEvents: [],
   discoverySkeletonLoading: false,
   filterMode: false,
   startDate: null,
