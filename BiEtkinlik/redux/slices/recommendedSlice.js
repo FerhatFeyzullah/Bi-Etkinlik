@@ -3,7 +3,7 @@ import axios from "../../api/axios";
 
 const initialState = {
     recommendedEvents: [],
-    recommendedSkeletonLoading: false,
+    recommendedLoading: false,
 };
 
 export const GetEventsRecommendedToMe = createAsyncThunk(
@@ -35,14 +35,14 @@ export const recommendedSlice = createSlice({
     extraReducers: (builder) => {
         builder
             .addCase(GetEventsRecommendedToMe.pending, (state) => {
-                state.recommendedSkeletonLoading = true;
+                state.recommendedLoading = true;
             })
             .addCase(GetEventsRecommendedToMe.fulfilled, (state, action) => {
                 state.recommendedEvents = action.payload;
-                state.recommendedSkeletonLoading = false;
+                state.recommendedLoading = false;
             })
             .addCase(GetEventsRecommendedToMe.rejected, (state) => {
-                state.recommendedSkeletonLoading = false;
+                state.recommendedLoading = false;
             });
     },
 });

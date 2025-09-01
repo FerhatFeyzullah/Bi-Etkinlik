@@ -11,6 +11,8 @@ import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import * as Animatable from 'react-native-animatable';
 import { COLORS } from '../constants/colors'
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useDispatch } from 'react-redux';
+import { SetFilterDialog } from '../redux/slices/discoverySlice';
 
 
 const TabArr = [
@@ -27,6 +29,8 @@ const TabButton = (props) => {
     const { item, onPress, ...rest } = props;
     const focused = rest["aria-selected"];
     const viewRef = useRef(null);
+
+    const dispatch = useDispatch();
 
     // useEffect(() => {
     //     AsyncStorage.clear();
@@ -61,6 +65,13 @@ const TabButton = (props) => {
     return (
         <TouchableOpacity
             onPress={onPress}
+            onLongPress={() => {
+                if (item.route === "Discovery") {
+                    dispatch(SetFilterDialog(true))
+                }
+            }
+
+            }
             activeOpacity={1}
             style={styles.container}>
             <Animatable.View
@@ -92,7 +103,6 @@ function BottomTab() {
                         height: '60',
                         position: 'absolute',
                         justifyContent: 'center',
-                        marginBottom: 10,
                         alignItems: 'center',
                         backgroundColor: COLORS.card,
                     },

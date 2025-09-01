@@ -20,6 +20,7 @@
     "dayjs": "^1.11.15",
     "expo": "~53.0.22",
     "expo-av": "~15.1.7",
+    "expo-linear-gradient": "~14.1.5",
     "expo-status-bar": "~2.2.3",
     "i18next": "^25.4.2",
     "i18next-http-backend": "^3.0.2",

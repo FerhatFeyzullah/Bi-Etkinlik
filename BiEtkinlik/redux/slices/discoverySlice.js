@@ -4,12 +4,13 @@ import axios from "../../api/axios";
 
 const initialState = {
     discoveryEvents: [],
-    discoverySkeletonLoading: false,
+    discoveryLoading: false,
     filterMode: false,
     startDate: null,
     endDate: null,
     cities: [],
     categories: [],
+    filterDialog: false,
 };
 
 
@@ -144,6 +145,9 @@ export const discoverySlice = createSlice({
         SetFilterMode: (state, action) => {
             state.filterMode = action.payload;
         },
+        SetFilterDialog: (state, action) => {
+            state.filterDialog = action.payload;
+        }
     },
     extraReducers: (builder) => {
         builder
@@ -151,106 +155,107 @@ export const discoverySlice = createSlice({
             //UnFiltered
 
             .addCase(GetE_UnFiltered.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_UnFiltered.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
+                console.log("UnFiltreted");
 
             })
             .addCase(GetE_UnFiltered.rejected, (state) => {
-                state.discoverySkeletonLoading = true;
-                console.log("UnFiltreted Basarisiz");
+                state.discoveryLoading = true;
+                console.log(" Basarisiz");
             })
 
             //F_Category
             .addCase(GetE_F_Category.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_F_Category.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
             })
             .addCase(GetE_F_Category.rejected, (state) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 console.log("GetE_F_Category Basarisiz");
             })
 
             //F_City
             .addCase(GetE_F_City.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_F_City.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
             })
             .addCase(GetE_F_City.rejected, (state) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 console.log("GetE_F_City Basarisiz");
             })
 
             //F_CityCategory
             .addCase(GetE_F_CityCategory.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_F_CityCategory.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
             })
             .addCase(GetE_F_CityCategory.rejected, (state) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 console.log("GetE_F_CityCategory Basarisiz");
             })
 
             //F_Date
             .addCase(GetE_F_Date.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_F_Date.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
             })
             .addCase(GetE_F_Date.rejected, (state) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 console.log("GetE_F_Date Basarisiz");
             })
 
             //F_DateCategory
             .addCase(GetE_F_DateCategory.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_F_DateCategory.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
             })
             .addCase(GetE_F_DateCategory.rejected, (state) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 console.log("GetE_F_DateCategory Basarisiz");
             })
 
             //F_DateCity
             .addCase(GetE_F_DateCity.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_F_DateCity.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
             })
             .addCase(GetE_F_DateCity.rejected, (state) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 console.log("GetE_F_DateCity Basarisiz");
             })
 
             //F_DateCityCategory
             .addCase(GetE_F_DateCityCategory.pending, (state) => {
-                state.discoverySkeletonLoading = true;
+                state.discoveryLoading = true;
             })
             .addCase(GetE_F_DateCityCategory.fulfilled, (state, action) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 state.discoveryEvents = action.payload;
             })
             .addCase(GetE_F_DateCityCategory.rejected, (state) => {
-                state.discoverySkeletonLoading = false;
+                state.discoveryLoading = false;
                 console.log("GetE_F_DateCityCategory Basarisiz");
             });
     },
@@ -263,5 +268,6 @@ export const {
     SetCategories,
     SetFilterMode,
     MarkEventAsRegistered,
+    SetFilterDialog,
 } = discoverySlice.actions;
 export default discoverySlice.reducer;
