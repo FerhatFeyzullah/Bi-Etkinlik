@@ -1,6 +1,6 @@
-import React from "react";
-import { useEffect } from "react";
-import { useMap } from "react-leaflet";
+import React from 'react';
+import { useEffect } from 'react';
+import { useMap } from 'react-leaflet';
 
 function RecenterMap({ lat, lng, zoom }) {
   const map = useMap();
