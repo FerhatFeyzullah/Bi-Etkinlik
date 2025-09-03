@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Linking, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Linking, StyleSheet, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
@@ -40,14 +40,9 @@ export default function ReviewLocation() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>{tText('eventLocation')}</Text>
-      <Text style={styles.coordinates}>
-        {reviewLatitude.toFixed(6)}, {reviewLongitude.toFixed(6)}
-      </Text>
-
       <TouchableOpacity style={styles.button} onPress={openMaps}>
         <Icon name="directions" size={22} color="white" />
-        <Text style={styles.buttonText}> {tText('getDirections') || 'Yol Tarifi Al'}</Text>
+        <Text style={styles.buttonText}>Yol Tarifi Al</Text>
       </TouchableOpacity>
     </View>
   );
@@ -56,6 +51,9 @@ export default function ReviewLocation() {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    flexDirection: 'row',
   },
   title: {
     fontSize: 16,

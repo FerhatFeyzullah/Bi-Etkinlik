@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     paddingTop: 30,
     marginBottom: 50,
-    backgroundColor: 'whitesmoke',
+    backgroundColor: COLORS.background,
   },
   emptyPanelInfo: {
     textAlign: 'center',

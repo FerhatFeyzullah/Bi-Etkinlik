@@ -1,5 +1,6 @@
 import React from 'react'
-import { StyleSheet, TouchableOpacity, View, Image } from 'react-native'
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { Image } from 'expo-image'
 import { getCategoryIcon } from '../../data/MyData'
 import { Tooltip } from 'react-native-paper'
 import { useDispatch, useSelector } from 'react-redux';
@@ -39,10 +40,11 @@ const CategoryCard = ({ name, isSelected, onToggle }) => {
                     >
                         <Image
                             source={getCategoryIcon(name)}
-                            //source={getCategoryIcon(name)}
                             style={{ width: 90, height: 90 }}
+                            contentFit="contain"
+                            // GIF animasyonu expo-image ile desteklenir
                             onLoadEnd={IncrementCategoryCount}
-
+                            cachePolicy="none"
                         />
                     </View>
                 </TouchableOpacity>

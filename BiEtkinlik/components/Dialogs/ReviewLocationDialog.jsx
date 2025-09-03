@@ -30,9 +30,13 @@ const ReviewLocationDialog = () => {
   return (
     <Portal>
       <Dialog visible={isMapReviewed} onDismiss={CloseDialog}>
-        <Dialog.Title>Etkinlik Konumu</Dialog.Title>
+        <Dialog.Title style={{ textAlign: 'center' }}>Etkinlik Konumu</Dialog.Title>
         <Dialog.Content style={{ height: 'auto' }}>
           <>
+            <Text style={{ textAlign: 'center' }}>
+              Etkinliğin konumunu görüntülemek ve yol tarifi almak için, uygulamamız sizi
+              telefonunuzdaki harita uygulamasına yönlendirecektir
+            </Text>
             <ReviewLocation />
           </>
         </Dialog.Content>

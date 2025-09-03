@@ -17,7 +17,7 @@ i18n
     //     tr: { default: defaultTR },
     // },
     backend: {
-      loadPath: 'http://192.168.1.103:5112/locales/{{lng}}/{{ns}}.json',
+      loadPath: 'http://192.168.1.102:5112/locales/{{lng}}/{{ns}}.json',
     },
     react: {
       useSuspense: false, // async load için

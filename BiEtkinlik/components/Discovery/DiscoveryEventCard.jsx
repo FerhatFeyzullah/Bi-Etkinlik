@@ -1,4 +1,5 @@
-import { Image, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View, Image as RNImage } from 'react-native';
+import { Image as ExpoImage } from 'expo-image';
 import React, { useEffect, useState } from 'react';
 import { appStyles } from '../../constants/styles';
 import BiEtkinlik from '../../assets/eventImage/BiEtkinlik.png';
@@ -93,20 +94,19 @@ const DiscoveryEventCard = ({ event }) => {
           </View>
 
           <View>
-            <Avatar.Image
-              size={50}
+            <ExpoImage
               source={getCategoryIcon(categoryName)}
-              backgroundColor="#ffffff04"
+              style={{ width: 50, height: 50, borderRadius: 25 }}
+              contentFit="cover"
             />
           </View>
         </View>
         <View>
-          <Image
+          <RNImage
             style={styles.eventImage}
             source={eventImageUrl}
             resizeMode="cover"
             onError={() => setImgError(true)}
-            alt="Bi Etkinlik"
           />
         </View>
         <View style={appStyles.flexrRowJustifyStart}>
