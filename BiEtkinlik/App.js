@@ -12,10 +12,11 @@ import BottomTab from './navigation/BottomTab';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useEffect } from 'react';
 import { SetIsLoggedIn } from './redux/slices/authSlice'; // Redux action
+import 'react-native-reanimated';
 
 function RootNavigator() {
   const dispatch = useDispatch();
-  const { isLoggedIn } = useSelector(store => store.auth);
+  const { isLoggedIn } = useSelector((store) => store.auth);
 
   useEffect(() => {
     const checkLogin = async () => {
@@ -31,14 +32,13 @@ function RootNavigator() {
 
   return (
     <NavigationContainer>
-      {isLoggedIn === null
-        ? null        // loading, hiç bir şey gösterme
-        : isLoggedIn
-          ? <BottomTab />
-          : <RouterConfig />}
+      {isLoggedIn === null ? null : isLoggedIn ? ( // loading, hiç bir şey gösterme
+        <BottomTab />
+      ) : (
+        <RouterConfig />
+      )}
     </NavigationContainer>
   );
-
 }
 
 export default function App() {
@@ -61,5 +61,5 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-  }
+  },
 });

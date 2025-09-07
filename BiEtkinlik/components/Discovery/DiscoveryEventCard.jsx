@@ -59,7 +59,6 @@ const DiscoveryEventCard = ({ event }) => {
     dispatch(SetIsMapReviewed(true));
     dispatch(SetReviewLatitude(event.latitude));
     dispatch(SetReviewLongitude(event.longitude));
-    console.log('basildi');
   };
 
   return (

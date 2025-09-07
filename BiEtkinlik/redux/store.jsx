@@ -5,6 +5,7 @@ import discoveryReducer from '../redux/slices/discoverySlice';
 import recommendedReducer from '../redux/slices/recommendedSlice';
 import eventRegisterReducer from '../redux/slices/eventRegisterSlice';
 import mapReducer from '../redux/slices/mapSlice';
+import eventReducer from '../redux/slices/eventSlice';
 
 export default configureStore({
   reducer: {
@@ -14,6 +15,7 @@ export default configureStore({
     recommended: recommendedReducer,
     eventRegister: eventRegisterReducer,
     map: mapReducer,
+    event: eventReducer,
   },
 
   middleware: (getDefaultMiddleware) =>

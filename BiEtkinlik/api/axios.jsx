@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import qs from 'qs';
 
 const instance = axios.create({
-  baseURL: 'http://192.168.1.102:5112/api/', // 📌 Android Emulator için localhost
+  baseURL: 'http://192.168.1.108:5112/api/', // 📌 Android Emulator için localhost
   paramsSerializer: (params) => qs.stringify(params, { arrayFormat: 'repeat' }),
 });
 

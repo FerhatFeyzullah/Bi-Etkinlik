@@ -18,10 +18,6 @@ const ReviewLocationDialog = () => {
   const dispatch = useDispatch();
   const { isMapReviewed } = useSelector((store) => store.map);
 
-  useEffect(() => {
-    console.log(isMapReviewed);
-  }, [isMapReviewed]);
-
   const CloseDialog = () => {
     dispatch(SetIsMapReviewed(false));
     dispatch(SetReviewLatitude(''));
