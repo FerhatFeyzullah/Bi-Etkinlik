@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../../api/config";
 import React, { useEffect, useState } from "react";
 import "../../../../css/User/Panels/Message/ChatGroup.css";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
@@ -23,7 +24,7 @@ function ChatGroup({ event }) {
           sx={{ width: 70, height: 70 }}
           src={
             !imgError && event.eventImageId
-              ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+              ? profileImageUrl(event.eventImageId)
               : BiEtkinlik
           }
           onError={() => setImgError(true)}

@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../../api/config";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "../../../../css/User/Panels/Profile/MyRegisteredEventCard.css";
@@ -62,7 +63,7 @@ function MyRegisteredEventCard({ events, tabNumber }) {
       <img
         src={
           !imgError && events.event.eventImageId
-            ? `http://localhost:7126/api/Users/ProfileImage/${events.event.eventImageId}`
+            ? profileImageUrl(events.event.eventImageId)
             : BiEtkinlik
         }
         style={{

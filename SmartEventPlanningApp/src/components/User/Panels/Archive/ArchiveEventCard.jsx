@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../../api/config";
 import React, { useState } from 'react'
 import '../../../../css/User/DiscoveryEventCard.css'
 import '../../../../css/User/Panels/Archive/ArchiveEventCard.css'
@@ -51,7 +52,7 @@ function ArchiveEventCard({ event }) {
                                     sx={{ width: 60, height: 60 }}
                                     src={
                                         !imgError && event.appUser?.profilePhotoId
-                                            ? `http://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
+                                            ? profileImageUrl(event.appUser.profilePhotoId)
                                             : undefined
                                     }
                                     onError={() => setImgError(true)}
@@ -87,7 +88,7 @@ function ArchiveEventCard({ event }) {
                         <img
                             src={
                                 !imgError && event.eventImageId
-                                    ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+                                    ? profileImageUrl(event.eventImageId)
                                     : BiEtkinlik
                             }
                             style={{

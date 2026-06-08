@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.CreateEvent;
 using SmartEventPlanningSystem.Application.CQRS.EventFeatures.Commands.RemoveEvent;
@@ -23,6 +24,7 @@ using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.Is
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EventsController(IMediator mediator, IWebHostEnvironment _environment) : ControllerBase
@@ -39,6 +41,7 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(await mediator.Send(request));
         }
 
+        [AllowAnonymous]
         [HttpGet("EventImage/{*photoPath}")]
         public IActionResult GetProfileImage(string photoPath)
         {
@@ -79,12 +82,14 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(await mediator.Send(new RemoveEventRequest { EventId = id }));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("SetEventPermissionTrue/{id}")]
         public async Task<IActionResult> SetEventPermissionTrue([FromRoute] int id)
         {
             return Ok(await mediator.Send(new SetEventPermissionTrueRequest { EventId = id }));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("SetEventPermissionFalse/{id}")]
         public async Task<IActionResult> SetEventPermissionFalse([FromRoute] int id)
         {
@@ -111,18 +116,21 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(await mediator.Send(request));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetEventsStatusNull")]
         public async Task<IActionResult> GetEventsStatusNull([FromQuery] GetEventsStatusNullRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetEventsStatusTrue")]
         public async Task<IActionResult> GetEventsStatusTrue([FromQuery] GetEventsStatusTrueRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetEventsStatusFalse")]
         public async Task<IActionResult> GetEventsStatusFalse([FromQuery] GetEventsStatusFalseRequest request)
         {

@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../api/config";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -85,7 +86,7 @@ function EventReviewDialog() {
                         sx={{ width: 60, height: 60 }}
                         src={
                           !imgError && previewedEvent.appUser?.profilePhotoId
-                            ? `http://localhost:7126/api/Users/ProfileImage/${previewedEvent.appUser.profilePhotoId}`
+                            ? profileImageUrl(previewedEvent.appUser.profilePhotoId)
                             : undefined
                         }
                         onError={() => setImgError(true)}
@@ -121,7 +122,7 @@ function EventReviewDialog() {
                   <img
                     src={
                       !imgError && previewedEvent.eventImageId
-                        ? `http://localhost:7126/api/Users/ProfileImage/${previewedEvent.eventImageId}`
+                        ? profileImageUrl(previewedEvent.eventImageId)
                         : BiEtkinlik
                     }
                     style={{

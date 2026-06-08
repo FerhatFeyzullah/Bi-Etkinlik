@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../../api/config";
 import React, { useEffect, useState } from "react";
 import "../../../../css/User/Panels/CreateEventPanel/CreateAndEditPanel.css";
 import CreateEventMapPanel from "../CreateEvent/CreateEventMapPanel";
@@ -262,7 +263,7 @@ function CreateAndEditPanel() {
                 <img
                   src={
                     !imgError && updatingImageId != ""
-                      ? `http://localhost:7126/api/Users/ProfileImage/${updatingImageId}`
+                      ? profileImageUrl(updatingImageId)
                       : BiEtkinlik
                   }
                   style={{
