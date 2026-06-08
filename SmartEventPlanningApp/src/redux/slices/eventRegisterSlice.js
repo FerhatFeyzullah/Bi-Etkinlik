@@ -14,6 +14,7 @@ const initialState = {
   eventRatedMistakeAlert: false,
   eventRegisterDialog: false,
   registeredEvent: null,
+  registerSource: null,
 };
 
 export const RegisterEvent = createAsyncThunk("registerEvent", async (data) => {
@@ -98,6 +99,9 @@ export const eventRegisterSlice = createSlice({
     },
     SetRegisteredEvent: (state, action) => {
       state.registeredEvent = action.payload;
+    },
+    SetRegisterSource: (state, action) => {
+      state.registerSource = action.payload;
     },
 
     MarkEventIsRated: (state, action) => {
@@ -200,5 +204,6 @@ export const {
   SetEventRatedMistakeAlert,
   SetEventRegisterDialog,
   SetRegisteredEvent,
+  SetRegisterSource,
 } = eventRegisterSlice.actions;
 export default eventRegisterSlice.reducer;

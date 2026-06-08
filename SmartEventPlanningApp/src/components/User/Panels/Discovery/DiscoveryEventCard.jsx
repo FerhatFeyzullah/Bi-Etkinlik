@@ -15,6 +15,7 @@ import {
 import {
   SetEventRegisterDialog,
   SetRegisteredEvent,
+  SetRegisterSource,
 } from '../../../../redux/slices/eventRegisterSlice';
 
 import { useTranslation } from 'react-i18next';
@@ -51,6 +52,7 @@ function DiscoveryEventCard({ event }) {
   const RegisterEventDialog = () => {
     dispatch(SetEventRegisterDialog(true));
     dispatch(SetRegisteredEvent(event));
+    dispatch(SetRegisterSource("discovery"));
   };
 
   // assets/categories klasöründeki tüm png’leri import et

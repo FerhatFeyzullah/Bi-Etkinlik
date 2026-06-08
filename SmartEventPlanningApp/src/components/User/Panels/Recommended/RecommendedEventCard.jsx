@@ -12,7 +12,7 @@ import {
   SetDiscoveryLongitude,
   SetIsMapReviewed,
 } from "../../../../redux/slices/mapSlice";
-import { SetEventRegisterDialog, SetRegisteredEvent } from "../../../../redux/slices/eventRegisterSlice";
+import { SetEventRegisterDialog, SetRegisteredEvent, SetRegisterSource } from "../../../../redux/slices/eventRegisterSlice";
 import { useTranslation } from "react-i18next";
 
 function RecommendedEventCard({ event }) {
@@ -51,6 +51,7 @@ function RecommendedEventCard({ event }) {
   const RegisterEventDialog = () => {
     dispatch(SetEventRegisterDialog(true));
     dispatch(SetRegisteredEvent(event));
+    dispatch(SetRegisterSource("recommended"));
   }
 
   const images = import.meta.glob("../../../../assets/categoryImages/gif/*.gif", { eager: true });
