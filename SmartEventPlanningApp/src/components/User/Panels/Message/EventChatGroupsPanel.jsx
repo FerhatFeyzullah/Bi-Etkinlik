@@ -1,19 +1,26 @@
 import React, { useEffect } from "react";
 import "../../../../css/User/Panels/Message/EventChatGroups.css";
 import { useDispatch, useSelector } from "react-redux";
-import { GetAllEventsI_Joined } from "../../../../redux/slices/messageSlice";
+import { GetAllEventsI_Joined, SetEventGroupsErrorAlert } from "../../../../redux/slices/messageSlice";
 import ChatGroup from "./ChatGroup";
+import ToastMistake from "../../../Elements/ToastMistake";
 import { useTranslation } from "react-i18next";
 
 function EventChatGroupsPanel() {
   const { t: tText } = useTranslation("text");
+  const { t: tAlert } = useTranslation("alert");
   const dispatch = useDispatch();
-  const { eventGroups } = useSelector((store) => store.message);
+  const { eventGroups, eventGroupsErrorAlert, messageErrorResponse } =
+    useSelector((store) => store.message);
   const UserId = localStorage.getItem("UserId");
 
   useEffect(() => {
     dispatch(GetAllEventsI_Joined(UserId));
   }, []);
+
+  const CloseEventGroupsErrorToast = () => {
+    dispatch(SetEventGroupsErrorAlert(false));
+  };
 
   return (
     <div className="event-chat-groups-container flex-column-justify-start">
@@ -24,6 +31,12 @@ function EventChatGroupsPanel() {
             <ChatGroup key={eg.eventId} event={eg} />
           ))}
       </div>
+
+      <ToastMistake
+        visible={eventGroupsErrorAlert}
+        detail={tAlert(messageErrorResponse)}
+        closer={CloseEventGroupsErrorToast}
+      />
     </div>
   );
 }

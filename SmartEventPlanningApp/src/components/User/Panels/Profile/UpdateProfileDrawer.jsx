@@ -109,11 +109,15 @@ function UpdateProfileDrawer() {
       console.log(data);
       await dispatch(UpdateProfile(data));
     } catch (error) {
-      const errObj = {};
-      error.inner.forEach((e) => {
-        errObj[e.path] = e.message;
-      });
-      setErrors(errObj);
+      if (error.inner) {
+        const errObj = {};
+        error.inner.forEach((e) => {
+          errObj[e.path] = e.message;
+        });
+        setErrors(errObj);
+      } else {
+        setErrors({ general: error.message || "Bir hata oluştu" });
+      }
     }
   };
   return (
@@ -288,6 +292,11 @@ function UpdateProfileDrawer() {
               {tButton("update")}
             </Button>
           </div>
+          {errors.general && (
+            <p style={{ color: "rgba(153, 20, 20, 1)", fontSize: "14px" }}>
+              {errors.general}
+            </p>
+          )}
         </div >
       </Drawer >
     </>

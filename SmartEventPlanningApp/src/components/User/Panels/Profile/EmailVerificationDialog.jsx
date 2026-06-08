@@ -76,13 +76,16 @@ function EmailVerificationDialog() {
             }
             setCode();
         } catch (error) {
-            const errObj = {};
-            error.inner.forEach((e) => {
-                errObj[e.path] = e.message;
-            });
-            setErrors(errObj);
-            setConfirmError("");
-
+            if (error.inner) {
+                const errObj = {};
+                error.inner.forEach((e) => {
+                    errObj[e.path] = e.message;
+                });
+                setErrors(errObj);
+                setConfirmError("");
+            } else {
+                setConfirmError(error.message || "Bir hata oluştu");
+            }
         }
     };
 

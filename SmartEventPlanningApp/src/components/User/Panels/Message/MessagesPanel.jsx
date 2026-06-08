@@ -10,19 +10,21 @@ import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
 import { Avatar, Tooltip } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import * as signalR from "@microsoft/signalr";
-import { GetOldMessages, IsEventFinished } from "../../../../redux/slices/messageSlice";
+import { GetOldMessages, IsEventFinished, SetOldMessagesErrorAlert } from "../../../../redux/slices/messageSlice";
+import ToastMistake from "../../../Elements/ToastMistake";
 
 function MessagesPanel() {
   const { t: tText } = useTranslation("text");
   const { t: tInput } = useTranslation("input");
   const { t: tTooltip } = useTranslation("tooltip");
+  const { t: tAlert } = useTranslation("alert");
 
   const dispatch = useDispatch();
 
   const messagesEndRef = useRef(null);
 
   const [imgError, setImgError] = useState(false);
-  const { chattingEvent, oldMessages } = useSelector((store) => store.message);
+  const { chattingEvent, oldMessages, oldMessagesErrorAlert, messageErrorResponse } = useSelector((store) => store.message);
   const { myProfile } = useSelector((store) => store.account);
 
   const [connection, setConnection] = useState(null);
@@ -167,6 +169,10 @@ function MessagesPanel() {
     }
   }, [chatMessages]);
 
+  const CloseOldMessagesErrorToast = () => {
+    dispatch(SetOldMessagesErrorAlert(false));
+  };
+
   return (
     <div className="messages-panel-container flex-column">
       <div className="m-panel-title-phase flex-row-justify-start">
@@ -249,6 +255,12 @@ function MessagesPanel() {
           </span>
         </Tooltip>
       </div >
+
+      <ToastMistake
+        visible={oldMessagesErrorAlert}
+        detail={tAlert(messageErrorResponse)}
+        closer={CloseOldMessagesErrorToast}
+      />
     </div >
   );
 }
