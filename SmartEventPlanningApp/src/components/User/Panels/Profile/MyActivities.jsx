@@ -8,16 +8,22 @@ import {
   GetMyFutureEvents,
   GetMyPastEvents,
   SetEventRegisterationDeleted,
+  SetMyEventsErrorAlert,
 } from "../../../../redux/slices/eventRegisterSlice";
 import { useTranslation } from "react-i18next";
+import ToastMistake from "../../../Elements/ToastMistake";
 
 function MyActivities() {
   const { t: tButton } = useTranslation("button");
+  const { t: tAlert } = useTranslation("alert");
 
   const dispatch = useDispatch();
-  const { myRegisteredEvents, eventRegistirationDeleted } = useSelector(
-    (store) => store.eventRegister
-  );
+  const {
+    myRegisteredEvents,
+    eventRegistirationDeleted,
+    myEventsErrorAlert,
+    myEventsErrorResponse,
+  } = useSelector((store) => store.eventRegister);
 
   const UserId = localStorage.getItem("UserId");
   const [selectedTab, setSelectedTab] = useState(0);
@@ -38,6 +44,10 @@ function MyActivities() {
       dispatch(SetEventRegisterationDeleted(false));
     }
   }, [selectedTab, eventRegistirationDeleted]);
+
+  const CloseMyEventsErrorToast = () => {
+    dispatch(SetMyEventsErrorAlert(false));
+  };
 
   return (
     <div className="my-activities-container">
@@ -103,6 +113,12 @@ function MyActivities() {
             />
           ))}
       </div>
+
+      <ToastMistake
+        visible={myEventsErrorAlert}
+        detail={tAlert(myEventsErrorResponse)}
+        closer={CloseMyEventsErrorToast}
+      />
     </div>
   );
 }

@@ -193,11 +193,15 @@ function CreateAndEditPanel() {
 
       await dispatch(CreateEvent(data));
     } catch (error) {
-      const errObj = {};
-      error.inner.forEach((e) => {
-        errObj[e.path] = e.message;
-      });
-      setErrors(errObj);
+      if (error.inner) {
+        const errObj = {};
+        error.inner.forEach((e) => {
+          errObj[e.path] = e.message;
+        });
+        setErrors(errObj);
+      } else {
+        setErrors({ general: error.message || "Bir hata oluştu" });
+      }
     }
   };
   const Update = async () => {
@@ -234,11 +238,15 @@ function CreateAndEditPanel() {
       console.log(data);
       await dispatch(UpdateEvent(data));
     } catch (error) {
-      const errObj = {};
-      error.inner.forEach((e) => {
-        errObj[e.path] = e.message;
-      });
-      setErrors(errObj);
+      if (error.inner) {
+        const errObj = {};
+        error.inner.forEach((e) => {
+          errObj[e.path] = e.message;
+        });
+        setErrors(errObj);
+      } else {
+        setErrors({ general: error.message || "Bir hata oluştu" });
+      }
     }
   };
 
@@ -532,6 +540,9 @@ function CreateAndEditPanel() {
                 >
                   {tButton("create")}
                 </Button>
+              )}
+              {errors.general && (
+                <p style={{ color: "red" }}>{errors.general}</p>
               )}
             </div>
           </div>

@@ -73,11 +73,15 @@ function ChangePasswordDrawer() {
       console.log(data);
       await dispatch(ChangePassword(data));
     } catch (error) {
-      const errObj = {};
-      error.inner.forEach((e) => {
-        errObj[e.path] = e.message;
-      });
-      setErrors(errObj);
+      if (error.inner) {
+        const errObj = {};
+        error.inner.forEach((e) => {
+          errObj[e.path] = e.message;
+        });
+        setErrors(errObj);
+      } else {
+        setErrors({ general: error.message || "Bir hata oluştu" });
+      }
     }
   };
   return (
@@ -158,6 +162,11 @@ function ChangePasswordDrawer() {
           >
             {tButton("change")}
           </Button>
+          {errors.general && (
+            <div style={{ color: "red", fontSize: "0.8rem", marginTop: "4px" }}>
+              {errors.general}
+            </div>
+          )}
         </div>
       </Drawer>
     </>

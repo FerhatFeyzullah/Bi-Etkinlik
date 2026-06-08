@@ -10,6 +10,7 @@ import {
   GetE_F_DateCity,
   GetE_F_DateCityCategory,
   GetE_UnFiltered,
+  SetDiscoveryErrorAlert,
 } from "../../../../redux/slices/discoverySlice";
 import DiscoveryEventCard from "./DiscoveryEventCard";
 import ReviewEventCardSkeleton from "../../../Skeletons/ReviewEventCardSkeleton";
@@ -32,6 +33,8 @@ function DiscoveryPanel() {
     categories,
     discoverySkeletonLoading,
     discoveryEvents,
+    discoveryErrorAlert,
+    discoveryErrorResponse,
   } = useSelector((store) => store.discovery);
 
   const { eventRegisterMistakeAlert, eventRegisterResponse } = useSelector(
@@ -139,6 +142,10 @@ function DiscoveryPanel() {
     dispatch(SetEventRegisterMistakeAlert(false));
   };
 
+  const CloseDiscoveryErrorToast = () => {
+    dispatch(SetDiscoveryErrorAlert(false));
+  };
+
   return (
     <>
       <div className="discovery-container flex-column-justify-start">
@@ -158,6 +165,12 @@ function DiscoveryPanel() {
         visible={eventRegisterMistakeAlert}
         detail={tAlert(eventRegisterResponse)}
         closer={CloseEventRegisterMistakeToast}
+      />
+
+      <ToastMistake
+        visible={discoveryErrorAlert}
+        detail={tAlert(discoveryErrorResponse)}
+        closer={CloseDiscoveryErrorToast}
       />
     </>
   );
