@@ -3,7 +3,7 @@ import axios from "../../api/axios";
 
 
 const initialState = {
-  discoveryEvents: [],
+  discoveryEvents: { events: [] },
   discoverySkeletonLoading: false,
   filterMode: false,
   startDate: null,
@@ -121,7 +121,7 @@ export const discoverySlice = createSlice({
   reducers: {
     MarkEventAsRegistered: (state, action) => {
       const eventId = action.payload;
-      const event = state.discoveryEvents.events.find(
+      const event = state.discoveryEvents?.events?.find(
         (e) => e.eventId === eventId
       );
       if (event) {

@@ -2,7 +2,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../api/axios";
 
 const initialState = {
-  recommendedEvents: [],
+  recommendedEvents: { events: [] },
   recommendedSkeletonLoading: false,
 };
 
@@ -24,7 +24,7 @@ export const recommendedSlice = createSlice({
   reducers: {
     MarkRecommendedEventAsRegistered: (state, action) => {
       const eventId = action.payload;
-      const event = state.recommendedEvents.events.find(
+      const event = state.recommendedEvents?.events?.find(
         (e) => e.eventId === eventId
       );
       if (event) {

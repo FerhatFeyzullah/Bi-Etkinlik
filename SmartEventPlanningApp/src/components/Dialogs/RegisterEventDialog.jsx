@@ -9,6 +9,7 @@ import { Button } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import { RegisterEvent, SetEventRegisterDialog } from '../../redux/slices/eventRegisterSlice';
 import { MarkEventAsRegistered } from '../../redux/slices/discoverySlice';
+import { MarkRecommendedEventAsRegistered } from '../../redux/slices/recommendedSlice';
 
 
 
@@ -22,7 +23,7 @@ function RegisterEventDialog() {
     const dispatch = useDispatch();
     const UserId = localStorage.getItem("UserId");
 
-    const { eventRegisterDialog, registeredEvent } = useSelector(store => store.eventRegister);
+    const { eventRegisterDialog, registeredEvent, registerSource } = useSelector(store => store.eventRegister);
 
 
     const RegisterThisAccount = async () => {
@@ -30,11 +31,23 @@ function RegisterEventDialog() {
             AppUserId: Number(UserId),
             EventId: registeredEvent.eventId,
         };
-        var result = await dispatch(RegisterEvent(data)).unwrap();
-        if (result) {
-            dispatch(MarkEventAsRegistered(registeredEvent.eventId));
+        try {
+            const result = await dispatch(RegisterEvent(data)).unwrap();
+            if (result) {
+                // Dialog hangi sekmeden açıldıysa o sekmenin reducer'ını güncelle
+                if (registerSource === "recommended") {
+                    dispatch(MarkRecommendedEventAsRegistered(registeredEvent.eventId));
+                } else {
+                    dispatch(MarkEventAsRegistered(registeredEvent.eventId));
+                }
+            }
+        } catch (err) {
+            // İstek reddolursa (ağ/401/sunucu) yakalanmamış rejection olmasın;
+            // hata uyarısı zaten RegisterEvent.rejected reducer'ında gösteriliyor.
+            console.error("Etkinliğe kayıt başarısız:", err);
+        } finally {
+            dispatch(SetEventRegisterDialog(false));
         }
-        dispatch(SetEventRegisterDialog(false))
     };
 
     const CloseDialog = () => {
