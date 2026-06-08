@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../api/config";
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Dialog } from "@mui/material";
@@ -21,7 +22,7 @@ function PhotoReviewDialog() {
     <>
       <Dialog open={isPhotoReviewedDialog} onClose={() => dispatch(Close())}>
         <img
-          src={`http://localhost:7126/api/Users/ProfileImage/${reviewedPhoto}`}
+          src={profileImageUrl(reviewedPhoto)}
           alt="Profile"
           style={{ width: "100%", height: "auto" }}
         />

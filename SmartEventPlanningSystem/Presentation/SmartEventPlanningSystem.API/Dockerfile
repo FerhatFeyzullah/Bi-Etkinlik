@@ -22,10 +22,20 @@ EXPOSE 7126
 # Ensure ASP.NET binds to container port
 ENV ASPNETCORE_URLS=http://0.0.0.0:7126
 
-# Optionally set environment variables for DB if desired (override appsettings in compose)
-# ENV ConnectionStrings__Default="Host=postgres;Database=SEP_Db;Username=postgres;Password=vavi;Port=5432"
+# HEALTHCHECK icin curl (tek katman, cache temizligiyle)
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/*
 
 COPY --from=build /app/publish .
+
+# Non-root: .NET 8 image'inin hazir 'app' kullanicisi; upload dizinine yazma izni ver
+RUN mkdir -p /app/wwwroot/upload && chown -R app:app /app/wwwroot
+USER app
+
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+    CMD curl -fsS http://localhost:7126/health || exit 1
+
 ENTRYPOINT ["dotnet", "SmartEventPlanningSystem.API.dll"]
 
 

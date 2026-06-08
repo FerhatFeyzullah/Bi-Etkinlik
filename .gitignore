@@ -1,9 +1,27 @@
 
-# Backend
-SmartEventPlanningSystem/.vs/
+# Backend (.NET)
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+[Pp]ublish/
+TestResults/
+artifacts/
+*.swp
 
-# dependencies
+# Ortam değişkenleri / secrets
+.env
+
+# Node
 node_modules/
+.npm/
+*.tgz
+.eslintcache
+.vite/
+coverage/
 
 # Expo
 .expo/
@@ -34,6 +52,13 @@ yarn-error.*
 
 # local env files
 .env*.local
+
+# logs
+*.log
+logs/
+
+# IDE
+.idea/
 
 # typescript
 *.tsbuildinfo

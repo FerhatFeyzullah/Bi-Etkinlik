@@ -1,1 +1,0 @@
-C:\Projects\SEP_System\SmartEventPlanningSystem\Presentation\SmartEventPlanningSystem.API\wwwroot\locales\tr\default.json

@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../../api/config";
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Avatar, Button, IconButton, Tooltip } from "@mui/material";
@@ -86,7 +87,7 @@ function MyProfileInfo() {
               }}
               src={
                 !imgError && myProfile.myProfile?.profilePhotoId
-                  ? `http://localhost:7126/api/Users/ProfileImage/${myProfile.myProfile.profilePhotoId}`
+                  ? profileImageUrl(myProfile.myProfile.profilePhotoId)
                   : undefined
               }
               onClick={ReviewPhoto}

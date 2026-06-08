@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../api/config";
 import React, { useEffect, useState } from 'react'
 import '../../css/Admin/ReviewEventCard.css'
 import { useDispatch, useSelector } from "react-redux";
@@ -48,7 +49,7 @@ function ReviewEventCard({ event }) {
                 <img
                     src={
                         !imgError && event.eventImageId
-                            ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+                            ? profileImageUrl(event.eventImageId)
                             : BiEtkinlik
                     }
                     style={{
