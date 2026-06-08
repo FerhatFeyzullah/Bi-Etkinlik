@@ -13,9 +13,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <!-- IFormFile vb. ASP.NET Core tipleri için (eski Http.Features 5.0.17 paketinin yerine) -->
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="14.0.0" />
     <PackageReference Include="MediatR" Version="13.0.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.17" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 

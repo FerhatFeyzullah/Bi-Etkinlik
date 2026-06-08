@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../../api/config";
 import React, { useEffect, useState } from "react";
 import "../../../../css/User/Panels/CreateEventPanel/EditableEventCard.css";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
@@ -50,7 +51,7 @@ function EditableEventCard() {
               <img
                 src={
                   !imgError && e.eventImageId
-                    ? `http://localhost:7126/api/Users/ProfileImage/${e.eventImageId}`
+                    ? profileImageUrl(e.eventImageId)
                     : BiEtkinlik
                 }
                 style={{

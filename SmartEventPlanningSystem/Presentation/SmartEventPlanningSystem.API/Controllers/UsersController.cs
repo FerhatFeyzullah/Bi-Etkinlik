@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ChangePassword;
 using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Commands.ConfirmEmail;
@@ -14,6 +15,7 @@ using SmartEventPlanningSystem.Application.CQRS.UserFeatures.Queries.GetMyProfil
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController(IMediator mediator, IWebHostEnvironment _environment) : ControllerBase
@@ -25,6 +27,7 @@ namespace SmartEventPlanningSystem.API.Controllers
         }
 
 
+        [AllowAnonymous]
         [HttpGet("ProfileImage/{*photoPath}")]
         public IActionResult GetProfileImage(string photoPath)
         {
@@ -83,24 +86,28 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(await mediator.Send(request));
         }
 
+        [AllowAnonymous]
         [HttpPost("SendResetCode")]
         public async Task<IActionResult> SendResetCode([FromBody] SendResetCodeRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
+        [AllowAnonymous]
         [HttpPost("VerifyResetCode")]
         public async Task<IActionResult> VerifyResetCode([FromBody] VerifyResetCodeRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
+        [AllowAnonymous]
         [HttpPost("ChangeForgotPassword")]
         public async Task<IActionResult> ChangeForgotPassword([FromBody] ChangeForgotPasswordRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
+        [AllowAnonymous]
         [HttpPost("ConfirmEmail")]
         public async Task<IActionResult> ConfirmEmail([FromBody] ConfirmEmailRequest request)
         {
@@ -113,6 +120,7 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(await mediator.Send(new RemoveAccountRequest { AppUserId = id }));
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpGet("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers([FromQuery] GetAllUsersRequest request)
         {

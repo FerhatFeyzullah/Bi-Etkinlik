@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -57,11 +58,6 @@ builder.Services.AddAuthentication(options =>
             if (context.Request.Cookies.ContainsKey("MyAuthCookie"))
             {
                 context.Token = context.Request.Cookies["MyAuthCookie"];
-                Console.WriteLine($"Token from MyAuthCookie: {context.Token}");
-            }
-            else
-            {
-                Console.WriteLine("MyAuthCookie not found in request.");
             }
             return Task.CompletedTask;
         }
@@ -80,24 +76,21 @@ builder.Services.AddAuthentication(options =>
 });
 
 
-//CORS
+//CORS - izinli origin'ler konfigürasyondan okunur (Cors:AllowedOrigins / Cors__AllowedOrigins__0 env)
+var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowFrontend",
-        policy => policy.WithOrigins("http://localhost:5173", "http://localhost:3000", "http://frontend:80", "http://frontend:5173")
+        policy => policy.WithOrigins(allowedOrigins)
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials());
 });
 
-// Mobil icin 
-builder.WebHost.UseUrls("http://0.0.0.0:5112");
-
-
-
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddHealthChecks().AddDbContextCheck<SEP_DbContext>();
 
 var app = builder.Build();
 
@@ -106,7 +99,17 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     var context = services.GetRequiredService<SEP_DbContext>();
     context.Database.Migrate(); // Start Migration
+    await SmartEventPlanningSystem.API.SeedData.ApplyAsync(services); // Idempotent seed (roller, kategoriler, opsiyonel admin)
 }
+
+// Ters proxy (nginx) arkasinda gercek istemci IP'si ve semasi icin
+var forwardedHeadersOptions = new ForwardedHeadersOptions
+{
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+};
+forwardedHeadersOptions.KnownNetworks.Clear();
+forwardedHeadersOptions.KnownProxies.Clear();
+app.UseForwardedHeaders(forwardedHeadersOptions);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
@@ -114,21 +117,24 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    // Prod'da stack trace sizdirmayan genel hata yaniti
+    app.UseExceptionHandler(errorApp => errorApp.Run(async context =>
+    {
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+        await context.Response.WriteAsJsonAsync(new { error = "Beklenmeyen bir sunucu hatası oluştu." });
+    }));
+}
 
-//var disableHttpsRedirect = Environment.GetEnvironmentVariable("DISABLE_HTTPS_REDIRECT");
-//if (string.IsNullOrWhiteSpace(disableHttpsRedirect) || !disableHttpsRedirect.Equals("true", StringComparison.OrdinalIgnoreCase))
-//{
-//    app.UseHttpsRedirection();
-//}
-//app.UseCors("AllowFrontend");
+app.UseCors("AllowFrontend");
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseStaticFiles();
 
 app.MapControllers();
 app.MapHub<ChatHub>("chat");
+app.MapHealthChecks("/health");
 
 app.Run();
-
-
-var provider = builder.Services.BuildServiceProvider();

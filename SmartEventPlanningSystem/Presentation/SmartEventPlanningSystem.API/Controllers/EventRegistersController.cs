@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.DeleteEventRegister;
 using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Commands.RateTheEvent;
@@ -10,6 +11,7 @@ using SmartEventPlanningSystem.Application.CQRS.EventRegisterFeatures.Queries.Ge
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class EventRegistersController(IMediator mediator) : ControllerBase

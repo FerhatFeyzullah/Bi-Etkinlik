@@ -1,3 +1,4 @@
+import { profileImageUrl } from "../../../../api/config";
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import '../../../../css/User/DiscoveryEventCard.css';
@@ -81,7 +82,7 @@ function DiscoveryEventCard({ event }) {
                   sx={{ width: 65, height: 65 }}
                   src={
                     !imgError && event.appUser?.profilePhotoId
-                      ? `http://localhost:7126/api/Users/ProfileImage/${event.appUser.profilePhotoId}`
+                      ? profileImageUrl(event.appUser.profilePhotoId)
                       : undefined
                   }
                   onError={() => setImgError(true)}
@@ -119,7 +120,7 @@ function DiscoveryEventCard({ event }) {
             <img
               src={
                 !imgError && event.eventImageId
-                  ? `http://localhost:7126/api/Users/ProfileImage/${event.eventImageId}`
+                  ? profileImageUrl(event.eventImageId)
                   : BiEtkinlik
               }
               style={{

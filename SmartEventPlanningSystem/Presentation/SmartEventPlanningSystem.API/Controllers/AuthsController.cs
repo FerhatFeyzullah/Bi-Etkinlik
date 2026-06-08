@@ -7,16 +7,19 @@ using System.Security.Claims;
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthsController(IMediator mediator) : ControllerBase
     {
+        [AllowAnonymous]
         [HttpPost("RegisterTheSystem")]
         public async Task<IActionResult> RegisterTheSystem([FromBody] RegisterTheSystemRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
+        [AllowAnonymous]
         [HttpPost("LoginTheSystem")]
         public async Task<IActionResult> LoginTheSystem([FromBody] LoginTheSystemRequest request)
         {
@@ -40,13 +43,13 @@ namespace SmartEventPlanningSystem.API.Controllers
             return Ok(result);
         }
 
+        [AllowAnonymous]
         [HttpPost("LoginTheSystemFromMobile")]
         public async Task<IActionResult> LoginTheSystemFromMobile([FromBody] LoginTheSystemRequest request)
         {
             return Ok(await mediator.Send(request));
         }
 
-        [Authorize]
         [HttpGet("CheckMe")]
         public IActionResult GetCurrentUser()
         {
@@ -65,6 +68,7 @@ namespace SmartEventPlanningSystem.API.Controllers
             });
         }
 
+        [AllowAnonymous]
         [HttpPost("LogoutFromSystem")]
         public IActionResult Logout()
         {

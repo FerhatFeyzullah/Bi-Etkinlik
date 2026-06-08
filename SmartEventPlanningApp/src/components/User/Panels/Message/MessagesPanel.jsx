@@ -1,3 +1,4 @@
+import { profileImageUrl, CHAT_HUB_URL } from "../../../../api/config";
 import React, { useEffect, useState, useRef } from "react";
 import "../../../../css/User/Panels/Message/MessagesPanel.css";
 import TextField from "@mui/material/TextField";
@@ -72,7 +73,7 @@ function MessagesPanel() {
 
   useEffect(() => {
     const newConnection = new signalR.HubConnectionBuilder()
-      .withUrl("http://localhost:7126/chat")
+      .withUrl(CHAT_HUB_URL)
       .withAutomaticReconnect()
       .build();
 
@@ -176,7 +177,7 @@ function MessagesPanel() {
                 sx={{ width: 70, height: 70 }}
                 src={
                   !imgError && chattingEvent.eventImageId
-                    ? `http://localhost:7126/api/Users/ProfileImage/${chattingEvent.eventImageId}`
+                    ? profileImageUrl(chattingEvent.eventImageId)
                     : BiEtkinlik
                 }
                 onError={() => setImgError(true)}

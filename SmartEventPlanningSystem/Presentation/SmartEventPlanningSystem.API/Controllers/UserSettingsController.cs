@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Commands.UpdateEmailNotification;
 using SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Commands.UpdateLanguageSetting;
@@ -8,6 +9,7 @@ using SmartEventPlanningSystem.Application.CQRS.UserSettingFeatures.Queries.GetU
 
 namespace SmartEventPlanningSystem.API.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserSettingsController(IMediator mediator) : ControllerBase
