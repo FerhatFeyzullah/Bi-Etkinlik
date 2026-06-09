@@ -3,11 +3,8 @@ export const schema = yup.object().shape({
   password: yup
     .string()
     .required("Şifre alanı zorunlu")
-    .min(8, "En az 8 karakter")
-    .matches(/[a-z]/, "Küçük harf içermeli")
-    .matches(/[A-Z]/, "Büyük harf içermeli")
-    .matches(/[0-9]/, "Rakam içermeli")
-    .matches(/[@$!%*?&]/, "Özel karakter içermeli"),
+    .min(6, "En az 6 karakter ve bir rakam içermelidir")
+    .matches(/\d/, "En az 6 karakter ve bir rakam içermelidir"),
 
   confirmPass: yup
     .string()

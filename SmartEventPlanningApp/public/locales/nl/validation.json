@@ -24,13 +24,10 @@
     },
     "changePassword": {
         "oldPasswordRequired": "Voer uw oude wachtwoord in.",
-        "oldPasswordMin": "Wachtwoord moet minimaal 8 tekens lang zijn.",
+        "oldPasswordMin": "Wachtwoord moet minimaal 6 tekens lang zijn.",
         "newPasswordRequired": "Voer uw nieuwe wachtwoord in.",
-        "newPasswordMin": "Wachtwoord moet minimaal 8 tekens lang zijn.",
-        "newPasswordMatchesLower": "Moet kleine letters bevatten.",
-        "newPasswordMatchesUpper": "Moet hoofdletters bevatten.",
+        "newPasswordMin": "Wachtwoord moet minimaal 6 tekens lang zijn.",
         "newPasswordMatchesDigit": "Moet cijfers bevatten.",
-        "newPasswordMatchesSpecial": "Moet speciale tekens bevatten.",
         "confirmNewPasswordRequired": "Wachtwoordherhaling vereist.",
         "confirmNewPasswordOneOf": "Wachtwoorden komen niet overeen."
     },

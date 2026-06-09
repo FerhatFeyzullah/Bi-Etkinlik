@@ -30,6 +30,7 @@ function RegisterCard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t: tCategory } = useTranslation("category");
+  const { t: tText } = useTranslation("text");
 
   const { allCategory } = useSelector((store) => store.category);
   const { registerStatus } = useSelector((store) => store.auth);
@@ -311,6 +312,9 @@ function RegisterCard() {
 
       <br />
       <div className="register-category-title">İlgi Alanları</div>
+      <div className="register-category-limit-info">
+        {tText("categoryLimitInfo")}
+      </div>
       {
         errors.areas && (
           <div className="register-category-error-text">{errors.areas}</div>

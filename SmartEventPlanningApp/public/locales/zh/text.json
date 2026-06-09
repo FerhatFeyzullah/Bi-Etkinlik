@@ -53,5 +53,6 @@
     "deleteAccountInfo": "您确定要删除此账户吗？",
     "registerEventTitle": "活动注册",
     "registerEventInfo": "您确定要注册此活动吗？",
-    "adminEmptyPanelInfo": "这里似乎没有内容可显示。"
+    "adminEmptyPanelInfo": "这里似乎没有内容可显示。",
+    "categoryLimitInfo": "您最多可以选择 7 个类别"
 }

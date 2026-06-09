@@ -53,5 +53,6 @@
     "deleteAccountInfo": "هل أنت متأكد أنك تريد حذف هذا الحساب؟",
     "registerEventTitle": "تسجيل الحدث",
     "registerEventInfo": "هل أنت متأكد أنك تريد التسجيل في هذا الحدث؟",
-    "adminEmptyPanelInfo": "يبدو أنه لا يوجد شيء لعرضه هنا..."
+    "adminEmptyPanelInfo": "يبدو أنه لا يوجد شيء لعرضه هنا...",
+    "categoryLimitInfo": "يمكنك اختيار ما يصل إلى 7 فئات"
 }
