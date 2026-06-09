@@ -18,3 +18,136 @@
   border-right: 2px solid black;
   width: 20%;
 }
+
+/* =====================================================================
+   MOBİL APP-SHELL (<768px)
+   JS'te isMobile true iken kapsayıcıya `.user-container--mobile` eklenir.
+   Tüm kurallar bu sınıfa scope'ludur; masaüstü (≥768px) HİÇ etkilenmez.
+   ===================================================================== */
+
+/* 1) Dış çerçeve: ekran boyutunda sabit, kendisi kaymaz */
+.user-container--mobile {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  width: 100%;
+  max-width: 100%;
+  height: 100vh;   /* dvh desteklemeyen tarayıcılar için fallback */
+  height: 100dvh;  /* mobil adres çubuğu yükseklik kaymasını önler */
+  overflow: hidden;
+}
+
+/* 2) İçerik alanı: tek dikey kayan bölge.
+   Masaüstünde display:contents ile şeffaftır — panel'ler doğrudan
+   .user-container'ın flex çocuğu olmaya devam eder, masaüstü bozulmaz. */
+.user-content {
+  display: contents;
+}
+.user-container--mobile .user-content {
+  display: block;
+  flex: 1 1 auto;
+  min-height: 0;            /* flex çocuğun küçülüp kayabilmesi için şart */
+  width: 100%;
+  max-width: 100%;
+  overflow-y: auto;        /* uzun içerik yalnızca burada kayar */
+  overflow-x: hidden;      /* yatay kaydırma asla olmasın */
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 64px;    /* alt bar (60px) tarafından örtülmesin */
+}
+
+/* Görseller kapsayıcıyı yatayda aşmasın */
+.user-container--mobile img {
+  max-width: 100%;
+}
+
+/* MUI form alanları kapsayıcı genişliğini aşmasın (sabit width:px değerleri kapaklanır) */
+.user-container--mobile .MuiTextField-root,
+.user-container--mobile .MuiAutocomplete-root,
+.user-container--mobile .MuiFormControl-root,
+.user-container--mobile .MuiButton-root {
+  max-width: 100%;
+}
+
+/* 3) İç panellerdeki sabit 100vh / nested scroller'ları sıfırla:
+   sayfayı zorla uzatmasınlar, tek kayan alan .user-content olsun */
+.user-container--mobile .discovery-container,
+.user-container--mobile .recommended-container,
+.user-container--mobile .recommended-container-empty-text,
+.user-container--mobile .archive-panel-container {
+  height: auto;
+  min-height: 0;
+  overflow: visible;
+}
+.user-container--mobile .profile-panel-container {
+  width: 100%;
+  height: auto;
+}
+/* --- Oluştur/Düzenle sekmesi: tek dikey akış + ortak .user-content scroll'u ---
+   Form ve düzenlenebilir liste KENDİ sabit yükseklik / iç scroll kurallarını
+   bırakır; böylece çift scroll / sayfa oynaması biter, alanlar alt alta ve
+   tam genişlikte dizilir, son buton alt barın arkasında kalmaz. */
+
+/* Form kapsayıcısı ve form: yatay iki sütun yerine dikey sütun, sabit 500px yok */
+.user-container--mobile .create-edit-panel-container,
+.user-container--mobile .create-edit-form-main {
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  height: auto;
+  margin-top: 0;
+}
+
+/* Formun iki iç sütunu (görsel/açıklama + diğer alanlar) tam genişlik */
+.user-container--mobile .create-edit-form-main > .flex-column {
+  width: 100%;
+}
+
+/* Alanlar (input/tarih/kategori/buton) tam genişlikte ama kapsayıcıyı aşmadan */
+.user-container--mobile .create-edit-form-inputs,
+.user-container--mobile .create-edit-form-main .MuiTextField-root,
+.user-container--mobile .create-edit-form-main .MuiAutocomplete-root,
+.user-container--mobile .create-edit-form-main .MuiFormControl-root,
+.user-container--mobile .create-edit-form-main .MuiBox-root,
+.user-container--mobile .create-edit-form-main .MuiButton-root {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Düzenlenebilir etkinlik listesi: kendi sabit 320px yükseklik + yatay scroll'u
+   bırakıp ortak dikey akışa katılır (nested/çift scroll'u önler) */
+.user-container--mobile .editable-panel-container {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  overflow-x: visible;
+}
+/* Kart satırı da dikeye dönsün ki kartlar alt alta gelsin (yatay scroll gerekmesin) */
+.user-container--mobile .editable-panel-container > .flex-row-justify-start {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+/* 4) Sabit px genişlikli kartlar/kutular dar ekrana sığsın (yatay taşmayı keser) */
+.user-container--mobile .discovery-e-c-main-with-card,
+.user-container--mobile .discovery-e-c-main-without-card,
+.user-container--mobile .review-e-c-main-without-card,
+.user-container--mobile .recommended-e-c-main-with-card,
+.user-container--mobile .recommended-e-c-main-without-card,
+.user-container--mobile .archive-e-c-main-without-card,
+.user-container--mobile .create-edit-form-main,
+.user-container--mobile .create-edit-form-img,
+.user-container--mobile .create-event-map-panel,
+.user-container--mobile .editable-event-card,
+.user-container--mobile .my-regisired-event-card-container {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Profil ad-soyad başlığı sağa taşmasın (margin-right:200px kaynaklı) */
+.user-container--mobile .profile-panel-name-surname {
+  margin-right: 0;
+  width: auto;
+  max-width: 100%;
+}
