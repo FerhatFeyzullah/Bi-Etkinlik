@@ -53,5 +53,6 @@
     "deleteAccountInfo": "کیا آپ واقعی اس اکاؤنٹ کو حذف کرنا چاہتے ہیں؟",
     "registerEventTitle": "ایونٹ رجسٹریشن",
     "registerEventInfo": "کیا آپ واقعی اس ایونٹ کے لیے رجسٹر کرنا چاہتے ہیں؟",
-    "adminEmptyPanelInfo": "ایسا لگتا ہے کہ یہاں دکھانے کے لیے کچھ نہیں ہے۔"
+    "adminEmptyPanelInfo": "ایسا لگتا ہے کہ یہاں دکھانے کے لیے کچھ نہیں ہے۔",
+    "categoryLimitInfo": "آپ زیادہ سے زیادہ 7 زمرے منتخب کر سکتے ہیں"
 }

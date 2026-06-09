@@ -24,13 +24,10 @@
     },
     "changePassword": {
         "oldPasswordRequired": "Enter Your Old Password.",
-        "oldPasswordMin": "Password Must Be At Least 8 Characters Long.",
+        "oldPasswordMin": "Password Must Be At Least 6 Characters Long.",
         "newPasswordRequired": "Enter Your New Password.",
-        "newPasswordMin": "Password Must Be At Least 8 Characters Long.",
-        "newPasswordMatchesLower": "Must Contain Lowercase Letters.",
-        "newPasswordMatchesUpper": "Must Contain Uppercase Letters.",
+        "newPasswordMin": "Password Must Be At Least 6 Characters Long.",
         "newPasswordMatchesDigit": "Must Contain Numbers.",
-        "newPasswordMatchesSpecial": "Must Contain Special Characters.",
         "confirmNewPasswordRequired": "Password Repetition Required.",
         "confirmNewPasswordOneOf": "Passwords Don't Match."
     },

@@ -24,13 +24,10 @@
     },
     "changePassword": {
         "oldPasswordRequired": "Eski Şifrenini Giriniz.",
-        "oldPasswordMin": "Şifre En az 8 Karakter Olmalı.",
+        "oldPasswordMin": "Şifre En az 6 Karakter Olmalı.",
         "newPasswordRequired": "Yeni Şifrenini Giriniz.",
-        "newPasswordMin": "Şifre En az 8 Karakter Olmalı.",
-        "newPasswordMatchesLower": "Küçük Harf İçermeli.",
-        "newPasswordMatchesUpper": "Büyük Harf İçermeli.",
+        "newPasswordMin": "Şifre En az 6 Karakter Olmalı.",
         "newPasswordMatchesDigit": "Rakam İçermeli.",
-        "newPasswordMatchesSpecial": "Özel Karakter İçermeli.",
         "confirmNewPasswordRequired": "Şifre Tekrarı Zorunlu.",
         "confirmNewPasswordOneOf": "Şifreler Eşleşmiyor."
     },

@@ -53,5 +53,6 @@
     "deleteAccountInfo": "¿Estás seguro de que quieres eliminar esta cuenta?",
     "registerEventTitle": "Registro de evento",
     "registerEventInfo": "¿Estás seguro de que quieres registrarte para este evento?",
-    "adminEmptyPanelInfo": "Parece que no hay nada que mostrar aquí."
+    "adminEmptyPanelInfo": "Parece que no hay nada que mostrar aquí.",
+    "categoryLimitInfo": "Puedes seleccionar hasta 7 categorías"
 }

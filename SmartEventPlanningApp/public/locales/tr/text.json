@@ -53,5 +53,6 @@
   "deleteAccountInfo": "Bu hesabı silmek istedğine emin misin ?",
   "registerEventTitle": "Etkinlik Kaydı",
   "registerEventInfo": "Etkinliğine kayıt olmak istediğinize emin misiniz ?",
-  "adminEmptyPanelInfo": "Burada görülecek birşey yok gibi..."
+  "adminEmptyPanelInfo": "Burada görülecek birşey yok gibi...",
+  "categoryLimitInfo": "En fazla 7 kategori seçebilirsiniz"
 }

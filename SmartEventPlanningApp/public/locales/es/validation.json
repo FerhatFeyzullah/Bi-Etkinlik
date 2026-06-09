@@ -24,13 +24,10 @@
     },
     "changePassword": {
         "oldPasswordRequired": "Ingrese su contraseña anterior.",
-        "oldPasswordMin": "La contraseña debe tener al menos 8 caracteres.",
+        "oldPasswordMin": "La contraseña debe tener al menos 6 caracteres.",
         "newPasswordRequired": "Ingrese su nueva contraseña.",
-        "newPasswordMin": "La contraseña debe tener al menos 8 caracteres.",
-        "newPasswordMatchesLower": "Debe contener letras minúsculas.",
-        "newPasswordMatchesUpper": "Debe contener letras mayúsculas.",
+        "newPasswordMin": "La contraseña debe tener al menos 6 caracteres.",
         "newPasswordMatchesDigit": "Debe contener números.",
-        "newPasswordMatchesSpecial": "Debe contener caracteres especiales.",
         "confirmNewPasswordRequired": "Se requiere la repetición de la contraseña.",
         "confirmNewPasswordOneOf": "Las contraseñas no coinciden."
     },
