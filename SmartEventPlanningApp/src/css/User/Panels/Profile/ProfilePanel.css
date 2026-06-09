@@ -2,3 +2,11 @@
   width: 60%;
   height: 100vh;
 }
+
+.profile-signout-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 12px 0 20px;
+}

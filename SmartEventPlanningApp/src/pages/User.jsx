@@ -25,7 +25,10 @@ import {
   SetDiscoveryLatitude,
   SetDiscoveryLongitude,
 } from "../redux/slices/mapSlice";
-import { Button } from "@mui/material";
+import { Button, useMediaQuery } from "@mui/material";
+import BottomNavigation from "@mui/material/BottomNavigation";
+import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import Paper from "@mui/material/Paper";
 import { LogoutFromSystem } from "../redux/slices/authSlice";
 import { useTranslation } from "react-i18next";
 import EventChatGroupsPanel from "../components/User/Panels/Message/EventChatGroupsPanel";
@@ -41,6 +44,18 @@ function User() {
   var { userId } = useParams();
 
   const [selectedTab, setSelectedTab] = useState(0);
+
+  // Dar ekran (<768px): sol sidebar gizlenir, yerine alt navigasyon barı gelir.
+  const isMobile = useMediaQuery("(max-width:767.98px)");
+
+  // Alt bardaki 6 sekmenin sığması için ikon/etiketleri küçültür.
+  const bottomNavActionSx = {
+    minWidth: 0,
+    px: 0.5,
+    "& .MuiSvgIcon-root": { fontSize: 20 },
+    "& .MuiBottomNavigationAction-label": { fontSize: "0.6rem", lineHeight: 1.1 },
+    "& .MuiBottomNavigationAction-label.Mui-selected": { fontSize: "0.6rem" },
+  };
 
   const handleChange = (event, newValue) => {
     setSelectedTab(newValue);
@@ -74,8 +89,11 @@ function User() {
   };
 
   return (
-    <div className="user-container">
-      <div className="user-tab-panel">
+    <div
+      className={isMobile ? "user-container user-container--mobile" : "user-container"}
+    >
+      {!isMobile && (
+        <div className="user-tab-panel">
         <div className="user-app-title" onClick={() => setSelectedTab(0)}>Bi Etkinlik</div>
         <div
           className="flex-column-justify-space-between"
@@ -189,8 +207,11 @@ function User() {
             </Button>
           </div>
         </div>
-      </div>
+        </div>
+      )}
 
+      {/* Tek dikey kayan bölge — app-shell'in orta alanı (mobilde .user-content stilleri devreye girer) */}
+      <div className="user-content">
       {selectedTab === 0 && (
         <div
           className="flex-row"
@@ -225,14 +246,14 @@ function User() {
       {selectedTab === 3 && (
         <div
           className="flex-row-justify-start"
-          style={{ width: "100%", height: "100vh" }}
+          style={{ width: "100%", height: isMobile ? "auto" : "100vh" }}
         >
           <MessagesPanel />
           <EventChatGroupsPanel />
         </div>
       )}
       {selectedTab === 4 &&
-        <div style={{ width: "100%", height: "100vh" }}>
+        <div style={{ width: "100%", height: isMobile ? "auto" : "100vh" }}>
           <ArchiveNavbar />
           <ArchivePanel />
         </div>
@@ -242,6 +263,53 @@ function User() {
         <div className="flex-row" style={{ width: "100%" }}>
           <ProfilePanel />
         </div>
+      )}
+      </div>
+
+      {isMobile && (
+        <Paper
+          className="user-bottom-nav"
+          elevation={3}
+          sx={{ position: "fixed", bottom: 0, left: 0, right: 0, zIndex: 1100 }}
+        >
+          <BottomNavigation
+            value={selectedTab}
+            onChange={handleChange}
+            showLabels
+            sx={{ height: 60 }}
+          >
+            <BottomNavigationAction
+              label={tButton("discoveryTab")}
+              icon={<TravelExploreIcon />}
+              sx={bottomNavActionSx}
+            />
+            <BottomNavigationAction
+              label={tButton("recommendedTab")}
+              icon={<ThumbUpIcon />}
+              sx={bottomNavActionSx}
+            />
+            <BottomNavigationAction
+              label={tButton("create")}
+              icon={<EditNoteIcon />}
+              sx={bottomNavActionSx}
+            />
+            <BottomNavigationAction
+              label={tButton("messageTab")}
+              icon={<Forum />}
+              sx={bottomNavActionSx}
+            />
+            <BottomNavigationAction
+              label={tButton("archiveTab")}
+              icon={<RiArchive2Fill size={20} />}
+              sx={bottomNavActionSx}
+            />
+            <BottomNavigationAction
+              label={tButton("profileTab")}
+              icon={<PersonIcon />}
+              sx={bottomNavActionSx}
+            />
+          </BottomNavigation>
+        </Paper>
       )}
     </div>
   );

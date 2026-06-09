@@ -36,10 +36,13 @@ import { useTranslation } from "react-i18next";
 import DeleteAccountDialog from "../../../Dialogs/DeleteAccountDialog";
 import { LogoutFromSystem } from "../../../../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
+import LogoutIcon from "@mui/icons-material/Logout";
 
 
 function ProfilePanel() {
   const { t: tAlert } = useTranslation("alert");
+  const { t: tButton } = useTranslation("button");
   const { i18n } = useTranslation();
 
   const dispatch = useDispatch();
@@ -126,8 +129,18 @@ function ProfilePanel() {
         <div style={{ height: "30%", width: "100%" }}>
           <MyProfileInfo />
         </div>
-        <div style={{ height: "65%", width: "100%" }}>
+        <div style={{ height: "58%", width: "100%" }}>
           <MyActivities />
+        </div>
+        <div className="profile-signout-row">
+          <Button
+            variant="outlined"
+            color="error"
+            startIcon={<LogoutIcon />}
+            onClick={SignOut}
+          >
+            {tButton("signOut")}
+          </Button>
         </div>
       </div>
 
