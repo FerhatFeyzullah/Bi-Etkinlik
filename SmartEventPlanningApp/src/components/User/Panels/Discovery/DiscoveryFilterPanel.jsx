@@ -18,7 +18,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import CategoryFilterSkeleton from "../../../Skeletons/CategoryFilterSkeleton";
 import { useTranslation } from "react-i18next";
 
-function DiscoveryFilterPanel() {
+function DiscoveryFilterPanel({ onRequestClose, disablePortal = true } = {}) {
   const { t: tButton } = useTranslation("button");
   const { t: tInput } = useTranslation("input");
   const { t: tText } = useTranslation("text");
@@ -58,6 +58,8 @@ function DiscoveryFilterPanel() {
 
   const OpenFilter = () => {
     dispatch(SetFilterMode(true));
+    // Mobil modal'da: uygulayınca otomatik kapansın (masaüstünde prop yok → no-op)
+    if (onRequestClose) onRequestClose();
   };
 
   const ClearAllFilters = () => {
@@ -70,6 +72,8 @@ function DiscoveryFilterPanel() {
     dispatch(SetStartDate(null));
     dispatch(SetEndDate(null));
     dispatch(SetFilterMode(false));
+    // Mobil modal'da: temizleyince modal kapansın ve tüm sonuçlar görünsün
+    if (onRequestClose) onRequestClose();
   };
 
   return (
@@ -91,7 +95,7 @@ function DiscoveryFilterPanel() {
               size="medium"
             />
           )}
-          disablePortal
+          disablePortal={disablePortal}
           slotProps={{
             paper: {
               sx: {
@@ -128,7 +132,7 @@ function DiscoveryFilterPanel() {
                 size="medium"
               />
             )}
-            disablePortal
+            disablePortal={disablePortal}
             slotProps={{
               paper: {
                 sx: {
