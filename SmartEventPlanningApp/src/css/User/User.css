@@ -55,6 +55,31 @@
   padding-bottom: 64px;    /* alt bar (60px) tarafından örtülmesin */
 }
 
+/* Üst başlık çubuğu (top bar): app-shell'in en üstünde in-flow flex çocuğu olarak
+   sabit yükseklik kaplar; kaymaz (yalnızca .user-content kayar). Böylece
+   top bar + .user-content (flex:1) + alt bar toplamı tam ekran (100dvh) olur. */
+.user-container--mobile .user-topbar {
+  flex: 0 0 auto;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+}
+/* "Bi Etkinlik" — PC sidebar'daki .user-app-title ile birebir aynı font/stil
+   (fontFamily ve renk her ikisinde de body'den inherit edilir → aynı görünür). */
+.user-container--mobile .user-topbar-title {
+  font-size: 27px;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+}
+.user-container--mobile .user-topbar-title:active {
+  opacity: 0.6;            /* dokunma geri bildirimi */
+}
+
 /* Görseller kapsayıcıyı yatayda aşmasın */
 .user-container--mobile img {
   max-width: 100%;

@@ -211,6 +211,19 @@ function User() {
         </div>
       )}
 
+      {/* Mobil üst başlık çubuğu (top bar) — tüm sekmelerde üstte sabit, kaymaz */}
+      {isMobile && (
+        <div className="user-topbar">
+          <div
+            className="user-topbar-title"
+            role="button"
+            onClick={() => setSelectedTab(0)}
+          >
+            Bi Etkinlik
+          </div>
+        </div>
+      )}
+
       {/* Tek dikey kayan bölge — app-shell'in orta alanı (mobilde .user-content stilleri devreye girer) */}
       <div className="user-content">
       {selectedTab === 0 && (
