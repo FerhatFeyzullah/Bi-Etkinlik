@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "../css/User/User.css";
+import "../css/User/MobileFeed.css";
 import Tabs from "@mui/material/Tabs";
 import Tab from "@mui/material/Tab";
 import DiscoveryPanel from "../components/User/Panels/Discovery/DiscoveryPanel";
@@ -229,7 +230,7 @@ function User() {
       {selectedTab === 0 && (
         <div
           className="flex-row"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: isMobile ? "auto" : "100%" }}
         >
           <div style={{ width: isMobile ? "100%" : "80%" }}>
             <DiscoveryPanel />
@@ -245,7 +246,7 @@ function User() {
       {selectedTab === 1 && (
         <div
           className="flex-row"
-          style={{ width: "100%", height: "100%" }}
+          style={{ width: "100%", height: isMobile ? "auto" : "100%" }}
         >
           <RecommendedPanel />
         </div>
