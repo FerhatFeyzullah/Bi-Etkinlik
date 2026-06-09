@@ -30,6 +30,7 @@ function RegisterCard() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { t: tCategory } = useTranslation("category");
+  const { t: tText } = useTranslation("text");
 
   const { allCategory } = useSelector((store) => store.category);
   const { registerStatus } = useSelector((store) => store.auth);
@@ -120,11 +121,15 @@ function RegisterCard() {
 
       dispatch(RegisterTheSystem(data));
     } catch (error) {
-      const errObj = {};
-      error.inner.forEach((e) => {
-        errObj[e.path] = e.message;
-      });
-      setErrors(errObj);
+      if (error.inner) {
+        const errObj = {};
+        error.inner.forEach((e) => {
+          errObj[e.path] = e.message;
+        });
+        setErrors(errObj);
+      } else {
+        setErrors({ general: error.message || "Bir hata oluştu" });
+      }
     }
   };
 
@@ -307,6 +312,9 @@ function RegisterCard() {
 
       <br />
       <div className="register-category-title">İlgi Alanları</div>
+      <div className="register-category-limit-info">
+        {tText("categoryLimitInfo")}
+      </div>
       {
         errors.areas && (
           <div className="register-category-error-text">{errors.areas}</div>
@@ -355,6 +363,11 @@ function RegisterCard() {
           Kaydol
         </Button>
       </div>
+      {errors.general && (
+        <div style={{ color: "red", fontSize: "0.8rem", marginTop: "4px" }}>
+          {errors.general}
+        </div>
+      )}
     </div >
   );
 }

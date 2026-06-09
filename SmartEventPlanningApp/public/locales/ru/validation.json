@@ -24,13 +24,10 @@
     },
     "changePassword": {
         "oldPasswordRequired": "Введите ваш старый пароль.",
-        "oldPasswordMin": "Пароль должен содержать не менее 8 символов.",
+        "oldPasswordMin": "Пароль должен содержать не менее 6 символов.",
         "newPasswordRequired": "Введите ваш новый пароль.",
-        "newPasswordMin": "Пароль должен содержать не менее 8 символов.",
-        "newPasswordMatchesLower": "Должен содержать строчные буквы.",
-        "newPasswordMatchesUpper": "Должен содержать заглавные буквы.",
+        "newPasswordMin": "Пароль должен содержать не менее 6 символов.",
         "newPasswordMatchesDigit": "Должен содержать цифры.",
-        "newPasswordMatchesSpecial": "Должен содержать специальные символы.",
         "confirmNewPasswordRequired": "Требуется повторение пароля.",
         "confirmNewPasswordOneOf": "Пароли не совпадают."
     },

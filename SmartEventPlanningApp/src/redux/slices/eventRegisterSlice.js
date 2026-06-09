@@ -14,6 +14,9 @@ const initialState = {
   eventRatedMistakeAlert: false,
   eventRegisterDialog: false,
   registeredEvent: null,
+  registerSource: null,
+  myEventsErrorAlert: false,
+  myEventsErrorResponse: "",
 };
 
 export const RegisterEvent = createAsyncThunk("registerEvent", async (data) => {
@@ -99,6 +102,12 @@ export const eventRegisterSlice = createSlice({
     SetRegisteredEvent: (state, action) => {
       state.registeredEvent = action.payload;
     },
+    SetRegisterSource: (state, action) => {
+      state.registerSource = action.payload;
+    },
+    SetMyEventsErrorAlert: (state, action) => {
+      state.myEventsErrorAlert = action.payload;
+    },
 
     MarkEventIsRated: (state, action) => {
       const eRegisterId = action.payload;
@@ -161,6 +170,9 @@ export const eventRegisterSlice = createSlice({
       })
       .addCase(GetMyPastEvents.rejected, (state) => {
         state.myRegisteredEventsSkeleton = false;
+        state.myEventsErrorResponse = "rejected";
+        state.myEventsErrorAlert = true;
+        console.error("GetMyPastEvents Basarisiz");
       })
 
       //MyCurrentEvents
@@ -173,6 +185,9 @@ export const eventRegisterSlice = createSlice({
       })
       .addCase(GetMyCurrentEvents.rejected, (state) => {
         state.myRegisteredEventsSkeleton = false;
+        state.myEventsErrorResponse = "rejected";
+        state.myEventsErrorAlert = true;
+        console.error("GetMyCurrentEvents Basarisiz");
       })
 
       //MyFutureEvents
@@ -185,6 +200,9 @@ export const eventRegisterSlice = createSlice({
       })
       .addCase(GetMyFutureEvents.rejected, (state) => {
         state.myRegisteredEventsSkeleton = false;
+        state.myEventsErrorResponse = "rejected";
+        state.myEventsErrorAlert = true;
+        console.error("GetMyFutureEvents Basarisiz");
       });
   },
 });
@@ -200,5 +218,7 @@ export const {
   SetEventRatedMistakeAlert,
   SetEventRegisterDialog,
   SetRegisteredEvent,
+  SetRegisterSource,
+  SetMyEventsErrorAlert,
 } = eventRegisterSlice.actions;
 export default eventRegisterSlice.reducer;

@@ -2,8 +2,10 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "../../api/axios";
 
 const initialState = {
-  recommendedEvents: [],
+  recommendedEvents: { events: [] },
   recommendedSkeletonLoading: false,
+  recommendedErrorAlert: false,
+  recommendedErrorResponse: "",
 };
 
 export const GetEventsRecommendedToMe = createAsyncThunk(
@@ -24,12 +26,15 @@ export const recommendedSlice = createSlice({
   reducers: {
     MarkRecommendedEventAsRegistered: (state, action) => {
       const eventId = action.payload;
-      const event = state.recommendedEvents.events.find(
+      const event = state.recommendedEvents?.events?.find(
         (e) => e.eventId === eventId
       );
       if (event) {
         event.registered = true;
       }
+    },
+    SetRecommendedErrorAlert: (state, action) => {
+      state.recommendedErrorAlert = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -43,9 +48,13 @@ export const recommendedSlice = createSlice({
       })
       .addCase(GetEventsRecommendedToMe.rejected, (state) => {
         state.recommendedSkeletonLoading = false;
+        state.recommendedErrorResponse = "rejected";
+        state.recommendedErrorAlert = true;
+        console.error("GetEventsRecommendedToMe Basarisiz");
       });
   },
 });
 
-export const { MarkRecommendedEventAsRegistered } = recommendedSlice.actions;
+export const { MarkRecommendedEventAsRegistered, SetRecommendedErrorAlert } =
+  recommendedSlice.actions;
 export default recommendedSlice.reducer;

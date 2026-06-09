@@ -24,13 +24,10 @@
     },
     "changePassword": {
         "oldPasswordRequired": "اپنا پرانا پاس ورڈ درج کریں۔",
-        "oldPasswordMin": "پاس ورڈ کم از کم 8 حروف کا ہونا چاہیے۔",
+        "oldPasswordMin": "پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے۔",
         "newPasswordRequired": "اپنا نیا پاس ورڈ درج کریں۔",
-        "newPasswordMin": "پاس ورڈ کم از کم 8 حروف کا ہونا چاہیے۔",
-        "newPasswordMatchesLower": "چھوٹے حروف پر مشتمل ہونا ضروری ہے۔",
-        "newPasswordMatchesUpper": "بڑے حروف پر مشتمل ہونا ضروری ہے۔",
+        "newPasswordMin": "پاس ورڈ کم از کم 6 حروف کا ہونا چاہیے۔",
         "newPasswordMatchesDigit": "نمبرز پر مشتمل ہونا ضروری ہے۔",
-        "newPasswordMatchesSpecial": "خصوصی حروف پر مشتمل ہونا ضروری ہے۔",
         "confirmNewPasswordRequired": "پاس ورڈ کی تکرار درکار ہے۔",
         "confirmNewPasswordOneOf": "پاس ورڈ مماثل نہیں ہیں۔"
     },

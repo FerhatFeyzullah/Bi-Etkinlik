@@ -24,13 +24,10 @@
     },
     "changePassword": {
         "oldPasswordRequired": "أدخل كلمة المرور القديمة.",
-        "oldPasswordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
+        "oldPasswordMin": "يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
         "newPasswordRequired": "أدخل كلمة المرور الجديدة.",
-        "newPasswordMin": "يجب أن تكون كلمة المرور 8 أحرف على الأقل.",
-        "newPasswordMatchesLower": "يجب أن تحتوي على أحرف صغيرة.",
-        "newPasswordMatchesUpper": "يجب أن تحتوي على أحرف كبيرة.",
+        "newPasswordMin": "يجب أن تكون كلمة المرور 6 أحرف على الأقل.",
         "newPasswordMatchesDigit": "يجب أن تحتوي على أرقام.",
-        "newPasswordMatchesSpecial": "يجب أن تحتوي على رموز خاصة.",
         "confirmNewPasswordRequired": "مطلوب إعادة كلمة المرور.",
         "confirmNewPasswordOneOf": "كلمات المرور غير متطابقة."
     },

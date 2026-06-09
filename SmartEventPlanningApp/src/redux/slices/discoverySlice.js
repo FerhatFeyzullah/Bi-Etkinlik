@@ -3,13 +3,15 @@ import axios from "../../api/axios";
 
 
 const initialState = {
-  discoveryEvents: [],
+  discoveryEvents: { events: [] },
   discoverySkeletonLoading: false,
   filterMode: false,
   startDate: null,
   endDate: null,
   cities: [],
   categories: [],
+  discoveryErrorAlert: false,
+  discoveryErrorResponse: "",
 };
 
 export const GetE_UnFiltered = createAsyncThunk("getAllEvent", async (id) => {
@@ -121,7 +123,7 @@ export const discoverySlice = createSlice({
   reducers: {
     MarkEventAsRegistered: (state, action) => {
       const eventId = action.payload;
-      const event = state.discoveryEvents.events.find(
+      const event = state.discoveryEvents?.events?.find(
         (e) => e.eventId === eventId
       );
       if (event) {
@@ -143,6 +145,9 @@ export const discoverySlice = createSlice({
     SetFilterMode: (state, action) => {
       state.filterMode = action.payload;
     },
+    SetDiscoveryErrorAlert: (state, action) => {
+      state.discoveryErrorAlert = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -157,8 +162,10 @@ export const discoverySlice = createSlice({
         state.discoveryEvents = action.payload;
       })
       .addCase(GetE_UnFiltered.rejected, (state) => {
-        state.discoverySkeletonLoading = true;
-        console.log("UnFiltreted Basarisiz");
+        state.discoverySkeletonLoading = false;
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("UnFiltreted Basarisiz");
       })
 
       //F_Category
@@ -171,7 +178,9 @@ export const discoverySlice = createSlice({
       })
       .addCase(GetE_F_Category.rejected, (state) => {
         state.discoverySkeletonLoading = false;
-        console.log("GetE_F_Category Basarisiz");
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("GetE_F_Category Basarisiz");
       })
 
       //F_City
@@ -184,7 +193,9 @@ export const discoverySlice = createSlice({
       })
       .addCase(GetE_F_City.rejected, (state) => {
         state.discoverySkeletonLoading = false;
-        console.log("GetE_F_City Basarisiz");
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("GetE_F_City Basarisiz");
       })
 
       //F_CityCategory
@@ -197,7 +208,9 @@ export const discoverySlice = createSlice({
       })
       .addCase(GetE_F_CityCategory.rejected, (state) => {
         state.discoverySkeletonLoading = false;
-        console.log("GetE_F_CityCategory Basarisiz");
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("GetE_F_CityCategory Basarisiz");
       })
 
       //F_Date
@@ -210,7 +223,9 @@ export const discoverySlice = createSlice({
       })
       .addCase(GetE_F_Date.rejected, (state) => {
         state.discoverySkeletonLoading = false;
-        console.log("GetE_F_Date Basarisiz");
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("GetE_F_Date Basarisiz");
       })
 
       //F_DateCategory
@@ -223,7 +238,9 @@ export const discoverySlice = createSlice({
       })
       .addCase(GetE_F_DateCategory.rejected, (state) => {
         state.discoverySkeletonLoading = false;
-        console.log("GetE_F_DateCategory Basarisiz");
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("GetE_F_DateCategory Basarisiz");
       })
 
       //F_DateCity
@@ -236,7 +253,9 @@ export const discoverySlice = createSlice({
       })
       .addCase(GetE_F_DateCity.rejected, (state) => {
         state.discoverySkeletonLoading = false;
-        console.log("GetE_F_DateCity Basarisiz");
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("GetE_F_DateCity Basarisiz");
       })
 
       //F_DateCityCategory
@@ -249,7 +268,9 @@ export const discoverySlice = createSlice({
       })
       .addCase(GetE_F_DateCityCategory.rejected, (state) => {
         state.discoverySkeletonLoading = false;
-        console.log("GetE_F_DateCityCategory Basarisiz");
+        state.discoveryErrorResponse = "rejected";
+        state.discoveryErrorAlert = true;
+        console.error("GetE_F_DateCityCategory Basarisiz");
       });
   },
 });
@@ -261,5 +282,6 @@ export const {
   SetCategories,
   SetFilterMode,
   MarkEventAsRegistered,
+  SetDiscoveryErrorAlert,
 } = discoverySlice.actions;
 export default discoverySlice.reducer;

@@ -5,6 +5,9 @@ const initialState = {
   eventGroups: [],
   chattingEvent: null,
   oldMessages: [],
+  eventGroupsErrorAlert: false,
+  oldMessagesErrorAlert: false,
+  messageErrorResponse: "",
 };
 
 export const GetAllEventsI_Joined = createAsyncThunk(
@@ -44,26 +47,39 @@ export const messageSlice = createSlice({
     SetChattingEvent: (state, action) => {
       state.chattingEvent = action.payload;
     },
+    SetEventGroupsErrorAlert: (state, action) => {
+      state.eventGroupsErrorAlert = action.payload;
+    },
+    SetOldMessagesErrorAlert: (state, action) => {
+      state.oldMessagesErrorAlert = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
       .addCase(GetAllEventsI_Joined.fulfilled, (state, action) => {
         state.eventGroups = action.payload;
       })
-      .addCase(GetAllEventsI_Joined.rejected, () => {
-        console.log("GetAllEventsI_Joined Basarisiz");
+      .addCase(GetAllEventsI_Joined.rejected, (state) => {
+        state.messageErrorResponse = "rejected";
+        state.eventGroupsErrorAlert = true;
+        console.error("GetAllEventsI_Joined Basarisiz");
       })
 
       //Old Messages
       .addCase(GetOldMessages.fulfilled, (state, action) => {
-        state.oldMessages = action.payload.allMessages;
-        console.log("old messages api basarili");
+        state.oldMessages = action.payload?.allMessages ?? [];
       })
-      .addCase(GetOldMessages.rejected, (state, action) => {
-        console.log("old messages api basarisiz");
+      .addCase(GetOldMessages.rejected, (state) => {
+        state.messageErrorResponse = "rejected";
+        state.oldMessagesErrorAlert = true;
+        console.error("old messages api basarisiz");
       });
   },
 });
 
-export const { SetChattingEvent } = messageSlice.actions;
+export const {
+  SetChattingEvent,
+  SetEventGroupsErrorAlert,
+  SetOldMessagesErrorAlert,
+} = messageSlice.actions;
 export default messageSlice.reducer;
