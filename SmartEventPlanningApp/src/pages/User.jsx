@@ -9,6 +9,7 @@ import MessagesPanel from "../components/User/Panels/Message/MessagesPanel";
 import ArchivePanel from '../components/User/Panels/Archive/ArchivePanel'
 import ProfilePanel from "../components/User/Panels/Profile/ProfilePanel";
 import DiscoveryFilterPanel from "../components/User/Panels/Discovery/DiscoveryFilterPanel";
+import DiscoveryFilterFab from "../components/User/Panels/Discovery/DiscoveryFilterFab";
 import { useDispatch, useSelector } from "react-redux";
 import { GetUserSetting } from "../redux/slices/userSettingSlice";
 import { useNavigate, useParams } from "react-router-dom";
@@ -217,12 +218,14 @@ function User() {
           className="flex-row"
           style={{ width: "100%", height: "100%" }}
         >
-          <div style={{ width: "80%" }}>
+          <div style={{ width: isMobile ? "100%" : "80%" }}>
             <DiscoveryPanel />
           </div>
-          <div style={{ width: "20%" }}>
-            <DiscoveryFilterPanel />
-          </div>
+          {!isMobile && (
+            <div style={{ width: "20%" }}>
+              <DiscoveryFilterPanel />
+            </div>
+          )}
 
         </div>
       )}
@@ -311,6 +314,9 @@ function User() {
           </BottomNavigation>
         </Paper>
       )}
+
+      {/* Mobilde yalnızca Keşfet'te: sağ filtre paneli yerine FAB + modal */}
+      {isMobile && selectedTab === 0 && <DiscoveryFilterFab />}
     </div>
   );
 }
