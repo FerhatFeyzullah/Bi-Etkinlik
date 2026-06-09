@@ -1,0 +1,117 @@
+/* =====================================================================
+   MOBİL FEED — Option A: "Edge-to-edge minimal feed" (Instagram benzeri)
+   Keşfet (discovery) ve Önerilenler (recommended) etkinlik kartlarının
+   YALNIZCA mobil görünümü (.user-container--mobile) yeniden tasarlanır.
+   Masaüstü (≥768px) görünümü HİÇ değişmez; kart DOM'u ve mantığı aynıdır,
+   sadece görsel/sunum CSS ile değiştirilir.
+   ===================================================================== */
+
+/* Kart kabı: kutu/kenarlık/margin kalkar → tam genişlik, edge-to-edge, tek beyaz yüzey */
+.user-container--mobile .discovery-e-c-main-with-card,
+.user-container--mobile .discovery-e-c-main-without-card,
+.user-container--mobile .recommended-e-c-main-with-card,
+.user-container--mobile .recommended-e-c-main-without-card {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-color: #ffffff;
+  padding-bottom: 6px;
+}
+
+/* Header (üst satır): kompakt, yatay padding (görselle hizalı) */
+.user-container--mobile .discovery-e-c-main-with-card > .flex-row-justify-space-between,
+.user-container--mobile .discovery-e-c-main-without-card > .flex-row-justify-space-between,
+.user-container--mobile .recommended-e-c-main-with-card > .flex-row-justify-space-between,
+.user-container--mobile .recommended-e-c-main-without-card > .flex-row-justify-space-between {
+  padding: 8px 12px;
+}
+
+/* Avatar küçülür (65 → 40); saran IconButton padding'i azalır → kompakt başlık */
+.user-container--mobile .discovery-e-c-main-with-card .MuiAvatar-root,
+.user-container--mobile .discovery-e-c-main-without-card .MuiAvatar-root,
+.user-container--mobile .recommended-e-c-main-with-card .MuiAvatar-root,
+.user-container--mobile .recommended-e-c-main-without-card .MuiAvatar-root {
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+}
+.user-container--mobile .discovery-e-c-main-with-card .MuiIconButton-root,
+.user-container--mobile .discovery-e-c-main-without-card .MuiIconButton-root,
+.user-container--mobile .recommended-e-c-main-with-card .MuiIconButton-root,
+.user-container--mobile .recommended-e-c-main-without-card .MuiIconButton-root {
+  padding: 4px;
+}
+
+/* Header'daki büyük (85px) kategori GIF'leri gizlenir; kategoriler caption'da
+   metin olarak zaten var → tekrar kaldırılır, başlık sadeleşir */
+.user-container--mobile .discovery-e-c-main-with-card .flex-column-justify-end,
+.user-container--mobile .discovery-e-c-main-without-card .flex-column-justify-end,
+.user-container--mobile .recommended-e-c-main-with-card .flex-column-justify-end,
+.user-container--mobile .recommended-e-c-main-without-card .flex-column-justify-end {
+  display: none;
+}
+
+/* Görsel = kahraman: tam genişlik (full-bleed), sabit 4:5 oran → tutarlı feed akışı.
+   Oranı doğrudan <img> belirler (yüzde-yükseklik bağımlılığı yok, daha sağlam). */
+.user-container--mobile .discovery-e-c-image,
+.user-container--mobile .recommended-e-c-image {
+  width: 100%;
+  height: auto;
+}
+.user-container--mobile .discovery-e-c-image img,
+.user-container--mobile .recommended-e-c-image img {
+  width: 100%;
+  height: auto !important;     /* inline height:100%'i ez */
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  display: block;              /* satıriçi görsel taban boşluğunu kaldır */
+  border-radius: 0 !important; /* inline border-radius:12px'i ez → edge-to-edge */
+}
+
+/* Aksiyon satırı: iki buton eşit genişlik, hizalı; yatay padding */
+.user-container--mobile .discovery-e-c-main-with-card > .flex-row-justify-start,
+.user-container--mobile .discovery-e-c-main-without-card > .flex-row-justify-start,
+.user-container--mobile .recommended-e-c-main-with-card > .flex-row-justify-start,
+.user-container--mobile .recommended-e-c-main-without-card > .flex-row-justify-start {
+  padding: 8px 12px;
+  gap: 8px;
+}
+.user-container--mobile .discovery-e-c-register,
+.user-container--mobile .recommended-e-c-register {
+  flex: 1;
+  margin: 0;
+}
+.user-container--mobile .discovery-e-c-register .MuiButton-root,
+.user-container--mobile .recommended-e-c-register .MuiButton-root {
+  width: 100%;
+}
+
+/* Birincil eylem (Kaydol) öne çıksın: dolgulu yeşil; ikincil (Konumu Gör) outlined kalır.
+   Kayıtlı (disabled) durumuna dokunma. */
+.user-container--mobile .discovery-e-c-register:first-child .MuiButton-root:not(.Mui-disabled),
+.user-container--mobile .recommended-e-c-register:first-child .MuiButton-root:not(.Mui-disabled) {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+  color: #ffffff;
+}
+
+/* Caption (açıklama/accordion) alanı: görselle hizalı yatay padding */
+.user-container--mobile .discovery-e-c-description-container,
+.user-container--mobile .recommended-e-c-description-container {
+  margin: 0;
+  padding: 0 12px;
+}
+
+/* Kartlar arası ince ayraç çizgisi.
+   .discovery-container/.recommended-container `align-items:center` flex sütunu
+   olduğundan <hr>'ın genişliği yoksa sıfıra çöker → açıkça width:100% verilir. */
+.user-container--mobile .discovery-container hr,
+.user-container--mobile .recommended-container hr {
+  width: 100%;
+  align-self: stretch;
+  border: none;
+  border-top: 1px solid #dbdbdb;
+  margin: 4px 0 0;
+}
