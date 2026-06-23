@@ -11,6 +11,10 @@ const initialState = {
   registerResponse: "",
   registerStatus: false,
   token: {},
+  // Uygulama açılışında oturum cookie'si CheckMe ile kontrol edildi mi?
+  // Kontrol tamamlanmadan PrivateRoute'lar değerlendirilmemeli (refresh'te
+  // boş token yüzünden yetkisiz-erisim'e atılmayı önler).
+  authChecked: false,
 };
 
 export const LoginTheSystem = createAsyncThunk("login", async (data) => {
@@ -121,9 +125,11 @@ export const authSlice = createSlice({
       //ReadToken
       .addCase(ReadToken.fulfilled, (state, action) => {
         state.token = action.payload;
+        state.authChecked = true;
       })
       .addCase(ReadToken.rejected, (state) => {
         state.token = {};
+        state.authChecked = true;
       })
 
       //LogoutFromSystem

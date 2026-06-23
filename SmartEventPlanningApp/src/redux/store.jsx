@@ -32,7 +32,16 @@ const rootReducer = (state, action) => {
     state = undefined;
   }
 
-  return appReducer(state, action);
+  const nextState = appReducer(state, action);
+
+  // Çıkış tüm slice'ları sıfırlar; ancak oturum kontrolü zaten yapılmıştı.
+  // authChecked'i true tutmazsak App sonsuz yüklenme ekranında kalır
+  // (mount useEffect'i tekrar çalışmadığından ReadToken yeniden tetiklenmez).
+  if (action.type === "auth/logout") {
+    nextState.auth.authChecked = true;
+  }
+
+  return nextState;
 };
 
 const store = configureStore({
