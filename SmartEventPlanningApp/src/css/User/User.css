@@ -227,3 +227,46 @@
   width: auto;
   max-width: 100%;
 }
+
+/* --- 5) Mesajlar sekmesi: liste↔sohbet (master-detail) ---
+   Masaüstü 70/30 yan yana düzen JS'te korunur; mobilde User.jsx tek seferde tek panel
+   render eder (chattingEvent null → liste, dolu → sohbet). Buradaki kurallar yalnızca o
+   tek panele tam genişlik + dolu yükseklik verir. */
+
+/* Sohbet paneli: %70 yerine tam genişlik; görünür alanı dolduran sabit yükseklik.
+   100dvh - 120px = üst bar (56px) + .user-content padding-bottom (64px) düşülmüş alan. */
+.user-container--mobile .messages-panel-container {
+  width: 100%;
+  height: calc(100vh - 120px);   /* dvh desteklemeyen tarayıcı fallback */
+  height: calc(100dvh - 120px);
+}
+
+/* Başlık ve mesaj kutusu doğal yükseklikte sabit kalsın (kaymasın) */
+.user-container--mobile .m-panel-title-phase,
+.user-container--mobile .m-panel-input-phase {
+  height: auto;
+  flex: 0 0 auto;
+}
+
+/* Yalnızca mesaj listesi içeride kaysın (panel zaten .flex-column).
+   Yüzde yükseklikler kısa ekranda kırılgan; flex ile kalan alanı doldurur. */
+.user-container--mobile .m-panel-messages-phase {
+  height: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+/* Baloncuklar dar ekranı neredeyse kaplamasın */
+.user-container--mobile .m-panel-message-card {
+  max-width: 80%;
+}
+
+/* Sohbet listesi: %30 yerine tam genişlik; sol kenarlık kalkar; ortak .user-content kayar */
+.user-container--mobile .event-chat-groups-container {
+  width: 100%;
+  height: auto;
+  border-left: none;
+}
+.user-container--mobile .event-chat-groups-list {
+  height: auto;
+}
