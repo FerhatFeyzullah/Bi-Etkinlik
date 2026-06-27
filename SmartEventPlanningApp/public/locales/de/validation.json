@@ -11,7 +11,9 @@
         "endDateRequired": "Sie haben kein Enddatum ausgewählt.",
         "endDateTest": "Das Enddatum darf nicht vor dem Startdatum liegen.",
         "categoriesRequired": "Veranstaltungskategorie nicht ausgewählt.",
-        "categoriesMax": "Sie können bis zu 1 Kategorie auswählen!"
+        "categoriesMax": "Sie können bis zu 1 Kategorie auswählen!",
+        "geolocationDenied": "Standortzugriff verweigert oder Standort nicht verfügbar.",
+        "geolocationUnsupported": "Ihr Browser unterstützt keine Standortdienste."
     },
     "userInfo": {
         "firstNameRequired": "Geben Sie den Vornamen ein.",

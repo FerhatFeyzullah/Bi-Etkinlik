@@ -43,5 +43,6 @@
     "getCodeAgain": "Obtener código nuevamente",
     "evaluate": "Evaluar",
     "approve": "Aprobar",
-    "reject": "Rechazar"
+    "reject": "Rechazar",
+    "useMyLocation": "Usar mi ubicación"
 }

@@ -11,7 +11,9 @@
         "endDateRequired": "No ha seleccionado una fecha de finalización.",
         "endDateTest": "La fecha de finalización no puede ser anterior a la fecha de inicio.",
         "categoriesRequired": "Categoría del evento no seleccionada.",
-        "categoriesMax": "¡Puede seleccionar hasta 1 categoría!"
+        "categoriesMax": "¡Puede seleccionar hasta 1 categoría!",
+        "geolocationDenied": "Permiso de ubicación denegado o ubicación no disponible.",
+        "geolocationUnsupported": "Tu navegador no admite servicios de ubicación."
     },
     "userInfo": {
         "firstNameRequired": "Ingrese su nombre.",

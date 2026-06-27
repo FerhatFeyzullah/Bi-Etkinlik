@@ -11,7 +11,9 @@
         "endDateRequired": "لم تقم باختيار تاريخ الانتهاء.",
         "endDateTest": "لا يمكن أن يكون تاريخ الانتهاء قبل تاريخ البدء.",
         "categoriesRequired": "لم يتم اختيار فئة الحدث",
-        "categoriesMax": "يمكنك اختيار فئة واحدة فقط!"
+        "categoriesMax": "يمكنك اختيار فئة واحدة فقط!",
+        "geolocationDenied": "تم رفض إذن الموقع أو الموقع غير متاح.",
+        "geolocationUnsupported": "متصفحك لا يدعم خدمات الموقع."
     },
     "userInfo": {
         "firstNameRequired": "أدخل الاسم.",

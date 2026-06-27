@@ -11,7 +11,9 @@
         "endDateRequired": "您尚未选择结束日期。",
         "endDateTest": "结束日期不能早于开始日期。",
         "categoriesRequired": "未选择活动类别",
-        "categoriesMax": "您最多可以选择1个类别！"
+        "categoriesMax": "您最多可以选择1个类别！",
+        "geolocationDenied": "位置权限被拒绝或无法获取位置。",
+        "geolocationUnsupported": "您的浏览器不支持定位服务。"
     },
     "userInfo": {
         "firstNameRequired": "请输入名字。",

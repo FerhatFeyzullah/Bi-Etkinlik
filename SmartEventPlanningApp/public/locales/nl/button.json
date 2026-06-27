@@ -43,5 +43,6 @@
     "getCodeAgain": "Code opnieuw ontvangen",
     "evaluate": "Evalueren",
     "approve": "Goedkeuren",
-    "reject": "Weigeren"
+    "reject": "Weigeren",
+    "useMyLocation": "Mijn locatie gebruiken"
 }

@@ -150,6 +150,20 @@
   width: 100%;
 }
 
+/* Form alanları ekran kenarına yapışmasın (dar ekranda nefes payı) */
+.user-container--mobile .create-edit-form-main {
+  padding: 12px;
+  box-sizing: border-box;
+}
+
+/* Harita: dar ekranda makul yükseklik; dokunmatik kaydırma Leaflet'te zaten var.
+   .create-event-map-panel yüksekliği base CSS'te auto (buton sığar); burada yalnızca
+   harita tuvalinin mobil yüksekliği ayarlanır. */
+.user-container--mobile .create-event-leaflet {
+  height: 55vh;
+  min-height: 300px;
+}
+
 /* Alanlar (input/tarih/kategori/buton) tam genişlikte ama kapsayıcıyı aşmadan */
 .user-container--mobile .create-edit-form-inputs,
 .user-container--mobile .create-edit-form-main .MuiTextField-root,

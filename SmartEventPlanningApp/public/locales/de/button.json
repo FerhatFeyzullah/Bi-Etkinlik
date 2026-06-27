@@ -43,5 +43,6 @@
     "getCodeAgain": "Code erneut anfordern",
     "evaluate": "Bewerten",
     "approve": "Genehmigen",
-    "reject": "Ablehnen"
+    "reject": "Ablehnen",
+    "useMyLocation": "Meinen Standort verwenden"
 }
