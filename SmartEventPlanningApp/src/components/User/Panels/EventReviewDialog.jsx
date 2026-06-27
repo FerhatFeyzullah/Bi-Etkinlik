@@ -7,6 +7,7 @@ import {
 } from "../../../redux/slices/eventSlice";
 import "../../../css/User/DiscoveryEventCard.css";
 import { Avatar, Button, IconButton } from "@mui/material";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import BiEtkinlik from "../../../assets/eventImage/BiEtkinlik.png";
 import { Accordion, AccordionSummary, AccordionDetails } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -30,6 +31,9 @@ function EventReviewDialog() {
 
   const dispatch = useDispatch();
   const [imgError, setImgError] = useState(false);
+  // Dialog portal ile document.body'ye basıldığından .user-container--mobile CSS'i
+  // ona ulaşmaz; responsive'lik component'in kendi useMediaQuery'siyle yapılır.
+  const isMobile = useMediaQuery("(max-width:767.98px)");
 
   const { isEventPreview, previewedEvent } = useSelector(
     (store) => store.event
@@ -64,18 +68,24 @@ function EventReviewDialog() {
     <div>
       <Dialog
         open={isEventPreview}
+        fullScreen={isMobile}
+        fullWidth
+        maxWidth="sm"
         slots={{
           transition: Transition,
         }}
         PaperProps={{
           sx: {
-            borderRadius: "20px", // istediğin değeri verebilirsin
+            borderRadius: isMobile ? 0 : "20px", // fullScreen'de köşe yuvarlaması olmasın
           },
         }}
         keepMounted
         onClose={CloseDialog}
       >
-        <DialogContent sx={{ width: "600px" }} className="flex-row">
+        <DialogContent
+          sx={{ width: { xs: "100%", sm: 600 }, p: { xs: 1.5, sm: 3 }, boxSizing: "border-box" }}
+          className="flex-row"
+        >
           <>
             <div className="review-e-c-main-without-card">
               <div className="flex-row-justify-space-between">
@@ -112,7 +122,7 @@ function EventReviewDialog() {
                 <div className="flex-column-justify-end" style={{ marginRight: "10px" }}>
                   {previewedEvent.eventCategories?.map((c) => (
                     <div key={c.category.categoryId} >
-                      <img src={getCategoryIcon(c.category.categoryName)} alt={c.category.categoryName} width={85} height={85} />
+                      <img src={getCategoryIcon(c.category.categoryName)} alt={c.category.categoryName} width={isMobile ? 56 : 85} height={isMobile ? 56 : 85} />
                     </div>
                   ))}
                 </div>

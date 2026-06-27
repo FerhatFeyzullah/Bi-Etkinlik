@@ -18,6 +18,10 @@
   font-weight: bold;
   border-radius: 4px;
   padding: 5px 10px;
+  max-width: calc(100% - 20px);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .editable-event-status-null {

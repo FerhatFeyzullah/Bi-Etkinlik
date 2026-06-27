@@ -64,28 +64,22 @@ function EditableEventCard() {
                 alt="Resim"
               />
               <div className="editable-event-card-name">{e.name}</div>
-              <div className="flex-row-justify-start">
+              <div
+                className="flex-row-justify-start"
+                style={{ width: "100%", justifyContent: "space-around", alignItems: "center" }}
+              >
                 <Tooltip title={tTooltip("previewEvent")}>
-                  <IconButton
-                    sx={{ margin: "0 20px" }}
-                    onClick={() => PreviewEvent(e)}
-                  >
+                  <IconButton onClick={() => PreviewEvent(e)}>
                     <VisibilityIcon fontSize="medium" />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title={tTooltip("deleteEvent")}>
-                  <IconButton
-                    sx={{ marginRight: "20px" }}
-                    onClick={() => DeleteEvent(e.eventId)}
-                  >
+                  <IconButton onClick={() => DeleteEvent(e.eventId)}>
                     <DeleteIcon fontSize="medium" />
                   </IconButton>
                 </Tooltip>
                 <Tooltip title={tTooltip("updateEvent")}>
-                  <IconButton
-                    sx={{ marginRight: "30px" }}
-                    onClick={() => UpdateModeOpen(e)}
-                  >
+                  <IconButton onClick={() => UpdateModeOpen(e)}>
                     <EditIcon fontSize="medium" />
                   </IconButton>
                 </Tooltip>
