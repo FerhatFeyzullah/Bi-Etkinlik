@@ -4,16 +4,17 @@ import "../../../../css/User/Panels/Message/MessagesPanel.css";
 import TextField from "@mui/material/TextField";
 import InputAdornment from "@mui/material/InputAdornment";
 import SendIcon from "@mui/icons-material/Send";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import IconButton from "@mui/material/IconButton";
 import { useDispatch, useSelector } from "react-redux";
 import BiEtkinlik from "../../../../assets/eventImage/BiEtkinlik.png";
 import { Avatar, Tooltip } from "@mui/material";
 import { useTranslation } from "react-i18next";
 import * as signalR from "@microsoft/signalr";
-import { GetOldMessages, IsEventFinished, SetOldMessagesErrorAlert } from "../../../../redux/slices/messageSlice";
+import { GetOldMessages, IsEventFinished, SetOldMessagesErrorAlert, SetChattingEvent } from "../../../../redux/slices/messageSlice";
 import ToastMistake from "../../../Elements/ToastMistake";
 
-function MessagesPanel() {
+function MessagesPanel({ isMobile }) {
   const { t: tText } = useTranslation("text");
   const { t: tInput } = useTranslation("input");
   const { t: tTooltip } = useTranslation("tooltip");
@@ -178,6 +179,15 @@ function MessagesPanel() {
       <div className="m-panel-title-phase flex-row-justify-start">
         {chattingEvent ? (
           <>
+            {isMobile && (
+              <IconButton
+                className="m-panel-back-btn"
+                aria-label="geri"
+                onClick={() => dispatch(SetChattingEvent(null))}
+              >
+                <ArrowBackIcon />
+              </IconButton>
+            )}
             <div style={{ marginLeft: "20px" }}>
               <Avatar
                 sx={{ width: 70, height: 70 }}
