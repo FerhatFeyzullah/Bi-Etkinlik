@@ -11,7 +11,9 @@
         "endDateRequired": "You Have Not Selected An End Date.",
         "endDateTest": "The End Date Cannot Be Before The Start Date.",
         "categoriesRequired": "Event Category Not Selected",
-        "categoriesMax": "You Can Select Up To 1 Categories!"
+        "categoriesMax": "You Can Select Up To 1 Categories!",
+        "geolocationDenied": "Location permission denied or location unavailable.",
+        "geolocationUnsupported": "Your browser does not support location services."
     },
     "userInfo": {
         "firstNameRequired": "Enter Name.",

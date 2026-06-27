@@ -43,5 +43,6 @@
     "getCodeAgain": "重新获取验证码",
     "evaluate": "评估",
     "approve": "批准",
-    "reject": "拒绝"
+    "reject": "拒绝",
+    "useMyLocation": "使用我的位置"
 }

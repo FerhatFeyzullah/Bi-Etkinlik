@@ -43,5 +43,6 @@
   "getCodeAgain": "Get Code Again",
   "evaluate": "Evaluate",
   "approve": "Approve",
-  "reject": "Refuse"
+  "reject": "Refuse",
+  "useMyLocation": "Use My Location"
 }

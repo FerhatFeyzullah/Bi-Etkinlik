@@ -11,7 +11,9 @@
         "endDateRequired": "Bitiş Tarihi Seçmediniz.",
         "endDateTest": "Bitiş Tarihi Başlangıç Tarihinden Önce Olamaz.",
         "categoriesRequired": "Etkinlik Kategorisi Seçmediniz.",
-        "categoriesMax": "En Fazla 1 Tane Kategori Seçebilirsin!"
+        "categoriesMax": "En Fazla 1 Tane Kategori Seçebilirsin!",
+        "geolocationDenied": "Konum izni verilmedi veya konum alınamadı.",
+        "geolocationUnsupported": "Tarayıcınız konum servisini desteklemiyor."
     },
     "userInfo": {
         "firstNameRequired": "İsim Giriniz.",
