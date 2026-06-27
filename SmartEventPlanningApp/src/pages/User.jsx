@@ -50,6 +50,9 @@ function User() {
   // Dar ekran (<768px): sol sidebar gizlenir, yerine alt navigasyon barı gelir.
   const isMobile = useMediaQuery("(max-width:767.98px)");
 
+  // Mesajlar sekmesinde mobil liste↔sohbet geçişini sürer (seçili sohbet grubu).
+  const { chattingEvent } = useSelector((store) => store.message);
+
   // Alt bardaki 6 sekmenin sığması için ikon/etiketleri küçültür.
   const bottomNavActionSx = {
     minWidth: 0,
@@ -260,15 +263,24 @@ function User() {
           <EditableEventsPanel />
         </div>
       )}
-      {selectedTab === 3 && (
-        <div
-          className="flex-row-justify-start"
-          style={{ width: "100%", height: isMobile ? "auto" : "100vh" }}
-        >
-          <MessagesPanel />
-          <EventChatGroupsPanel />
-        </div>
-      )}
+      {selectedTab === 3 &&
+        (isMobile ? (
+          // Mobilde tek seferde tek panel (master-detail): sohbet seçili değilse liste,
+          // seçiliyse sohbet görünümü; geçiş chattingEvent (Redux) ile sürülür.
+          chattingEvent ? (
+            <MessagesPanel isMobile />
+          ) : (
+            <EventChatGroupsPanel />
+          )
+        ) : (
+          <div
+            className="flex-row-justify-start"
+            style={{ width: "100%", height: "100vh" }}
+          >
+            <MessagesPanel />
+            <EventChatGroupsPanel />
+          </div>
+        ))}
       {selectedTab === 4 &&
         <div style={{ width: "100%", height: isMobile ? "auto" : "100vh" }}>
           <ArchiveNavbar />
