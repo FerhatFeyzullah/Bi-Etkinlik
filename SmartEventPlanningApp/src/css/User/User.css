@@ -97,11 +97,34 @@
    sayfayı zorla uzatmasınlar, tek kayan alan .user-content olsun */
 .user-container--mobile .discovery-container,
 .user-container--mobile .recommended-container,
-.user-container--mobile .recommended-container-empty-text,
 .user-container--mobile .archive-panel-container {
   height: auto;
   min-height: 0;
   overflow: visible;
+}
+
+/* Boş/hata durumu (öneri yok / hata mesajı): ikon + bilgi yazısı görünür alanı
+   doldurup dikeyde ortalansın. min-height verilmezse flex kutusu içeriğe göre
+   büzülür ve justify-content:center ortalayacak boşluk kalmaz → en üste yapışır.
+   100dvh - 120px ≈ top bar (56px) + .user-content padding-bottom (64px) düşülmüş
+   görünür alan. */
+.user-container--mobile .recommended-container-empty-text {
+  height: auto;
+  min-height: calc(100vh - 120px);   /* dvh desteklemeyen tarayıcı fallback */
+  min-height: calc(100dvh - 120px);
+  overflow: visible;
+  box-sizing: border-box;
+  padding: 24px;        /* masaüstü 0 50px dar ekranda fazla; eşit iç boşluk */
+  font-size: 18px;      /* 25px dar ekranda büyük; okunur ama taşmaz */
+  text-align: center;
+  gap: 16px;            /* ikon ile yazı arası boşluk (flex-column) */
+}
+
+/* Sabit 300x300 ikon dar ekranda yatay taşmasın / oranı bozulmasın */
+.user-container--mobile .recommended-container-empty-text img {
+  width: auto;
+  height: auto;
+  max-width: 70%;
 }
 .user-container--mobile .profile-panel-container {
   width: 100%;
