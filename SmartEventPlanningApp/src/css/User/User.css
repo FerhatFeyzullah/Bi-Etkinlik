@@ -207,6 +207,20 @@
   max-width: 100%;
 }
 
+/* Etkinlik kartları (Etkinliklerim + profil kayıtlı): mobilde width:100% ile birlikte
+   yan margin'ler yatay taşma yaratıyordu; margin'i sıfırla, üstte boşluk bırak */
+.user-container--mobile .editable-event-card,
+.user-container--mobile .my-regisired-event-card-container {
+  margin-left: 0;
+  margin-right: 0;
+  margin-top: 16px;
+}
+/* İsim overlay'i dar ekranda daha küçük */
+.user-container--mobile .editable-event-card-name,
+.user-container--mobile .my-registered-event-card-name {
+  font-size: 16px;
+}
+
 /* Profil ad-soyad başlığı sağa taşmasın (margin-right:200px kaynaklı) */
 .user-container--mobile .profile-panel-name-surname {
   margin-right: 0;

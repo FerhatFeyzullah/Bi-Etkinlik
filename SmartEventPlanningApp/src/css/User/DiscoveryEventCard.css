@@ -17,9 +17,11 @@
 }
 
 .review-e-c-main-without-card {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: auto;
-  margin: 15px;
+  margin: 15px auto;
+  box-sizing: border-box;
   background-color: white;
 }
 
