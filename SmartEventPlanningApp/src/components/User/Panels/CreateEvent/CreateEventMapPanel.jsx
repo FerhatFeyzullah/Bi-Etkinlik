@@ -12,6 +12,7 @@ import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
 import markerIcon from "leaflet/dist/images/marker-icon.png";
 import markerShadow from "leaflet/dist/images/marker-shadow.png";
 import { Button, InputAdornment, TextField } from "@mui/material";
+import MyLocationIcon from "@mui/icons-material/MyLocation";
 import "../../../../css/User/Panels/CreateEventPanel/CreateEventMapPanel.css";
 import { useDispatch, useSelector } from "react-redux";
 import { SetLatitude, SetLongitude } from "../../../../redux/slices/eventSlice";
@@ -108,6 +109,25 @@ function CreateEventMapPanel({ isError }) {
     return lat && lng ? <Marker position={[lat, lng]} /> : null;
   };
 
+  // Tarayıcının Geolocation API'siyle kullanıcının mevcut konumunu işaretçiye taşır.
+  // (Ücretsiz; izin reddedilirse kullanıcı yine haritaya dokunarak seçebilir.)
+  const handleUseMyLocation = () => {
+    if (!navigator.geolocation) {
+      alert(tValidation("event.geolocationUnsupported"));
+      return;
+    }
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setLat(pos.coords.latitude);
+        setLng(pos.coords.longitude);
+      },
+      () => {
+        alert(tValidation("event.geolocationDenied"));
+      },
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  };
+
   return (
     <div className="create-event-map-panel">
       <div style={{ width: "100%" }}>
@@ -134,10 +154,20 @@ function CreateEventMapPanel({ isError }) {
         />
       </div>
 
+      <Button
+        onClick={handleUseMyLocation}
+        variant="outlined"
+        fullWidth
+        startIcon={<MyLocationIcon />}
+        sx={{ textTransform: "none", margin: "8px 0" }}
+      >
+        {tButton("useMyLocation")}
+      </Button>
+
       <MapContainer
         center={[40.939087, 30.516985]}
         zoom={13}
-        style={{ height: "444px", width: "100%" }}
+        className="create-event-leaflet"
       >
         <TileLayer
           url={`https://api.maptiler.com/maps/hybrid/{z}/{x}/{y}.png?key=${MAPTILER_API_KEY}`}

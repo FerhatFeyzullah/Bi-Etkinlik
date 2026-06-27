@@ -55,7 +55,7 @@ function EditableEventCard() {
                     : BiEtkinlik
                 }
                 style={{
-                  width: "350px",
+                  width: "100%",
                   height: "80%",
                   objectFit: "cover",
                   borderRadius: "12px",

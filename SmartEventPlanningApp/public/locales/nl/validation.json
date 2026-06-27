@@ -11,7 +11,9 @@
         "endDateRequired": "U heeft geen einddatum geselecteerd.",
         "endDateTest": "De einddatum kan niet vóór de startdatum liggen.",
         "categoriesRequired": "Evenementcategorie niet geselecteerd",
-        "categoriesMax": "U kunt maximaal 1 categorie selecteren!"
+        "categoriesMax": "U kunt maximaal 1 categorie selecteren!",
+        "geolocationDenied": "Locatietoestemming geweigerd of locatie niet beschikbaar.",
+        "geolocationUnsupported": "Uw browser ondersteunt geen locatieservices."
     },
     "userInfo": {
         "firstNameRequired": "Voer naam in.",

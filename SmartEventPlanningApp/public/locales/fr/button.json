@@ -43,5 +43,6 @@
     "getCodeAgain": "Renvoyer le Code",
     "evaluate": "Évaluer",
     "approve": "Approuver",
-    "reject": "Refuser"
+    "reject": "Refuser",
+    "useMyLocation": "Utiliser ma position"
 }

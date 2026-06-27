@@ -43,5 +43,6 @@
   "getCodeAgain": "Tekrar Kod Al",
   "evaluate": "Değerlendir",
   "approve": "Onayla",
-  "reject": "Reddet"
+  "reject": "Reddet",
+  "useMyLocation": "Konumumu Kullan"
 }
