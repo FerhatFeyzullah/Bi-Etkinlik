@@ -12,5 +12,6 @@
   "rateYourExperience": "Deneyiminizi değerlendir.",
   "ratedEvent": "Bu Etkinlik Değerlendirildi.",
   "verifedEmailIcon": "Doğrulanmış hesap",
-  "darkModeSwitch": "Karanlık mod yakında geliyor."
+  "darkModeSwitch": "Karanlık mod yakında geliyor.",
+  "eventFinished": "Bu etkinlik sona erdiği için artık mesaj gönderemezsiniz."
 }

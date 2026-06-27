@@ -13,6 +13,7 @@ import { useTranslation } from "react-i18next";
 import * as signalR from "@microsoft/signalr";
 import { GetOldMessages, IsEventFinished, SetOldMessagesErrorAlert, SetChattingEvent } from "../../../../redux/slices/messageSlice";
 import ToastMistake from "../../../Elements/ToastMistake";
+import ToastWarning from "../../../Elements/ToastWarning";
 
 function MessagesPanel({ isMobile }) {
   const { t: tText } = useTranslation("text");
@@ -37,6 +38,11 @@ function MessagesPanel({ isMobile }) {
   const [chatMessages, setChatMessages] = useState([]);
   const [message, setMessage] = useState("");
   const [eventFinished, setEventFinished] = useState(false);
+  // Mesaj kutusu devre dışıysa nedeni (tooltip namespace anahtarı); yoksa null.
+  // İleride yeni neden eklemek için buraya bir koşul daha eklemek yeterli.
+  const inputDisabledReason = eventFinished ? "eventFinished" : null;
+  // Devre dışı kutuya tıklayınca çıkan uyarı toast'ının görünürlüğü.
+  const [disabledWarningVisible, setDisabledWarningVisible] = useState(false);
 
   const previousEventId = useRef(null);
 
@@ -237,11 +243,18 @@ function MessagesPanel({ isMobile }) {
       </div>
 
       <div className="m-panel-input-phase flex-row">
-        <Tooltip title={eventFinished ? tTooltip("eventFinished") : null}>
-          <span style={{ width: "95%" }}>
+        <Tooltip title={inputDisabledReason ? tTooltip(inputDisabledReason) : null}>
+          {/* Devre dışı input pointer olayı tetiklemez; saran span'a tıklayınca
+              nedeni uyarı toast'ı ile göster (dokunmatikte hover yok). */}
+          <span
+            style={{ width: "95%" }}
+            onClick={() => {
+              if (inputDisabledReason) setDisabledWarningVisible(true);
+            }}
+          >
             <TextField
               sx={{ width: "100%" }}
-              disabled={eventFinished}
+              disabled={Boolean(inputDisabledReason)}
               value={message}
               onChange={(e) => setMessage(e.target.value)}
               fullWidth
@@ -251,7 +264,7 @@ function MessagesPanel({ isMobile }) {
                   endAdornment: (
                     <InputAdornment>
                       <IconButton size="large" onClick={SendMessage}
-                        disabled={eventFinished}>
+                        disabled={Boolean(inputDisabledReason)}>
                         <SendIcon />
                       </IconButton>
                     </InputAdornment>
@@ -270,6 +283,12 @@ function MessagesPanel({ isMobile }) {
         visible={oldMessagesErrorAlert}
         detail={tAlert(messageErrorResponse)}
         closer={CloseOldMessagesErrorToast}
+      />
+
+      <ToastWarning
+        visible={disabledWarningVisible}
+        detail={inputDisabledReason ? tTooltip(inputDisabledReason) : ""}
+        closer={() => setDisabledWarningVisible(false)}
       />
     </div >
   );
